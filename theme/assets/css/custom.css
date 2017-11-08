@@ -1,0 +1,9 @@
+/*Login Pages*/
+.login-exceeded {
+    width: 400px;
+    margin: 0 auto;
+}
+i.login-exceeded-ico {
+	font-size: 90px;
+    color: red;
+}
