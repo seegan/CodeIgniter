@@ -58,3 +58,4 @@ $route[LOGIN_PAGE] = 'admin/auth/login';
 
 
 $route['admin/branch'] = 'admin/branch/branch/index';
+$route['admin/branch/add'] = 'admin/branch/branch/add';

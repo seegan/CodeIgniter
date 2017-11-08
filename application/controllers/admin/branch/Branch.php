@@ -32,9 +32,23 @@ class Branch extends MY_Controller {
 
 	}
 
-	public function user()
+	public function add()
 	{
-		var_dump("expression"); die();
+	    if( $this->uri->uri_string() == 'admin/branch/branch/add')
+	    {
+	        show_404();
+	    }		
+
+		$page_content = $this->load->view('admin/dashboard/dashboard', '', TRUE);
+		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
+		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
+
+		echo $this->load->view('admin/common/header', '', TRUE);
+		echo $left_sidebar;
+		echo $page_content;
+		echo $right_sidebar;
+		echo $this->load->view('admin/common/footer', '', TRUE);
+
 	}
 }
 ?>
