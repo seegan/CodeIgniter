@@ -8,7 +8,7 @@
                             <li class="menu-title">Main</li>
 
                             <li>
-                                <a href="index.html" class="waves-effect waves-primary"><i
+                                <a href="<?php echo base_url('admin/dashboard') ?>" class="waves-effect waves-primary"><i
                                         class="ti-home"></i><span> Dashboard </span></a>
                             </li>
 
@@ -34,9 +34,9 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="ti-menu-alt"></i><span> Branchs </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="tables-basic.html">Branch</a></li>
-                                    <li><a href="tables-datatable.html">User</a></li>
-                                    <li><a href="tables-editable.html">Settings</a></li>
+                                    <li><a href="<?php echo base_url('admin/branch') ?>">Branch</a></li>
+                                    <li><a href="<?php echo base_url('admin/branch/user') ?>">User</a></li>
+                                    <li><a href="<?php echo base_url('admin/branch/settings') ?>">Settings</a></li>
                                 </ul>
                             </li>
 

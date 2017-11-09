@@ -18,9 +18,8 @@ class Branch extends MY_Controller {
 		$ss = $this->acl_permits('general.*');
 /*var_dump($this->auth_role);
 		var_dump($ss);*/
-
 /*		var_dump("expression"); die();*/
-		$page_content = $this->load->view('admin/dashboard/dashboard', '', TRUE);
+		$page_content = $this->load->view('admin/branch/branch/branch', '', TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
 
@@ -39,7 +38,7 @@ class Branch extends MY_Controller {
 	        show_404();
 	    }		
 
-		$page_content = $this->load->view('admin/dashboard/dashboard', '', TRUE);
+		$page_content = $this->load->view('admin/branch/branch/branch_add', '', TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
 

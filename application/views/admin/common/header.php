@@ -13,10 +13,40 @@
         <link href="<?php echo base_url(); ?>jsplugins/switchery/switchery.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>jsplugins/morris/morris.css">
 
+
+        <link href="<?php echo base_url(); ?>jsplugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+        <link href="<?php echo base_url(); ?>jsplugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url(); ?>jsplugins/select2/select2.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url(); ?>jsplugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+        <link href="<?php echo base_url(); ?>jsplugins/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>jsplugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>jsplugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+        <link href="<?php echo base_url(); ?>jsplugins/footable/css/footable.core.css" rel="stylesheet">
+
+
         <link href="<?php echo base_url(); ?>theme/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url(); ?>theme/assets/css/icons.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url(); ?>theme/assets/css/style_dark.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url(); ?>theme/assets/css/custom.css" rel="stylesheet" type="text/css">        
         <script src="<?php echo base_url(); ?>theme/assets/js/modernizr.min.js"></script>
+
+
+        <?php
+            // Add any javascripts
+            if( isset( $stylesheet ) )
+            {
+                foreach( $stylesheet as $css )
+                {
+                    echo '<link href="' . $css . '" rel="stylesheet" type="text/css">' . "\n";
+                }
+            }
+
+            if( isset( $final_head ) )
+            {
+                echo $final_head;
+            }
+        ?>
 
     </head>
 
