@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="description" content="Xtragenius - Online Exam Portal">
         <meta name="author" content="Coderthemes">
 
         <link rel="shortcut icon" href="assets/images/favicon_1.ico">
 
-        <title>Minton - Responsive Admin Dashboard Template</title>
+        <title>Xtragenius - Online Exam Portal</title>
 
         <link href="<?php echo base_url(); ?>jsplugins/switchery/switchery.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>jsplugins/morris/morris.css">
@@ -62,7 +62,7 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="index.html" class="logo"><i class="mdi mdi-radar"></i> <span>Minton</span></a>
+                        <a href="index.html" class="logo"><i class="mdi mdi-radar"></i> <span>Xtragenius</span></a>
                     </div>
                 </div>
 
@@ -148,7 +148,7 @@
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="<?php echo base_url('admin/auth/logout'); ?>" class="dropdown-item notify-item">
                                     <i class="mdi mdi-logout"></i> <span>Logout</span>
                                 </a>
 

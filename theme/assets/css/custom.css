@@ -20,3 +20,6 @@ i.login-exceeded-ico {
 .action-header h2 {
 	display: inline-block;
 }
+.page-container {
+	margin-top: 20px;
+}

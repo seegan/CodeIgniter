@@ -32,7 +32,7 @@ if( ! isset( $on_hold_message ) )
         <div class="wrapper-page">
 
             <div class="text-center">
-                <a href="index.html" class="logo-lg"><i class="mdi mdi-radar"></i> <span>Minton</span> </a>
+                <a href="index.html" class="logo-lg"><i class="mdi mdi-radar"></i> <span>Xtragenius</span> </a>
             </div>
             <?php   echo form_open( $login_url, ['class' => 'std-form'] );  ?>
 

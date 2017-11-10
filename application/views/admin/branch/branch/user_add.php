@@ -22,13 +22,15 @@
                         <div class="">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="card-box">
-                                        <div class="row">
-                                            <div class="col-lg-8">
-                                                <?php $this->load->view('admin/branch/branch/add/user'); ?>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <h4 class="header-title m-t-0 text-center">Recently Added</h4>
+                                    <div class="card">
+                                        <div class="page-container">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <?php $this->load->view('admin/branch/branch/add/user'); ?>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <h4 class="header-title m-t-0 text-center">Recently Added</h4>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

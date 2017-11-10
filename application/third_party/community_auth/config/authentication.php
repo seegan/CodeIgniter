@@ -29,9 +29,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['levels_and_roles'] = [
 	'1' => 'student',
+	'4'	=> 'branchadmin',
 	'6' => 'admin',
 	'9' => 'superadmin'
 ];
+
 
 /*
 | -----------------------------------------------------------------

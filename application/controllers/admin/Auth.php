@@ -46,7 +46,15 @@ class Auth extends MY_Controller {
 
 
 
+	public function logout()
+	{
+		$this->authentication->logout();
 
+		// Set redirect protocol
+		$redirect_protocol = USE_SSL ? 'https' : NULL;
+
+		redirect( site_url( LOGIN_PAGE . '?' . AUTH_LOGOUT_PARAM . '=1', $redirect_protocol ) );
+	}
 
 
 }

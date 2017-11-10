@@ -1,0 +1,22 @@
+/*Login Pages*/
+.login-exceeded {
+    width: 400px;
+    margin: 0 auto;
+}
+i.login-exceeded-ico {
+	font-size: 90px;
+    color: red;
+}
+
+.action-header {
+	position: relative;
+	text-align: center;
+}
+.action-group {
+	position: absolute;
+	display: inline-block;
+	right: 35px;
+}
+.action-header h2 {
+	display: inline-block;
+}
