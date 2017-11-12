@@ -31,5 +31,9 @@ $config['acl_categories_table']         = 'acl_categories';
 $config['acl_actions_table']            = 'acl_actions';
 $config['acl_table']                    = 'acl';
 
+$config['branch_table']            		= 'xtra_branch';
+$config['branch_user_table']         	= 'xtra_branch_user';
+
+
 /* End of file db_tables.php */
 /* Location: /community_auth/config/db_tables.php */

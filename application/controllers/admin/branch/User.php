@@ -33,8 +33,7 @@ class User extends MY_Controller {
 	    if( $this->uri->uri_string() == 'admin/branch/branch/add')
 	    {
 	        show_404();
-	    }		
-
+	    }
 
 		$user_data = [
 			'username'   => $this->input->post('username'),
@@ -52,8 +51,9 @@ class User extends MY_Controller {
 			[
 				'field' => 'username',
 				'label' => 'username',
-				'rules' => 'max_length[12]|is_unique[' . db_table('user_table') . '.username]',
+				'rules' => 'required|min_length[3]|max_length[12]|is_unique[' . db_table('user_table') . '.username]',
 				'errors' => [
+					'required' => 'Username Required.',
 					'is_unique' => 'Username already in use.'
 				]
 			],
