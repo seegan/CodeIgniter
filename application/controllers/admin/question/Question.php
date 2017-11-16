@@ -69,6 +69,11 @@ class Question extends MY_Controller {
                         selector: "textarea#main_question",
                         theme: "modern",
                         height:100,
+						setup : function(ed) {
+							ed.on("keyup", function(e, evt) {
+					        	questionEditor(e);
+					    	});
+						},                     
                         plugins: [
                             "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
                             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
@@ -99,9 +104,8 @@ class Question extends MY_Controller {
         $data['subjects'] = getSubjects(1);
 
 
-		$category_data = [
-			'category'   => $this->input->post('category'),
-			'description'   => $this->input->post('description'),
+		$question_data = [
+			'main_question'   => $this->input->post('main_question'),
 			'created_at' => date('Y-m-d H:i:s'),
 		];
 
@@ -112,11 +116,11 @@ class Question extends MY_Controller {
 
 		$validation_rules = [
 			[
-				'field' => 'category',
-				'label' => 'Category',
+				'field' => 'main_question',
+				'label' => 'Question',
 				'rules' => 'required',
 				'errors' => [
-					'required' => 'Category Required.',
+					'required' => 'Question Required.',
 				]
 			]
 		];
@@ -129,15 +133,7 @@ class Question extends MY_Controller {
         }
         else
         {
-			$this->db->set($category_data)
-				->insert(db_table('category_table'));
 
-			if( $this->db->affected_rows() == 1 ){
-				redirect('admin/question/category'); die();
-			}
-			else {
-				$page_content = $this->load->view('admin/question/question/question_add', $data, TRUE);
-			}
         }
 
 
@@ -171,10 +167,28 @@ class Question extends MY_Controller {
 		$data['type_success'] = ($types) ? true : false;
 		$data['types'] = $types;
 
-
 		echo json_encode($data);
 	}
 
+
+	public function getQuestionData() {
+		$data['success'] = false;
+		if(!$this->input->is_ajax_request() || !$this->input->post('type_id')) {
+			$data['msg'] = 'Please use A valid Browser!';
+			echo json_encode($data);
+			die();
+		}
+
+		if($this->input->post('type_id') == 1) {
+			echo $this->load->view('admin/question/question/ajax/single_choice', '', TRUE);
+		}
+		if($this->input->post('type_id') == 2) {
+			echo $this->load->view('admin/question/question/ajax/multiple_choice', '', TRUE);
+		}
+		if($this->input->post('type_id') == 3) {
+			echo $this->load->view('admin/question/question/ajax/fill_blank_choice', '', TRUE);
+		}		
+	}
 
 
 }

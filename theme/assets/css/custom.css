@@ -38,7 +38,10 @@ i.login-exceeded-ico {
     border: 1px solid #909090;
 } 
 
-
 .option_box {
   margin-top: 20px;
+}
+
+.repeater iframe {
+    width: 99% !important;
 }

@@ -63,4 +63,7 @@ $route['admin/subject/add'] = 'admin/subject/subject/add';
 
 $route['admin/question'] = 'admin/question/question/index';
 $route['admin/question/add'] = 'admin/question/question/add';
+
+
 $route['admin/question/getQuestionOptions'] = 'admin/question/question/getQuestionOptions';
+$route['admin/question/getQuestionData'] = 'admin/question/question/getQuestionData';

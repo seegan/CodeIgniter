@@ -220,16 +220,125 @@ window.onload = function () {
      }
   }
   
-  //City Changed
-/*  citySel.onchange = function () {
-    zipSel.length = 1; // remove all options bar first
-    
-    if (this.selectedIndex < 1)
-      return; // done
-    
-    var zips = countryStateInfo[countySel.value][stateSel.value][this.value];
-    for (var i = 0; i < zips.length; i++) {
-      zipSel.options[zipSel.options.length] = new Option(zips[i], zips[i]);
-    }
-  } */
 }
+
+
+
+
+function questionEditor(data) {
+    if(jQuery('#question_type').val() == 3) {
+
+        var text = tinymce.get('main_question').getBody().innerHTML; 
+        var numbers_txt = [];                   
+        numbers_txt = text.match(/\{(\d+)\}/gi);
+        numbers = (!numbers_txt) ? [] : numbers_txt;
+
+        var numbers = numbers.map(function (e) {
+            return getNumber(e);
+        });
+
+        var ans_data = [];
+        if(jQuery('.blank_num').length > 0) {
+            ans_data = jQuery('.blank_num').map(function () {
+                return jQuery(this).attr("data-blanknum");
+            }).toArray();;
+        }
+
+        var diffe = ( (ans_data).diff(numbers) ); 
+        diffe = (!diffe) ? [] : diffe;
+        diffe.forEach(function(n){
+            jQuery('[data-blanknum="'+n+'"]').remove();
+        });
+
+        if(numbers && numbers.length > 0 ) {
+
+
+            numbers.forEach(function(num) {
+
+                var txt = "<div class=\'col-lg-4 blank_num\'  data-blanknum=\'"+num+"\'><label class=\'col-form-label text-right\'>Answer "+num+" </label><input type=\'text\' class=\'form-control search-input\' autocomplete=\'off\' name=\'blank_ans["+num+"]\'></div>";
+
+                if(jQuery('[data-blanknum="'+num+'"]').length == 0) {
+                    jQuery('.fill_blank_options').append(txt);
+                }
+                
+            });
+        } else {
+            jQuery('.blank_num').remove();
+        }                  
+    }
+
+}
+
+function loadRepeter(){
+    jQuery('.repeater').repeater({
+        initEmpty: false,
+        defaultValues: {
+            'text-input': 'foo'
+        },
+        show: function () {
+            loadTinymce();
+            jQuery(this).slideDown();
+        },
+        hide: function (deleteElement) {
+            jQuery(this).slideUp(deleteElement);
+        },
+        ready: function (setIndexes) {
+            loadTinymce();
+        },
+        isFirstItemUndeletable: true
+    });                
+}
+
+function loadTinymce() {
+    if(jQuery(".option_editor").length > 0){
+
+        tinymce.init({
+            selector: "textarea.option_editor",
+            theme: "modern",
+            plugins: [
+                        "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                        "save table contextmenu directionality emoticons template paste textcolor autoresize"
+                    ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+            style_formats: [
+                {title: "Bold text", inline: "b"},
+                {title: "Red text", inline: "span", styles: {color: "#ff0000"}},
+                {title: "Red header", block: "h1", styles: {color: "#ff0000"}},
+                {title: "Example 1", inline: "span", classes: "example1"},
+                {title: "Example 2", inline: "span", classes: "example2"},
+                {title: "Table styles"},
+                {title: "Table row 1", selector: "tr", classes: "tablerow1"}
+            ],
+            autoresize_bottom_margin: 2,
+            height:15,
+            autoresize_min_height: 15,
+            autoresize_max_height: 300,
+            menubar: false, statusbar: true, object_resizing: false,
+            paste_as_text: true, force_br_newlines: true,
+        });
+
+    }
+}
+
+            
+function getNumber(num) {
+  return num.replace(/[{}]/g, "");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Array.prototype.diff = function diff(a) {
+    return this.filter(function(i) {return a.indexOf(i) < 0;});
+};

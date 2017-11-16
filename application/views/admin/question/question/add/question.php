@@ -133,80 +133,16 @@
             <div class="form-group row">
                 <div class="col-12">
                     <label class="col-form-label text-right">Question<span class="text-danger">*</span></label>
-                    <textarea id="main_question" name="area"></textarea>
+                    <textarea id="main_question" name="main_question"></textarea>
                 </div>
             </div>
         </div>
 
 
 
-
-<style type="text/css">
-    .repeater iframe {
-        width: 99% !important;
-    }
-</style>
-
-
-<div class="repeater col-sm-12">
-    <div data-repeater-list="group-a" class="row">
-        <div data-repeater-item class="col-lg-6">
-            <div class="option_box">
-                <div>
-                    <div class="radio radio-success">
-                        <input type="radio" name="radio" id="radioa" value="a">
-                        <label for="radioa">
-                            Option : A
-                        </label>
-                    </div>                   
-                </div>
-                <textarea class="option_editor"></textarea>
-                <input data-repeater-delete type="button" value="Delete"/>
-            </div>
+        <div class="option_data col-sm-12">
+            
         </div>
-        <div data-repeater-item class="col-lg-6">
-            <div class="option_box">
-                <div>
-                    <div class="radio radio-success">
-                        <input type="radio" name="radio" id="radiob" value="b">
-                        <label for="radiob">
-                            Option : B
-                        </label>
-                    </div>                   
-                </div>
-                <textarea class="option_editor"></textarea>
-            </div>
-        </div>
-        <div data-repeater-item class="col-lg-6">
-            <div class="option_box">
-                <div>
-                    <div class="radio radio-success">
-                        <input type="radio" name="radio" id="radioc" value="c">
-                        <label for="radioc">
-                            Option : C
-                        </label>
-                    </div>                   
-                </div>
-                <textarea class="option_editor"></textarea>
-            </div>
-        </div>
-        <div data-repeater-item class="col-lg-6">
-            <div class="option_box">
-                <div>
-                    <div class="radio radio-success">
-                        <input type="radio" name="radio" id="radiod" value="d">
-                        <label for="radiod">
-                            Option : D
-                        </label>
-                    </div>
-                </div>
-                <textarea class="option_editor"></textarea>
-            </div>
-        </div>
-    </div>
-    <input data-repeater-create type="button" value="Add"/>
-</div>
-
 
 
 
