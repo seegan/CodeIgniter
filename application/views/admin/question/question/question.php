@@ -32,13 +32,16 @@
                                             <div class="card-header">
                                                 <ul class="nav nav-tabs card-header-tabs">
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="<?php echo base_url('admin/branch') ?>">Branch</a>
+                                                        <a class="nav-link" href="<?php echo base_url('admin/subject') ?>">Subject</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link active" href="<?php echo base_url('admin/branch/user') ?>">User</a>
+                                                        <a class="nav-link" href="<?php echo base_url('admin/subject/topic') ?>">Topic</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link disabled" href="#">Settings</a>
+                                                        <a class="nav-link" href="<?php echo base_url('admin/question/category') ?>">Category</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" href="<?php echo base_url('admin/question') ?>">Question</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -50,8 +53,8 @@
                                                                 <i class="ion-person-add"></i>User
                                                             </h2>
                                                             <div class="action-group">
-                                                                <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" data-doubleatt=".double-add-branch" data-singleatt="<?php echo base_url('admin/branch/user/add'); ?>">Add</button>
-                                                                <button style="display:none;" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-branch" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
+                                                                <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" data-doubleatt=".double-add-topic" data-singleatt="<?php echo base_url('admin/question/add'); ?>">Add</button>
+                                                                <button style="display:none;" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-topic" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
                                                             </div>
                                                             <div class="clearfix"></div>
                                                         </div>
@@ -159,7 +162,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <?php $this->load->view('admin/branch/branch/add/user'); ?>
+                <?php $this->load->view('admin/question/question/add/question'); ?>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

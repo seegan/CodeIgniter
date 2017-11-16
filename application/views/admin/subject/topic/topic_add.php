@@ -26,7 +26,7 @@
                                         <div class="page-container">
                                             <div class="row">
                                                 <div class="col-lg-8">
-                                                    <?php $this->load->view('admin/branch/branch/add/user'); ?>
+                                                    <?php $this->load->view('admin/subject/topic/add/topic'); ?>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <h4 class="header-title m-t-0 text-center">Recently Added</h4>

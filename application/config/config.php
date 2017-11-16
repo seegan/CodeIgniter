@@ -521,3 +521,11 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+
+
+$config['years'] = array('2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026','2027','2028', '2029', '2030' );
+
+$config['languages'] = array('en' => 'English');
+
+$config['difficulty'] = array('Easy', 'Medium', 'Hard');

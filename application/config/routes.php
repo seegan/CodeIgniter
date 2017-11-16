@@ -53,9 +53,14 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-
 $route[LOGIN_PAGE] = 'admin/auth/login';
-
 
 $route['admin/branch'] = 'admin/branch/branch/index';
 $route['admin/branch/add'] = 'admin/branch/branch/add';
+
+$route['admin/subject'] = 'admin/subject/subject/index';
+$route['admin/subject/add'] = 'admin/subject/subject/add';
+
+$route['admin/question'] = 'admin/question/question/index';
+$route['admin/question/add'] = 'admin/question/question/add';
+$route['admin/question/getQuestionOptions'] = 'admin/question/question/getQuestionOptions';

@@ -15,12 +15,10 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="mdi mdi-book-multiple-variant"></i><span> Qustion Bank </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="<?php echo base_url('admin/qustion/subject') ?>">Subject</a></li>
-                                    <li><a href="<?php echo base_url('admin/qustion/topic') ?>">Topic</a></li>
-                                    <li><a href="<?php echo base_url('admin/qustion/category') ?>">Category</a></li>
-                                    <li><a href="<?php echo base_url('admin/qustion/objective') ?>">Objective </a></li>
-                                    <li><a href="<?php echo base_url('admin/qustion/subjective') ?>">Subjective </a></li>
-                                    <li><a href="<?php echo base_url('admin/qustion/practice_sheet') ?>">Practice Sheet </a></li>
+                                    <li><a href="<?php echo base_url('admin/subject') ?>">Subject</a></li>
+                                    <li><a href="<?php echo base_url('admin/subject/topic') ?>">Topic</a></li>
+                                    <li><a href="<?php echo base_url('admin/question/category') ?>">Category</a></li>
+                                    <li><a href="<?php echo base_url('admin/question') ?>">Question </a></li>
                                 </ul>
                             </li>
 

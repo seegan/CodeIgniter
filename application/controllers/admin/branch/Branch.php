@@ -14,8 +14,7 @@ class Branch extends MY_Controller {
 
 	public function index()
 	{
-	    if( $this->uri->uri_string() == 'admin/branch/branch/index' || $this->uri->uri_string() == 'admin/branch/branch')
-	    {
+	    if( $this->uri->uri_string() == 'admin/branch/branch/index' || $this->uri->uri_string() == 'admin/branch/branch') {
 	        show_404();
 	    }
 		$ss = $this->acl_permits('general.*');
@@ -142,9 +141,6 @@ class Branch extends MY_Controller {
 				redirect('admin/branch'); die();
 			}
         }
-        $var = 1/2; 
-var_dump($var);
-
 
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);

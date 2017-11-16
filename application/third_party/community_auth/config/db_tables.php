@@ -34,6 +34,13 @@ $config['acl_table']                    = 'acl';
 $config['branch_table']            		= 'xtra_branch';
 $config['branch_user_table']         	= 'xtra_branch_user';
 
+$config['question_type_table']          = 'xtra_question_type';
+$config['subject_question_type_table']  = 'xtra_subject_question_type';
+
+$config['subject_table']            	= 'xtra_subject';
+$config['subject_topic_table']          = 'xtra_subject_topic';
+
+$config['category_table']            	= 'xtra_category';
 
 /* End of file db_tables.php */
 /* Location: /community_auth/config/db_tables.php */

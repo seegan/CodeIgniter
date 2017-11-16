@@ -16,7 +16,7 @@ class User extends MY_Controller {
 		var_dump($ss);*/
 
 /*		var_dump("expression"); die();*/
-		$page_content = $this->load->view('admin/branch/branch/user', '', TRUE);
+		$page_content = $this->load->view('admin/branch/user/user', '', TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
 
@@ -30,10 +30,6 @@ class User extends MY_Controller {
 
 	public function add()
 	{
-	    if( $this->uri->uri_string() == 'admin/branch/branch/add')
-	    {
-	        show_404();
-	    }
 
 		$user_data = [
 			'username'   => $this->input->post('username'),
@@ -86,7 +82,7 @@ class User extends MY_Controller {
 
         if ($this->form_validation->run() == FALSE)
         {
-            $page_content = $this->load->view('admin/branch/branch/user_add', '', TRUE);
+            $page_content = $this->load->view('admin/branch/user/user_add', '', TRUE);
         }
         else
         {
@@ -109,7 +105,7 @@ class User extends MY_Controller {
 				redirect('admin/branch/user'); die();
 			}
 			else {
-				$page_content = $this->load->view('admin/branch/branch/user_add', '', TRUE);
+				$page_content = $this->load->view('admin/branch/user/user_add', '', TRUE);
 			}
         }
 
