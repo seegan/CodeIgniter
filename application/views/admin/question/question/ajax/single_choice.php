@@ -1,58 +1,78 @@
-<div class="repeater">
-    <div data-repeater-list="group-a" class="row">
-        <div data-repeater-item class="col-lg-6">
-            <div class="option_box">
-                <div>
-                    <div class="radio radio-success">
-                        <input type="radio" name="single_choice_option" id="radioa" value="a" class="single_choice_option">
-                        <label for="radioa">
-                            Option : A
-                        </label>
-                    </div>                   
+<div class="col-sm-12">
+    <div class="row match_folowing_example">
+        <div class="row">
+            <div class="col-lg-12">
+                Correct Answer : 
+                <div class="radio radio-success form-check-inline">
+                    <input type="radio" id="inlineRadio-a" value="A" name="radioInline" checked="">
+                    <label for="inlineRadio-a"> A </label>
                 </div>
-                <textarea class="option_editor"></textarea>
-                <input data-repeater-delete type="button" value="Delete"/>
+                <div class="radio radio-success form-check-inline">
+                    <input type="radio" id="inlineRadio-b" value="B" name="radioInline">
+                    <label for="inlineRadio-b"> B </label>
+                </div>
+                <div class="radio radio-success form-check-inline">
+                    <input type="radio" id="inlineRadio-c" value="C" name="radioInline">
+                    <label for="inlineRadio-c"> C </label>
+                </div>
+                <div class="radio radio-success form-check-inline">
+                    <input type="radio" id="inlineRadio-d" value="D" name="radioInline">
+                    <label for="inlineRadio-d"> D </label>
+                </div>
             </div>
         </div>
-        <div data-repeater-item class="col-lg-6">
-            <div class="option_box">
-                <div>
-                    <div class="radio radio-success">
-                        <input type="radio" name="single_choice_option" id="radiob" value="b" class="single_choice_option">
-                        <label for="radiob">
-                            Option : B
-                        </label>
-                    </div>                   
-                </div>
-                <textarea class="option_editor"></textarea>
-            </div>
-        </div>
-        <div data-repeater-item class="col-lg-6">
-            <div class="option_box">
-                <div>
-                    <div class="radio radio-success">
-                        <input type="radio" name="single_choice_option" id="radioc" value="c" class="single_choice_option">
-                        <label for="radioc">
-                            Option : C
-                        </label>
-                    </div>                   
-                </div>
-                <textarea class="option_editor"></textarea>
-            </div>
-        </div>
-        <div data-repeater-item class="col-lg-6">
-            <div class="option_box">
-                <div>
-                    <div class="radio radio-success">
-                        <input type="radio" name="single_choice_option" id="radiod" value="d" class="single_choice_option">
-                        <label for="radiod">
-                            Option : D
-                        </label>
+
+    </div>
+    <div class="row match_folowing_options">
+        
+
+
+        <div class="repeater">
+            <div data-repeater-list="single_choice" class="row">
+                <div data-repeater-item class="col-lg-6">
+                    <div class="option_box">
+                        <div>
+                            <label for="radio">
+                                Option : A
+                            </label>                  
+                        </div>
+                        <textarea class="option_editor" name="choice_data"></textarea>
+                        <input data-repeater-delete type="button" value="Delete"/>
                     </div>
                 </div>
-                <textarea class="option_editor"></textarea>
+                <div data-repeater-item class="col-lg-6">
+                    <div class="option_box">
+                        <div>
+                            <label for="radio">
+                                Option : B
+                            </label>                  
+                        </div>
+                        <textarea class="option_editor" name="single_choice_data"></textarea>
+                    </div>
+                </div>
+                <div data-repeater-item class="col-lg-6">
+                    <div class="option_box">
+                        <div>
+                            <label for="radio">
+                                Option : C
+                            </label>                  
+                        </div>
+                        <textarea class="option_editor" name="single_choice_data"></textarea>
+                    </div>
+                </div>
+                <div data-repeater-item class="col-lg-6">
+                    <div class="option_box">
+                        <div>
+                            <label for="radio">
+                                Option : D
+                            </label>                  
+                        </div>
+                        <textarea class="option_editor" name="single_choice_data"></textarea>
+                    </div>
+                </div>
             </div>
+            <input data-repeater-create type="button" value="Add"/>
         </div>
+
     </div>
-    <input data-repeater-create type="button" value="Add"/>
 </div>

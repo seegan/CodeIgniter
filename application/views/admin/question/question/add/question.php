@@ -150,8 +150,8 @@
     </div>
 
     <div class="form-group row">
-        <label for="webSite" class="col-4 col-form-label text-right"></label>
-        <div class="col-7">
+        <label for="webSite" class="col-5 col-form-label text-right"></label>
+        <div class="col-6">
             <button type="submit" class="btn btn-primary waves-effect waves-light">
                 Create
             </button>

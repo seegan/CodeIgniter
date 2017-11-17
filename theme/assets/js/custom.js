@@ -230,11 +230,11 @@ function questionEditor(data) {
 
         var text = tinymce.get('main_question').getBody().innerHTML; 
         var numbers_txt = [];                   
-        numbers_txt = text.match(/\{(\d+)\}/gi);
+        numbers_txt = text.match(/\{([A-Z])\}/gi);
         numbers = (!numbers_txt) ? [] : numbers_txt;
 
         var numbers = numbers.map(function (e) {
-            return getNumber(e);
+            return getOptionKey(e);
         });
 
         var ans_data = [];
@@ -255,7 +255,7 @@ function questionEditor(data) {
 
             numbers.forEach(function(num) {
 
-                var txt = "<div class=\'col-lg-4 blank_num\'  data-blanknum=\'"+num+"\'><label class=\'col-form-label text-right\'>Answer "+num+" </label><input type=\'text\' class=\'form-control search-input\' autocomplete=\'off\' name=\'blank_ans["+num+"]\'></div>";
+                var txt = "<div class=\'col-lg-4 blank_num\'  data-blanknum=\'"+num+"\'><label class=\'col-form-label text-right\'>Answer : "+num+" </label><input type=\'text\' class=\'form-control search-input\' autocomplete=\'off\' name=\'blank_ans["+num+"]\'></div>";
 
                 if(jQuery('[data-blanknum="'+num+'"]').length == 0) {
                     jQuery('.fill_blank_options').append(txt);
@@ -278,6 +278,8 @@ function loadRepeter(){
         show: function () {
             loadTinymce();
             jQuery(this).slideDown();
+
+            assignNameData();
         },
         hide: function (deleteElement) {
             jQuery(this).slideUp(deleteElement);
@@ -287,6 +289,13 @@ function loadRepeter(){
         },
         isFirstItemUndeletable: true
     });                
+}
+
+function assignNameData() {
+  jQuery('.retail-repeater-method .repeterin').each(function(){
+    jQuery(this).find('.rowno').text(count);
+    count++;
+  });
 }
 
 function loadTinymce() {
@@ -322,7 +331,7 @@ function loadTinymce() {
 }
 
             
-function getNumber(num) {
+function getOptionKey(num) {
   return num.replace(/[{}]/g, "");
 }
 

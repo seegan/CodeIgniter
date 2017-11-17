@@ -187,7 +187,13 @@ class Question extends MY_Controller {
 		}
 		if($this->input->post('type_id') == 3) {
 			echo $this->load->view('admin/question/question/ajax/fill_blank_choice', '', TRUE);
-		}		
+		}
+		if($this->input->post('type_id') == 4) {
+			echo $this->load->view('admin/question/question/ajax/true_false_choice', '', TRUE);
+		}
+		if($this->input->post('type_id') == 5) {
+			echo $this->load->view('admin/question/question/ajax/match_folowing_choice', '', TRUE);
+		}
 	}
 
 

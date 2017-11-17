@@ -109,7 +109,7 @@
             jQuery(document).ready(function () {
 
                 jQuery("#question_type").on("change", function(){
-                    if( jQuery(this).val() == 1 || jQuery(this).val() == 2 || jQuery(this).val() == 3 ) {
+                    if( jQuery(this).val() == 1 || jQuery(this).val() == 2 || jQuery(this).val() == 3 || jQuery(this).val() == 4 || jQuery(this).val() == 5 ) {
                         var type_id = jQuery(this).val();
                         jQuery.ajax({ 
                             type: "POST", 
@@ -118,11 +118,17 @@
                             dataType: "html",
                             success: function (data) {
                                 jQuery('.option_data').html(data);
-                                loadRepeter();
-
+                                
+                                if(type_id == 1 || type_id == 2) {
+                                    loadRepeter();
+                                }
                                 if(type_id == 3) {
                                     questionEditor();
                                 }
+                                if(type_id == 5) {
+                                    loadRepeter();
+                                }
+
                             }
                         });
                     }
