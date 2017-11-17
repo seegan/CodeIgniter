@@ -279,7 +279,7 @@ function loadRepeter(){
             loadTinymce();
             jQuery(this).slideDown();
 
-            assignNameData();
+            //assignNameData();
         },
         hide: function (deleteElement) {
             jQuery(this).slideUp(deleteElement);
