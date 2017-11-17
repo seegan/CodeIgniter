@@ -118,7 +118,7 @@
                             dataType: "html",
                             success: function (data) {
                                 jQuery('.option_data').html(data);
-                                
+                                loadRepeter();
                                 if(type_id == 1 || type_id == 2) {
                                     loadRepeter();
                                 }

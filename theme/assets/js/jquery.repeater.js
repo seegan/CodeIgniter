@@ -1005,6 +1005,7 @@ $.fn.repeater = function (fig) {
             hide.call(self, function () {
                 $(self).remove();
                 setIndexes($items(), getGroupName(), fig.repeaters);
+                assignNameData();
             });
         });
     });

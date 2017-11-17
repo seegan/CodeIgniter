@@ -241,7 +241,7 @@ function questionEditor(data) {
         if(jQuery('.blank_num').length > 0) {
             ans_data = jQuery('.blank_num').map(function () {
                 return jQuery(this).attr("data-blanknum");
-            }).toArray();;
+            }).toArray();
         }
 
         var diffe = ( (ans_data).diff(numbers) ); 
@@ -276,10 +276,9 @@ function loadRepeter(){
             'text-input': 'foo'
         },
         show: function () {
-            loadTinymce();
             jQuery(this).slideDown();
-
-            //assignNameData();
+            loadTinymce();
+            assignNameData();
         },
         hide: function (deleteElement) {
             jQuery(this).slideUp(deleteElement);
@@ -292,10 +291,68 @@ function loadRepeter(){
 }
 
 function assignNameData() {
-  jQuery('.retail-repeater-method .repeterin').each(function(){
-    jQuery(this).find('.rowno').text(count);
-    count++;
+  var option_arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
+
+  var option_data = [];
+  if(jQuery('.repeater .options').length > 0) {
+      option_data = jQuery('.repeater .options').map(function () {
+          var option_name = jQuery(this).find('.option_editor').attr('name');
+          var option = option_name.match( /[0-9]+/gi );
+          option = option[0];
+          return option_arr[option];
+      }).toArray();
+  }
+
+  var ans_data = [];
+  if(jQuery('.correct_option .form-check-inline').length > 0) {
+      ans_data = jQuery('.correct_option .form-check-inline').map(function () {
+          var option_name = jQuery(this).attr('data-option');
+          return option_name;
+      }).toArray();
+  }
+
+  var diffe = ( (ans_data).diff(option_data) ); 
+
+  if(diffe.length > 0) {
+    diffe.forEach(function(n){
+      jQuery('[data-option="'+n+'"]').remove();
+    });
+  }
+
+  
+  jQuery('.repeater .options').each(function(){
+    var option_name = jQuery(this).find('.option_editor').attr('name');
+    var option = option_name.match( /[0-9]+/gi );
+    option = option[0];
+
+    if(option > 3) {
+      jQuery('[data-option="'+option_arr[option]+'"]').remove();
+      var options = '<div class="radio radio-success form-check-inline" data-option="'+option_arr[option]+'"><input type="radio" id="inlineRadio-'+option_arr[option]+'" value="'+option_arr[option]+'" name="radioInline" checked=""><label for="inlineRadio-'+option_arr[option]+'"> '+option_arr[option]+' </label></div>';
+      //console.log(options)
+      jQuery('.correct_option').append(options);
+
+      jQuery(this).find('.option-txt').text(option_arr[option]);
+    }
+
   });
+
+
+
+/*  jQuery('.repeater .options').each(function(){
+    var option_name = jQuery(this).find('.option_editor').attr('name');
+    var option = option_name.match( /[0-9]+/gi );
+    option = option[0];
+
+    if(option > 3) {
+      jQuery('[data-]')
+      var options = '<div class="radio radio-success form-check-inline" data-option="'+option_arr[option]+'"><input type="radio" id="inlineRadio-'+option_arr[option]+'" value="'+option_arr[option]+'" name="radioInline" checked=""><label for="inlineRadio-'+option_arr[option]+'"> '+option_arr[option]+' </label></div>';
+      console.log(options)
+      jQuery('.correct_option').append(options);
+    }
+    //console.log(option);
+  });*/
+
+
 }
 
 function loadTinymce() {
