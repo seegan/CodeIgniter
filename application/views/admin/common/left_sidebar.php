@@ -33,7 +33,6 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="fa fa-users"></i><span> Candidates </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="<?php echo base_url('admin/batch') ?>">Batch</a></li>
                                     <li><a href="<?php echo base_url('admin/candidate') ?>">Candidates</a></li>
                                     <li><a href="<?php echo base_url('admin/candidate/assign_exam') ?>">Assign to Exam</a></li>
                                     <li><a href="<?php echo base_url('admin/candidate/end_exam') ?>">End Exam</a></li>
@@ -54,6 +53,7 @@
                                 <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="mdi mdi-lan"></i><span> Branchs </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?php echo base_url('admin/branch') ?>">Branch</a></li>
+                                    <li><a href="<?php echo base_url('admin/branch/batch') ?>">Batch</a></li>
                                     <li><a href="<?php echo base_url('admin/branch/user') ?>">User</a></li>
                                     <li><a href="<?php echo base_url('admin/branch/settings') ?>">Settings</a></li>
                                 </ul>

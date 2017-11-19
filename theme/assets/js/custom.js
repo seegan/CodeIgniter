@@ -271,10 +271,6 @@ function questionEditor(data) {
 
 function loadRepeter(){
     jQuery('.repeater').repeater({
-        initEmpty: false,
-        defaultValues: {
-            'text-input': 'foo'
-        },
         show: function () {
             jQuery(this).slideDown();
             loadTinymce();
@@ -292,6 +288,7 @@ function loadRepeter(){
 
 function assignNameData() {
   var option_arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
+  var type = jQuery('#question_type').val();
 
   var option_data = [];
   if(jQuery('.repeater .options').length > 0) {
@@ -327,7 +324,12 @@ function assignNameData() {
 
     if(option > 3) {
       jQuery('[data-option="'+option_arr[option]+'"]').remove();
-      var options = '<div class="radio radio-success form-check-inline" data-option="'+option_arr[option]+'"><input type="radio" id="inlineRadio-'+option_arr[option]+'" value="'+option_arr[option]+'" name="radioInline" checked=""><label for="inlineRadio-'+option_arr[option]+'"> '+option_arr[option]+' </label></div>';
+      if(type == 1) {
+        var options = '<div class="radio radio-success form-check-inline" data-option="'+option_arr[option]+'"><input type="radio" id="inlineRadio-'+option_arr[option]+'" value="'+option_arr[option]+'" name="validoption" checked=""><label for="inlineRadio-'+option_arr[option]+'"> '+option_arr[option]+' </label></div>';
+      }
+      if(type == 2) {
+        var options = '<div class="checkbox checkbox-success form-check-inline" data-option="'+option_arr[option]+'"><input type="checkbox" id="inlineCheck-'+option_arr[option]+'" value="'+option_arr[option]+'" name="validoption"><label for="inlineCheck-'+option_arr[option]+'"> '+option_arr[option]+' </label></div>';
+      }
       //console.log(options)
       jQuery('.correct_option').append(options);
 

@@ -45,3 +45,8 @@ i.login-exceeded-ico {
 .repeater iframe {
     width: 99% !important;
 }
+
+.ms-container .ms-list {
+    box-shadow: none;
+    border: 1px solid #a5a5a5;
+}

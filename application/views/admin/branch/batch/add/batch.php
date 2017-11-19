@@ -1,9 +1,9 @@
                                     <h4 class="header-title m-t-0 text-center">New Branch</h4>
-                                    <form method="POST" action="<?php echo base_url('admin/branch/add') ?>">
+                                    <form method="POST" action="<?php echo base_url('admin/branch/batch/add') ?>">
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-4 col-form-label text-right">Branch Name<span class="text-danger">*</span></label>
+                                            <label for="inputEmail3" class="col-4 col-form-label text-right">Batch Name<span class="text-danger">*</span></label>
                                             <div class="col-7">
-                                                <input type="text" required class="form-control" placeholder="Branch Name" name="name">
+                                                <input type="text" required class="form-control" placeholder="Batch Name" name="name">
                                             </div>
                                         </div>
 

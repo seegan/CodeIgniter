@@ -48,11 +48,11 @@
                                                     <div class="col-lg-12">
                                                         <div class="page-title-box action-header">
                                                             <h2 class="text-center">
-                                                                <i class="mdi mdi-sitemap"></i>Branch
+                                                                <i class="mdi mdi-sitemap"></i>Batch
                                                             </h2>
                                                             <div class="action-group">
-                                                                <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" data-doubleatt=".double-add-branch" data-singleatt="<?php echo base_url('admin/branch/add'); ?>">Add</button>
-                                                                <button style="display:none;" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-branch" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
+                                                                <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" data-doubleatt=".double-add-batch" data-singleatt="<?php echo base_url('admin/branch/batch/add'); ?>">Add</button>
+                                                                <button style="display:none;" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-batch" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
                                                             </div>
                                                             <div class="clearfix"></div>
                                                         </div>
@@ -160,7 +160,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <?php $this->load->view('admin/branch/branch/add/branch'); ?>
+                <?php $this->load->view('admin/branch/batch/add/batch'); ?>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

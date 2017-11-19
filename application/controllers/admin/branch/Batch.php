@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Branch extends MY_Controller {
+class Batch extends MY_Controller {
 
 	public function __construct()
 	{
@@ -15,17 +15,10 @@ class Branch extends MY_Controller {
 
 	public function index()
 	{
-	    if( $this->uri->uri_string() == 'admin/branch/branch/index' || $this->uri->uri_string() == 'admin/branch/branch') {
-	        show_404();
-	    }
-		$ss = $this->acl_permits('general.*');
-/*var_dump($this->auth_role);
-		var_dump($ss);*/
-/*		var_dump("expression"); die();*/
-		$data['branch_users'] = unusedBranchUsers();
+
 		$data['subjects'] = getSubjects(1);
 
-		$page_content = $this->load->view('admin/branch/branch/branch', $data, TRUE);
+		$page_content = $this->load->view('admin/branch/batch/batch', $data, TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
 
@@ -41,10 +34,6 @@ class Branch extends MY_Controller {
 
 	public function add()
 	{
-	    if( $this->uri->uri_string() == 'admin/branch/branch/add')
-	    {
-	        show_404();
-	    }
 		$branch_data = [
 			'name'   			=> $this->input->post('name'),
 			'address' 			=> $this->input->post('address'),
@@ -127,12 +116,9 @@ class Branch extends MY_Controller {
 		$data['branch_users'] = unusedBranchUsers();
 		$data['subjects'] = getSubjects(1);
 
-        if ($this->form_validation->run() == FALSE)
+        if ($this->form_validation->run() !== FALSE)
         {
-        	$page_content = $this->load->view('admin/branch/branch/branch_add', $data, TRUE);
-        }
-        else
-        {
+
 			$this->db->set($branch_data)
 				->insert(db_table('branch_table'));
 			if( $this->db->affected_rows() == 1 ){
@@ -156,6 +142,8 @@ class Branch extends MY_Controller {
 				redirect('admin/branch'); die();
 			}
         }
+
+        $page_content = $this->load->view('admin/branch/batch/batch_add', $data, TRUE);
 
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);

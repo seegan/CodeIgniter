@@ -35,6 +35,9 @@
                                                         <a class="nav-link" href="<?php echo base_url('admin/branch') ?>">Branch</a>
                                                     </li>
                                                     <li class="nav-item">
+                                                        <a class="nav-link active" href="<?php echo base_url('admin/branch/batch') ?>">Batch</a>
+                                                    </li>
+                                                    <li class="nav-item">
                                                         <a class="nav-link active" href="<?php echo base_url('admin/branch/user') ?>">User</a>
                                                     </li>
                                                     <li class="nav-item">

@@ -33,6 +33,7 @@ $config['acl_table']                    = 'acl';
 
 $config['branch_table']            		= 'xtra_branch';
 $config['branch_user_table']         	= 'xtra_branch_user';
+$config['branch_subject_table']        	= 'xtra_branch_subject';
 
 $config['question_type_table']          = 'xtra_question_type';
 $config['subject_question_type_table']  = 'xtra_subject_question_type';
