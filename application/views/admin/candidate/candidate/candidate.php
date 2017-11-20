@@ -12,15 +12,17 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Branch List</h4>
+                                    <h4 class="page-title">User List</h4>
                                     <ol class="breadcrumb float-right">
                                         <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard') ?>">Dashboard</a></li>
-                                        <li class="breadcrumb-item active">Branch</li>
+                                        <li class="breadcrumb-item"><a href="<?php echo base_url('admin/branch') ?>">Branch</a></li>
+                                        <li class="breadcrumb-item active">User</li>
                                     </ol>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
                         </div>
+
 
                         <div class="row">
                             <div class="col-12">
@@ -30,16 +32,16 @@
                                             <div class="card-header">
                                                 <ul class="nav nav-tabs card-header-tabs">
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="<?php echo base_url('admin/branch') ?>">Branch</a>
+                                                        <a class="nav-link active" href="<?php echo base_url('admin/candidate') ?>">Candidate</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link active" href="<?php echo base_url('admin/branch/batch') ?>">Batch</a>
+                                                        <a class="nav-link" href="<?php echo base_url('admin/subject/topic') ?>">Topic</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="<?php echo base_url('admin/branch/user') ?>">User</a>
+                                                        <a class="nav-link" href="<?php echo base_url('admin/question/category') ?>">Category</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link disabled" href="#">Settings</a>
+                                                        <a class="nav-link" href="<?php echo base_url('admin/question') ?>">Question</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -48,11 +50,11 @@
                                                     <div class="col-lg-12">
                                                         <div class="page-title-box action-header">
                                                             <h2 class="text-center">
-                                                                <i class="mdi mdi-sitemap"></i>Batch
+                                                                <i class="ion-person-add"></i>User
                                                             </h2>
                                                             <div class="action-group">
-                                                                <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" data-doubleatt=".double-add-batch" data-singleatt="<?php echo base_url('admin/branch/batch/add'); ?>">Add</button>
-                                                                <button style="display:none;" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-batch" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
+                                                                <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" data-doubleatt=".double-add-candidate" data-singleatt="<?php echo base_url('admin/candidate/add'); ?>">Add</button>
+                                                                <button style="display:none;" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-candidate" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
                                                             </div>
                                                             <div class="clearfix"></div>
                                                         </div>
@@ -160,7 +162,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <?php $this->load->view('admin/branch/batch/add/batch'); ?>
+                <?php $this->load->view('admin/candidate/candidate/add/candidate'); ?>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

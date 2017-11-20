@@ -50,3 +50,6 @@ i.login-exceeded-ico {
     box-shadow: none;
     border: 1px solid #a5a5a5;
 }
+.ms-container {
+  width: inherit;
+}

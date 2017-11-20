@@ -64,87 +64,45 @@
             }
         ?>
 
-        <script src="<?php echo base_url(); ?>theme/assets/js/custom.js"></script>
-
         <script type="text/javascript">
 
+                jQuery(document).ready(function(){
+                    populateMultiSelect('#batch_subjects');
+                    
+                    jQuery(".branch_name").on("change", function(){
+                        var branch_id = jQuery(this).val();
 
-            jQuery(".question_subject").on("change", function(){
-                var cat_id = jQuery(this).val();
+                        var subjectSel = document.getElementById("batch_subjects"); 
+                        subjectSel.length = 1;
 
-                var topicSel = document.getElementById("question_topic"); 
-                var typeSel = document.getElementById("question_type"); 
-                topicSel.length = 1
-                typeSel.length = 1
-
-
-                jQuery.ajax({ 
-                    type: "POST", 
-                    url: "<?php echo base_url("admin/question/getQuestionOptions") ?>", 
-                    data: { cat_id: cat_id }, 
-                    dataType: 'json',
-                    success: function (data) {
-
-                        var topics = data.topics;
-                        var types = data.types;
-                        
-                        jQuery('#question_topic').change();
-                        if(data.topic_success) {
-                            for (var topic in topics) {
-                                topicSel.options[topicSel.options.length] = new Option(topics[topic].topic, topics[topic].id);
-                            }
-                        }
-
-                        jQuery('#question_type').change();
-                        if(data.type_success) {
-                            for (var type in types) {
-                                typeSel.options[typeSel.options.length] = new Option(types[type].question_type, types[type].id);
-                            }
-                        }
-
-                        jQuery('.question_subject').prop('disabled', true)
-                    }
-                });
-            });
-
-            jQuery(document).ready(function () {
-
-                jQuery("#question_type").on("change", function(){
-                    if( jQuery(this).val() == 1 || jQuery(this).val() == 2 || jQuery(this).val() == 3 || jQuery(this).val() == 4 || jQuery(this).val() == 5 ) {
-                        var type_id = jQuery(this).val();
                         jQuery.ajax({ 
                             type: "POST", 
-                            url: "<?php echo base_url("admin/question/getQuestionData") ?>", 
-                            data: { type_id: type_id }, 
-                            dataType: "html",
+                            url: "<?php echo base_url("admin/branch/getBranchSubjects") ?>", 
+                            data: { branch_id: branch_id }, 
+                            dataType: "json",
                             success: function (data) {
-                                jQuery('.option_data').html(data);
-                                if(type_id == 1 || type_id == 2) {
-                                    loadRepeter();
+                                var subjects = data.subjects;
+                                
+                                jQuery("#batch_subjects").change();
+                                if(data.subject_success) {
+                                    for (var subject in subjects) {
+                                        if (typeof  subjects[subject].id  !== "undefined") {
+                                            subjectSel.options[subjectSel.options.length] = new Option(subjects[subject].subject, subjects[subject].id);
+                                        }
+                                    }
+                                    
                                 }
-                                if(type_id == 3) {
-                                    questionEditor();
-                                }
-                                if(type_id == 5) {
-                                    loadRepeter();
-                                }
-
-                                jQuery('#question_type').prop('disabled', true)
+                                jQuery("#batch_subjects").change();
+                                populateMultiSelect('#batch_subjects');
                             }
                         });
-                    }
-
+                    });
                 });
 
 
 
-            });
-
-
-
-</script>
-
-
+        </script>
+        <script src="<?php echo base_url(); ?>theme/assets/js/custom.js"></script>
 
 
 

@@ -84,7 +84,7 @@
                                         <div class="form-group row">
                                             <label for="hori-pass1" class="col-4 col-form-label text-right">Available Subjects<span class="text-danger">*</span></label>
                                             <div class="col-7">
-                                                <select name="subjects[]" class="multi-select" multiple="" id="my_multi_select3" >
+                                                <select name="subjects[]" class="multi-select my_multi_select3" multiple="" id="my_multi_select3" >
                                                     <?php 
                                                         if($subjects) {
                                                             foreach ($subjects as $subject) {

@@ -35,6 +35,9 @@ $config['branch_table']            		= 'xtra_branch';
 $config['branch_user_table']         	= 'xtra_branch_user';
 $config['branch_subject_table']        	= 'xtra_branch_subject';
 
+$config['batch_table']            		= 'xtra_batch';
+$config['batch_subject_table']        	= 'xtra_batch_subject';
+
 $config['question_type_table']          = 'xtra_question_type';
 $config['subject_question_type_table']  = 'xtra_subject_question_type';
 

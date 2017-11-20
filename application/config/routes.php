@@ -57,6 +57,7 @@ $route[LOGIN_PAGE] = 'admin/auth/login';
 
 $route['admin/branch'] = 'admin/branch/branch/index';
 $route['admin/branch/add'] = 'admin/branch/branch/add';
+$route['admin/branch/getBranchSubjects'] = 'admin/branch/branch/getBranchSubjects';
 
 $route['admin/subject'] = 'admin/subject/subject/index';
 $route['admin/subject/add'] = 'admin/subject/subject/add';
@@ -64,6 +65,8 @@ $route['admin/subject/add'] = 'admin/subject/subject/add';
 $route['admin/question'] = 'admin/question/question/index';
 $route['admin/question/add'] = 'admin/question/question/add';
 
-
 $route['admin/question/getQuestionOptions'] = 'admin/question/question/getQuestionOptions';
 $route['admin/question/getQuestionData'] = 'admin/question/question/getQuestionData';
+
+$route['admin/candidate'] = 'admin/candidate/candidate/index';
+$route['admin/candidate/add'] = 'admin/candidate/candidate/add';

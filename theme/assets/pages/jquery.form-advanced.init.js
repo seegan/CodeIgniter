@@ -1,7 +1,7 @@
 jQuery(document).ready(function () {
 
     //advance multiselect start
-    $('#my_multi_select3').multiSelect({
+    $('.my_multi_select3').multiSelect({
         selectableHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='search...'>",
         selectionHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='search...'>",
         afterInit: function (ms) {
@@ -205,3 +205,10 @@ $('#reportrange').daterangepicker({
     $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 });
 
+
+function populateMultiSelect(sel = '') {
+
+    //advance multiselect start
+    jQuery(sel).multiSelect( 'refresh' );    
+
+}

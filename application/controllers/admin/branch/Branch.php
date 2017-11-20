@@ -166,5 +166,26 @@ class Branch extends MY_Controller {
 		echo $right_sidebar;
 		echo $this->load->view('admin/common/footer', '', TRUE);
 	}
+
+
+	public function getBranchSubjects() {
+		$data['success'] = false;
+		if(!$this->input->is_ajax_request() || !$this->input->post('branch_id')) {
+			$data['msg'] = 'Please use A valid Browser!';
+			echo json_encode($data);
+			die();
+		}
+		$data['success'] = true;
+
+		$subjects = getSubjectByBranch($this->input->post('branch_id'));
+		$data['subject_success'] = ($subjects) ? true : false;
+		$data['subjects'] = $subjects;
+
+
+		echo json_encode($data);
+	}
+
+
+
 }
 ?>

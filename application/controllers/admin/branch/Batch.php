@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Batch extends MY_Controller {
@@ -34,16 +35,9 @@ class Batch extends MY_Controller {
 
 	public function add()
 	{
-		$branch_data = [
-			'name'   			=> $this->input->post('name'),
-			'address' 			=> $this->input->post('address'),
-			'country' 			=> $this->input->post('country'),
-			'state' 			=> $this->input->post('state'),
-			'city' 				=> $this->input->post('city'),
-			'zip' 				=> $this->input->post('zip'),
-			'phone' 			=> $this->input->post('phone'),
-			'contact_person' 	=> $this->input->post('contact_person'),
-			'mobile' 			=> $this->input->post('mobile'),
+		$batch_data = [
+			'branch_id'   	=> $this->input->post('branch_name'),
+			'batch_name' 	=> $this->input->post('batch_name'),
 			'created_at' 		=> date('Y-m-d H:i:s')
 
 		];
@@ -54,92 +48,45 @@ class Batch extends MY_Controller {
 
 		$validation_rules = [
 			[
-				'field' => 'name',
+				'field' => 'branch_name',
 				'label' => 'Branch Name',
-				'rules' => 'required|min_length[3]|max_length[250]',
+				'rules' => 'required',
 				'errors' => [
 					'required' => 'Branch Name Required.',
 				]
 			],
 			[
-				'field' => 'branch_admin',
-				'label' => 'Branch Admin',
+				'field' => 'batch_name',
+				'label' => 'Batch Name',
 				'rules' => 'required',
 				'errors' => [
-					'required' => 'Branch Admin Required.',
-				]
-			],
-			[
-				'field' 	=> 'address',
-				'label' => 'Branch Address',
-				'rules' => 'required',
-				'errors' => [
-					'required' => 'Branch Address Required.',
-				]
-			],
-			[
-				'field' => 'zip',
-				'label' => 'Zip code',
-				'rules' => 'required',
-				'errors' => [
-					'required' => 'Zip Code Required.',
-				]
-			],
-			[
-				'field' => 'phone',
-				'label' => 'Phone Number',
-				'rules' => 'required',
-				'errors' => [
-					'required' => 'Phone Number Required.',
-				]
-			],
-			[
-				'field' => 'contact_person',
-				'label' => 'Contact Name',
-				'rules' => 'required',
-				'errors' => [
-					'required' => 'Contact Name Required.',
-				]
-			],
-			[
-				'field' => 'mobile',
-				'label' => 'Mobile Number',
-				'rules' => 'required',
-				'errors' => [
-					'required' => 'Mobile Number Required.',
+					'required' => 'Batch Name Required.',
 				]
 			]
 		];
 
 		$this->form_validation->set_rules( $validation_rules );
 
-		$data['branch_users'] = unusedBranchUsers();
-		$data['subjects'] = getSubjects(1);
+		$data['branchs'] = getAdminBranch(1);
 
         if ($this->form_validation->run() !== FALSE)
         {
 
-			$this->db->set($branch_data)
-				->insert(db_table('branch_table'));
+
+			$this->db->set($batch_data)
+				->insert(db_table('batch_table'));
 			if( $this->db->affected_rows() == 1 ){
-				$branch_id = $this->db->insert_id();
-
-				$branch_user_data = ['branch_id' => $branch_id, 'user_id' => $this->input->post('branch_admin'), 'is_admin' => 1];
-				$this->db->set($branch_user_data)
-				->insert(db_table('branch_user_table'));
-
+				$batch_id = $this->db->insert_id();
+				$branch_id = $this->input->post('branch_name');
 				$subjects = $this->input->post('subjects');
 				if( $subjects && is_array($subjects) && count($subjects) > 0 ) {
 					foreach ($subjects as $subject) {
-						$branch_subject_data = ['branch_id' => $branch_id, 'subject_id' => $subject];
-						$this->db->set($branch_subject_data)
-						->insert(db_table('branch_subject_table'));
+						$batch_subject_data = ['batch_id' => $batch_id, 'branch_id' => $branch_id, 'subject_id' => $subject];
+						$this->db->set($batch_subject_data)
+						->insert(db_table('batch_subject_table'));
 					}
 				}
-
-
-
-				redirect('admin/branch'); die();
+				redirect('admin/branch/batch'); die();
 			}
         }
 

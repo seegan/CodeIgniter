@@ -52,4 +52,18 @@ class Branch_model extends MY_Model {
 		return FALSE;*/
 
 	}
+
+
+	function getAdminBranch() {
+		$query = $this->db->query("SELECT b.id, b.name FROM ".$this->db_table('branch_table')." as b WHERE b.active = 1 AND b.baned = 0");
+		return $query->result();
+	}
+
+	function getSubjectByBranch($branch_id = 0) {
+		$query = $this->db->query("SELECT s.id, s.subject FROM ".$this->db_table('branch_subject_table')." as bs JOIN ".$this->db_table('subject_table')." as s ON bs.subject_id = s.id WHERE s.active = 1 AND bs.branch_id = ".$branch_id);
+		return $query->result();
+	}
+
+
+
 }
