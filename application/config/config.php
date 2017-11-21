@@ -528,4 +528,7 @@ $config['years'] = array('2010','2011','2012','2013','2014','2015','2016','2017'
 
 $config['languages'] = array('en' => 'English');
 
-$config['difficulty'] = array('Easy', 'Medium', 'Hard');
+$config['difficulty'] = array(1 =>'Easy', 2 => 'Medium', 3 => 'Hard');
+
+
+$config['single_option'] = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J');

@@ -26,6 +26,9 @@ $config['denied_access_table']          = 'denied_access';
 $config['sessions_table']               = 'ci_sessions';
 $config['auth_sessions_table']          = 'auth_sessions';
 
+
+$config['candidate_table']              = 'xtra_candidate';
+
 // ACL
 $config['acl_categories_table']         = 'acl_categories';
 $config['acl_actions_table']            = 'acl_actions';
@@ -37,6 +40,14 @@ $config['branch_subject_table']        	= 'xtra_branch_subject';
 
 $config['batch_table']            		= 'xtra_batch';
 $config['batch_subject_table']        	= 'xtra_batch_subject';
+
+$config['candidate_branch_batch_table']        	= 'xtra_candidate_branch_batch';
+
+$config['question_table']          		= 'xtra_question';
+
+$config['single_options_table']    		= 'xtra_single_options';
+$config['single_answer_table']          = 'xtra_single_answer';
+
 
 $config['question_type_table']          = 'xtra_question_type';
 $config['subject_question_type_table']  = 'xtra_subject_question_type';

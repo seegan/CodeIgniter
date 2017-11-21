@@ -70,3 +70,6 @@ $route['admin/question/getQuestionData'] = 'admin/question/question/getQuestionD
 
 $route['admin/candidate'] = 'admin/candidate/candidate/index';
 $route['admin/candidate/add'] = 'admin/candidate/candidate/add';
+
+$route['admin/exam'] = 'admin/exam/exam/index';
+$route['admin/exam/add'] = 'admin/exam/exam/add';

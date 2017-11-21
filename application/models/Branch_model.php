@@ -64,6 +64,12 @@ class Branch_model extends MY_Model {
 		return $query->result();
 	}
 
+	function getBatchByBranch($branch_id = 0) {
+		$query = $this->db->query("SELECT b.id, b.branch_id, b.batch_name FROM ".$this->db_table('batch_table')." as b WHERE b.active = 1 AND b.branch_id = ".$branch_id);
+		return $query->result();
+	}
+
+
 
 
 }

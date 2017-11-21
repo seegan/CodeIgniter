@@ -64,44 +64,7 @@
             }
         ?>
 
-        <script type="text/javascript">
 
-                jQuery(document).ready(function(){
-                    populateMultiSelect('#batch_subjects');
-                    
-                    jQuery(".branch_name").on("change", function(){
-                        var branch_id = jQuery(this).val();
-
-                        var subjectSel = document.getElementById("batch_subjects"); 
-                        subjectSel.length = 1;
-
-                        jQuery.ajax({ 
-                            type: "POST", 
-                            url: "<?php echo base_url("admin/branch/getBranchSubjects") ?>", 
-                            data: { branch_id: branch_id }, 
-                            dataType: "json",
-                            success: function (data) {
-                                var subjects = data.subjects;
-                                
-                                jQuery("#batch_subjects").change();
-                                if(data.subject_success) {
-                                    for (var subject in subjects) {
-                                        if (typeof  subjects[subject].id  !== "undefined") {
-                                            subjectSel.options[subjectSel.options.length] = new Option(subjects[subject].subject, subjects[subject].id);
-                                        }
-                                    }
-                                    
-                                }
-                                jQuery("#batch_subjects").change();
-                                populateMultiSelect('#batch_subjects');
-                            }
-                        });
-                    });
-                });
-
-
-
-        </script>
         <script src="<?php echo base_url(); ?>theme/assets/js/custom.js"></script>
 
 

@@ -16,7 +16,41 @@ class Batch extends MY_Controller {
 
 	public function index()
 	{
+		$data['final_foot'] = '<script type="text/javascript">
+            jQuery(document).ready(function(){
+                    populateMultiSelect("#batch_subjects");
+                    
+                    jQuery(".branch_name").on("change", function(){
+                        var branch_id = jQuery(this).val();
 
+                        var subjectSel = document.getElementById("batch_subjects"); 
+                        subjectSel.length = 1;
+
+                        jQuery.ajax({ 
+                            type: "POST", 
+                            url: "'.base_url("admin/branch/getBranchSubjects").'", 
+                            data: { branch_id: branch_id }, 
+                            dataType: "json",
+                            success: function (data) {
+                                var subjects = data.subjects;
+                                
+                                jQuery("#batch_subjects").change();
+                                if(data.subject_success) {
+                                    for (var subject in subjects) {
+                                        if (typeof  subjects[subject].id  !== "undefined") {
+                                            subjectSel.options[subjectSel.options.length] = new Option(subjects[subject].subject, subjects[subject].id);
+                                        }
+                                    }
+                                    
+                                }
+                                jQuery("#batch_subjects").change();
+                                populateMultiSelect("#batch_subjects");
+                            }
+                        });
+                    });
+                });
+        </script>
+        ';
 		$data['subjects'] = getSubjects(1);
 
 		$page_content = $this->load->view('admin/branch/batch/batch', $data, TRUE);
@@ -35,6 +69,44 @@ class Batch extends MY_Controller {
 
 	public function add()
 	{
+
+
+		$data['final_foot'] = '<script type="text/javascript">
+            jQuery(document).ready(function(){
+                    populateMultiSelect("#batch_subjects");
+                    
+                    jQuery(".branch_name").on("change", function(){
+                        var branch_id = jQuery(this).val();
+
+                        var subjectSel = document.getElementById("batch_subjects"); 
+                        subjectSel.length = 1;
+
+                        jQuery.ajax({ 
+                            type: "POST", 
+                            url: "'.base_url("admin/branch/getBranchSubjects").'", 
+                            data: { branch_id: branch_id }, 
+                            dataType: "json",
+                            success: function (data) {
+                                var subjects = data.subjects;
+                                
+                                jQuery("#batch_subjects").change();
+                                if(data.subject_success) {
+                                    for (var subject in subjects) {
+                                        if (typeof  subjects[subject].id  !== "undefined") {
+                                            subjectSel.options[subjectSel.options.length] = new Option(subjects[subject].subject, subjects[subject].id);
+                                        }
+                                    }
+                                    
+                                }
+                                jQuery("#batch_subjects").change();
+                                populateMultiSelect("#batch_subjects");
+                            }
+                        });
+                    });
+                });
+        </script>
+        ';
+
 		$batch_data = [
 			'branch_id'   	=> $this->input->post('branch_name'),
 			'batch_name' 	=> $this->input->post('batch_name'),
@@ -100,6 +172,26 @@ class Batch extends MY_Controller {
 		echo $page_content;
 		echo $right_sidebar;
 		echo $this->load->view('admin/common/footer', '', TRUE);
+	}
+
+
+	public function getBatchByBranch() {
+		$data['success'] = false;
+		if(!$this->input->is_ajax_request() || !$this->input->post('branch_id')) {
+			$data['msg'] = 'Please use A valid Browser!';
+			echo json_encode($data);
+			die();
+		}
+
+		$data['success'] = true;
+
+		$batchs = getBatchByBranch($this->input->post('branch_id'));
+		$data['batch_success'] = ($batchs) ? true : false;
+		$data['batchs'] = $batchs;
+
+
+		echo json_encode($data);
+
 	}
 }
 ?>

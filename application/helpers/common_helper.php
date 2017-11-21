@@ -55,7 +55,7 @@ if( ! function_exists('getDifficultyList') )
 		foreach ($difficulty_list as $key => $difficulty) {
 			$difficulties[$key]['difficulty'] = $difficulty;
 			$difficulties[$key]['selected'] = false;
-			if($difficulty == $selected_diff) {
+			if($key == $selected_diff) {
 				$difficulties[$key]['selected'] = true;
 			}
 		}

@@ -63,11 +63,11 @@
                     <select class="form-control select2" name="language">
                         <?php
                             $language_list = getLanguageList('en');
-                            foreach ($language_list as $language) {
+                            foreach ($language_list as $key => $language) {
                                 if($language['selected'] == true) {
-                                    echo "<option selected>".$language['language']."</option>";
+                                    echo "<option selected value='".$key."'>".$language['language']."</option>";
                                 } else {
-                                    echo "<option>".$language['language']."</option>";
+                                    echo "<option value='".$key."'>".$language['language']."</option>";
                                 }
                             }
                         ?>
@@ -98,14 +98,14 @@
             <div class="form-group row">
                 <div class="col-12">
                     <label class="col-form-label text-right">Difficulty Level<span class="text-danger">*</span></label>
-                    <select class="form-control select2" name="subject" style="text-transform: capitalize;">
+                    <select class="form-control select2" name="difficulty" style="text-transform: capitalize;">
                     <?php
-                        $difficulty_list = getDifficultyList('medium');
-                        foreach ($difficulty_list as $difficulty) {
+                        $difficulty_list = getDifficultyList(2);
+                        foreach ($difficulty_list as $key => $difficulty) {
                             if($difficulty['selected'] == true) {
-                                echo "<option selected>".$difficulty['difficulty']."</option>";
+                                echo "<option selected value='".$key."'>".$difficulty['difficulty']."</option>";
                             } else {
-                                echo "<option>".$difficulty['difficulty']."</option>";
+                                echo "<option value='".$key."'>".$difficulty['difficulty']."</option>";
                             }
                         }
                     ?>
@@ -117,15 +117,15 @@
             <div class="form-group row">
                 <div class="col-4">
                     <label class="col-form-label text-right">Right Mark</label>
-                    <input type="text" class="form-control search-input" autocomplete="off">
+                    <input type="text" class="form-control search-input" name="right_mark" autocomplete="off">
                 </div>
                  <div class="col-4">
                     <label class="col-form-label text-right">Negative Mark</label>
-                    <input type="text" class="form-control search-input" autocomplete="off">
+                    <input type="text" class="form-control search-input" name="negative_mark" autocomplete="off">
                 </div>
                 <div class="col-4">
                     <label class="col-form-label text-right">Time(Sec.)</label>
-                    <input type="text" class="form-control search-input" autocomplete="off">
+                    <input type="text" class="form-control search-input" name="time" autocomplete="off">
                 </div>
             </div>
         </div>

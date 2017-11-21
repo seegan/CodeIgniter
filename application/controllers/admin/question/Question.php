@@ -112,6 +112,13 @@ class Question extends MY_Controller {
                 });
 
 
+
+                jQuery( ".add-question" ).submit(function( event ) {
+                    jQuery(".question_subject").prop("disabled", false)
+                    jQuery("#question_type").prop("disabled", false)
+                });
+
+
             });
         </script>
         ';
@@ -229,6 +236,10 @@ class Question extends MY_Controller {
                     }
                 });
 
+                jQuery( ".add-question" ).submit(function( event ) {
+                    jQuery(".question_subject").prop("disabled", false)
+                    jQuery("#question_type").prop("disabled", false)
+                });
 
             });
         </script>';
@@ -238,8 +249,32 @@ class Question extends MY_Controller {
         $data['subjects'] = getSubjects(1);
 
 
+
+        if($this->input->method(TRUE) == 'POST') {
+
+            if($this->input->post('single_choice')) {
+                foreach ($this->input->post('single_choice') as $key => $value) {
+                    var_dump($key);
+                    echo trim($value['choice_data']);
+                }
+            }
+
+            die();
+
+        }
+
 		$question_data = [
-			'main_question'   => $this->input->post('main_question'),
+			'question'   => trim($this->input->post('main_question')),
+            'question_type' => $this->input->post('type'),
+            'subject' => $this->input->post('subject'),
+            'topic' => $this->input->post('topic'),
+            'language' => $this->input->post('language'),
+            'year' => $this->input->post('year'),
+            'difficulty_level' => $this->input->post('difficulty'),
+            'right_mark' => $this->input->post('right_mark'),
+            'negative_mark' => $this->input->post('negative_mark'),
+            'question_time' => $this->input->post('time'),
+            'choice' => count($this->input->post('single_choice')),
 			'created_at' => date('Y-m-d H:i:s'),
 		];
 
@@ -248,29 +283,74 @@ class Question extends MY_Controller {
 		$this->load->model('examples/validation_callables');
 		$this->load->library('form_validation');
 
+
 		$validation_rules = [
 			[
-				'field' => 'main_question',
-				'label' => 'Question',
+				'field' => 'subject',
+				'label' => 'Subject',
 				'rules' => 'required',
 				'errors' => [
-					'required' => 'Question Required.',
+					'required' => 'Subject Required.',
 				]
-			]
+			],
+            [
+                'field' => 'topic',
+                'label' => 'Subject Topic',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Subject Topic Required.',
+                ]
+            ],
+            [
+                'field' => 'type',
+                'label' => 'Question Type',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Question Type Required.',
+                ]
+            ],
+            [
+                'field' => 'language',
+                'label' => 'Language',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Language Required.',
+                ]
+            ],
+            [
+                'field' => 'year',
+                'label' => 'Year',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Year Required.',
+                ]
+            ],
+            [
+                'field' => 'difficulty',
+                'label' => 'Difficulty',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Difficulty Required.',
+                ]
+            ]
 		];
 
 		$this->form_validation->set_rules( $validation_rules );
+        if ($this->form_validation->run() !== FALSE) {
+            $this->db->set($question_data)->insert(db_table('question_table'));
 
-        if ($this->form_validation->run() == FALSE)
-        {
-            $page_content = $this->load->view('admin/question/question/question_add', $data, TRUE);
+            if( $this->db->affected_rows() == 1 ){
+                $question_id = $this->db->insert_id();
+
+                /*if($this->input->post('single_choice')) {
+                    foreach ($this->input->post('single_choice') as $key => $value) {
+                        $
+                    }
+                }*/
+            }
         }
-        else
-        {
 
-        }
-
-
+        $page_content = $this->load->view('admin/question/question/question_add', $data, TRUE);
 
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
@@ -280,7 +360,6 @@ class Question extends MY_Controller {
 		echo $page_content;
 		echo $right_sidebar;
 		echo $this->load->view('admin/common/footer', $data, TRUE);
-
 	}
 
 

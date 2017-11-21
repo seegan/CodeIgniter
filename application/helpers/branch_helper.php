@@ -28,4 +28,14 @@ if( ! function_exists('getSubjectByBranch') )
 	}
 }
 
+if( ! function_exists('getBatchByBranch') )
+{
+	function getBatchByBranch($branch_id = 0)
+	{
+		$CI =& get_instance();
+		return $CI->branch->getBatchByBranch($branch_id);
+	}
+}
+
+
 
