@@ -16,6 +16,16 @@ class Question extends MY_Controller {
 	public function index()
 	{
 
+        $this->load->library('paginator', '', 'paginatefilter');
+        $result_args = array(
+            'orderby_field' => 'q.created_at',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['data_list'] = $this->paginatefilter->question_list_pagination($result_args);
+
 
 		$data['final_foot'] = '<script type="text/javascript">
             $(document).ready(function () {
@@ -125,6 +135,13 @@ class Question extends MY_Controller {
         $data['javascripts'][] = base_url().'jsplugins/tinymce/tinymce.min.js';
         $data['javascripts'][] = base_url().'theme/assets/js/jquery.repeater.js';
 		$data['subjects'] = getSubjects(1);
+
+
+
+
+
+
+
 
 		$page_content = $this->load->view('admin/question/question/question', $data, TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
@@ -248,21 +265,6 @@ class Question extends MY_Controller {
 
         $data['subjects'] = getSubjects(1);
 
-
-
-        if($this->input->method(TRUE) == 'POST') {
-
-            if($this->input->post('single_choice')) {
-                foreach ($this->input->post('single_choice') as $key => $value) {
-                    var_dump($key);
-                    echo trim($value['choice_data']);
-                }
-            }
-
-            die();
-
-        }
-
 		$question_data = [
 			'question'   => trim($this->input->post('main_question')),
             'question_type' => $this->input->post('type'),
@@ -342,11 +344,29 @@ class Question extends MY_Controller {
             if( $this->db->affected_rows() == 1 ){
                 $question_id = $this->db->insert_id();
 
-                /*if($this->input->post('single_choice')) {
+                $question = trim($this->input->post('main_question'));
+
+                if($this->input->post('single_choice')) {
+                    $single_options = $this->config->item('single_option');
                     foreach ($this->input->post('single_choice') as $key => $value) {
-                        $
+                        $option_key = $single_options[$key];
+                        $option_val = trim($value['choice_data']);
+
+                        $option_data = ['question_id' => $question_id, 'option_key' => $option_key, 'option_val' => $option_val];
+                        $this->db->set($option_data)->insert(db_table('single_options_table'));
+
+
+                        if($option_key == $this->input->post('validoption')) {
+                            if( $this->db->affected_rows() == 1 ){
+                                $option_id = $this->db->insert_id();
+                                $answer_data = ['question_id' => $question_id, 'option_id' => $option_id];
+                                $this->db->set($answer_data)->insert(db_table('single_answer_table'));
+
+                            } 
+                        }
+
                     }
-                }*/
+                }
             }
         }
 
