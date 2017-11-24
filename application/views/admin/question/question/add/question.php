@@ -138,15 +138,9 @@
             </div>
         </div>
 
-
-
         <div class="option_data col-sm-12">
             
         </div>
-
-
-
-
     </div>
 
     <div class="form-group row">

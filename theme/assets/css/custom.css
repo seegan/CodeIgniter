@@ -24,7 +24,7 @@ i.login-exceeded-ico {
 	margin-top: 20px;
 }
 
-.add-question .form-control {
+.add-question .form-control, .action-header .form-control  {
     border: 1px solid rgba(128, 137, 142, 0.8);
     padding: 7px 12px 7px 12px;
 }

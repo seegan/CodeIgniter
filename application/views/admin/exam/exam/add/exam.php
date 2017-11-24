@@ -51,7 +51,12 @@
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Questions<span class="text-danger">*</span></label>
         <div class="col-7">
-            <a class="btn btn-danger waves-effect waves-light m-b-5" style="color:#fff;"> <span>Select Questions</span> &nbsp; <i class="mdi mdi-buffer"></i> </a>
+
+
+<!--         <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-topic" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button> -->
+
+<button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-topic" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
+
         </div>
     </div> 
 

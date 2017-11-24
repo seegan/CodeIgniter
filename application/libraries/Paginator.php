@@ -40,6 +40,7 @@ class Paginator
 
 	        $this->cpage = 1;
 	        $this->ppage = isset($params['ppage']) ? $params['ppage'] : 20;
+	        $this->question = isset($params['question']) ? $params['question'] : '';
 	        $this->subject = isset($params['subject']) ? $params['subject'] : '-';
 	        $this->topic = isset($params['topic']) ? $params['topic'] : '-';
 	        $this->type = isset($params['type']) ? $params['type'] : '-';
@@ -50,6 +51,7 @@ class Paginator
 	    else {
 	        $this->cpage 		= ($this->CI->input->get('cpage')) ? abs( (int) $this->CI->input->get('cpage') ) : 1;
 	        $this->ppage 		= ($this->CI->input->get('ppage')) ? abs( (int) $this->CI->input->get('ppage') ) : 20;
+	        $this->question 	= ($this->CI->input->get('question')) ? $this->CI->input->get('question') : '';
 	        $this->subject 		= ($this->CI->input->get('subject')) ? $this->CI->input->get('subject') : '-';
 	        $this->topic 		= ($this->CI->input->get('topic')) ?  $this->CI->input->get('topic')  : '-';
 	        $this->type 		= ($this->CI->input->get('type')) ? $this->CI->input->get('type')  : '-';
@@ -118,6 +120,11 @@ class Paginator
 	private function listCondition() {
 
 	    $condition = '';
+
+	    if($this->question != '') {
+	    	$condition .= " AND q.question LIKE '%".$this->question."%'";
+	    	$this->args['arg']['question'] = $this->question;
+	    }
 	    if($this->subject != '-') {
 	    	$condition .= " AND q.subject = ".$this->subject;
 	    	$this->args['arg']['subject'] = $this->subject;
@@ -131,7 +138,7 @@ class Paginator
 	    	$this->args['arg']['type'] = $this->type;
 	    }
 	    if($this->language != '-') {
-	    	$condition .= " AND q.language = ".$this->language;
+	    	$condition .= " AND q.language = '".$this->language."'";
 	    	$this->args['arg']['language'] = $this->language;
 	    }
 	    if($this->year != '-') {
