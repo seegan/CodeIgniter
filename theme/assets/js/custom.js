@@ -405,7 +405,14 @@ function getOptionKey(num) {
 
 
 
-
+function parseUrl( url ) {
+    var a = document.createElement('a');
+    a.href = url;
+    return a;
+}
+function getPathFromUrl(url) {
+  return url.split(/[?#]/)[1];
+}
 
 Array.prototype.diff = function diff(a) {
     return this.filter(function(i) {return a.indexOf(i) < 0;});

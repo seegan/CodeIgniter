@@ -266,7 +266,7 @@ class CI_Pagination {
 	 * @var	string
 	 */
 	protected $query_string_segment = 'per_page';
-
+	protected $curr_page = '1';
 	/**
 	 * Display pages flag
 	 *
@@ -496,6 +496,10 @@ class CI_Pagination {
 		if ($this->page_query_string === TRUE)
 		{
 			$this->cur_page = $this->CI->input->get($this->query_string_segment);
+			if(!$this->cur_page) {
+				$this->cur_page = $this->curr_page;
+			}
+
 		}
 		elseif (empty($this->cur_page))
 		{

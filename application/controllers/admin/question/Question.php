@@ -17,6 +17,8 @@ class Question extends MY_Controller {
 	{
 
         $this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+        
         $result_args = array(
             'orderby_field' => 'q.created_at',
             'page' => $this->paginatefilter->cpage,

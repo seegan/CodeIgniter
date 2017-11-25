@@ -53,3 +53,17 @@ i.login-exceeded-ico {
 .ms-container {
   width: inherit;
 }
+
+.modal-full-width {
+  max-width: 90%;
+}
+
+.question_exam_filter .filter_question p {
+  margin: 0;
+}
+
+.question_exam_filter {
+  height: 320px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

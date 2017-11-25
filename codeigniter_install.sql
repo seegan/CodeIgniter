@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2017 at 07:42 AM
+-- Generation Time: Nov 25, 2017 at 01:32 PM
 -- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.20
+-- PHP Version: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -122,7 +122,13 @@ INSERT INTO `auth_sessions` (`id`, `user_id`, `login_time`, `modified_at`, `ip_a
 ('bjnu3hnm4jn7ol4lleb01k8jk5v5ppvv', 120809394, '2017-11-16 07:37:11', '2017-11-16 09:32:52', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
 ('5pqiclg31n99n3m6us2q4lo67097squ6', 120809394, '2017-11-16 15:12:50', '2017-11-16 14:36:04', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
 ('dcfl4scvid9qu942lnvd11q6b5ivn7ml', 120809394, '2017-11-16 18:07:22', '2017-11-16 19:01:28', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('ntn4cd6bdao9m84i2oqlc7eks11uccfv', 120809394, '2017-11-17 03:44:06', '2017-11-17 06:23:52', '::1', 'Chrome 62.0.3202.94 on Windows 7');
+('ntn4cd6bdao9m84i2oqlc7eks11uccfv', 120809394, '2017-11-17 03:44:06', '2017-11-17 06:23:52', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
+('67bj437ud7ti1ccmjt768ga2h3cdss1f', 120809394, '2017-11-20 06:08:27', '2017-11-20 13:03:30', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
+('e4jh31cs7bbmgh000g6vvqr809h8dca8', 120809394, '2017-11-21 05:06:27', '2017-11-21 13:44:28', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
+('203lv0on2mh4q59p22c3i3vl5m1phl2i', 120809394, '2017-11-22 06:16:52', '2017-11-22 13:47:24', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
+('7nil4jc87srb0tn8u259pi27hcphn465', 120809394, '2017-11-23 05:30:56', '2017-11-23 13:02:39', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
+('k73934hqdi870hapl38q32up1aqikf4k', 120809394, '2017-11-24 05:51:49', '2017-11-24 13:14:53', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
+('vdspv7q3sub83a695hrgv0d0e38spfmp', 120809394, '2017-11-25 06:41:16', '2017-11-25 12:30:53', '::1', 'Chrome 62.0.3202.94 on Windows 7');
 
 -- --------------------------------------------------------
 
@@ -221,12 +227,68 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `auth_level`, `banned`, `passwd`, `passwd_recovery_code`, `passwd_recovery_date`, `passwd_modified_at`, `last_login`, `created_at`, `modified_at`) VALUES
-(120809394, 'superadmin', 'superadmin@example.com', 9, '0', '$2y$11$VG3Rpod76a8eh7zsz3VuQuWYiNKnp13rvoIx49g8ofxYg.ob.Ls/m', NULL, NULL, NULL, '2017-11-17 03:44:06', '2017-10-31 12:47:43', '2017-11-17 02:44:06'),
-(1478819960, 'student', 'student@example.com', 1, '0', '$2y$11$kWcAOfwgWrKr7tbSwyMeHuniS3UsbZ2ZAa.BuUwKUk/YIg0aNMljO', NULL, NULL, NULL, '2017-11-10 12:10:21', '2017-10-31 14:53:33', '2017-11-10 11:10:21'),
-(2147484848, 'admin', 'admin@example.com', 6, '0', '$2y$11$LxQ4xfQCXqTB82lN7GJRXuBkVUaa5Hw8LYCZEVm64DnkfT76DfEde', NULL, NULL, NULL, '2017-11-10 12:09:23', '2017-10-31 14:53:11', '2017-11-10 11:09:23'),
-(1173926690, 'branchadmin', 'cfdsfsd@dfsd.com', 4, '0', '$2y$11$PJDH2xfKTL3t/MDTD1qv8uft0mkaOaRk23dslAY5E6y0aZqPCQ/fm', NULL, NULL, NULL, '2017-11-10 12:16:04', '2017-11-10 12:04:02', '2017-11-10 11:16:04'),
+(3994766, 'rgfdg11', 'gdfdf@dfdf.vom', 1, '0', '$2y$11$4PKRWiJzR0T2gD7ItSG53ux3bYNkntotXQ9P7lHH5Fbmx5R9853Cu', NULL, NULL, NULL, NULL, '2017-11-21 09:30:37', '2017-11-21 08:30:37'),
+(120809394, 'superadmin', 'superadmin@example.com', 9, '0', '$2y$11$VG3Rpod76a8eh7zsz3VuQuWYiNKnp13rvoIx49g8ofxYg.ob.Ls/m', NULL, NULL, NULL, '2017-11-25 06:41:16', '2017-10-31 12:47:43', '2017-11-25 05:41:16'),
+(547615608, 'xtra5', 'tesf4ydst@gmail.com', 1, '0', '$2y$11$DMmDtFAFDLs9Om5.JUcRdepnvkO5iE47v4Hl1oe0dHi5Voo4NNhD.', NULL, NULL, NULL, NULL, '2017-11-21 07:24:48', '2017-11-21 06:24:48'),
+(804001477, 'xtra2', 'tesfdgost@gmail.com', 1, '0', '$2y$11$BkDxMBzq4QR3CDme9HOxyOhr.ugEA.PECV8zsKAiisZcMw.nuq7he', NULL, NULL, NULL, NULL, '2017-11-21 07:12:35', '2017-11-21 06:12:35'),
+(966688307, 'XTRA123', 'seegan.sds@gamil.com', 1, '0', '$2y$11$z6YNj6zKC5ivCFhIGXAkV.XPOe8ggVv.dQqtM4QOtbLd3nRclp/jG', NULL, NULL, NULL, NULL, '2017-11-21 06:32:26', '2017-11-21 05:32:26'),
+(1014516650, 'ghfghfgh123', 'ghgfh@dfdf.vom', 1, '0', '$2y$11$XXCqFtFB.t4/FQJYTjH7GOx9MOQI/s7n0l5R0NnuqMH6kjD.GJLIG', NULL, NULL, NULL, NULL, '2017-11-21 08:52:10', '2017-11-21 07:52:10'),
 (1085985878, 'branchadmin2', 'cfdsfsd21@dfsd.com', 4, '0', '$2y$11$OMxOvXMir66YErqeAdsloOPf0/MTUOl8r83.Sg4rnN/Oir.mUnoA2', NULL, NULL, NULL, NULL, '2017-11-10 12:06:02', '2017-11-10 11:06:02'),
-(1833978067, 'branchadmin3', 'branchadmin3@gmail.com', 4, '0', '$2y$11$H3Gd6.U0yEnmBHS/sd5j3.08hQ5lkj6ZEu7VnEeusp6aGKeqgKLx6', NULL, NULL, NULL, NULL, '2017-11-12 15:41:45', '2017-11-12 14:41:45');
+(1173926690, 'branchadmin', 'cfdsfsd@dfsd.com', 4, '0', '$2y$11$PJDH2xfKTL3t/MDTD1qv8uft0mkaOaRk23dslAY5E6y0aZqPCQ/fm', NULL, NULL, NULL, '2017-11-10 12:16:04', '2017-11-10 12:04:02', '2017-11-10 11:16:04'),
+(1201214462, 'xtra6', 'ewerdst@gmail.com', 1, '0', '$2y$11$PUAfLro55Gp2P3vk46KWyOzi1jaVKX2/On6NdYRNAS1Hy2l5mNFUi', NULL, NULL, NULL, NULL, '2017-11-21 07:25:31', '2017-11-21 06:25:31'),
+(1309770758, 'xtra3', 'tesfdgowst@gmail.com', 1, '0', '$2y$11$v/ahUpxZ4SMbAotkIMIlpO5izyWu4Duo.wonfVFVx.RbhvuZdPMVO', NULL, NULL, NULL, NULL, '2017-11-21 07:20:14', '2017-11-21 06:20:14'),
+(1378814918, 'xtra4', 'tesf4dgwst@gmail.com', 1, '0', '$2y$11$IHEORRBfw1wLNYY/hVDwR.aUx.N0I5umYVvNajLd1zccZGqMLMBsG', NULL, NULL, NULL, NULL, '2017-11-21 07:24:16', '2017-11-21 06:24:16'),
+(1478819960, 'student', 'student@example.com', 1, '0', '$2y$11$kWcAOfwgWrKr7tbSwyMeHuniS3UsbZ2ZAa.BuUwKUk/YIg0aNMljO', NULL, NULL, NULL, '2017-11-10 12:10:21', '2017-10-31 14:53:33', '2017-11-10 11:10:21'),
+(1764778946, 'ghfghfgh2123', 'ghgfhdf@dfdf.vom', 1, '0', '$2y$11$/cwhEUQWc5kxDoNtKxapkefEVIknaZtgm3xhyPM2Eo69A7mkJXblO', NULL, NULL, NULL, NULL, '2017-11-21 08:54:48', '2017-11-21 07:54:48'),
+(1833978067, 'branchadmin3', 'branchadmin3@gmail.com', 4, '0', '$2y$11$H3Gd6.U0yEnmBHS/sd5j3.08hQ5lkj6ZEu7VnEeusp6aGKeqgKLx6', NULL, NULL, NULL, NULL, '2017-11-12 15:41:45', '2017-11-12 14:41:45'),
+(2147484848, 'admin', 'admin@example.com', 6, '0', '$2y$11$LxQ4xfQCXqTB82lN7GJRXuBkVUaa5Hw8LYCZEVm64DnkfT76DfEde', NULL, NULL, NULL, '2017-11-10 12:09:23', '2017-10-31 14:53:11', '2017-11-10 11:09:23');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xtra_batch`
+--
+
+CREATE TABLE `xtra_batch` (
+  `id` int(11) NOT NULL,
+  `branch_id` int(10) NOT NULL,
+  `batch_name` text NOT NULL,
+  `created_at` datetime NOT NULL,
+  `modified_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `active` int(2) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xtra_batch`
+--
+
+INSERT INTO `xtra_batch` (`id`, `branch_id`, `batch_name`, `created_at`, `modified_at`, `active`) VALUES
+(1, 3, 'Abacus Batch', '2017-11-20 10:42:52', '0000-00-00 00:00:00', 1),
+(2, 3, 'Abacus Batch', '2017-11-20 10:44:07', '0000-00-00 00:00:00', 1),
+(3, 3, 'Abacus Batch2', '2017-11-20 10:45:39', '0000-00-00 00:00:00', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xtra_batch_subject`
+--
+
+CREATE TABLE `xtra_batch_subject` (
+  `id` int(11) NOT NULL,
+  `batch_id` int(10) NOT NULL,
+  `branch_id` int(10) NOT NULL,
+  `subject_id` int(10) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xtra_batch_subject`
+--
+
+INSERT INTO `xtra_batch_subject` (`id`, `batch_id`, `branch_id`, `subject_id`, `created_at`) VALUES
+(1, 1, 3, 4, '0000-00-00 00:00:00'),
+(2, 2, 3, 4, '0000-00-00 00:00:00'),
+(3, 3, 3, 4, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -259,7 +321,30 @@ CREATE TABLE `xtra_branch` (
 
 INSERT INTO `xtra_branch` (`id`, `name`, `address`, `country`, `state`, `city`, `zip`, `phone`, `contact_person`, `mobile`, `exam_limit`, `student_limit`, `created_at`, `modified_at`, `baned`, `active`) VALUES
 (1, 'Branch1', 'dfsdf', 'India', 'Tamilnadu', 'Madurai', '565645', '4365464564', 'ddsgfsdfsd', '34457657657567', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 1),
-(2, 'Branch2', 'dfssdfds', 'India', 'Assam', 'Guwahati', '600001', '9952380502', 'seegan', '9952380502', 0, 0, '2017-11-12 19:30:10', '0000-00-00 00:00:00', 0, 1);
+(2, 'Branch2', 'dfssdfds', 'India', 'Assam', 'Guwahati', '600001', '9952380502', 'seegan', '9952380502', 0, 0, '2017-11-12 19:30:10', '0000-00-00 00:00:00', 0, 1),
+(3, 'Branch3', 'ffg', 'India', 'Gujarat', 'Surat', '5654654', '546456456', 'gddfg', '767567657', 0, 0, '2017-11-20 07:59:41', '0000-00-00 00:00:00', 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xtra_branch_subject`
+--
+
+CREATE TABLE `xtra_branch_subject` (
+  `id` int(10) NOT NULL,
+  `branch_id` int(10) NOT NULL,
+  `subject_id` int(10) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `active` int(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xtra_branch_subject`
+--
+
+INSERT INTO `xtra_branch_subject` (`id`, `branch_id`, `subject_id`, `created_at`, `active`) VALUES
+(1, 3, 4, '0000-00-00 00:00:00', 1),
+(2, 3, 5, '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -279,7 +364,67 @@ CREATE TABLE `xtra_branch_user` (
 --
 
 INSERT INTO `xtra_branch_user` (`branch_id`, `user_id`, `is_admin`, `active`) VALUES
-(2, 1833978067, 1, 1);
+(2, 1833978067, 1, 1),
+(3, 1173926690, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xtra_candidate`
+--
+
+CREATE TABLE `xtra_candidate` (
+  `user_id` int(10) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `enrollment_no` varchar(250) NOT NULL,
+  `ref_pass` varchar(250) NOT NULL,
+  `mobile` varchar(250) NOT NULL,
+  `phone` varchar(250) NOT NULL,
+  `address` text NOT NULL,
+  `enquiry_from` text NOT NULL,
+  `hear_from` text NOT NULL,
+  `guardian_name` varchar(250) NOT NULL,
+  `guardian_mobile` varchar(250) NOT NULL,
+  `gender` varchar(7) NOT NULL,
+  `send_mail` int(1) NOT NULL,
+  `registration_date` date NOT NULL,
+  `birth_date` date NOT NULL,
+  `modified_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xtra_candidate`
+--
+
+INSERT INTO `xtra_candidate` (`user_id`, `name`, `enrollment_no`, `ref_pass`, `mobile`, `phone`, `address`, `enquiry_from`, `hear_from`, `guardian_name`, `guardian_mobile`, `gender`, `send_mail`, `registration_date`, `birth_date`, `modified_at`) VALUES
+(3994766, 'ffdg', 'hggfh', '22221111', '5645645645', '', '', '', '', '', '', 'Male', 0, '2017-12-20', '0000-00-00', '0000-00-00 00:00:00'),
+(547615608, 'Seegan', 'abc1232', '22221111', '4543556', '546546456', 'fgdfgdfgfd,\r\nfdgfdgdfgfdg', 'mail', 'google', 'fgdfgdfg', '435435435', 'Femal', 0, '2017-12-12', '0000-00-00', '0000-00-00 00:00:00'),
+(804001477, 'Seegan', 'abc1232', '22221111', '4543556', '546546456', 'fgdfgdfgfd,\r\nfdgfdgdfgfdg', 'mail', 'google', 'fgdfgdfg', '435435435', 'Femal', 0, '0000-00-00', '0000-00-00', '0000-00-00 00:00:00'),
+(1014516650, 'ffdg', 'hggfh', '22221111', '5645645645', '', '', '', '', '', '', 'Male', 0, '2017-12-20', '0000-00-00', '0000-00-00 00:00:00'),
+(1201214462, 'Seegan', 'abc1232', '22221111', '4543556', '546546456', 'fgdfgdfgfd,\r\nfdgfdgdfgfdg', 'mail', 'google', 'fgdfgdfg', '435435435', 'Male', 1, '2017-12-12', '1990-12-12', '0000-00-00 00:00:00'),
+(1309770758, 'Seegan', 'abc1232', '22221111', '4543556', '546546456', 'fgdfgdfgfd,\r\nfdgfdgdfgfdg', 'mail', 'google', 'fgdfgdfg', '435435435', 'Femal', 0, '0000-00-00', '0000-00-00', '0000-00-00 00:00:00'),
+(1378814918, 'Seegan', 'abc1232', '22221111', '4543556', '546546456', 'fgdfgdfgfd,\r\nfdgfdgdfgfdg', 'mail', 'google', 'fgdfgdfg', '435435435', 'Femal', 0, '0000-00-00', '0000-00-00', '0000-00-00 00:00:00'),
+(1764778946, 'ffdg', 'hggfh', '22221111', '5645645645', '', '', '', '', '', '', 'Male', 0, '2017-12-20', '0000-00-00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xtra_candidate_branch_batch`
+--
+
+CREATE TABLE `xtra_candidate_branch_batch` (
+  `candidate_id` int(10) NOT NULL,
+  `branch_id` int(10) NOT NULL,
+  `batch_id` int(10) NOT NULL,
+  `active` int(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xtra_candidate_branch_batch`
+--
+
+INSERT INTO `xtra_candidate_branch_batch` (`candidate_id`, `branch_id`, `batch_id`, `active`) VALUES
+(1764778946, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -306,6 +451,41 @@ INSERT INTO `xtra_category` (`id`, `category`, `description`, `created_at`, `mod
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `xtra_question`
+--
+
+CREATE TABLE `xtra_question` (
+  `id` int(11) NOT NULL,
+  `question` text NOT NULL,
+  `question_type` int(11) NOT NULL,
+  `subject` int(11) NOT NULL,
+  `topic` int(11) NOT NULL,
+  `language` varchar(3) NOT NULL,
+  `year` int(11) NOT NULL,
+  `difficulty_level` int(11) NOT NULL,
+  `right_mark` float NOT NULL,
+  `negative_mark` float NOT NULL,
+  `question_time` int(11) NOT NULL,
+  `choice` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `active` int(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xtra_question`
+--
+
+INSERT INTO `xtra_question` (`id`, `question`, `question_type`, `subject`, `topic`, `language`, `year`, `difficulty_level`, `right_mark`, `negative_mark`, `question_time`, `choice`, `created_at`, `active`) VALUES
+(1, '', 1, 5, 7, 'en', 2017, 1, 2, 1, 10, 5, '2017-11-21 13:39:18', 1),
+(2, '<p>question ??</p>', 1, 5, 5, 'en', 2017, 2, 2, 1, 10, 4, '2017-11-22 07:12:40', 1),
+(3, '<p>question a or b or c or d or e or f ??</p>', 1, 5, 5, 'en', 2017, 2, 2, 1, 10, 6, '2017-11-22 07:15:08', 1),
+(4, '<p>dsfgsgfdg</p>', 1, 4, 2, 'en', 2017, 3, 1, 2, 5, 4, '2017-11-22 07:19:16', 1),
+(5, '<p>sdfgfdsgdfg</p>', 1, 5, 7, 'en', 2017, 3, 0, 0, 0, 4, '2017-11-23 13:59:54', 1),
+(6, '<p>2016 Passed?</p>', 1, 5, 5, 'en', 2016, 1, 2, 1, 10, 4, '2017-11-24 12:59:34', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `xtra_question_type`
 --
 
@@ -327,6 +507,69 @@ INSERT INTO `xtra_question_type` (`id`, `question_type`, `active`) VALUES
 (5, 'Match The Following', 1),
 (6, 'Matrix Match', 1),
 (7, 'Descriptive Question', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xtra_single_answer`
+--
+
+CREATE TABLE `xtra_single_answer` (
+  `question_id` int(10) NOT NULL,
+  `option_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xtra_single_answer`
+--
+
+INSERT INTO `xtra_single_answer` (`question_id`, `option_id`) VALUES
+(2, 3),
+(3, 9),
+(4, 14),
+(5, 17),
+(6, 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xtra_single_options`
+--
+
+CREATE TABLE `xtra_single_options` (
+  `option_id` int(10) NOT NULL,
+  `question_id` int(10) NOT NULL,
+  `option_key` varchar(2) NOT NULL,
+  `option_val` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xtra_single_options`
+--
+
+INSERT INTO `xtra_single_options` (`option_id`, `question_id`, `option_key`, `option_val`) VALUES
+(1, 2, 'A', '<p>ans a</p>'),
+(2, 2, 'B', '<p>ans b</p>'),
+(3, 2, 'C', '<p>ans c</p>'),
+(4, 2, 'D', '<p>ans d</p>'),
+(5, 3, 'A', '<p>ans a</p>'),
+(6, 3, 'B', '<p>ans b</p>'),
+(7, 3, 'C', '<p>ans c</p>'),
+(8, 3, 'D', '<p>ans d</p>'),
+(9, 3, 'E', '<p>Answer e</p>'),
+(10, 3, 'F', '<p>Answer F</p>'),
+(11, 4, 'A', '<p>fdgdfg</p>'),
+(12, 4, 'B', '<p>erew</p>'),
+(13, 4, 'C', '<p>fdgdfg</p>'),
+(14, 4, 'D', '<p>3434</p>'),
+(15, 5, 'A', '<p>dfgfdg</p>'),
+(16, 5, 'B', '<p>fdgfdgfdg</p>'),
+(17, 5, 'C', '<p>dfgdfg</p>'),
+(18, 5, 'D', '<p>fdgdfgfd</p>'),
+(19, 6, 'A', '<p>No</p>'),
+(20, 6, 'B', '<p>Yes</p>'),
+(21, 6, 'C', '<p>Both A and B</p>'),
+(22, 6, 'D', '<p>None of the above</p>');
 
 -- --------------------------------------------------------
 
@@ -413,10 +656,44 @@ INSERT INTO `xtra_subject_topic` (`id`, `subject_id`, `topic`, `description`, `c
 --
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD UNIQUE KEY `user_id` (`user_id`),
+  ADD KEY `user_id_2` (`user_id`);
+
+--
+-- Indexes for table `xtra_batch`
+--
+ALTER TABLE `xtra_batch`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `xtra_batch_subject`
+--
+ALTER TABLE `xtra_batch_subject`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `xtra_branch`
 --
 ALTER TABLE `xtra_branch`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `xtra_branch_subject`
+--
+ALTER TABLE `xtra_branch_subject`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `xtra_candidate`
+--
+ALTER TABLE `xtra_candidate`
+  ADD UNIQUE KEY `user_id_3` (`user_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `user_id_2` (`user_id`),
+  ADD KEY `user_id_4` (`user_id`);
 
 --
 -- Indexes for table `xtra_category`
@@ -425,10 +702,23 @@ ALTER TABLE `xtra_category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `xtra_question`
+--
+ALTER TABLE `xtra_question`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`);
+
+--
 -- Indexes for table `xtra_question_type`
 --
 ALTER TABLE `xtra_question_type`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `xtra_single_options`
+--
+ALTER TABLE `xtra_single_options`
+  ADD PRIMARY KEY (`option_id`);
 
 --
 -- Indexes for table `xtra_subject`
@@ -447,20 +737,45 @@ ALTER TABLE `xtra_subject_topic`
 --
 
 --
+-- AUTO_INCREMENT for table `xtra_batch`
+--
+ALTER TABLE `xtra_batch`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `xtra_batch_subject`
+--
+ALTER TABLE `xtra_batch_subject`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `xtra_branch`
 --
 ALTER TABLE `xtra_branch`
-  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `xtra_branch_subject`
+--
+ALTER TABLE `xtra_branch_subject`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `xtra_category`
 --
 ALTER TABLE `xtra_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `xtra_question`
+--
+ALTER TABLE `xtra_question`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
 -- AUTO_INCREMENT for table `xtra_question_type`
 --
 ALTER TABLE `xtra_question_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `xtra_single_options`
+--
+ALTER TABLE `xtra_single_options`
+  MODIFY `option_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `xtra_subject`
 --

@@ -52,10 +52,7 @@
         <label for="inputEmail3" class="col-4 col-form-label text-right">Questions<span class="text-danger">*</span></label>
         <div class="col-7">
 
-
-<!--         <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-topic" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button> -->
-
-<button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-topic" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
+        <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5 select-question" data-toggle="modal" data-target=".questions-model">Add Questions &nbsp; <i class="mdi mdi-library-plus"></i></button>
 
         </div>
     </div> 

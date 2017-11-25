@@ -58,7 +58,7 @@
                                                                                         <div class="col-12">
                                                                                             <select class="form-control select2 question_subject" name="subject">
                                                                                                 <option disabled>Select Subject</option>
-                                                                                                <option value="-">All Subjects</option>
+                                                                                                <option value="0">All Subjects</option>
                                                                                                 <?php 
                                                                                                     if($subjects) {
                                                                                                         foreach ($subjects as $subject) {
@@ -75,7 +75,7 @@
                                                                                         <div class="col-12">
                                                                                             <select class="form-control select2 question_topic" name="topic" id="question_topic">
                                                                                                 <option disabled>Select Topic</option>
-                                                                                                <option value="-">All Topics</option>
+                                                                                                <option value="0">All Topics</option>
                                                                                             </select>
                                                                                         </div>
                                                                                     </div>
@@ -85,7 +85,7 @@
                                                                                         <div class="col-12">
                                                                                             <select class="form-control select2 question_type" name="type" id="question_type">
                                                                                                 <option disabled>Question Type</option>
-                                                                                                <option value="-">All Types</option>
+                                                                                                <option value="0">All Types</option>
                                                                                             </select>
                                                                                         </div>
                                                                                     </div>
@@ -115,7 +115,7 @@
                                                                                         <div class="col-12">
                                                                                             <select class="form-control select2" name="year">
                                                                                                 <option disabled>Select Year</option>
-                                                                                                <option value="-">All Year</option>
+                                                                                                <option value="0">All Year</option>
                                                                                                 <?php 
                                                                                                     $year_list = getYearList(date('Y')) ;
                                                                                                     foreach ($year_list as $year) {
@@ -135,7 +135,7 @@
                                                                                         <div class="col-12">
                                                                                             <select class="form-control select2" name="difficulty" style="text-transform: capitalize;">
                                                                                                 <option disabled>Select Difficulty</option>
-                                                                                                <option value="-">All Level</option>
+                                                                                                <option value="0">All Level</option>
                                                                                             <?php
                                                                                                 $difficulty_list = getDifficultyList();
                                                                                                 foreach ($difficulty_list as $key => $difficulty) {
