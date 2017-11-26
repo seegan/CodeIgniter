@@ -126,6 +126,11 @@ jQuery(document).ready(function () {
     });
 
 
+/*    jQuery('.selected-question').on('click', function() {
+        jQuery('.questions-model .close').click();
+    });*/
+
+
 });
 
 
@@ -133,5 +138,6 @@ function selectQuestionReset() {
     jQuery('select.question_subject, .question_language, .question_year, .question_difficulty, .search_question, .ppage').prop('selectedIndex',1);
     jQuery('select.question_subject, .question_language, .question_year, .question_difficulty, .search_question, .ppage').change();
 
+    jQuery('.question_exam_filter').html('');
     jQuery('.search_question').val('');
 }

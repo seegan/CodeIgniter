@@ -23,7 +23,7 @@
                 foreach ($data_list['result'] as $list) {
             ?>
                 <tr>
-                    <th scope="row"><?php echo $start++; ?></th>
+                    <th scope="row"><?php echo $start++; ?><input type="checkbox" class="checked_question" value="<?php echo $list->id; ?>"></th>
                     <td class="filter_question"><?php echo $list->question; ?></td>
                     <td><?php echo $list->subject; ?></td>
                     <td><?php echo $list->topic; ?></td>
