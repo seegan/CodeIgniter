@@ -37,6 +37,24 @@ class AdminAjax extends MY_Controller {
 		return $this->load->view('admin/question/question/ajax/filter/list', $data, TRUE);
 	}
 
+		private function subject_filter() {
+
+        $this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+        $result_args = array(
+            'orderby_field' => 'created_at',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['subject_list'] = $this->paginatefilter->subject_list_pagination($result_args);
+
+
+		return $this->load->view('admin/subject/subject/ajax/filter/list', $data, TRUE);
+	}
+
+
 
 	private function question_exam_filter() {
 
