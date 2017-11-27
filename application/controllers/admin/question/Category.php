@@ -14,8 +14,26 @@ class Category extends MY_Controller {
 
 	public function index()
 	{
+		$this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+        
+        $result_args = array(
+            'orderby_field' => 'created_at',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
 
-		$page_content = $this->load->view('admin/question/category/category', '', TRUE);
+
+        $data['category_list'] = $this->paginatefilter->category_list_pagination($result_args);
+
+
+
+        $data['javascripts'][] = base_url().'theme/assets/js/custom/list-category.js';
+
+
+		$page_content = $this->load->view('admin/question/category/category', $data, TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
 
