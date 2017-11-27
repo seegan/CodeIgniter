@@ -72,7 +72,7 @@
                                                                                 <div class="col-lg-2">
                                                                                     <div class="form-group row">
                                                                                         <div class="col-12">
-                                                                                            <div class="select2-container form-control select2 ppage" id="s2id_autogen11"><a href="javascript:void(0)" class="select2-choice" tabindex="-1">   <span class="select2-chosen" id="select2-chosen-12">2 Per Page</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow" role="presentation"><b role="presentation"></b></span></a><label for="s2id_autogen12" class="select2-offscreen"></label><input class="select2-focusser select2-offscreen" type="text" aria-haspopup="true" role="button" aria-labelledby="select2-chosen-12" id="s2id_autogen12"></div><select class="form-control select2 ppage" name="ppage" tabindex="-1" title="" style="display: none;">
+                                                                                            <select class="form-control select2 ppage" name="ppage">
                                                                                                 <option disabled="">Data Per Page</option>
                                                                                                 <option selected="" value="2">2 Per Page</option>
                                                                                                 <option value="3">3 Per Page</option>
