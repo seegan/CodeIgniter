@@ -67,3 +67,10 @@ i.login-exceeded-ico {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
+.remove-circle {
+  border-radius: 25px;
+  width: 30px;
+  height: 30px;
+  padding: 5px;  
+}

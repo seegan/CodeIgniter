@@ -22,8 +22,14 @@
                 $start = $data_list['start_count'] + 1;;
                 foreach ($data_list['result'] as $list) {
             ?>
-                <tr>
-                    <th scope="row"><?php echo $start++; ?><input type="checkbox" class="checked_question" value="<?php echo $list->id; ?>"></th>
+                <tr class="question_avail" data-questionid="<?php echo $list->id; ?>">
+                    <td scope="row"><?php echo $start++; ?>
+                        <input type="checkbox" class="checked_question" value="<?php echo $list->id; ?>">
+                        <input type="hidden" class="right_mark" value="<?php echo $list->right_mark; ?>">
+                        <input type="hidden" class="wrong_mark" value="<?php echo $list->negative_mark; ?>">
+                        <input type="hidden" class="question_time" value="<?php echo $list->question_time; ?>">
+                        <input type="hidden" class="question_title" value="<?php echo $list->question; ?>">
+                    </td>
                     <td class="filter_question"><?php echo $list->question; ?></td>
                     <td><?php echo $list->subject; ?></td>
                     <td><?php echo $list->topic; ?></td>

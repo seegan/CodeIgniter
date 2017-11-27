@@ -329,18 +329,9 @@
                                                 <th style="width: 200px;">Subject</th>
                                                 <th>Topic</th>
                                                 <th style="width: 200px;">Difficulty</th>
-                                                <th style="width: 100px;">Year</th>
                                             </tr>
                                         </thead>
                                         <tbody class="selected_question_block">
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <th scope="row">1</th>
-                                                <th scope="row">1</th>
-                                                <th scope="row">1</th>
-                                                <th scope="row">1</th>
-                                                <th scope="row">1</th>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

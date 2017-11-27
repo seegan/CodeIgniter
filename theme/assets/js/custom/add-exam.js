@@ -86,6 +86,7 @@ jQuery(document).ready(function () {
             },
             success: function (data) { 
                 jQuery(container_class).html(data);
+                populateCheckAfterAjax();
             }
         });
 
@@ -111,27 +112,87 @@ jQuery(document).ready(function () {
             },
             success: function (data) { 
                 jQuery(container_class).html(data);
+                populateCheckAfterAjax();
             }
         });
-
-
-
-
         return false;
     });
+
+
+
+
+    //When Select or De-select Questions
+    jQuery('body').on('change', '.checked_question' ,function(){
+        var question_id = jQuery(this).val();
+        var selector = jQuery(this).parent().parent();
+        if(jQuery(this).is(':checked')) {
+            var right_mark = selector.find('.right_mark').val();
+            var wrong_mark = selector.find('.wrong_mark').val();
+            var question_time = selector.find('.question_time').val();
+            var question = selector.find('.filter_question').html();
+            addQuestion(question_id, question, right_mark, wrong_mark, question_time);
+        } else {
+            removeQuestion(question_id);
+        }
+    });
+
+    jQuery('body').on('click', '.selected_sno .remove-circle', function(){
+        var remove_id = jQuery(this).attr('data-selremoveid');
+        removeQuestion(remove_id);
+    });
+/*    jQuery('.selected-question').on('click', function() {
+        jQuery('.questions-model .close').click();
+    });*/
+
+
+
+
+
 
 
     jQuery('.select-question').on('click', function() {
         selectQuestionReset();
     });
 
-
-/*    jQuery('.selected-question').on('click', function() {
-        jQuery('.questions-model .close').click();
-    });*/
-
-
 });
+
+
+function populateCheckAfterAjax() {
+    jQuery('.question_exam_filter tbody .question_avail').each(function(){
+
+        var question_id = jQuery(this).attr('data-questionid');
+        if(jQuery('.selected_question_block').find('[data-selquestionid="'+question_id+'"]').length  > 0) {
+            jQuery(this).find('.checked_question').prop('checked', true);
+        }
+
+
+
+    });
+}
+
+function addQuestion(question_id, question, right_mark, wrong_mark, question_time) {
+    var tr_block = "<tr data-selquestionid="+question_id+"><td class='selected_sno'><button data-selremoveid="+question_id+" class='btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle'> <i class='fa fa-remove'></i></button></td><td>"+question+"</td><td>"+right_mark+"</td><td>"+wrong_mark+"</td><td>"+question_time+"</td></tr>";
+    
+    if(jQuery('.selected_question_block').find('[data-selquestionid="'+question_id+'"]').length  <= 0) {
+        jQuery('.selected_question_block').append(tr_block);
+    }
+
+}
+
+function removeQuestion(question_id) {
+    if(jQuery('.selected_question_block').find('[data-selquestionid="'+question_id+'"]').length  > 0) {
+        jQuery('.selected_question_block').find('[data-selquestionid="'+question_id+'"]').remove();
+    }
+    if(jQuery('[data-questionid="'+question_id+'"]').find('.checked_question').is(':checked')) {
+        jQuery('[data-questionid="'+question_id+'"]').find('.checked_question').prop('checked', false); 
+    }
+}
+
+
+
+
+
+
 
 
 function selectQuestionReset() {
