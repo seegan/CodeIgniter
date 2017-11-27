@@ -154,6 +154,14 @@ jQuery(document).ready(function () {
         selectQuestionReset();
     });
 
+    //Model Close
+    jQuery('.close-selected-question').on('click', function() {
+        jQuery('.selected-questions-model').find('.close').click()
+    });
+    jQuery('.close-select-question').on('click', function() {
+        jQuery('.questions-model').find('.close').click()
+    });
+
 });
 
 
@@ -165,14 +173,14 @@ function populateCheckAfterAjax() {
             jQuery(this).find('.checked_question').prop('checked', true);
         }
 
-
-
     });
 }
 
 function addQuestion(question_id, question, right_mark, wrong_mark, question_time) {
-    var tr_block = "<tr data-selquestionid="+question_id+"><td class='selected_sno'><button data-selremoveid="+question_id+" class='btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle'> <i class='fa fa-remove'></i></button></td><td>"+question+"</td><td>"+right_mark+"</td><td>"+wrong_mark+"</td><td>"+question_time+"</td></tr>";
-    
+
+    var total_selected = (jQuery('.selected_question_block tr').length + 1 );
+    var tr_block = "<tr data-selquestionid="+question_id+"><td class='selected_sno'><button data-selremoveid="+question_id+" class='btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle'><i class='fa fa-remove'></i></button><input type='hidden' name='selected_question["+total_selected+"][question_id]' value='"+question_id+"'></td><td>"+question+"</td><td> <input type='text' name='selected_question["+total_selected+"][right_mark]' class='form-control' value='"+right_mark+"'></td><td><input type='text' name='selected_question["+total_selected+"][wrong_mark]' class='form-control' value='"+wrong_mark+"'></td><td><input type='text' name='selected_question["+total_selected+"][question_time]' class='form-control' value='"+question_time+"'></td></tr>";
+
     if(jQuery('.selected_question_block').find('[data-selquestionid="'+question_id+'"]').length  <= 0) {
         jQuery('.selected_question_block').append(tr_block);
     }

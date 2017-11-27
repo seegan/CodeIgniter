@@ -58,7 +58,7 @@ i.login-exceeded-ico {
   max-width: 90%;
 }
 
-.question_exam_filter .filter_question p {
+.question_exam_filter .filter_question p, .selected_question_list .selected_question_block p {
   margin: 0;
 }
 
@@ -70,7 +70,8 @@ i.login-exceeded-ico {
 
 .remove-circle {
   border-radius: 25px;
-  width: 30px;
-  height: 30px;
-  padding: 5px;  
+  width: 20px;
+  height: 20px;
+  padding: 0px;
+  font-size: 11px;  
 }

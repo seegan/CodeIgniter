@@ -36,7 +36,10 @@ class Exam extends MY_Controller {
         $data['javascripts'][] = base_url().'theme/assets/js/custom/add-exam.js';
 
 
-
+if($this->input->method('POST') == 'POST') {
+	echo "<pre>";
+	var_dump($this->input->post()); die();
+}
 
 		$question_data = [
 			'main_question'   => $this->input->post('main_question'),
