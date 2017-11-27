@@ -65,31 +65,29 @@
                                                                                 <div class="col-lg-2">
                                                                                     <div class="form-group row">
                                                                                         <div class="col-12">
-                                                                                            <a class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 subject_search" style="color:#fff;width: 100%;">Search&nbsp;<i class="ti-search"></i></a>
+                                                                                            <select class="form-control select2 ppage" name="ppage">
+                                                                                                <option disabled="">Data Per Page</option>
+                                                                                                <option  value="5">5 Per Page</option>
+                                                                                                <option selected="" value="20">20 Per Page</option>
+                                                                                                <option value="50">50 Per Page</option>
+                                                                                                <option value="100">100 Per Page</option>
+                                                                                            </select>                                                                                            
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-lg-2">
                                                                                     <div class="form-group row">
                                                                                         <div class="col-12">
-                                                                                            <select class="form-control select2 ppage" name="ppage">
-                                                                                                <option disabled="">Data Per Page</option>
-                                                                                                <option selected="" value="2">2 Per Page</option>
-                                                                                                <option value="3">3 Per Page</option>
-                                                                                                <option value="20">20 Per Page</option>
-                                                                                            </select>                                                                                            
+                                                                                            <a class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 subject_search" style="color:#fff;width: 100%;">Search&nbsp;<i class="ti-search"></i></a>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-
                                                                             </div>
-
-
-                                                                        </div>
+                                                                       </div>
                                                                         <div class="col-md-12 col-lg-2">
                                                                             <div class="action-group">
-                                                                                <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" data-doubleatt=".double-add-topic" data-singleatt="<?php echo base_url('admin/question/add'); ?>">Add</button>
-                                                                                <button style="display:none;" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-topic" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
+                                                                                <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" data-doubleatt=".double-add-subject" data-singleatt="<?php echo base_url('admin/subject/add'); ?>">Add</button>
+                                                                                <button style="display:none;" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-subject" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
