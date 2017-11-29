@@ -39,30 +39,42 @@ class Paginator
 			parse_str($this->CI->input->post('data'), $params);
 			$this->params = $params;
 
-	        $this->cpage = isset($params['cpage']) ? $params['cpage'] : 1;
-	        $this->question = isset($params['question']) ? $params['question'] : '';
-	        $this->subject = isset($params['subject']) ? $params['subject'] : '0';
-	        $this->topic = isset($params['topic']) ? $params['topic'] : '0';
-	        $this->type = isset($params['type']) ? $params['type'] : '0';
-	        $this->language = isset($params['language']) ? $params['language'] : '-';
-	        $this->year = isset($params['year']) ? $params['year'] : '0';
-	        $this->difficulty = isset($params['difficulty']) ? $params['difficulty'] : '0';
-	        $this->subject_name = isset($params['subject_name']) ? $params['subject_name'] : '';
-	        $this->topic_name = isset($params['topic_name']) ? $params['topic_name'] : '';
-	        $this->category_name = isset($params['category_name']) ? $params['category_name'] : '';
+	        $this->cpage 			= isset($params['cpage']) ? $params['cpage'] : 1;
+	        $this->question 		= isset($params['question']) ? $params['question'] : '';
+	        $this->subject 			= isset($params['subject']) ? $params['subject'] : '0';
+	        $this->topic 			= isset($params['topic']) ? $params['topic'] : '0';
+	        $this->type 			= isset($params['type']) ? $params['type'] : '0';
+	        $this->language 		= isset($params['language']) ? $params['language'] : '-';
+	        $this->year 			= isset($params['year']) ? $params['year'] : '0';
+	        $this->difficulty 		= isset($params['difficulty']) ? $params['difficulty'] : '0';
+	        $this->subject_name 	= isset($params['subject_name']) ? $params['subject_name'] : '';
+	        $this->topic_name 		= isset($params['topic_name']) ? $params['topic_name'] : '';
+	        $this->category_name 	= isset($params['category_name']) ? $params['category_name'] : '';
+	        $this->branch_name 		= isset($params['branch_name']) ? $params['branch_name'] : '';
+	        $this->phone_mobile 	= isset($params['phone_mobile']) ? $params['phone_mobile'] : '';
+	        $this->contact_person 	= isset($params['contact_person']) ? $params['contact_person'] : '';
+	        $this->batch_name 		= isset($params['batch_name']) ? $params['batch_name'] : '';
+	        $this->user_name 		= isset($params['user_name']) ? $params['user_name'] : '';
+	        $this->user_email 		= isset($params['user_email']) ? $params['user_email'] : '';
 	    }
 	    else {
-	        $this->cpage 		= ($this->CI->input->get('cpage')) ? abs( (int) $this->CI->input->get('cpage') ) : 1;
-	        $this->question 	= ($this->CI->input->get('question')) ? $this->CI->input->get('question') : '';
-	        $this->subject 		= ($this->CI->input->get('subject')) ? $this->CI->input->get('subject') : '0';
-	        $this->topic 		= ($this->CI->input->get('topic')) ?  $this->CI->input->get('topic')  : '0';
-	        $this->type 		= ($this->CI->input->get('type')) ? $this->CI->input->get('type')  : '0';
-	        $this->language 	= ($this->CI->input->get('language')) ? $this->CI->input->get('language')  : '-';
-	        $this->year 		= ($this->CI->input->get('year')) ? $this->CI->input->get('year')  : '0';
-	        $this->difficulty 	= ($this->CI->input->get('difficulty')) ? $this->CI->input->get('difficulty') : '0';
-	        $this->subject_name 	= ($this->CI->input->get('subject_name')) ? $this->CI->input->get('subject_name') : '';
-	        $this->topic_name 	= ($this->CI->input->get('topic_name')) ? $this->CI->input->get('topic_name') : '';
-	        $this->category_name 	= ($this->CI->input->get('category_name')) ? $this->CI->input->get('category_name') : '';
+	        $this->cpage 				= ($this->CI->input->get('cpage')) ? abs( (int) $this->CI->input->get('cpage') ) : 1;
+	        $this->question 			= ($this->CI->input->get('question')) ? $this->CI->input->get('question') : '';
+	        $this->subject 				= ($this->CI->input->get('subject')) ? $this->CI->input->get('subject') : '0';
+	        $this->topic 				= ($this->CI->input->get('topic')) ?  $this->CI->input->get('topic')  : '0';
+	        $this->type 				= ($this->CI->input->get('type')) ? $this->CI->input->get('type')  : '0';
+	        $this->language 			= ($this->CI->input->get('language')) ? $this->CI->input->get('language')  : '-';
+	        $this->year 				= ($this->CI->input->get('year')) ? $this->CI->input->get('year')  : '0';
+	        $this->difficulty 			= ($this->CI->input->get('difficulty')) ? $this->CI->input->get('difficulty') : '0';
+	        $this->subject_name 		= ($this->CI->input->get('subject_name')) ? $this->CI->input->get('subject_name') : '';
+	        $this->topic_name 			= ($this->CI->input->get('topic_name')) ? $this->CI->input->get('topic_name') : '';
+	        $this->category_name 		= ($this->CI->input->get('category_name')) ? $this->CI->input->get('category_name') : '';
+	        $this->branch_name 			= ($this->CI->input->get('branch_name')) ? $this->CI->input->get('branch_name') : '';
+	        $this->phone_mobile 		= ($this->CI->input->get('phone_mobile')) ? $this->CI->input->get('phone_mobile') : '';
+	        $this->contact_person 		= ($this->CI->input->get('contact_person')) ? $this->CI->input->get('contact_person') : '';
+	        $this->batch_name 			= ($this->CI->input->get('batch_name')) ? $this->CI->input->get('batch_name') : '';
+	        $this->user_name 			= ($this->CI->input->get('user_name')) ? $this->CI->input->get('user_name') : '';
+	        $this->user_email 			= ($this->CI->input->get('user_email')) ? $this->CI->input->get('user_email') : '';
 	    }
 	}
 
@@ -216,7 +228,7 @@ class Paginator
 		$data['result'] = $result_data->result();   
 
 	    $totalPage         	= ceil($data['total'] / $this->ppage);
-		$this->paginate_link = $this->add_query_arg( $this->args['arg'], base_url('admin/subject/topic') );
+		$this->paginate_link = $this->add_query_arg( $this->args['arg'], base_url('admin/question/category') );
 		$data['pagination'] = $this->createPaginationHtml();
 
 		$data['start_count'] = ($this->ppage * ($this->cpage - 1));
@@ -273,10 +285,124 @@ class Paginator
 	    return $data;
 	}
 
+	public function branch_list_pagination($args) {
+
+		$this->_args();
+		$condition = $this->listCondition();
+
+		$query = "SELECT `name`,`address`,`country`,`state`,`city`,`phone`,`contact_person`,`mobile`,`created_at` FROM `xtra_branch` WHERE `baned`=0 ${condition}";
+
+		$total_query        = "SELECT COUNT(1) as tot FROM (${query}) AS combined_table";
+
+		$count_query = $this->CI->db->query($total_query);
+		$row_count = $count_query->row();
+  
+		$this->total_rows = isset($row_count) ? $row_count->tot : 0;
+		$data['total']  = $this->total_rows;
+
+	    $offset             = ( $this->cpage * $this->ppage ) - $this->ppage;
+
+	    $result_query = $query . " ORDER BY ${args['orderby_field']} ${args['order_by']} LIMIT ${offset}, ".$this->ppage;
+		$result_data = $this->CI->db->query($result_query);	 
+		$data['result'] = $result_data->result();   
+
+	    $totalPage         	= ceil($data['total'] / $this->ppage);
+		$this->paginate_link = $this->add_query_arg( $this->args['arg'], base_url('admin/branch') );
+		$data['pagination'] = $this->createPaginationHtml();
+
+		$data['start_count'] = ($this->ppage * ($this->cpage - 1));
+	    $end_count = $data['start_count'] + count($data['result']);
+	    
+	    if( $end_count == 0) {
+	    	$start_count = 0;
+	    } else {
+	    	$start_count = $data['start_count'] + 1;
+	    }
+	    $data['status_txt'] = "<div class='' role='status' aria-live='polite'>Showing ".$start_count." to ".$end_count." of ".$this->total_rows." entries</div>";
+
+
+	    return $data;
+	}
+
+	public function batch_list_pagination($args) {
+
+		$this->_args();
+		$condition = $this->listCondition();
+
+		$query = "SELECT batch.`batch_name`,branch.name,batch.created_at FROM `xtra_batch` as batch left join xtra_branch as branch on batch.`branch_id`=branch.id WHERE batch.`active` =1 ${condition}";
+
+		$total_query        = "SELECT COUNT(1) as tot FROM (${query}) AS combined_table";
+
+		$count_query = $this->CI->db->query($total_query);
+		$row_count = $count_query->row();
+  
+		$this->total_rows = isset($row_count) ? $row_count->tot : 0;
+		$data['total']  = $this->total_rows;
+
+	    $offset             = ( $this->cpage * $this->ppage ) - $this->ppage;
+
+	    $result_query = $query . " ORDER BY ${args['orderby_field']} ${args['order_by']} LIMIT ${offset}, ".$this->ppage;
+		$result_data = $this->CI->db->query($result_query);	 
+		$data['result'] = $result_data->result();   
+
+	    $totalPage         	= ceil($data['total'] / $this->ppage);
+		$this->paginate_link = $this->add_query_arg( $this->args['arg'], base_url('admin/branch/batch') );
+		$data['pagination'] = $this->createPaginationHtml();
+
+		$data['start_count'] = ($this->ppage * ($this->cpage - 1));
+	    $end_count = $data['start_count'] + count($data['result']);
+	    
+	    if( $end_count == 0) {
+	    	$start_count = 0;
+	    } else {
+	    	$start_count = $data['start_count'] + 1;
+	    }
+	    $data['status_txt'] = "<div class='' role='status' aria-live='polite'>Showing ".$start_count." to ".$end_count." of ".$this->total_rows." entries</div>";
+
+
+	    return $data;
+	}
 
 
 
+	public function user_list_pagination($args) {
 
+		$this->_args();
+		$condition = $this->listCondition();
+
+		$query = "SELECT `user_id`,`email`,`username`,`created_at` FROM `users` WHERE `banned` = 1 ${condition}";
+
+		$total_query        = "SELECT COUNT(1) as tot FROM (${query}) AS combined_table";
+
+		$count_query = $this->CI->db->query($total_query);
+		$row_count = $count_query->row();
+  
+		$this->total_rows = isset($row_count) ? $row_count->tot : 0;
+		$data['total']  = $this->total_rows;
+
+	    $offset             = ( $this->cpage * $this->ppage ) - $this->ppage;
+
+	    $result_query = $query . " ORDER BY ${args['orderby_field']} ${args['order_by']} LIMIT ${offset}, ".$this->ppage;
+		$result_data = $this->CI->db->query($result_query);	 
+		$data['result'] = $result_data->result();   
+
+	    $totalPage         	= ceil($data['total'] / $this->ppage);
+		$this->paginate_link = $this->add_query_arg( $this->args['arg'], base_url('admin/branch/user') );
+		$data['pagination'] = $this->createPaginationHtml();
+
+		$data['start_count'] = ($this->ppage * ($this->cpage - 1));
+	    $end_count = $data['start_count'] + count($data['result']);
+	    
+	    if( $end_count == 0) {
+	    	$start_count = 0;
+	    } else {
+	    	$start_count = $data['start_count'] + 1;
+	    }
+	    $data['status_txt'] = "<div class='' role='status' aria-live='polite'>Showing ".$start_count." to ".$end_count." of ".$this->total_rows." entries</div>";
+
+
+	    return $data;
+	}
 
 
 
@@ -338,7 +464,31 @@ class Paginator
 
 	      if($this->category_name != ''){
 	    	$condition .= " AND category LIKE  '%".$this->category_name."%'";
-	    	$this->args['arg']['category'] = $this->category_name;
+	    	$this->args['arg']['category_name'] = $this->category_name;
+	    }
+	     if($this->branch_name != ''){
+	    	$condition .= " AND name LIKE  '%".$this->branch_name."%'";
+	    	$this->args['arg']['branch_name'] = $this->branch_name;
+	    }
+	     if($this->phone_mobile != ''){
+	    	$condition .= " AND (phone LIKE  '%".$this->phone_mobile."%' OR mobile LIKE '%".$this->phone_mobile."%')";
+	    	$this->args['arg']['phone_mobile'] = $this->phone_mobile;
+	    }
+	     if($this->contact_person != ''){
+	    	$condition .= " AND contact_person LIKE  '%".$this->contact_person."%'";
+	    	$this->args['arg']['contact_person'] = $this->contact_person;
+	    }
+	    if($this->batch_name != ''){
+	    	$condition .= " AND batch_name LIKE  '%".$this->batch_name."%'";
+	    	$this->args['arg']['batch_name'] = $this->batch_name;
+	    }
+	    if($this->user_name != ''){
+	    	$condition .= " AND username LIKE  '%".$this->user_name."%'";
+	    	$this->args['arg']['user_name'] = $this->user_name;
+	    }
+	    if($this->user_email != ''){
+	    	$condition .= " AND email LIKE  '%".$this->user_email."%'";
+	    	$this->args['arg']['user_email'] = $this->user_email;
 	    }
 	    return $condition;
 	} 

@@ -22,6 +22,22 @@ class Branch extends MY_Controller {
 /*var_dump($this->auth_role);
 		var_dump($ss);*/
 /*		var_dump("expression"); die();*/
+
+
+		$this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+        
+        $result_args = array(
+            'orderby_field' => 'created_at',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['branch_list'] = $this->paginatefilter->branch_list_pagination($result_args);
+
+		$data['javascripts'][] = base_url().'theme/assets/js/custom/list-branch.js';
+
 		$data['branch_users'] = unusedBranchUsers();
 		$data['subjects'] = getSubjects(1);
 
