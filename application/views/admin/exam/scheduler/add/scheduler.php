@@ -242,13 +242,6 @@
                                                                 <select class="form-control select2 question_subject" id="batchs_filter">
                                                                     <option disabled>Select Subject</option>
                                                                     <option value="0">All Subjects</option>
-                                                                    <?php 
-                                                                        if($subjects) {
-                                                                            foreach ($subjects as $subject) {
-                                                                                echo "<option value='".$subject->id."'>".ucfirst($subject->subject)."</option>";
-                                                                            }
-                                                                        }
-                                                                    ?>
                                                                 </select>
                                                             </div>
                                                         </div>
