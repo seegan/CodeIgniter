@@ -57,5 +57,12 @@ $config['subject_topic_table']          = 'xtra_subject_topic';
 
 $config['category_table']            	= 'xtra_category';
 
+
+$config['exam_table']            	= 'xtra_exam';
+$config['exam_questions_table']            	= 'xtra_exam_questions';
+
+
+
+
 /* End of file db_tables.php */
 /* Location: /community_auth/config/db_tables.php */

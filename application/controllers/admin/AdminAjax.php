@@ -11,9 +11,9 @@ class AdminAjax extends MY_Controller {
 	}
 
 	public function index() {
-		if(!$this->input->is_ajax_request() || !$this->input->post('action')) {
+		/*if(!$this->input->is_ajax_request() || !$this->input->post('action')) {
 			die();
-		}
+		}*/
 		$this->action_val = ( $this->input->post('action') ) ? $this->input->post('action') : $this->input->get('action')  ;
 		$function = $this->action_val;
 		echo $this->$function();
@@ -108,5 +108,42 @@ class AdminAjax extends MY_Controller {
 
 
 
+
+
+
+    private function search_exam() {
+        $this->load->helper(array('exam_helper'));
+        $this->load->model('exam_model', 'exam');
+        $data['success'] = 0;
+        $search_term = $this->input->post('search_key');
+        $data['result'] = getExamByName($search_term);
+
+        if($data['result']) {
+            $data['success'] = 1;
+        }
+        echo json_encode($data);
+        die();
+    }
+
+
+    public function get_scheduler_data() {
+        $this->load->helper(array('exam_helper'));
+        $this->load->model('exam_model', 'exam');
+        $data['success'] = 0;
+        
+        //$exam_id = $this->input->post('exam_id');
+        $exam_id = 5;
+
+        $dd = getSubjectsFromExam($exam_id);
+        
+        echo "<pre>";
+        var_dump($dd);
+
+      /*  if($data['result']) {
+            $data['success'] = 1;
+        }
+        echo json_encode($data);*/
+        die();
+    }
 
 }

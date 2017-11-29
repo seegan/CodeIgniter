@@ -10,6 +10,7 @@
 
         <!-- Plugins  -->
         <script src="<?php echo base_url(); ?>theme/assets/js/jquery.min.js"></script>
+        <script src="<?php echo base_url(); ?>theme/assets/js/jquery-ui.js"></script>
         <script src="<?php echo base_url(); ?>theme/assets/js/popper.min.js"></script><!-- Popper for Bootstrap -->
         <script src="<?php echo base_url(); ?>theme/assets/js/bootstrap.min.js"></script>
         <script src="<?php echo base_url(); ?>theme/assets/js/detect.js"></script>

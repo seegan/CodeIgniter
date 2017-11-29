@@ -75,3 +75,12 @@ i.login-exceeded-ico {
   padding: 0px;
   font-size: 11px;  
 }
+.block-readonly {
+  position: relative;
+}
+.button-readonly {
+  position: absolute;
+  right: 0;
+  top: 12px;
+  display: none;
+}

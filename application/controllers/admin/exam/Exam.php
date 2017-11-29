@@ -35,14 +35,12 @@ class Exam extends MY_Controller {
         $data['javascripts'][] = base_url().'jsplugins/tinymce/tinymce.min.js';
         $data['javascripts'][] = base_url().'theme/assets/js/custom/add-exam.js';
 
-
-if($this->input->method('POST') == 'POST') {
-	echo "<pre>";
-	var_dump($this->input->post()); die();
-}
-
-		$question_data = [
-			'main_question'   => $this->input->post('main_question'),
+		$exam_data = [
+			'exam_name'   => $this->input->post('exam_name'),
+			'exam_duration' => $this->input->post('exam_duration'),
+			'total_questions' => $this->input->post('total_questions'),
+			'total_marks' => $this->input->post('total_marks'),
+			'description' => trim($this->input->post('test_description')),
 			'created_at' => date('Y-m-d H:i:s'),
 		];
 
@@ -53,20 +51,60 @@ if($this->input->method('POST') == 'POST') {
 
 		$validation_rules = [
 			[
-				'field' => 'main_question',
-				'label' => 'Question',
+				'field' => 'exam_name',
+				'label' => 'Exam Name',
 				'rules' => 'required',
 				'errors' => [
-					'required' => 'Question Required.',
+					'required' => 'Exam Name Required.',
 				]
-			]
+			],
+			[
+				'field' => 'exam_duration',
+				'label' => 'Exam Duration',
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Exam Duration Required.',
+				]
+			],
+			[
+				'field' => 'total_questions',
+				'label' => 'Total Questions',
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Total Questions Required.',
+				]
+			],
+			[
+				'field' => 'total_marks',
+				'label' => 'Total Marks',
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Total Marks Required.',
+				]
+			],
 		];
 
 		$this->form_validation->set_rules( $validation_rules );
-
         if ($this->form_validation->run() !== FALSE)
         {
-            
+			$this->db->set($exam_data)
+				->insert(db_table('exam_table'));
+
+			if( $this->db->affected_rows() == 1 ){
+
+				$questions = serialize(array());
+				if( $this->input->post('selected_question') ) {
+					$questions = serialize($this->input->post('selected_question'));
+				}
+				$exam_id = $this->db->insert_id();
+
+				$exam_question_data = ['exam_id' => $exam_id, 'questions' => $questions ];
+				$this->db->set($exam_question_data)->insert(db_table('exam_questions_table'));
+				if( $this->db->affected_rows() == 1 ){
+					redirect('admin/exam'); die();
+				}
+				
+			}  
         }
 
         $page_content = $this->load->view('admin/exam/exam/exam_add', $data, TRUE);

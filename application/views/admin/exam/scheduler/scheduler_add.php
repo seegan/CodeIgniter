@@ -26,7 +26,7 @@
                                         <div class="page-container">
                                             <div class="row">
                                                 <div class="col-lg-8">
-                                                    <?php $this->load->view('admin/candidate/candidate/add/candidate'); ?>
+                                                    <?php $this->load->view('admin/exam/scheduler/add/scheduler'); ?>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <h4 class="header-title m-t-0 text-center">Recently Added</h4>
@@ -49,3 +49,7 @@
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
+
+
+
+

@@ -26,7 +26,7 @@
                                 <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="mdi mdi-alarm-check"></i><span> Exam Scheduler </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?php echo base_url('admin/exam') ?>">Exam</a></li>
-                                    <li><a href="<?php echo base_url('admin/exam/schedule') ?>">Scheduler</a></li>
+                                    <li><a href="<?php echo base_url('admin/exam/scheduler') ?>">Scheduler</a></li>
                                 </ul>
                             </li>
 

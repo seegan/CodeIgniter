@@ -17,29 +17,28 @@
         ?>
         </div>
     </div>
-
     <div class="form-group row">
-        <label for="inputEmail3" class="col-4 col-form-label text-right">Test Name<span class="text-danger">*</span></label>
+        <label for="inputEmail3" class="col-4 col-form-label text-right">Exam Name<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="category" placeholder="Category" value="<?php echo set_value('category'); ?>">
+            <input type="text" required class="form-control" name="exam_name" placeholder="Exam Name" value="<?php echo set_value('test_name'); ?>">
         </div>
     </div>                                
     <div class="form-group row">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Duration<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="duration" placeholder="Duration" value="<?php echo set_value('description'); ?>">
+            <input type="text" required class="form-control" name="exam_duration" placeholder="Duration" value="<?php echo set_value('exam_duration'); ?>">
         </div>
     </div>   
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Total Questions<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="duration" placeholder="Duration" value="<?php echo set_value('description'); ?>">
+            <input type="text" required class="form-control" name="total_questions" placeholder="Total Questions" value="<?php echo set_value('total_questions'); ?>">
         </div>
     </div> 
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Total Marks<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="duration" placeholder="Duration" value="<?php echo set_value('description'); ?>">
+            <input type="text" required class="form-control" name="total_marks" placeholder="Total Marks" value="<?php echo set_value('total_marks'); ?>">
         </div>
     </div> 
     <div class="row form-group">
@@ -47,13 +46,11 @@
         <div class="col-7">
             <textarea id="test_description" name="test_description"></textarea>
         </div>
-    </div> 
+    </div>
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Questions<span class="text-danger">*</span></label>
         <div class="col-7">
-
-        <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5 select-question" data-toggle="modal" data-target=".questions-model">Add Questions &nbsp; <i class="mdi mdi-library-plus"></i></button>
-
+            <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5 select-question" data-toggle="modal" data-target=".questions-model">Add Questions &nbsp; <i class="mdi mdi-library-plus"></i></button>
         </div>
     </div> 
 

@@ -23,6 +23,8 @@
 
         <link href="<?php echo base_url(); ?>jsplugins/footable/css/footable.core.css" rel="stylesheet">
 
+        <link href="<?php echo base_url(); ?>theme/assets/css/jquery-ui.css" rel="stylesheet">
+
         <link href="<?php echo base_url(); ?>theme/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url(); ?>theme/assets/css/icons.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url(); ?>theme/assets/css/style_dark.css" rel="stylesheet" type="text/css">

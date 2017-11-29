@@ -72,24 +72,16 @@ class Category extends MY_Controller {
 		];
 
 		$this->form_validation->set_rules( $validation_rules );
+        if ($this->form_validation->run() !== FALSE) {
 
-        if ($this->form_validation->run() == FALSE)
-        {
-            $page_content = $this->load->view('admin/question/category/category_add', '', TRUE);
-        }
-        else
-        {
 			$this->db->set($category_data)
 				->insert(db_table('category_table'));
-
 			if( $this->db->affected_rows() == 1 ){
 				redirect('admin/question/category'); die();
 			}
-			else {
-				$page_content = $this->load->view('admin/question/category/category_add', '', TRUE);
-			}
         }
 
+        $page_content = $this->load->view('admin/question/category/category_add', '', TRUE);
 
 
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
