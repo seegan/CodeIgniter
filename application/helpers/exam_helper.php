@@ -10,17 +10,29 @@ if( ! function_exists('getExamByName') )
 	}
 }
 
-if( ! function_exists('getSubjectsFromExam') )
+if( ! function_exists('getEligibleBatchsFromExam') )
 {
-	function getSubjectsFromExam($exam_id = 0)
+	function getEligibleBatchsFromExam($exam_id = 0)
 	{
 		$CI =& get_instance();
 		$serialized_questions = $CI->exam->getQuestionsFromExam($exam_id);
 		$question_data = unserialize($serialized_questions->questions);
 		if( is_array($question_data) && count($question_data) > 0 ) {
 			$question_ids = implode(",", array_keys($question_data));
-			$questions = $CI->exam->getQuestionAccessBranchs($question_ids);
-			return $questions;
+			$subjects = $CI->exam->getSubjectsFromQuestions($question_ids);
+			if($subjects && is_array($subjects) && count($subjects) > 0) {
+
+				$subject_arr = [];
+				foreach ($subjects as $s_value) {
+					$subject_arr[] = $s_value->subject;
+				}
+
+				$subject_count = count($subject_arr);
+				$subjects_str = implode(",", $subject_arr);
+
+				$batchs = $CI->exam->getBatchBasedSubject($subjects_str, $subject_count);
+				return $batchs;
+			}
 		}
 
 		return false;

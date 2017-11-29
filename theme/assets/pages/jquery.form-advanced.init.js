@@ -204,11 +204,3 @@ $('#reportrange').daterangepicker({
     console.log(start.toISOString(), end.toISOString(), label);
     $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 });
-
-
-function populateMultiSelect(sel = '') {
-
-    //advance multiselect start
-    jQuery(sel).multiSelect( 'refresh' );    
-
-}

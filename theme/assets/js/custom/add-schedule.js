@@ -65,6 +65,7 @@ jQuery(document).ready(function () {
         }
     });
 
+
     jQuery('.button-readonly').on('click', function(){
         var selector = jQuery(this).parent();
 
@@ -72,7 +73,80 @@ jQuery(document).ready(function () {
         jQuery('.exam_id').val(0);
         jQuery('#schedule_exam').val('').focus();
         jQuery(this).css('display', 'none');
+
+
+        var batchSel = document.getElementById("question_batchs"); 
+        batchSel.length = 1;
+        jQuery("#question_batchs").change();
+        populateMultiSelect("#question_batchs");
+
     });
+
+
+
+
+
+    //On change Btch Multi select Populate batch filter on model
+    jQuery('#question_batchs').on('change', function(){
+        var selected_batchs = jQuery("#question_batchs option:selected").map(function() {
+            return { key : jQuery(this).val(), value : jQuery(this).text() };
+        }).toArray();
+
+
+        var filterBatchSel = document.getElementById("batchs_filter"); 
+        filterBatchSel.length = 1
+        jQuery("#batchs_filter").change();
+        filterBatchSel.options[filterBatchSel.options.length] = new Option('All Batchs', '0');
+        if(1 == 1) {
+            for (var batch in selected_batchs) {
+                if (typeof selected_batchs[batch].key !== "undefined" &&  selected_batchs[batch].key  !== "") {
+                    filterBatchSel.options[filterBatchSel.options.length] = new Option(selected_batchs[batch].value, selected_batchs[batch].key);
+                }
+            }
+        }
+        jQuery("#batchs_filter").change();
+
+
+
+
+
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Model Close
+    jQuery('.close-selected-question').on('click', function() {
+        jQuery('.selected-questions-model').find('.close').click()
+    });
+    jQuery('.close-select-question').on('click', function() {
+        jQuery('.questions-model').find('.close').click()
+    });
+
+    jQuery('#model_submit').on('click', function() {
+        jQuery('.selected-questions-model').find('.close').click();
+        jQuery('.questions-model').find('.close').click();
+    });
+
+
+
+
+
+
+
 
 
 
@@ -81,18 +155,31 @@ jQuery(document).ready(function () {
 });
 
 
-    
 function processingSchedulerFilter(exam_id) {
     jQuery.ajax({
         url: filter_ajaxurl,
-        type: 'POST',
+        type: "POST",
         dataType: "json",
         data: {
-            action: 'get_scheduler_data',
+            action: "get_scheduler_data",
             exam_id: exam_id
         },
         success: function( data ) {
-            
+            var batchs = data.result;
+            var batchSel = document.getElementById("question_batchs"); 
+            batchSel.length = 1;
+
+            jQuery("#question_batchs").change();
+            if(data.success) {
+                for (var batch in batchs) {
+                    if (typeof  batchs[batch].batch_id  !== "undefined") {
+                        batchSel.options[batchSel.options.length] = new Option(batchs[batch].batch_name, batchs[batch].batch_id);
+                    }
+                }
+            }
+            jQuery("#question_batchs").change();
+            populateMultiSelect("#question_batchs");
+
         }
     });
 }

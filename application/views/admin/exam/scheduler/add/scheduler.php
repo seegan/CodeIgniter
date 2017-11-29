@@ -158,17 +158,42 @@
         </div>
     </div> 
     <div class="row form-group">
-        <label for="inputEmail3" class="col-4 col-form-label text-right">Total Marks<span class="text-danger">*</span></label>
+        <label for="inputEmail3" class="col-4 col-form-label text-right">Schedule To Batchs<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="total_marks" placeholder="Total Marks" value="<?php echo set_value('total_marks'); ?>">
+            <select name="batchs[]" class="multi-select" required multiple="" id="question_batchs" >
+                <option disabled selected value=""> -- Selected Batchs -- </option>
+            </select>
         </div>
     </div>
-    <div class="row form-group">
-        <label for="inputEmail3" class="col-4 col-form-label text-right">Questions<span class="text-danger">*</span></label>
+    <div class="form-group row">
+        <label for="inputEmail3" class="col-4 col-form-label text-right">Schedule To</label>
         <div class="col-7">
-            <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5 select-question" data-toggle="modal" data-target=".questions-model">Add Questions &nbsp; <i class="mdi mdi-library-plus"></i></button>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <div style="margin-top: 5px;">
+                            <div class="radio radio-success form-check-inline">
+                                <select class="form-control">
+                                    <option value="1">All Students</option>
+                                    <option value="2">Selected Students</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <div style="margin-top: 5px;">
+                            <div class="radio radio-success form-check-inline">
+                                <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5 select-question" data-toggle="modal" data-target=".questions-model">Selece Students &nbsp; <i class="mdi mdi-library-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div> 
+    </div>
+
 
 
 
@@ -214,7 +239,7 @@
                                                     <div class="col-lg-3 col-md-4">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <select class="form-control select2 question_subject" name="subject">
+                                                                <select class="form-control select2 question_subject" id="batchs_filter">
                                                                     <option disabled>Select Subject</option>
                                                                     <option value="0">All Subjects</option>
                                                                     <?php 
@@ -490,11 +515,7 @@
                         <div class="form-group text-right m-b-0">
                             <div style="margin-top:30px;">
                                 <button type="button" class="btn btn-info btn-custom waves-effect w-md waves-light m-b-5 close-selected-question"><i class="mdi mdi-arrow-left-bold"></i>Back To Questions &nbsp; </button> 
-
-                                <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5"> Submit </button> 
-
-
-                                                             
+                                <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" id="model_submit"> Submit </button>                 
                             </div>
                         </div>
 

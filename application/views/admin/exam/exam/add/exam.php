@@ -374,11 +374,7 @@
                         <div class="form-group text-right m-b-0">
                             <div style="margin-top:30px;">
                                 <button type="button" class="btn btn-info btn-custom waves-effect w-md waves-light m-b-5 close-selected-question"><i class="mdi mdi-arrow-left-bold"></i>Back To Questions &nbsp; </button> 
-
-                                <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5"> Submit </button> 
-
-
-                                                             
+                                <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" id="model_submit"> Submit </button>                
                             </div>
                         </div>
 

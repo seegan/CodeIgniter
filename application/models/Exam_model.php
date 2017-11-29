@@ -8,7 +8,6 @@ class Exam_model extends MY_Model {
 		return $query->result();
 	}
 
-
 	public function getQuestionsFromExam($exam_id = 0) {
 		$query = $this->db->query("SELECT eq.questions FROM ".$this->db_table('exam_questions_table')." as eq WHERE eq.active = 1 AND eq.exam_id = ${exam_id} LIMIT 1");
 		return $query->row();
@@ -19,10 +18,18 @@ class Exam_model extends MY_Model {
 		return $query->result();
 	}
 
-	public function getQuestionAccessBranchs($question_ids = 0) {
+
+	public function getSubjectsFromQuestions($question_ids = 0) {
 		$query = $this->db->query("SELECT q.subject FROM ".$this->db_table('question_table')." as q WHERE q.active = 1 AND q.id IN (${question_ids}) GROUP BY q.subject");
 		return $query->result();
 	}
 
+	public function getBatchBasedSubject($subject_ids = 0, $subject_count) {
+		$query = $this->db->query("SELECT bs.batch_id, b.branch_id, b.batch_name FROM ".$this->db_table('batch_subject_table')." as bs JOIN  ".$this->db_table('batch_table')." as b ON bs.batch_id = b.id WHERE bs.subject_id IN (${subject_ids}) AND b.active = 1 GROUP BY bs.batch_id HAVING COUNT(bs.subject_id) = ${subject_count}");
+
+		return $query->result();
+	}
+
+/**/
 
 }

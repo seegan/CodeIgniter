@@ -140,11 +140,6 @@ jQuery(document).ready(function () {
         var remove_id = jQuery(this).attr('data-selremoveid');
         removeQuestion(remove_id);
     });
-/*    jQuery('.selected-question').on('click', function() {
-        jQuery('.questions-model .close').click();
-    });*/
-
-
 
 
 
@@ -156,11 +151,17 @@ jQuery(document).ready(function () {
 
     //Model Close
     jQuery('.close-selected-question').on('click', function() {
-        jQuery('.selected-questions-model').find('.close').click()
+        jQuery('.selected-questions-model').find('.close').click();
     });
     jQuery('.close-select-question').on('click', function() {
-        jQuery('.questions-model').find('.close').click()
+        jQuery('.questions-model').find('.close').click();
     });
+
+    jQuery('#model_submit').on('click', function() {
+        jQuery('.selected-questions-model').find('.close').click();
+        jQuery('.questions-model').find('.close').click();
+    });
+
 
 });
 

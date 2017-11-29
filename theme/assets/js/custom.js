@@ -286,6 +286,8 @@ function loadRepeter(){
     });                
 }
 
+
+
 function assignNameData() {
   var option_arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
   var type = jQuery('#question_type').val();
@@ -417,3 +419,10 @@ function getPathFromUrl(url) {
 Array.prototype.diff = function diff(a) {
     return this.filter(function(i) {return a.indexOf(i) < 0;});
 };
+
+
+
+function populateMultiSelect(sel = '') {
+    //advance multiselect start
+    jQuery(sel).multiSelect( 'refresh' );    
+}

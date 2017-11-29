@@ -51,12 +51,11 @@ class Batch extends MY_Controller {
                 });
         </script>
         ';
-		$data['subjects'] = getSubjects(1);
+		$data['branchs'] = getAdminBranch(1);
 
 		$page_content = $this->load->view('admin/branch/batch/batch', $data, TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
-
 
 
 		echo $this->load->view('admin/common/header', '', TRUE);

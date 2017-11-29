@@ -126,7 +126,6 @@ class Candidate extends MY_Controller {
                                         if (typeof  batchs[batch].id  !== "undefined") {
                                             batchSel.options[batchSel.options.length] = new Option(batchs[batch].batch_name, batchs[batch].id);
                                         }
-                                        
                                     }
                                 }
 

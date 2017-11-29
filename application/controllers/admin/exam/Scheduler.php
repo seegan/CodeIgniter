@@ -30,6 +30,12 @@ class Scheduler extends MY_Controller {
 	public function add()
 	{
 
+		$data['final_foot'] = '<script type="text/javascript">
+            jQuery(document).ready(function(){
+                populateMultiSelect("#question_batchs");
+            });
+        </script>';
+
         $data['javascripts'][] = base_url().'jsplugins/tinymce/tinymce.min.js';
         $data['javascripts'][] = base_url().'theme/assets/js/custom/add-schedule.js';
 
