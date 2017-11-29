@@ -87,6 +87,57 @@ class AdminAjax extends MY_Controller {
 		return $this->load->view('admin/question/category/ajax/filter/list', $data, TRUE);
 	}
 
+    private function branch_filter() {
+
+        $this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+        $result_args = array(
+            'orderby_field' => 'created_at',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['branch_list'] = $this->paginatefilter->branch_list_pagination($result_args);
+
+
+        return $this->load->view('admin/branch/branch/ajax/filter/list', $data, TRUE);
+    }
+
+    private function batch_filter() {
+
+        $this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+        $result_args = array(
+            'orderby_field' => 'created_at',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['batch_list'] = $this->paginatefilter->batch_list_pagination($result_args);
+
+
+        return $this->load->view('admin/branch/batch/ajax/filter/list', $data, TRUE);
+    }
+
+    private function user_filter() {
+
+        $this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+        $result_args = array(
+            'orderby_field' => 'created_at',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['user_list'] = $this->paginatefilter->user_list_pagination($result_args);
+
+
+        return $this->load->view('admin/branch/user/ajax/filter/list', $data, TRUE);
+    }
+
 
 	private function question_exam_filter() {
 

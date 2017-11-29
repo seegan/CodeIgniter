@@ -16,7 +16,22 @@ class User extends MY_Controller {
 		var_dump($ss);*/
 
 /*		var_dump("expression"); die();*/
-		$page_content = $this->load->view('admin/branch/user/user', '', TRUE);
+
+		$this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+        
+        $result_args = array(
+            'orderby_field' => 'created_at',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['user_list'] = $this->paginatefilter->user_list_pagination($result_args);
+
+		$data['javascripts'][] = base_url().'theme/assets/js/custom/list-user.js';
+		
+		$page_content = $this->load->view('admin/branch/user/user', $data, TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
 

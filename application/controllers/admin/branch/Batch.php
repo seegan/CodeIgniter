@@ -53,6 +53,20 @@ class Batch extends MY_Controller {
         ';
 		$data['branchs'] = getAdminBranch(1);
 
+		$this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+        
+        $result_args = array(
+            'orderby_field' => 'created_at',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['batch_list'] = $this->paginatefilter->batch_list_pagination($result_args);
+
+		$data['javascripts'][] = base_url().'theme/assets/js/custom/list-batch.js';
+
 		$page_content = $this->load->view('admin/branch/batch/batch', $data, TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
@@ -157,7 +171,8 @@ class Batch extends MY_Controller {
 						->insert(db_table('batch_subject_table'));
 					}
 				}
-				redirect('admin/branch/batch'); die();
+				redirect('admin/branch/batch'); 
+				die();
 			}
         }
 
