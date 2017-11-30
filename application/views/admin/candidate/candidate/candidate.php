@@ -170,7 +170,7 @@
                                                 </div>
                                                 <hr>
                                                 <div class="candidate_filter">
-                                                    <?php $this->load->view('admin/candidate/candidate/ajax/filter/candidate/list') ?>
+                                                    <?php $this->load->view('admin/candidate/candidate/ajax/filter/list') ?>
                                                 </div>
                                             </div>
                                         </div>

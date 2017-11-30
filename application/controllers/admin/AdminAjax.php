@@ -155,7 +155,7 @@ class AdminAjax extends MY_Controller {
             'condition' => '',
         );
         $data['data_list'] = $this->paginatefilter->candidate_list_pagination($result_args);
-        return $this->load->view('admin/candidate/candidate/ajax/filter/candidate/list', $data, TRUE);
+        return $this->load->view('admin/candidate/candidate/ajax/filter/list', $data, TRUE);
     }
 
     private function search_exam() {
@@ -223,7 +223,7 @@ class AdminAjax extends MY_Controller {
             'condition' => '',
         );
         $data['data_list'] = $this->paginatefilter->candidate_list_pagination($result_args);
-        return $this->load->view('admin/candidate/candidate/ajax/filter/candidate/list', $data, TRUE);
+        return $this->load->view('admin/exam/scheduler/ajax/filter/candidate/list', $data, TRUE);
     }
 
 
