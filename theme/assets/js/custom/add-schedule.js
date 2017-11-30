@@ -83,20 +83,27 @@ jQuery(document).ready(function () {
     });
 
 
-
-
-
     //On change Btch Multi select Populate batch filter on model
     jQuery('#question_batchs').on('change', function(){
         var selected_batchs = jQuery("#question_batchs option:selected").map(function() {
             return { key : jQuery(this).val(), value : jQuery(this).text() };
         }).toArray();
 
+        var selected_batch_ids = jQuery("#question_batchs option:selected").map(function() {
+            if(jQuery(this).val() !== '') {
+                return jQuery(this).val();
+            }
+        }).toArray();
+
+        if(selected_batch_ids == '') {
+            selected_batch_ids = '-1';
+        }
+
 
         var filterBatchSel = document.getElementById("batchs_filter"); 
         filterBatchSel.length = 1
         jQuery("#batchs_filter").change();
-        filterBatchSel.options[filterBatchSel.options.length] = new Option('All Batchs', '0');
+        filterBatchSel.options[filterBatchSel.options.length] = new Option('All Batchs', selected_batch_ids);
         if(1 == 1) {
             for (var batch in selected_batchs) {
                 if (typeof selected_batchs[batch].key !== "undefined" &&  selected_batchs[batch].key  !== "") {
@@ -117,9 +124,49 @@ jQuery(document).ready(function () {
 
 
 
+    //Scheduler Add Students
+    jQuery('.candidate_search').on('click', function(){
 
+       var filter_action   = jQuery('.filter_action').val();
+        var container_class = '.'+filter_action;
+        jQuery.ajax({
+            type: "POST",
+            url: filter_ajaxurl,
+            data: {
+                action : filter_action,
+                data : jQuery('.filter-section :input').serialize(),
+                action_from : 'page_filter',
+            },
+            success: function (data) { 
+                jQuery(container_class).html(data);
+                populateCheckAfterAjax();
+            }
+        });
 
+    });
 
+    jQuery('body').on('click', 'a.questions.page-link', function() {
+        var attr = jQuery(this).attr("href");
+        var string = parseUrl(attr).search;
+        string = getPathFromUrl(string);
+
+        var filter_action   = jQuery('.filter_action').val();
+        var container_class = '.'+filter_action;
+        jQuery.ajax({
+            type: "POST",
+            url: filter_ajaxurl,
+            data: {
+                action : filter_action,
+                data : string,
+                action_from : 'page_link',
+            },
+            success: function (data) { 
+                jQuery(container_class).html(data);
+                populateCheckAfterAjax();
+            }
+        });
+        return false;
+    });
 
 
 

@@ -41,7 +41,7 @@ class AdminAjax extends MY_Controller {
         $this->load->library('paginator', '', 'paginatefilter');
         $this->paginatefilter->ppage = 20;
         $result_args = array(
-            'orderby_field' => 'created_at',
+            'orderby_field' => 's.created_at',
             'page' => $this->paginatefilter->cpage,
             'order_by' => 'DESC',
             'items_per_page' => $this->paginatefilter->ppage ,
@@ -139,27 +139,24 @@ class AdminAjax extends MY_Controller {
     }
 
 
-	private function question_exam_filter() {
 
+
+
+
+    private function candidate_filter() {
         $this->load->library('paginator', '', 'paginatefilter');
-        $this->paginatefilter->ppage = 2;
+        $this->paginatefilter->ppage = 20;
 
         $result_args = array(
-            'orderby_field' => 'q.created_at',
+            'orderby_field' => 'c.registration_date',
             'page' => $this->paginatefilter->cpage,
             'order_by' => 'DESC',
             'items_per_page' => $this->paginatefilter->ppage ,
             'condition' => '',
         );
-        $data['data_list'] = $this->paginatefilter->question_list_pagination($result_args);
-
-		return $this->load->view('admin/exam/exam/ajax/filter/question/list', $data, TRUE);
-	}
-
-
-
-
-
+        $data['data_list'] = $this->paginatefilter->candidate_list_pagination($result_args);
+        return $this->load->view('admin/candidate/candidate/ajax/filter/candidate/list', $data, TRUE);
+    }
 
     private function search_exam() {
         $this->load->helper(array('exam_helper'));
@@ -176,7 +173,10 @@ class AdminAjax extends MY_Controller {
     }
 
 
-    public function get_scheduler_data() {
+
+
+
+    private function get_scheduler_data() {
         $this->load->helper(array('exam_helper'));
         $this->load->model('exam_model', 'exam');
         $data['success'] = 0;
@@ -189,5 +189,44 @@ class AdminAjax extends MY_Controller {
         echo json_encode($data);
         die();
     }
+
+
+
+
+    private function question_exam_filter() {
+
+        $this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+
+        $result_args = array(
+            'orderby_field' => 'q.created_at',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['data_list'] = $this->paginatefilter->question_list_pagination($result_args);
+
+        return $this->load->view('admin/exam/exam/ajax/filter/question/list', $data, TRUE);
+    }
+
+    private function candidate_scheduler_filter() {
+
+        $this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+
+        $result_args = array(
+            'orderby_field' => 'c.registration_date',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['data_list'] = $this->paginatefilter->candidate_list_pagination($result_args);
+        return $this->load->view('admin/candidate/candidate/ajax/filter/candidate/list', $data, TRUE);
+    }
+
+
+
 
 }

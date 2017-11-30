@@ -25,7 +25,7 @@ class Subject extends MY_Controller {
         $this->paginatefilter->ppage = 20;
         
         $result_args = array(
-            'orderby_field' => 'created_at',
+            'orderby_field' => 's.created_at',
             'page' => $this->paginatefilter->cpage,
             'order_by' => 'DESC',
             'items_per_page' => $this->paginatefilter->ppage ,

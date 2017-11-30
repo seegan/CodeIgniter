@@ -1,5 +1,3 @@
-
-
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->                      
@@ -48,84 +46,132 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <div class="page-title-box action-header">
-                                                            <h2 class="text-center">
-                                                                <i class="ion-person-add"></i>User
-                                                            </h2>
-                                                            <div class="action-group">
-                                                                <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" data-doubleatt=".double-add-candidate" data-singleatt="<?php echo base_url('admin/candidate/add'); ?>">Add</button>
-                                                                <button style="display:none;" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-candidate" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
+                                                        <div class="filter-section">
+                                                            <div class="page-title-box action-header">
+                                                                <div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 col-lg-10">
+
+                                                                            <div class="row">
+                                                                                <div class="col-lg-3 col-md-4">
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-12">
+                                                                                            <select class="form-control select2 branch_name" name="branch_id">
+                                                                                                <option disabled>Select Branch</option>
+                                                                                                <option value="0">All Branchs</option>
+                                                                                                <?php 
+                                                                                                    if($branchs) {
+                                                                                                        foreach ($branchs as $branch) {
+                                                                                                            echo "<option value='".$branch->id."'>".ucfirst($branch->name)."</option>";
+                                                                                                        }
+                                                                                                    }
+                                                                                                ?>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-3 col-md-4">
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-12">
+                                                                                            <select class="form-control select2 batch_name" name="batch_id" id="batch_name">
+                                                                                                <option disabled>Select Batch</option>
+                                                                                                <option value="0">All Batchs</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-3 col-md-4">
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-12">
+                                                                                            <input type="text" class="form-control" name="user_name" id="username" placeholder="User Name">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-3 col-md-4">
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-12">
+                                                                                            <input type="text" class="form-control" name="enrollment_no" id="enrollment_no" placeholder="Enrollment No">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-3 col-md-4">
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-12">
+                                                                                            <input type="text" class="form-control" name="contact_no" id="mobile_no" placeholder="Mobile No / Phone No">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-3 col-md-4">
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-12">
+                                                                                            <input type="text" class="form-control" name="user_email" id="email" placeholder="Email">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-3 col-md-4">
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-12">
+                                                                                            <select class="form-control select2" name="gender">
+                                                                                                <option disabled>Select Year</option>
+                                                                                                <option value="0">All Gender</option>
+                                                                                                <option value="Male">Male</option>
+                                                                                                <option value="Female">Female</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-3 col-md-4">
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-12">
+                                                                                            <select class="form-control select2" name="candidate_year">
+                                                                                                <option disabled>Select Year</option>
+                                                                                                <option value="0">All Year</option>
+                                                                                                <?php 
+                                                                                                    $year_list = getYearList(date('Y')) ;
+                                                                                                    foreach ($year_list as $year) {
+                                                                                                        if($year['selected'] == true) {
+                                                                                                            echo "<option selected>".$year['year']."</option>";
+                                                                                                        } else {
+                                                                                                            echo "<option>".$year['year']."</option>";
+                                                                                                        }
+                                                                                                    }
+                                                                                                ?>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-lg-2">
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-12">
+                                                                                            <a class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 candidate_search" style="color:#fff;width: 100%;">Search&nbsp;<i class="ti-search"></i></a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+
+                                                                        </div>
+                                                                        <div class="col-md-12 col-lg-2">
+                                                                            <div class="action-group">
+                                                                                <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" data-doubleatt=".double-add-candidate" data-singleatt="<?php echo base_url('admin/candidate/add'); ?>">Add</button>
+                                                                                <button style="display:none;" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-candidate" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="clearfix"></div>
                                                             </div>
-                                                            <div class="clearfix"></div>
+                                                            <input type="hidden" class="filter_action" value="candidate_filter">
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <hr>
-                                                <div class="row">
-                                                    <div class="col-lg-2">
-                                                        <label class="form-inline m-b-20">Show
-                                                            <select id="demo-show-entries" class="form-control input-sm">
-                                                                <option value="5">5</option>
-                                                                <option value="10">10</option>
-                                                                <option value="15">15</option>
-                                                                <option value="20">20</option>
-                                                            </select>
-                                                            entries
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <div class="input-daterange input-group m-b-20" id="date-range">
-                                                            <input type="text" class="form-control" name="start" />
-                                                            <span class="input-group-addon bg-primary b-0 text-white">to</span>
-                                                            <input type="text" class="form-control" name="end" />
-                                                        </div>
-                                                    </div> 
+                                                <div class="candidate_filter">
+                                                    <?php $this->load->view('admin/candidate/candidate/ajax/filter/candidate/list') ?>
                                                 </div>
-
-
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <table id="demo-foo-accordion" class="table m-b-0 table-bordered toggle-arrow-tiny" data-page-size="20">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th data-toggle="true"> First Name </th>
-                                                                    <th> Last Name </th>
-                                                                    <th data-hide="phone"> Job Title </th>
-                                                                    <th data-hide="all"> DOB </th>
-                                                                    <th data-hide="all"> Status </th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>Isidra</td>
-                                                                    <td>Boudreaux</td>
-                                                                    <td>Traffic Court Referee</td>
-                                                                    <td>22 Jun 1972</td>
-                                                                    <td><span class="badge label-table badge-success">Active</span></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Shona</td>
-                                                                    <td>Woldt</td>
-                                                                    <td>Airline Transport Pilot</td>
-                                                                    <td>3 Oct 1981</td>
-                                                                    <td><span class="badge label-table badge-default">Disabled</span></td>
-                                                                </tr>
-                                                            </tbody>
-                                                            <tfoot>
-                                                                <tr class="active">
-                                                                    <td colspan="5">
-                                                                        <div class="text-right">
-                                                                            <ul class="pagination pagination-split justify-content-end footable-pagination m-t-10"></ul>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            </tfoot>
-                                                        </table>
-                                                    </div>
-                                                </div>
-
-
-
                                             </div>
                                         </div>
                                     </div>

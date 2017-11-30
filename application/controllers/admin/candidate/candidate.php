@@ -18,50 +18,16 @@ class Candidate extends MY_Controller {
 	    if( $this->uri->uri_string() == 'admin/candidate/candidate/index' || $this->uri->uri_string() == 'admin/candidate/candidate') {
 	        show_404();
 	    }
-		$data['final_foot'] = '<script type="text/javascript">
-            jQuery(document).ready(function(){
-                    
-                    jQuery(".branch_name").on("change", function(){
-
-                        var branch_id = jQuery(this).val();
-
-                        var batchSel = document.getElementById("batch_name"); 
-                        batchSel.length = 1
-
-                        jQuery.ajax({ 
-                            type: "POST", 
-                            url: "'.base_url("admin/branch/batch/getBatchByBranch").'", 
-                            data: { branch_id: branch_id }, 
-                            dataType: "json",
-                            success: function (data) {
-
-                                var batchs = data.batchs;
-                                
-                                jQuery("#question_topic").change();
-                                if(data.batch_success) {
-                                    for (var batch in batchs) { 
-                                        if (typeof  batchs[batch].id  !== "undefined") {
-                                            batchSel.options[batchSel.options.length] = new Option(batchs[batch].batch_name, batchs[batch].id);
-                                        }
-                                        
-                                    }
-                                }
-
-                            }
-                        });
-                    });
-                });
-        </script>
-        ';
 
 
 		$data['branchs'] = getAdminBranch(1);
 
 		$this->load->library('paginator', '', 'paginatefilter');
         $this->paginatefilter->ppage = 20;
-        
+        $this->paginatefilter->candidate_year = date('Y');
+
         $result_args = array(
-            'orderby_field' => 'created_at',
+            'orderby_field' => 'c.registration_date',
             'page' => $this->paginatefilter->cpage,
             'order_by' => 'DESC',
             'items_per_page' => $this->paginatefilter->ppage ,
@@ -69,15 +35,8 @@ class Candidate extends MY_Controller {
         );
 
 
-        $data['category_list'] = $this->paginatefilter->candidate_list_pagination($result_args);
-
-
-
+        $data['data_list'] = $this->paginatefilter->candidate_list_pagination($result_args);
         $data['javascripts'][] = base_url().'theme/assets/js/custom/list-candidate.js';
-
-
-
-
 
 		$page_content = $this->load->view('admin/candidate/candidate/candidate', $data, TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
@@ -120,7 +79,7 @@ class Candidate extends MY_Controller {
 
                                 var batchs = data.batchs;
                                 
-                                jQuery("#question_topic").change();
+                                jQuery("#batch_name").change();
                                 if(data.batch_success) {
                                     for (var batch in batchs) { 
                                         if (typeof  batchs[batch].id  !== "undefined") {
@@ -128,6 +87,7 @@ class Candidate extends MY_Controller {
                                         }
                                     }
                                 }
+                                jQuery("#batch_name").change();
 
                             }
                         });

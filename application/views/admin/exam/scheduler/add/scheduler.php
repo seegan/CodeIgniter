@@ -221,7 +221,7 @@
     <div class="modal-dialog modal-full-width">
         <div class="modal-content">
             <div class="modal-header text-center">
-                <div style="width:100%;"><h3>Select Questions</h3></div>
+                <div style="width:100%;"><h3>Select Students</h3></div>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
@@ -239,9 +239,9 @@
                                                     <div class="col-lg-3 col-md-4">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <select class="form-control select2 question_subject" id="batchs_filter">
-                                                                    <option disabled>Select Subject</option>
-                                                                    <option value="0">All Subjects</option>
+                                                                <select class="form-control select2 question_subject" id="batchs_filter" name="batch_id">
+                                                                    <option disabled>Select Batch</option>
+                                                                    <option value="-1">All Batchs</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -249,47 +249,47 @@
                                                     <div class="col-lg-3 col-md-4">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <select class="form-control select2 question_topic" name="topic" id="question_topic">
-                                                                    <option disabled>Select Topic</option>
-                                                                    <option value="0">All Topics</option>
-                                                                </select>
+                                                                <input type="text" class="form-control" name="user_name" id="username" placeholder="User Name">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-4">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <select class="form-control select2 question_type" name="type" id="question_type">
-                                                                    <option disabled>Question Type</option>
-                                                                    <option value="0">All Types</option>
-                                                                </select>
+                                                                <input type="text" class="form-control" name="enrollment_no" id="enrollment_no" placeholder="Enrollment No">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-4">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <select class="form-control select2 question_language" name="language">
-                                                                    <option disabled>Select Language</option>
-                                                                    <option value="-">All Languages</option>
-                                                                    <?php
-                                                                        $language_list = getLanguageList('en');
-                                                                        foreach ($language_list as $key => $language) {
-                                                                            if($language['selected'] == true) {
-                                                                                echo "<option selected value='".$key."'>".$language['language']."</option>";
-                                                                            } else {
-                                                                                echo "<option value='".$key."'>".$language['language']."</option>";
-                                                                            }
-                                                                        }
-                                                                    ?>
-                                                                </select>
+                                                                <input type="text" class="form-control" name="contact_no" id="mobile_no" placeholder="Mobile No / Phone No">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-4">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <select class="form-control select2 question_year" name="year">
+                                                                <input type="text" class="form-control" name="user_email" id="email" placeholder="Email">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-4">
+                                                        <div class="form-group row">
+                                                            <div class="col-12">
+                                                                <select class="form-control select2" name="gender">
+                                                                    <option disabled>Select Year</option>
+                                                                    <option value="0">All Gender</option>
+                                                                    <option value="Male">Male</option>
+                                                                    <option value="Female">Female</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group row">
+                                                            <div class="col-12">
+                                                                <select class="form-control select2" name="candidate_year">
                                                                     <option disabled>Select Year</option>
                                                                     <option value="0">All Year</option>
                                                                     <?php 
@@ -306,37 +306,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                <select class="form-control select2 question_difficulty" name="difficulty" style="text-transform: capitalize;">
-                                                                    <option disabled>Select Difficulty</option>
-                                                                    <option value="0">All Level</option>
-                                                                <?php
-                                                                    $difficulty_list = getDifficultyList();
-                                                                    foreach ($difficulty_list as $key => $difficulty) {
-                                                                        if($difficulty['selected'] == true) {
-                                                                            echo "<option selected value='".$key."'>".$difficulty['difficulty']."</option>";
-                                                                        } else {
-                                                                            echo "<option value='".$key."'>".$difficulty['difficulty']."</option>";
-                                                                        }
-                                                                    }
-                                                                ?>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                <input type="text" name="question"  class="form-control search_question" placeholder="Search Question">
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     <div class="col-lg-2">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <a class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 question_search" style="color:#fff;width: 100%;">Search&nbsp;<i class="ti-search"></i></a>
+                                                                <a class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 candidate_search" style="color:#fff;width: 100%;">Search&nbsp;<i class="ti-search"></i></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -363,13 +336,13 @@
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <input type="hidden" class="filter_action" value="question_exam_filter">
+                                    <input type="hidden" class="filter_action" value="candidate_scheduler_filter">
                                     
                                 </div>
                             </div>
                         </div>
                         <hr>
-                        <div class="question_exam_filter">
+                        <div class="candidate_scheduler_filter">
 
                         </div>
                         <div class="form-group text-right m-b-0">
