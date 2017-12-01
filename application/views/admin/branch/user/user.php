@@ -94,7 +94,7 @@
                                                                        </div>
                                                                         <div class="col-md-12 col-lg-2">
                                                                             <div class="action-group">
-                                                                                <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" data-doubleatt=".double-add-user" data-singleatt="<?php echo base_url('admin/branch/batch/add'); ?>">Add</button>
+                                                                                <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" data-doubleatt=".double-add-user" data-singleatt="<?php echo base_url('admin/branch/user/add'); ?>">Add</button>
                                                                                 <button style="display:none;" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 double-add-user" data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
                                                                             </div>
                                                                         </div>
