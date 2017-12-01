@@ -62,7 +62,7 @@ i.login-exceeded-ico {
   margin: 0;
 }
 
-.question_exam_filter, .selected_question_list {
+.question_exam_filter, .selected_question_list, .candidate_scheduler_filter, .selected_candidate_list {
   height: 300px;
   overflow-y: scroll;
   overflow-x: hidden;

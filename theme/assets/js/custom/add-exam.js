@@ -69,9 +69,8 @@ jQuery(document).ready(function () {
     });
 
 
-
+    //When Search Button Click
     jQuery('.question_search').on('click', function(){
-
 
        var filter_action   = jQuery('.filter_action').val();
         var container_class = '.'+filter_action;
@@ -143,8 +142,6 @@ jQuery(document).ready(function () {
 
 
 
-
-
     jQuery('.select-question').on('click', function() {
         selectQuestionReset();
     });
@@ -166,16 +163,6 @@ jQuery(document).ready(function () {
 });
 
 
-function populateCheckAfterAjax() {
-    jQuery('.question_exam_filter tbody .question_avail').each(function(){
-
-        var question_id = jQuery(this).attr('data-questionid');
-        if(jQuery('.selected_question_block').find('[data-selquestionid="'+question_id+'"]').length  > 0) {
-            jQuery(this).find('.checked_question').prop('checked', true);
-        }
-
-    });
-}
 
 function addQuestion(question_id, question, right_mark, wrong_mark, question_time) {
 
@@ -197,6 +184,17 @@ function removeQuestion(question_id) {
     }
 }
 
+function populateCheckAfterAjax() {
+    jQuery('.question_exam_filter tbody .question_avail').each(function(){
+
+        var question_id = jQuery(this).attr('data-questionid');
+        if(jQuery('.selected_question_block').find('[data-selquestionid="'+question_id+'"]').length  > 0) {
+            jQuery(this).find('.checked_question').prop('checked', true);
+        }
+
+    });
+}
+
 
 
 
@@ -205,8 +203,8 @@ function removeQuestion(question_id) {
 
 
 function selectQuestionReset() {
-    jQuery('select.question_subject, .question_language, .question_year, .question_difficulty, .search_question, .ppage').prop('selectedIndex',1);
-    jQuery('select.question_subject, .question_language, .question_year, .question_difficulty, .search_question, .ppage').change();
+    jQuery('select.candidate_batch, .question_language, .question_year, .question_difficulty, .search_question, .ppage').prop('selectedIndex',1);
+    jQuery('select.candidate_batch, .question_language, .question_year, .question_difficulty, .search_question, .ppage').change();
 
     jQuery('.question_exam_filter').html('');
     jQuery('.search_question').val('');

@@ -23,7 +23,8 @@
                 foreach ($data_list['result'] as $list) {
             ?>
                 <tr class="question_avail" data-questionid="<?php echo $list->id; ?>">
-                    <td scope="row"><?php echo $start++; ?>
+                    <td scope="row">
+                        <?php echo $start++; ?>
                         <input type="checkbox" class="checked_question" value="<?php echo $list->id; ?>">
                         <input type="hidden" class="right_mark" value="<?php echo $list->right_mark; ?>">
                         <input type="hidden" class="wrong_mark" value="<?php echo $list->negative_mark; ?>">

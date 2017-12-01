@@ -41,3 +41,16 @@ if( !function_exists('getQuestionTypesByCategory') )
 		return $CI->subject->getQuestionTypesByCategory($cat_id, $active);
 	}
 }
+
+
+if( !function_exists('getSubjectDetailById') )
+{
+	function getSubjectDetailById($subject_id = 0)
+	{
+		$CI =& get_instance();
+		$data['subject'] = $CI->subject->getSubjectById($subject_id);
+		$data['subject_types'] = $CI->subject->getSubjectTypesById($subject_id);
+
+		return $data;
+	}
+}

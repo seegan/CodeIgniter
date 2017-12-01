@@ -239,7 +239,7 @@
                                                     <div class="col-lg-3 col-md-4">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <select class="form-control select2 question_subject" id="batchs_filter" name="batch_id">
+                                                                <select class="form-control select2 candidate_batch" id="batchs_filter" name="batch_id">
                                                                     <option disabled>Select Batch</option>
                                                                     <option value="-1">All Batchs</option>
                                                                 </select>
@@ -249,35 +249,35 @@
                                                     <div class="col-lg-3 col-md-4">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <input type="text" class="form-control" name="user_name" id="username" placeholder="User Name">
+                                                                <input type="text" class="form-control username" name="user_name" id="username" placeholder="User Name">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-4">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <input type="text" class="form-control" name="enrollment_no" id="enrollment_no" placeholder="Enrollment No">
+                                                                <input type="text" class="form-control enrollment_no" name="enrollment_no" id="enrollment_no" placeholder="Enrollment No">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-4">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <input type="text" class="form-control" name="contact_no" id="mobile_no" placeholder="Mobile No / Phone No">
+                                                                <input type="text" class="form-control contact_no" name="contact_no" id="mobile_no" placeholder="Mobile No / Phone No">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-4">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <input type="text" class="form-control" name="user_email" id="email" placeholder="Email">
+                                                                <input type="text" class="form-control user_email" name="user_email" id="email" placeholder="Email">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-4">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <select class="form-control select2" name="gender">
+                                                                <select class="form-control select2 candidate_gender" name="gender" >
                                                                     <option disabled>Select Year</option>
                                                                     <option value="0">All Gender</option>
                                                                     <option value="Male">Male</option>
@@ -289,7 +289,7 @@
                                                     <div class="col-lg-4">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <select class="form-control select2" name="candidate_year">
+                                                                <select class="form-control select2 candidate_year" name="candidate_year">
                                                                     <option disabled>Select Year</option>
                                                                     <option value="0">All Year</option>
                                                                     <?php 
@@ -457,20 +457,23 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="selected_question_list">
+                        <div class="selected_candidate_list">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Question</th>
-                                                <th style="width: 200px;">Right Marks</th>
-                                                <th style="width: 200px;">Wrong Marks</th>
-                                                <th style="width: 200px;">Time (In Secs)</th>
+                                                <th>User Name</th>
+                                                <th>Enrollment No</th>
+                                                <th>Branch</th>
+                                                <th>Batch</th>
+                                                <th>Contact No</th>
+                                                <th>Gender</th>
+                                                <th>Registration Date</th>
                                             </tr>
                                         </thead>
-                                        <tbody class="selected_question_block">
+                                        <tbody class="selected_candidate_block">
 
                                         </tbody>
                                     </table>

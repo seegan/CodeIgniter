@@ -61,6 +61,7 @@ $route['admin/branch/getBranchSubjects'] = 'admin/branch/branch/getBranchSubject
 
 $route['admin/subject'] = 'admin/subject/subject/index';
 $route['admin/subject/add'] = 'admin/subject/subject/add';
+$route['admin/subject/update/(:num)'] = 'admin/subject/subject/update/$1';
 
 $route['admin/question'] = 'admin/question/question/index';
 $route['admin/question/add'] = 'admin/question/question/add';

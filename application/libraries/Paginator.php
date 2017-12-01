@@ -167,7 +167,7 @@ class Paginator
 		$data['result'] = $result_data->result();   
 
 	    $totalPage         	= ceil($data['total'] / $this->ppage);
-		$this->paginate_link = $this->add_query_arg( $this->args['arg'], base_url('admin/subject/topic') );
+		$this->paginate_link = $this->add_query_arg( $this->args['arg'], base_url('admin/candidate') );
 		$data['pagination'] = $this->createPaginationHtml();
 
 		$data['start_count'] = ($this->ppage * ($this->cpage - 1));
@@ -505,7 +505,7 @@ class Paginator
 	    }
 	    if($this->batch_id != '0'){
 	    	$condition .= " AND cbb.batch_id IN (".$this->batch_id.")";
-	    	$this->args['arg']['batch_name'] = $this->batch_id;
+	    	$this->args['arg']['batch_id'] = $this->batch_id;
 	    }	    
 	    if($this->contact_no != ''){
 	    	$condition .= " AND (phone LIKE  '%".$this->contact_no."%' OR mobile LIKE '%".$this->contact_no."%')";

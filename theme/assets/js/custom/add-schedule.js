@@ -121,9 +121,6 @@ jQuery(document).ready(function () {
 
 
 
-
-
-
     //Scheduler Add Students
     jQuery('.candidate_search').on('click', function(){
 
@@ -170,7 +167,36 @@ jQuery(document).ready(function () {
 
 
 
+    //When Select or De-select Students
+    jQuery('body').on('change', '.checked_candidate' ,function(){
+        var candidate_id = jQuery(this).val();
+        var selector = jQuery(this).parent().parent();
+        if(jQuery(this).is(':checked')) {
+            var username = selector.find('.username').val();
+            var enrollment_no = selector.find('.enrollment_no').val();
+            var branch_id = selector.find('.branch_id').val();
+            var batch_id = selector.find('.batch_id').val();
+            var mobile = selector.find('.mobile').val();
+            var gender = selector.find('.gender').val();
+            var registration_date = selector.find('.registration_date').val();
 
+            addCandidate(candidate_id, username ,enrollment_no ,branch_id ,batch_id ,mobile ,gender ,registration_date);
+        } else {
+            removeCandidate(candidate_id);
+        }
+    });
+
+
+    jQuery('body').on('click', '.selected_sno .remove-circle', function(){
+        var remove_id = jQuery(this).attr('data-selremoveid');
+        removeQuestion(remove_id);
+    });
+
+
+
+    jQuery('.select-question').on('click', function() {
+        selectCandidateReset();
+    });
 
     //Model Close
     jQuery('.close-selected-question').on('click', function() {
@@ -229,4 +255,43 @@ function processingSchedulerFilter(exam_id) {
 }
 
 
+function addCandidate(candidate_id, username ,enrollment_no ,branch_id ,batch_id ,mobile ,gender ,registration_date) {
 
+    var total_selected = (jQuery('.selected_candidate_block tr').length + 1 );
+    var tr_block = "<tr data-selcandidateid="+candidate_id+"><td class='selected_sno'><button data-selremoveid="+candidate_id+" class='btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle'><i class='fa fa-remove'></i></button><input type='hidden' name='selected_candidate["+candidate_id+"][candidate_id]' value='"+candidate_id+"'></td><td>"+username+"</td><td>"+enrollment_no+"</td><td>"+branch_id+"</td><td>"+batch_id+"</td><td>"+mobile+"</td><td>"+gender+"</td><td>"+registration_date+"</td></tr>";
+
+    if(jQuery('.selected_candidate_block').find('[data-selcandidateid="'+candidate_id+'"]').length  <= 0) {
+        jQuery('.selected_candidate_block').append(tr_block);
+    }
+
+}
+
+function removeQuestion(question_id) {
+    if(jQuery('.selected_candidate_block').find('[data-selcandidateid="'+question_id+'"]').length  > 0) {
+        jQuery('.selected_candidate_block').find('[data-selcandidateid="'+question_id+'"]').remove();
+    }
+    if(jQuery('[data-candidateid="'+question_id+'"]').find('.checked_candidate').is(':checked')) {
+        jQuery('[data-candidateid="'+question_id+'"]').find('.checked_candidate').prop('checked', false); 
+    }
+}
+
+
+function populateCheckAfterAjax() {
+    jQuery('.candidate_scheduler_filter tbody .candidate_avail').each(function(){
+
+        var candidate_id = jQuery(this).attr('data-candidateid');
+        if(jQuery('.selected_candidate_block').find('[data-selcandidateid="'+candidate_id+'"]').length  > 0) {
+            jQuery(this).find('.checked_candidate').prop('checked', true);
+        }
+
+    });
+}
+
+
+function selectCandidateReset() {
+    jQuery('select.question_subject, .candidate_gender, .candidate_year, .ppage').prop('selectedIndex',1);
+    jQuery('select.question_subject, .candidate_gender, .candidate_year, .ppage').change();
+
+    jQuery('.candidate_scheduler_filter').html('');
+    jQuery('.search_question,username, .enrollment_no, .contact_no, .user_email').val('');
+}

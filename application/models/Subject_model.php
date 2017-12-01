@@ -46,4 +46,28 @@ class Subject_model extends MY_Model {
 		return $query->result();
 	}
 
+
+
+	public function getSubjectById( $subject_id = 0, $active = 1) {
+		if($active == 'all') {
+			$query = $this->db->query("SELECT s.id, s.subject, s.description FROM  xtra_subject as s WHERE s.id = ${subject_id}");
+		} else {
+			$query = $this->db->query("SELECT s.id, s.subject, s.description FROM  xtra_subject as s WHERE s.id = ${subject_id} AND s.active = ${active}");
+		}
+		return $query->row();
+	}
+
+
+	public function getSubjectTypesById( $subject_id = 0, $active = 1) {
+		if($active == 'all') {
+			$query = $this->db->query("SELECT sqt.type_id FROM  xtra_subject_question_type as sqt WHERE sqt.subject_id = ${subject_id}");
+		} else {
+			$query = $this->db->query("SELECT sqt.type_id FROM  xtra_subject_question_type as sqt WHERE sqt.subject_id = ${subject_id} AND sqt.active = ${active}");
+		}
+		return $query->result_array();
+	}
+
+
+
+
 }
