@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2017 at 02:47 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Generation Time: Dec 04, 2017 at 04:26 AM
+-- Server version: 10.1.25-MariaDB
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -99,44 +101,11 @@ CREATE TABLE `auth_sessions` (
 --
 
 INSERT INTO `auth_sessions` (`id`, `user_id`, `login_time`, `modified_at`, `ip_address`, `user_agent`) VALUES
-('mtaqglqak57g1lnmfccssrv3q01meo48', 1173926690, '2017-11-10 12:16:04', '2017-11-10 11:16:04', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('aa1lmp3blsc8dcpqcb21vs0aa6aptrm6', 1173926690, '2017-11-10 12:11:23', '2017-11-10 11:11:23', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('ehdlfbof4v3ffqibft2vac4tl42hmror', 1478819960, '2017-11-10 12:10:21', '2017-11-10 11:10:21', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('00s665djt9gl02uvuo02p3tmtkq90sfq', 1173926690, '2017-11-10 12:09:45', '2017-11-10 11:09:45', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('29jt0qnei1kgmv0g8cstmk1hehprq62n', 1173926690, '2017-11-10 12:07:17', '2017-11-10 11:07:17', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('2dhngnil2fjrg7n28g7pomp7i7d3lktn', 1478819960, '2017-11-10 12:10:10', '2017-11-10 11:10:10', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('lvqinb3j0ldjrk9jc5c4t1itga5242tu', 120809394, '2017-11-10 09:33:55', '2017-11-10 12:05:21', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('v12sv6hjm6strp4r53b22p4nsf1vgr2b', 1173926690, '2017-11-10 12:06:32', '2017-11-10 11:06:32', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('219vavkga5ig6o7rt8n7ktuiuf8d5pfk', 120809394, '2017-11-12 11:05:44', '2017-11-12 10:33:47', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('5n0227j737mbns3p3nrhq8c2m92h98tp', 120809394, '2017-11-12 14:27:00', '2017-11-12 19:19:31', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('cvd0ubsoqp4bevrtaicoi761fnsdipqc', 120809394, '2017-11-13 03:09:39', '2017-11-13 02:09:40', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('k5duob85jta8e7tevcldl48gi3klhaia', 120809394, '2017-11-13 07:19:17', '2017-11-13 06:19:17', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('0953av7gmc16r0c5lbv3g8m7v2jo1r1f', 120809394, '2017-11-13 14:39:40', '2017-11-13 16:59:18', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('t3k50a882r4t876ceivrv4otejndpod0', 120809394, '2017-11-14 04:01:02', '2017-11-14 09:55:45', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('437k023v6sbcq0n98k24sl27c0a393ql', 120809394, '2017-11-14 12:59:27', '2017-11-14 13:41:52', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('700ld47coeed6317bkagqgfh6mjcd2m2', 120809394, '2017-11-14 17:23:35', '2017-11-14 17:54:45', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('hm5f4adcbrau1uv1fjj58ftej1bohjbd', 120809394, '2017-11-15 04:44:46', '2017-11-15 08:55:20', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('neq249jomtsstlgfumn138oujjm1m3bi', 120809394, '2017-11-15 11:58:21', '2017-11-15 14:45:05', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('alov0cgdp4a9i9h1kcomutr9ldktp3dd', 120809394, '2017-11-15 18:51:50', '2017-11-15 20:25:48', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('e1clbdbsgkfp7pb3qt5l9o1pfjvei76b', 120809394, '2017-11-16 04:39:51', '2017-11-16 04:04:30', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('bjnu3hnm4jn7ol4lleb01k8jk5v5ppvv', 120809394, '2017-11-16 07:37:11', '2017-11-16 09:32:52', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('5pqiclg31n99n3m6us2q4lo67097squ6', 120809394, '2017-11-16 15:12:50', '2017-11-16 14:36:04', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('dcfl4scvid9qu942lnvd11q6b5ivn7ml', 120809394, '2017-11-16 18:07:22', '2017-11-16 19:01:28', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('ntn4cd6bdao9m84i2oqlc7eks11uccfv', 120809394, '2017-11-17 03:44:06', '2017-11-17 06:23:52', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('67bj437ud7ti1ccmjt768ga2h3cdss1f', 120809394, '2017-11-20 06:08:27', '2017-11-20 13:03:30', '::1', 'Chrome 62.0.3202.89 on Windows 7'),
-('e4jh31cs7bbmgh000g6vvqr809h8dca8', 120809394, '2017-11-21 05:06:27', '2017-11-21 13:44:28', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('203lv0on2mh4q59p22c3i3vl5m1phl2i', 120809394, '2017-11-22 06:16:52', '2017-11-22 13:47:24', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('7nil4jc87srb0tn8u259pi27hcphn465', 120809394, '2017-11-23 05:30:56', '2017-11-23 13:02:39', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('k73934hqdi870hapl38q32up1aqikf4k', 120809394, '2017-11-24 05:51:49', '2017-11-24 13:14:53', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('vdspv7q3sub83a695hrgv0d0e38spfmp', 120809394, '2017-11-25 06:41:16', '2017-11-25 12:30:53', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('9uueudjmkpurqo7ll5kh10d2c07mito5', 120809394, '2017-11-27 05:41:55', '2017-11-27 13:21:22', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('62j43qg7kmi0c63meej9akr6fn9rekvl', 120809394, '2017-11-28 06:07:25', '2017-11-28 13:38:59', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('q59srgmviq6umfi0po4ft10atrn1e292', 120809394, '2017-11-29 05:12:24', '2017-11-29 14:02:41', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('9nc6r30pslbpnp9qe4lal1dqkaj4s8dv', 120809394, '2017-11-30 06:01:47', '2017-11-30 11:41:55', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('be9l69e4e3dsnifsknebdm02qp0iiktk', 120809394, '2017-12-01 06:39:40', '2017-12-01 05:49:42', '::1', 'Chrome 62.0.3202.94 on Windows 7'),
-('jpttj8p9idhhf74aern5edvgafip09e3', 120809394, '2017-12-01 06:42:42', '2017-12-01 13:41:55', '192.168.0.150', 'Chrome 62.0.3202.94 on Windows 7'),
-('ame87ha39c2ulc8j71ebr75j8rv7evg8', 120809394, '2017-12-01 06:43:45', '2017-12-01 13:22:58', '192.168.0.128', 'Chrome 62.0.3202.94 on Windows 7'),
-('tcrvjmfhj6o89jbve0tnkjn5iafkaurs', 120809394, '2017-12-01 07:04:20', '2017-12-01 12:42:54', '192.168.0.162', 'Chrome 62.0.3202.94 on Windows 7');
+('vl5nkr3t3c9ohp0jviq2si5dfv0sojkq', 1402460928, '2017-12-03 18:31:53', '2017-12-03 17:31:53', '::1', 'Chrome 62.0.3202.94 on Windows 10'),
+('et2a6uuakdbmsm86bbj84ednf4059pie', 1402460928, '2017-12-03 18:35:08', '2017-12-03 17:35:08', '::1', 'Chrome 62.0.3202.94 on Windows 10'),
+('nd0or3bcklhoahu354aqpvuumhgllrog', 1402460928, '2017-12-03 18:10:45', '2017-12-03 17:16:46', '::1', 'Chrome 62.0.3202.94 on Windows 10'),
+('3g5bec0t2ha7r68grsmgov2ga66ah92j', 120809394, '2017-12-02 18:55:52', '2017-12-02 20:10:33', '::1', 'Chrome 62.0.3202.94 on Windows 10'),
+('re7lqqrjmcfhfasglngk3dbhv2muknjm', 120809394, '2017-12-03 05:56:52', '2017-12-03 05:32:40', '::1', 'Chrome 62.0.3202.94 on Windows 10');
 
 -- --------------------------------------------------------
 
@@ -194,8 +163,8 @@ CREATE TABLE `login_errors` (
 --
 
 INSERT INTO `login_errors` (`ai`, `username_or_email`, `ip_address`, `time`) VALUES
-(0, 'superadmin', '::1', '2017-11-27 05:41:49'),
-(0, 'superadmin', '::1', '2017-11-27 05:41:49');
+(0, 'superadmin', '::1', '2017-12-03 18:08:38'),
+(0, 'superadmin', '::1', '2017-12-03 18:08:38');
 
 -- --------------------------------------------------------
 
@@ -249,7 +218,7 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `auth_level`, `banned`, `pa
 (102107471, '215', '47dgh1215@ss.com', 1, '0', '$2y$11$6BblekMW28BBEgplVP33AehRrkQolH4nDrM4Bcg8wnDpyJxRpgACC', NULL, NULL, NULL, NULL, '2017-12-01 11:00:41', '2017-12-01 10:00:41'),
 (107188336, '515', 'bavi@y.com', 1, '0', '$2y$11$RjPJgLNQq.0g1wTg6NpKzuTVMQtPaOeApdEJQ/.6QJe5a109oCv.y', NULL, NULL, NULL, NULL, '2017-12-01 10:49:19', '2017-12-01 09:49:19'),
 (110436087, '568', 'balu@y.com', 1, '0', '$2y$11$M9RMtIBMUP..VA3KocZb1eFkGJz0ZCALbyl8rLEU6ExrczvaeXVa.', NULL, NULL, NULL, NULL, '2017-12-01 13:21:25', '2017-12-01 12:21:25'),
-(120809394, 'superadmin', 'superadmin@example.com', 9, '0', '$2y$11$VG3Rpod76a8eh7zsz3VuQuWYiNKnp13rvoIx49g8ofxYg.ob.Ls/m', NULL, NULL, NULL, '2017-12-01 07:04:20', '2017-10-31 12:47:43', '2017-12-01 06:04:20'),
+(120809394, 'superadmin', 'superadmin@example.com', 9, '0', '$2y$11$VG3Rpod76a8eh7zsz3VuQuWYiNKnp13rvoIx49g8ofxYg.ob.Ls/m', NULL, NULL, NULL, '2017-12-03 18:08:44', '2017-10-31 12:47:43', '2017-12-03 17:08:44'),
 (125056675, '227', 'm12k5as7871@ss.com', 1, '0', '$2y$11$7Rt.SyUnuZOnFI9Mzlw1TOzj8JeApRLUzzSMKSU5Udnkl14jVZUFa', NULL, NULL, NULL, NULL, '2017-12-01 11:26:12', '2017-12-01 10:26:12'),
 (125915352, '207', 'sdgh12@asnmas.com', 1, '0', '$2y$11$zRoglnMAo6evsZaIgSLCm.YJwGW8yRI6jnqgF0rAOkLUgq6DH9LX2', NULL, NULL, NULL, NULL, '2017-12-01 10:51:04', '2017-12-01 09:51:04'),
 (141233326, 'admin2', 'jyg@hgj.com', 4, '0', '$2y$11$CSTMfrJje6c6vjH5178T.Oym.WgTCFrackJaulwJvkBDSasD0y0IK', NULL, NULL, NULL, NULL, '2017-12-01 08:04:06', '2017-12-01 07:04:06'),
@@ -345,7 +314,7 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `auth_level`, `banned`, `pa
 (1352098928, '103', 'sfgghjj@fgjh.com', 1, '0', '$2y$11$RHBuCytX7uJETyJQf5KRZ.yk5tsbC7sF/Ny7poG5/TtS84ruDwN2a', NULL, NULL, NULL, NULL, '2017-12-01 08:57:25', '2017-12-01 07:57:25'),
 (1383642353, '525', 'ravi@y.com', 1, '0', '$2y$11$olRlZoEbI.8raj6ID15/S.J1TzJOFlB8lKPRILE9K.jDV0IH9imdC', NULL, NULL, NULL, NULL, '2017-12-01 11:13:10', '2017-12-01 10:13:10'),
 (1384828447, '240', 'agsgdjf@gmm.com', 1, '0', '$2y$11$fILWkJWrLPWOjo1.uTv5nuArBgLxE3NHgq4qzUCX1HsbNxfLKtjGa', NULL, NULL, NULL, NULL, '2017-12-01 12:09:51', '2017-12-01 11:09:51'),
-(1402460928, '579', 'giri@y.com', 1, '0', '$2y$11$HlonPWtPN1h1Uy2nc9TAw.rAJW0eyP8ab3xR4dMi8us/0uKljS1sW', NULL, NULL, NULL, NULL, '2017-12-01 13:31:08', '2017-12-01 12:31:08'),
+(1402460928, '579', 'giri@y.com', 1, '0', '$2y$11$ZhfnuoidJTEiJJZrjgvK2OGKd6eWjJF/S5jDyTn.bVeMkN2coO0f.', NULL, NULL, NULL, '2017-12-03 18:35:08', '2017-12-01 13:31:08', '2017-12-03 17:35:08'),
 (1412604297, '219', '5as715@ss.com', 1, '0', '$2y$11$mably210oA9TpdzWoON7T.nD/00qknFz/C.V3mwg6KoGjrpzTqEB2', NULL, NULL, NULL, NULL, '2017-12-01 11:04:10', '2017-12-01 10:04:10'),
 (1434399577, '118', 'asdffhj34@gmail.com', 1, '0', '$2y$11$mXzk9ayPhVwOmj.jvcE8UuaA24/zzGPL5PUr3Ta0RDNrsjHBxytp2', NULL, NULL, NULL, NULL, '2017-12-01 10:42:50', '2017-12-01 09:42:50'),
 (1452064532, '274', '112as12sf@gm.com', 1, '0', '$2y$11$we6BUolV8WPaOwf4SIsBXuCoWr0t0wRHWBI80vZtKyFYRub/iWx/O', NULL, NULL, NULL, NULL, '2017-12-01 12:43:44', '2017-12-01 11:43:44'),
@@ -994,8 +963,90 @@ CREATE TABLE `xtra_exam_questions` (
 --
 
 INSERT INTO `xtra_exam_questions` (`id`, `exam_id`, `questions`, `active`) VALUES
-(1, 1, 'a:15:{i:19;a:4:{s:11:"question_id";s:2:"19";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:1:"5";}i:17;a:4:{s:11:"question_id";s:2:"17";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:15;a:4:{s:11:"question_id";s:2:"15";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:13;a:4:{s:11:"question_id";s:2:"13";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:11;a:4:{s:11:"question_id";s:2:"11";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:10;a:4:{s:11:"question_id";s:2:"10";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:9;a:4:{s:11:"question_id";s:1:"9";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:1:"5";}i:8;a:4:{s:11:"question_id";s:1:"8";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:1:"5";}i:7;a:4:{s:11:"question_id";s:1:"7";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:6;a:4:{s:11:"question_id";s:1:"6";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:1:"5";}i:5;a:4:{s:11:"question_id";s:1:"5";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:4;a:4:{s:11:"question_id";s:1:"4";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:1:"5";}i:3;a:4:{s:11:"question_id";s:1:"3";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:2;a:4:{s:11:"question_id";s:1:"2";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:1;a:4:{s:11:"question_id";s:1:"1";s:10:"right_mark";s:1:"0";s:10:"wrong_mark";s:1:"0";s:13:"question_time";s:1:"0";}}', 1),
-(2, 2, 'a:15:{i:49;a:4:{s:11:"question_id";s:2:"49";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:45;a:4:{s:11:"question_id";s:2:"45";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:43;a:4:{s:11:"question_id";s:2:"43";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:40;a:4:{s:11:"question_id";s:2:"40";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:38;a:4:{s:11:"question_id";s:2:"38";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:1:"5";}i:37;a:4:{s:11:"question_id";s:2:"37";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:35;a:4:{s:11:"question_id";s:2:"35";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:33;a:4:{s:11:"question_id";s:2:"33";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:31;a:4:{s:11:"question_id";s:2:"31";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:29;a:4:{s:11:"question_id";s:2:"29";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:1:"5";}i:27;a:4:{s:11:"question_id";s:2:"27";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:26;a:4:{s:11:"question_id";s:2:"26";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:24;a:4:{s:11:"question_id";s:2:"24";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}i:22;a:4:{s:11:"question_id";s:2:"22";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:1:"5";}i:21;a:4:{s:11:"question_id";s:2:"21";s:10:"right_mark";s:1:"1";s:10:"wrong_mark";s:1:"1";s:13:"question_time";s:2:"10";}}', 1);
+(1, 1, 'a:15:{i:19;a:4:{s:11:\"question_id\";s:2:\"19\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:1:\"5\";}i:17;a:4:{s:11:\"question_id\";s:2:\"17\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:15;a:4:{s:11:\"question_id\";s:2:\"15\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:13;a:4:{s:11:\"question_id\";s:2:\"13\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:11;a:4:{s:11:\"question_id\";s:2:\"11\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:10;a:4:{s:11:\"question_id\";s:2:\"10\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:9;a:4:{s:11:\"question_id\";s:1:\"9\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:1:\"5\";}i:8;a:4:{s:11:\"question_id\";s:1:\"8\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:1:\"5\";}i:7;a:4:{s:11:\"question_id\";s:1:\"7\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:6;a:4:{s:11:\"question_id\";s:1:\"6\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:1:\"5\";}i:5;a:4:{s:11:\"question_id\";s:1:\"5\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:4;a:4:{s:11:\"question_id\";s:1:\"4\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:1:\"5\";}i:3;a:4:{s:11:\"question_id\";s:1:\"3\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:2;a:4:{s:11:\"question_id\";s:1:\"2\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:1;a:4:{s:11:\"question_id\";s:1:\"1\";s:10:\"right_mark\";s:1:\"0\";s:10:\"wrong_mark\";s:1:\"0\";s:13:\"question_time\";s:1:\"0\";}}', 1),
+(2, 2, 'a:15:{i:49;a:4:{s:11:\"question_id\";s:2:\"49\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:45;a:4:{s:11:\"question_id\";s:2:\"45\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:43;a:4:{s:11:\"question_id\";s:2:\"43\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:40;a:4:{s:11:\"question_id\";s:2:\"40\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:38;a:4:{s:11:\"question_id\";s:2:\"38\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:1:\"5\";}i:37;a:4:{s:11:\"question_id\";s:2:\"37\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:35;a:4:{s:11:\"question_id\";s:2:\"35\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:33;a:4:{s:11:\"question_id\";s:2:\"33\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:31;a:4:{s:11:\"question_id\";s:2:\"31\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:29;a:4:{s:11:\"question_id\";s:2:\"29\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:1:\"5\";}i:27;a:4:{s:11:\"question_id\";s:2:\"27\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:26;a:4:{s:11:\"question_id\";s:2:\"26\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:24;a:4:{s:11:\"question_id\";s:2:\"24\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}i:22;a:4:{s:11:\"question_id\";s:2:\"22\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:1:\"5\";}i:21;a:4:{s:11:\"question_id\";s:2:\"21\";s:10:\"right_mark\";s:1:\"1\";s:10:\"wrong_mark\";s:1:\"1\";s:13:\"question_time\";s:2:\"10\";}}', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xtra_exam_schedule`
+--
+
+CREATE TABLE `xtra_exam_schedule` (
+  `id` int(11) NOT NULL,
+  `exam_id` int(10) NOT NULL,
+  `schedule_name` text NOT NULL,
+  `description` text NOT NULL,
+  `start_date` datetime NOT NULL,
+  `end_date` datetime NOT NULL,
+  `result_date` datetime NOT NULL,
+  `offered_as` varchar(5) NOT NULL,
+  `offer_cost` decimal(10,2) NOT NULL,
+  `result_as` varchar(7) NOT NULL,
+  `schedule_to` int(1) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `modified_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `active` int(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xtra_exam_schedule`
+--
+
+INSERT INTO `xtra_exam_schedule` (`id`, `exam_id`, `schedule_name`, `description`, `start_date`, `end_date`, `result_date`, `offered_as`, `offer_cost`, `result_as`, `schedule_to`, `created_at`, `modified_at`, `active`) VALUES
+(1, 1, 'Test Schedule', '<p>yuytu</p>', '2017-12-04 00:00:00', '2017-12-05 22:30:00', '2017-12-06 01:00:00', 'paid', '10.00', 'auto', 2, '2017-12-02 21:06:28', '0000-00-00 00:00:00', 0),
+(2, 2, 'English 2017', '<p>fdgfdg</p>', '2017-12-03 00:30:00', '2017-12-04 08:00:00', '2017-12-05 02:00:00', 'paid', '10.00', 'manual', 2, '2017-12-02 21:09:31', '0000-00-00 00:00:00', 1),
+(3, 2, 'English 2017', '<p>fdgfdg</p>', '2017-12-03 01:30:00', '2017-12-04 08:00:00', '2017-12-05 02:00:00', 'paid', '10.00', 'manual', 2, '2017-12-02 21:10:33', '0000-00-00 00:00:00', 1),
+(4, 2, 'English 2017', '<p>fdgfdg</p>', '2017-12-03 23:59:00', '2017-12-04 08:00:00', '2017-12-05 02:00:00', 'paid', '10.00', 'manual', 2, '2017-12-02 21:10:53', '0000-00-00 00:00:00', 1),
+(5, 2, 'test schedule', '<p>jhghj</p>', '2017-12-04 01:00:00', '2017-12-05 18:00:00', '2017-12-06 09:00:00', 'free', '0.00', 'auto', 2, '2017-12-03 06:35:31', '0000-00-00 00:00:00', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xtra_exam_schedule_batchs`
+--
+
+CREATE TABLE `xtra_exam_schedule_batchs` (
+  `id` int(11) NOT NULL,
+  `schedule_id` int(11) NOT NULL,
+  `batch_id` int(11) NOT NULL,
+  `active` int(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xtra_exam_schedule_batchs`
+--
+
+INSERT INTO `xtra_exam_schedule_batchs` (`id`, `schedule_id`, `batch_id`, `active`) VALUES
+(1, 5, 3, 1),
+(2, 5, 6, 1),
+(3, 5, 8, 1),
+(4, 5, 12, 1),
+(5, 5, 14, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `xtra_exam_schedule_candidates`
+--
+
+CREATE TABLE `xtra_exam_schedule_candidates` (
+  `id` int(11) NOT NULL,
+  `schedule_id` int(10) NOT NULL,
+  `candidates` longtext NOT NULL,
+  `active` int(2) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `xtra_exam_schedule_candidates`
+--
+
+INSERT INTO `xtra_exam_schedule_candidates` (`id`, `schedule_id`, `candidates`, `active`) VALUES
+(1, 1, 'a:2:{i:2121475871;a:1:{s:12:\"candidate_id\";s:10:\"2121475871\";}i:783574469;a:1:{s:12:\"candidate_id\";s:9:\"783574469\";}}', 1),
+(2, 2, 'a:0:{}', 1),
+(3, 3, 'a:0:{}', 1),
+(4, 4, 'a:0:{}', 1),
+(5, 5, 'a:2:{i:574946095;a:1:{s:12:\"candidate_id\";s:9:\"574946095\";}i:1876255399;a:1:{s:12:\"candidate_id\";s:10:\"1876255399\";}}', 1);
 
 -- --------------------------------------------------------
 
@@ -1705,6 +1756,24 @@ ALTER TABLE `xtra_exam_questions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `xtra_exam_schedule`
+--
+ALTER TABLE `xtra_exam_schedule`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `xtra_exam_schedule_batchs`
+--
+ALTER TABLE `xtra_exam_schedule_batchs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `xtra_exam_schedule_candidates`
+--
+ALTER TABLE `xtra_exam_schedule_candidates`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `xtra_question`
 --
 ALTER TABLE `xtra_question`
@@ -1775,6 +1844,21 @@ ALTER TABLE `xtra_exam`
 ALTER TABLE `xtra_exam_questions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `xtra_exam_schedule`
+--
+ALTER TABLE `xtra_exam_schedule`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `xtra_exam_schedule_batchs`
+--
+ALTER TABLE `xtra_exam_schedule_batchs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `xtra_exam_schedule_candidates`
+--
+ALTER TABLE `xtra_exam_schedule_candidates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `xtra_question`
 --
 ALTER TABLE `xtra_question`
@@ -1798,7 +1882,8 @@ ALTER TABLE `xtra_subject`
 -- AUTO_INCREMENT for table `xtra_subject_topic`
 --
 ALTER TABLE `xtra_subject_topic`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
