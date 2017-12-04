@@ -9,8 +9,6 @@ class Auth extends MY_Controller {
 		$this->load->helper('form');
 	}
 
-
-
 	public function login()
 	{
 	    // Method should not be directly accessible

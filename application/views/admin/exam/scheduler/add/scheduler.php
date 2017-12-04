@@ -1,6 +1,6 @@
 <h4 class="header-title m-t-0 text-center">New Schedule</h4>
 
-<form method="POST" action="<?php echo base_url('admin/exam/add') ?>">
+<form method="POST" action="<?php echo base_url('admin/exam/scheduler/add') ?>">
 
     <div class="form-group row">
         <label class="col-4 col-form-label text-right"></label>
@@ -20,7 +20,7 @@
     <div class="form-group row">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Schedule Name<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="exam_name" placeholder="Exam Name" value="<?php echo set_value('test_name'); ?>">
+            <input type="text" required class="form-control" name="schedule_name" placeholder="Schedule Name" value="<?php echo set_value('schedule_name'); ?>">
         </div>
     </div> 
     <div class="row form-group">
@@ -36,13 +36,19 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label style="margin-bottom:0;">Start Date<span class="text-danger">*</span></label>
-                        <input type="text" placeholder="" required="" class="form-control" name="username">
+                        <div class="input-group">
+                            <input type="text" class="form-control date_pic" placeholder="dd-mm-yyyy" name="start_date">
+                            <span class="input-group-addon bg-primary b-0 text-white"><i class="ion-calendar"></i></span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label style="margin-bottom:0;">End Date<span class="text-danger">*</span></label>
-                        <input type="text" placeholder="" required="" class="form-control" name="username">
+                        <div class="input-group">
+                            <input type="text" class="form-control date_pic" placeholder="dd-mm-yyyy" name="end_date">
+                            <span class="input-group-addon bg-primary b-0 text-white"><i class="ion-calendar"></i></span>
+                        </div>
                     </div>
                 </div>
                 
@@ -56,13 +62,19 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label style="margin-bottom:0;">Start Time<span class="text-danger">*</span></label>
-                        <input type="text" placeholder="" required="" class="form-control" name="username">
+                        <div class="input-group">
+                            <input type="text" required="" class="form-control time_pic" name="start_time">
+                            <span class="input-group-addon bg-primary b-0 text-white"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label style="margin-bottom:0;">End Time<span class="text-danger">*</span></label>
-                        <input type="text" placeholder="" required="" class="form-control" name="username">
+                        <div class="input-group">
+                            <input type="text" required="" class="form-control time_pic" name="end_time">
+                            <span class="input-group-addon bg-primary b-0 text-white"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                        </div>
                     </div>
                 </div>
                 
@@ -76,13 +88,19 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label style="margin-bottom:0;">Result Date<span class="text-danger">*</span></label>
-                        <input type="text" placeholder="" required="" class="form-control" name="username">
+                        <div class="input-group">
+                            <input type="text" class="form-control date_pic" placeholder="dd-mm-yyyy" name="result_date">
+                            <span class="input-group-addon bg-primary b-0 text-white"><i class="ion-calendar"></i></span>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label style="margin-bottom:0;">Result Time<span class="text-danger">*</span></label>
-                        <input type="text" placeholder="" required="" class="form-control" name="username">
+                        <div class="input-group">
+                            <input type="text" required="" class="form-control time_pic" name="result_time">
+                            <span class="input-group-addon bg-primary b-0 text-white"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                        </div>
                     </div>
                 </div>
                 
@@ -111,10 +129,12 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label style="margin-bottom:0;">Cost<span class="text-danger">*</span></label>
-                        <input type="text" placeholder="" required="" class="form-control" name="username">
+                        <div class="input-group bootstrap-touchspin">
+                            <span class="input-group-addon bootstrap-touchspin-prefix">&#8377;</span>
+                            <input id="demo2" type="text" value="0.00" name="exam_cost" class="form-control" style="display: block;">
+                        </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -126,7 +146,7 @@
                     <div class="form-group">
                         <div style="margin-top: 5px;">
                             <div class="radio radio-success form-check-inline">
-                                <input type="radio" id="publish_result1" value="auto" name="publish_result" checked="">
+                                <input type="radio" id="publish_result1" value="auto" name="result_as" checked="">
                                 <label for="publish_result1"> Auto Result </label>
                             </div>
                         </div>
@@ -137,7 +157,7 @@
                         <div style="margin-top: 5px;">
 
                             <div class="radio radio-success form-check-inline">
-                                <input type="radio" id="publish_result2" value="manual" name="publish_result">
+                                <input type="radio" id="publish_result2" value="manual" name="result_as">
                                 <label for="publish_result2"> Manual Result </label>
                             </div>
                         </div>
@@ -160,7 +180,7 @@
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Schedule To Batchs<span class="text-danger">*</span></label>
         <div class="col-7">
-            <select name="batchs[]" class="multi-select" required multiple="" id="question_batchs" >
+            <select name="exam_batchs[]" class="multi-select" required multiple="" id="question_batchs" >
                 <option disabled selected value=""> -- Selected Batchs -- </option>
             </select>
         </div>
@@ -173,9 +193,9 @@
                     <div class="form-group">
                         <div style="margin-top: 5px;">
                             <div class="radio radio-success form-check-inline">
-                                <select class="form-control">
-                                    <option value="1">All Students</option>
-                                    <option value="2">Selected Students</option>
+                                <select class="form-control candidate_selection" name="schedule_to">
+                                    <option value="1">All Candidate</option>
+                                    <option value="2">Selected Candidate</option>
                                 </select>
                             </div>
                         </div>
@@ -184,8 +204,8 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div style="margin-top: 5px;">
-                            <div class="radio radio-success form-check-inline">
-                                <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5 select-question" data-toggle="modal" data-target=".questions-model">Selece Students &nbsp; <i class="mdi mdi-library-plus"></i></button>
+                            <div class="radio radio-success form-check-inline select-candidate-btn" style="display:none;">
+                                <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5 select-candidate" data-toggle="modal" data-target=".questions-model">Select Candidates &nbsp; <i class="mdi mdi-library-plus"></i></button>
                             </div>
                         </div>
                     </div>
@@ -221,7 +241,7 @@
     <div class="modal-dialog modal-full-width">
         <div class="modal-content">
             <div class="modal-header text-center">
-                <div style="width:100%;"><h3>Select Students</h3></div>
+                <div style="width:100%;"><h3>Select Candidates</h3></div>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
@@ -330,7 +350,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5 selected-question" data-toggle="modal" data-target=".selected-questions-model">Selected Questions &nbsp; <i class="mdi mdi-library-plus"></i></button>
+                                                    <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5 selected-question" data-toggle="modal" data-target=".selected-candidate-model">Selected Questions &nbsp; <i class="mdi mdi-library-plus"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -347,8 +367,8 @@
                         </div>
                         <div class="form-group text-right m-b-0">
                             <div style="margin-top:30px;">
-                                <button type="button" class="btn btn-secondary btn-custom waves-effect w-md waves-light m-b-5 close-select-question">Cancel</button>
-                                <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5 selected-question" data-toggle="modal" data-target=".selected-questions-model">Selected Questions &nbsp; <i class="mdi mdi-arrow-right-bold"></i></button>                              
+                                <button type="button" class="btn btn-secondary btn-custom waves-effect w-md waves-light m-b-5 close-select-candidate">Cancel</button>
+                                <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5 selected-question" data-toggle="modal" data-target=".selected-candidate-model">Selected Candidates &nbsp; <i class="mdi mdi-arrow-right-bold"></i></button>                              
                             </div>
                         </div>
 
@@ -371,7 +391,7 @@
 
 
 
-<div class="modal fade selected-questions-model" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal fade selected-candidate-model" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-full-width">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -483,7 +503,7 @@
 
                         <div class="form-group text-right m-b-0">
                             <div style="margin-top:30px;">
-                                <button type="button" class="btn btn-info btn-custom waves-effect w-md waves-light m-b-5 close-selected-question"><i class="mdi mdi-arrow-left-bold"></i>Back To Questions &nbsp; </button> 
+                                <button type="button" class="btn btn-info btn-custom waves-effect w-md waves-light m-b-5 close-selected-candidate"><i class="mdi mdi-arrow-left-bold"></i>Back To Questions &nbsp; </button> 
                                 <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" id="model_submit"> Submit </button>                 
                             </div>
                         </div>

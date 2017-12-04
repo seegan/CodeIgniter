@@ -13,6 +13,7 @@
         <script src="<?php echo base_url(); ?>theme/assets/js/jquery-ui.js"></script>
         <script src="<?php echo base_url(); ?>theme/assets/js/popper.min.js"></script><!-- Popper for Bootstrap -->
         <script src="<?php echo base_url(); ?>theme/assets/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url(); ?>jsplugins/timepicker/jquery.timepicker.js"></script>
         <script src="<?php echo base_url(); ?>theme/assets/js/detect.js"></script>
         <script src="<?php echo base_url(); ?>theme/assets/js/fastclick.js"></script>
         <script src="<?php echo base_url(); ?>theme/assets/js/jquery.slimscroll.js"></script>

@@ -66,7 +66,7 @@ jQuery(document).ready(function () {
     });
 
 
-    jQuery('.button-readonly').on('click', function(){
+    jQuery('.block-readonly .remove-circle').on('click', function(){
         var selector = jQuery(this).parent();
 
         jQuery('#schedule_exam').attr('readonly', false);
@@ -86,8 +86,10 @@ jQuery(document).ready(function () {
     //On change Btch Multi select Populate batch filter on model
     jQuery('#question_batchs').on('change', function(){
         var selected_batchs = jQuery("#question_batchs option:selected").map(function() {
-            return { key : jQuery(this).val(), value : jQuery(this).text() };
-        }).toArray();
+            if(jQuery(this).val() !== "") {
+                return { key : jQuery(this).val(), value : jQuery(this).text() };  
+            }
+        }).toArray();     
 
         var selected_batch_ids = jQuery("#question_batchs option:selected").map(function() {
             if(jQuery(this).val() !== '') {
@@ -98,7 +100,6 @@ jQuery(document).ready(function () {
         if(selected_batch_ids == '') {
             selected_batch_ids = '-1';
         }
-
 
         var filterBatchSel = document.getElementById("batchs_filter"); 
         filterBatchSel.length = 1
@@ -113,9 +114,8 @@ jQuery(document).ready(function () {
         }
         jQuery("#batchs_filter").change();
 
-
-
-    })
+        removeSelectedCandidate(selected_batch_ids);
+    });
 
 
 
@@ -194,20 +194,20 @@ jQuery(document).ready(function () {
 
 
 
-    jQuery('.select-question').on('click', function() {
+    jQuery('.select-candidate').on('click', function() {
         selectCandidateReset();
     });
 
     //Model Close
-    jQuery('.close-selected-question').on('click', function() {
-        jQuery('.selected-questions-model').find('.close').click()
+    jQuery('.close-selected-candidate').on('click', function() {
+        jQuery('.selected-candidate-model').find('.close').click()
     });
-    jQuery('.close-select-question').on('click', function() {
+    jQuery('.close-select-candidate').on('click', function() {
         jQuery('.questions-model').find('.close').click()
     });
 
     jQuery('#model_submit').on('click', function() {
-        jQuery('.selected-questions-model').find('.close').click();
+        jQuery('.selected-candidate-model').find('.close').click();
         jQuery('.questions-model').find('.close').click();
     });
 
@@ -220,7 +220,13 @@ jQuery(document).ready(function () {
 
 
 
-
+    jQuery('.candidate_selection').on('change', function () {
+        if( jQuery("option:selected", this).val() == 2 ) {
+            jQuery('.select-candidate-btn').css('display','block');
+        } else {
+            jQuery('.select-candidate-btn').css('display','none');
+        }
+    });
 
 });
 
@@ -258,7 +264,7 @@ function processingSchedulerFilter(exam_id) {
 function addCandidate(candidate_id, username ,enrollment_no ,branch_id ,batch_id ,mobile ,gender ,registration_date) {
 
     var total_selected = (jQuery('.selected_candidate_block tr').length + 1 );
-    var tr_block = "<tr data-selcandidateid="+candidate_id+"><td class='selected_sno'><button data-selremoveid="+candidate_id+" class='btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle'><i class='fa fa-remove'></i></button><input type='hidden' name='selected_candidate["+candidate_id+"][candidate_id]' value='"+candidate_id+"'></td><td>"+username+"</td><td>"+enrollment_no+"</td><td>"+branch_id+"</td><td>"+batch_id+"</td><td>"+mobile+"</td><td>"+gender+"</td><td>"+registration_date+"</td></tr>";
+    var tr_block = "<tr data-selcandidateid="+candidate_id+" data-selbatchid="+batch_id+"><td class='selected_sno'><button data-selremoveid="+candidate_id+" class='btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle'><i class='fa fa-remove'></i></button><input type='hidden' name='selected_candidate["+candidate_id+"][candidate_id]' value='"+candidate_id+"'></td><td>"+username+"</td><td>"+enrollment_no+"</td><td>"+branch_id+"</td><td>"+batch_id+"</td><td>"+mobile+"</td><td>"+gender+"</td><td>"+registration_date+"</td></tr>";
 
     if(jQuery('.selected_candidate_block').find('[data-selcandidateid="'+candidate_id+'"]').length  <= 0) {
         jQuery('.selected_candidate_block').append(tr_block);
@@ -266,12 +272,12 @@ function addCandidate(candidate_id, username ,enrollment_no ,branch_id ,batch_id
 
 }
 
-function removeQuestion(question_id) {
-    if(jQuery('.selected_candidate_block').find('[data-selcandidateid="'+question_id+'"]').length  > 0) {
-        jQuery('.selected_candidate_block').find('[data-selcandidateid="'+question_id+'"]').remove();
+function removeCandidate(candidate_id) {
+    if(jQuery('.selected_candidate_block').find('[data-selcandidateid="'+candidate_id+'"]').length  > 0) {
+        jQuery('.selected_candidate_block').find('[data-selcandidateid="'+candidate_id+'"]').remove();
     }
-    if(jQuery('[data-candidateid="'+question_id+'"]').find('.checked_candidate').is(':checked')) {
-        jQuery('[data-candidateid="'+question_id+'"]').find('.checked_candidate').prop('checked', false); 
+    if(jQuery('[data-candidateid="'+candidate_id+'"]').find('.checked_candidate').is(':checked')) {
+        jQuery('[data-candidateid="'+candidate_id+'"]').find('.checked_candidate').prop('checked', false); 
     }
 }
 
@@ -294,4 +300,15 @@ function selectCandidateReset() {
 
     jQuery('.candidate_scheduler_filter').html('');
     jQuery('.search_question,username, .enrollment_no, .contact_no, .user_email').val('');
+}
+
+
+function removeSelectedCandidate(batchs) {
+    jQuery('.selected_candidate_block tr').each(function(){
+        var this_batch = jQuery(this).attr('data-selbatchid');
+        var batch_in = batchs.indexOf(this_batch);
+        if(batch_in == -1) {
+            jQuery(this).remove();
+        }
+    });
 }

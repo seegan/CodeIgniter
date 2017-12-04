@@ -426,3 +426,32 @@ function populateMultiSelect(sel = '') {
     //advance multiselect start
     jQuery(sel).multiSelect( 'refresh' );    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+jQuery(document).ready(function () {
+  jQuery('.date_pic').datepicker({
+      autoclose: true,
+      todayHighlight: true,
+      format: "dd M yyyy",
+      clearBtn: true,
+  });
+
+
+  jQuery('.time_pic').timepicker({ 'timeFormat': 'h:i A' });
+})

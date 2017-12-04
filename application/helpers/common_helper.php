@@ -77,3 +77,20 @@ if( ! function_exists('in_array_r') )
 	    return false;
 	}
 }
+
+
+
+if( ! function_exists('join_date_time') )
+{
+	function join_date_time($date = '12 Dec 2017', $time= '00:00 AM') {
+		$date_time = $date.' '.$time;
+		return $date_time;
+	}
+}
+
+if( ! function_exists('man_to_machine_date') )
+{
+	function man_to_machine_date($date_time) {
+		return date("Y-m-d H:i:s", strtotime($date_time));
+	}
+}

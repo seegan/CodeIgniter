@@ -61,6 +61,9 @@ $config['category_table']            	= 'xtra_category';
 $config['exam_table']            		= 'xtra_exam';
 $config['exam_questions_table']         = 'xtra_exam_questions';
 
+$config['exam_schedule_table']         = 'xtra_exam_schedule';
+$config['exam_schedule_candidate_table']         = 'xtra_exam_schedule_candidates';
+$config['exam_schedule_batch_table']         = 'xtra_exam_schedule_batchs';
 
 
 
