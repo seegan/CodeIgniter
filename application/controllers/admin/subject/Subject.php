@@ -160,13 +160,8 @@ class Subject extends MY_Controller {
 		];
 		$this->form_validation->set_rules( $validation_rules );
         if ($this->form_validation->run() !== FALSE) {
-
 			$this->db->where('id', $subject_id);
 			$this->db->update('xtra_subject', $subject_data); 
-
-			//echo '<h1>Congratulations</h1>' . '<p>User ' . $user_data['username'] . ' was created.</p>';
-			//redirect('admin/subject'); die();
-		
         }
 
 

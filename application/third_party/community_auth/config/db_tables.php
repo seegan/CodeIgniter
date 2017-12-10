@@ -41,7 +41,7 @@ $config['branch_subject_table']        	= 'xtra_branch_subject';
 $config['batch_table']            		= 'xtra_batch';
 $config['batch_subject_table']        	= 'xtra_batch_subject';
 
-$config['candidate_branch_batch_table']        	= 'xtra_candidate_branch_batch';
+$config['candidate_branch_batch_table']      = 'xtra_candidate_branch_batch';
 
 $config['question_table']          		= 'xtra_question';
 

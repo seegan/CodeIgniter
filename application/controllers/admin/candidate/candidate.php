@@ -7,9 +7,10 @@ class Candidate extends MY_Controller {
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->helper('form');
-		$this->load->helper('branch_helper');
+		$this->load->helper( array('candidate_helper','branch_helper') );
 
 		$this->load->model('branch_model', 'branch');
+		$this->load->model('candidate_model', 'candidate');
 
 	}
 
@@ -57,7 +58,6 @@ class Candidate extends MY_Controller {
 	    {
 	        show_404();
 	    }
-
 
 
 		$data['final_foot'] = '<script type="text/javascript">
@@ -146,14 +146,7 @@ class Candidate extends MY_Controller {
 		];
 
 		$this->form_validation->set_rules( $validation_rules );
-		$data['branchs'] = getAdminBranch(1);
-
-        if ($this->form_validation->run() == FALSE)
-        {
-            $page_content = $this->load->view('admin/candidate/candidate/candidate_add', $data, TRUE);
-        }
-        else
-        {
+        if ($this->form_validation->run() != FALSE) {
 
 			$user_data['passwd']     = $this->authentication->hash_passwd($user_data['passwd']);
 			$user_data['user_id']    = $this->examples_model->get_unused_id();
@@ -197,10 +190,10 @@ class Candidate extends MY_Controller {
 				}
 				redirect('admin/candidate'); die();
 			}
-			else {
-				$page_content = $this->load->view('admin/candidate/candidate/candidate_add', $data, TRUE);
-			}
         }
+
+		$data['branchs'] = getAdminBranch(1);
+        $page_content = $this->load->view('admin/candidate/candidate/candidate_add', $data, TRUE);
 
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
@@ -214,4 +207,100 @@ class Candidate extends MY_Controller {
 	}
 
 
+
+	public function update($candidate_id = 0)
+	{
+	    if( $this->uri->uri_string() == 'admin/candidate/candidate/update')
+	    {
+	        show_404();
+	    }
+
+		$data['final_foot'] = '<script type="text/javascript">
+            jQuery(document).ready(function(){
+                    
+                    jQuery(".branch_name").on("change", function(){
+
+                        var branch_id = jQuery(this).val();
+
+                        var batchSel = document.getElementById("batch_name"); 
+                        batchSel.length = 1
+
+                        jQuery.ajax({ 
+                            type: "POST", 
+                            url: "'.base_url("admin/branch/batch/getBatchByBranch").'",  
+                            data: { branch_id: branch_id }, 
+                            dataType: "json",
+                            success: function (data) {
+
+                                var batchs = data.batchs;
+                                
+                                jQuery("#batch_name").change();
+                                if(data.batch_success) {
+                                    for (var batch in batchs) { 
+                                        if (typeof  batchs[batch].id  !== "undefined") {
+                                            batchSel.options[batchSel.options.length] = new Option(batchs[batch].batch_name, batchs[batch].id);
+                                        }
+                                    }
+                                }
+                                jQuery("#batch_name").change();
+
+                            }
+                        });
+                    });
+                });
+        </script>
+        ';
+
+
+		$user_data = [
+			'passwd'     => $this->input->post('passwd'),
+		];
+
+		$this->load->helper('auth');
+		$this->load->model('examples/examples_model');
+		$this->load->model('examples/validation_callables');
+		$this->load->library('form_validation');
+
+		$validation_rules = [
+			[
+				'field' => 'passwd',
+				'label' => 'passwd',
+				'rules' => [
+					'trim',
+					'required',
+					[ 
+						'_check_password_strength', 
+						[ $this->validation_callables, '_check_password_strength' ] 
+					]
+				],
+				'errors' => [
+					'required' => 'The password field is required.'
+				]
+			],
+
+		];
+
+		$data['candidate_data'] = getCandidateData($candidate_id);
+		$data['branchs'] = getAdminBranch(1);
+		$data['candidate_branch'] = getCandidateBranch($candidate_id);
+		$data['candidate_batch'] = getCandidateBatch($candidate_id);
+
+		$data['batchs'] = array();
+		if( $data['candidate_batch'] && isset($data['candidate_batch']->batch_id) ) {
+			$data['batchs'] = getBatchByBranch($data['candidate_batch']->branch_id);
+		}
+		
+
+        $page_content = $this->load->view('admin/candidate/candidate/candidate_update', $data, TRUE);
+
+		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
+		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
+
+		echo $this->load->view('admin/common/header', '', TRUE);
+		echo $left_sidebar;
+		echo $page_content;
+		echo $right_sidebar;
+		echo $this->load->view('admin/common/footer', '', TRUE);
+
+	}
 }
