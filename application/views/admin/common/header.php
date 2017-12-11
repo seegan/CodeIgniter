@@ -34,6 +34,7 @@
         <script type="text/javascript">
             var site_url = "<?php echo base_url(); ?>";
             var filter_ajaxurl = "<?php echo base_url('admin/AdminAjax'); ?>";
+            var import_ajaxurl = "<?php echo base_url('admin/ImportAjax'); ?>";
         </script>
 
         <?php

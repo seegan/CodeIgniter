@@ -211,7 +211,6 @@ class Candidate extends MY_Controller {
 	    {
 	        show_404();
 	    }
-
 	    $data['candidate_data'] = getCandidateData($candidate_id);
 		$page_content = "No Record Found!";
 
@@ -349,8 +348,32 @@ class Candidate extends MY_Controller {
 
 
 	public function import() {
+		
+		if( $this->uri->uri_string() == 'admin/candidate/candidate/import')
+	    {
+	        show_404();
+	    }
+		$data['javascripts'][] = base_url().'theme/assets/js/jquery.form.min.js';
+		$data['javascripts'][] = base_url().'theme/assets/js/custom/candidate-import.js';
 
-		$file = APPPATH.'/Book1.xlsx';
+
+		$page_content = $this->load->view('admin/candidate/candidate/candidate_import', $data, TRUE);
+
+		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
+		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
+
+		echo $this->load->view('admin/common/header', '', TRUE);
+		echo $left_sidebar;
+		echo $page_content;
+		echo $right_sidebar;
+		echo $this->load->view('admin/common/footer', '', TRUE);
+	}
+
+
+
+/*	public function import() {
+
+		$file = APPPATH.'/sample.xlsx';
 
 		//load the excel library
 		$this->load->library('excel');
@@ -384,10 +407,8 @@ var_dump($cell);
 		//send the data in an array format
 		$data['header'] = $header;
 		$data['values'] = $arr_data;
-/*
-echo "<pre>";
-var_dump($data['values']);*/
-	}
+
+	}*/
 
 
 

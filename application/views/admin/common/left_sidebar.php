@@ -35,8 +35,9 @@
                                 <ul class="list-unstyled">
                                     <li><a href="<?php echo base_url('admin/candidate') ?>">Candidates</a></li>
                                     <li><a href="<?php echo base_url('admin/candidate/assign_exam') ?>">Assign to Exam</a></li>
-                                    <li><a href="<?php echo base_url('admin/candidate/end_exam') ?>">End Exam</a></li>
-                                    <li><a href="<?php echo base_url('admin/candidate/resume_exam') ?>">Resume Exam</a></li>
+                                    <!-- <li><a href="<?php //echo base_url('admin/candidate/end_exam') ?>">End Exam</a></li>
+                                    <li><a href="<?php //echo base_url('admin/candidate/resume_exam') ?>">Resume Exam</a></li> -->
+                                    <li><a href="<?php echo base_url('admin/candidate/import') ?>">Import</a></li>
                                 </ul>
                             </li>
 

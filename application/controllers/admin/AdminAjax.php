@@ -248,6 +248,4 @@ class AdminAjax extends MY_Controller {
     }
 
 
-
-
 }
