@@ -15,8 +15,23 @@ class Exam extends MY_Controller {
 
 	public function index()
 	{
+	    if( $this->uri->uri_string() == 'admin/exam/exam/index' || $this->uri->uri_string() == 'admin/exam/exam') {
+	        show_404();
+	    }
 
-		$page_content = $this->load->view('admin/exam/exam/exam', '', TRUE);
+		$this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+        $result_args = array(
+            'orderby_field' => 'e.created_at',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['data_list'] = $this->paginatefilter->exam_list_pagination($result_args);
+        $data['javascripts'][] = base_url().'theme/assets/js/custom/list-exam.js';
+
+		$page_content = $this->load->view('admin/exam/exam/exam', $data, TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
 

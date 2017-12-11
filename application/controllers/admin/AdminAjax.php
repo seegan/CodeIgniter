@@ -139,10 +139,6 @@ class AdminAjax extends MY_Controller {
     }
 
 
-
-
-
-
     private function candidate_filter() {
         $this->load->library('paginator', '', 'paginatefilter');
         $this->paginatefilter->ppage = 20;
@@ -158,6 +154,34 @@ class AdminAjax extends MY_Controller {
         return $this->load->view('admin/candidate/candidate/ajax/filter/list', $data, TRUE);
     }
 
+    private function exam_filter() {
+        $this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+
+        $result_args = array(
+            'orderby_field' => 'e.created_at',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['data_list'] = $this->paginatefilter->exam_list_pagination($result_args);
+        return $this->load->view('admin/exam/exam/ajax/filter/list', $data, TRUE);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private function search_exam() {
         $this->load->helper(array('exam_helper'));
         $this->load->model('exam_model', 'exam');
@@ -171,9 +195,6 @@ class AdminAjax extends MY_Controller {
         echo json_encode($data);
         die();
     }
-
-
-
 
 
     private function get_scheduler_data() {

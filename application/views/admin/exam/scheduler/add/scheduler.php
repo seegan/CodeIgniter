@@ -37,7 +37,7 @@
                     <div class="form-group">
                         <label style="margin-bottom:0;">Start Date<span class="text-danger">*</span></label>
                         <div class="input-group">
-                            <input type="text" class="form-control date_pic" placeholder="dd-mm-yyyy" name="start_date">
+                            <input type="text" class="form-control date_pic" placeholder="Date Month Year" name="start_date">
                             <span class="input-group-addon bg-primary b-0 text-white"><i class="ion-calendar"></i></span>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                     <div class="form-group">
                         <label style="margin-bottom:0;">End Date<span class="text-danger">*</span></label>
                         <div class="input-group">
-                            <input type="text" class="form-control date_pic" placeholder="dd-mm-yyyy" name="end_date">
+                            <input type="text" class="form-control date_pic" placeholder="Date Month Year" name="end_date">
                             <span class="input-group-addon bg-primary b-0 text-white"><i class="ion-calendar"></i></span>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                     <div class="form-group">
                         <label style="margin-bottom:0;">Result Date<span class="text-danger">*</span></label>
                         <div class="input-group">
-                            <input type="text" class="form-control date_pic" placeholder="dd-mm-yyyy" name="result_date">
+                            <input type="text" class="form-control date_pic" placeholder="Date Month Year" name="result_date">
                             <span class="input-group-addon bg-primary b-0 text-white"><i class="ion-calendar"></i></span>
                         </div>
                     </div>

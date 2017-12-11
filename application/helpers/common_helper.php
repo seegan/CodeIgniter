@@ -94,3 +94,10 @@ if( ! function_exists('man_to_machine_date') )
 		return date("Y-m-d H:i:s", strtotime($date_time));
 	}
 }
+
+if( ! function_exists('machine_to_man_date') )
+{
+	function machine_to_man_date($date_time) {
+		return date("d M Y", strtotime($date_time));
+	}
+}

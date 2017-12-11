@@ -4,7 +4,7 @@ class Candidate_model extends MY_Model {
 
 	public function getCandidateData($candidate_id = 0)
 	{
-		$query = $this->db->query("SELECT u.username, u.email, c.name, c.enrollment_no, c.ref_pass, c.mobile, c.phone, c.address, c.enquiry_from, c.hear_from, c.guardian_name, c.guardian_mobile, c.gender, c.send_mail, c.registration_date, c.birth_date FROM ".$this->db_table('candidate_table')." as c JOIN ".$this->db_table('user_table')." as u ON c.user_id = u.user_id WHERE c.user_id = ${candidate_id} AND u.auth_level = 1");
+		$query = $this->db->query("SELECT u.username, u.email, c.name, c.enrollment_no, c.ref_pass, c.mobile, c.phone, c.address, c.enquiry_from, c.hear_from, c.guardian_name, c.guardian_mobile, c.gender, c.send_mail, c.registration_date, c.birth_date, u.banned FROM ".$this->db_table('candidate_table')." as c JOIN ".$this->db_table('user_table')." as u ON c.user_id = u.user_id WHERE c.user_id = ${candidate_id} AND u.auth_level = 1");
 		return $query->row();
 	}
 

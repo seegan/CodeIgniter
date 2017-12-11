@@ -16,7 +16,19 @@ class Scheduler extends MY_Controller {
 	public function index()
 	{
 
-		$page_content = $this->load->view('admin/exam/scheduler/scheduler', '', TRUE);
+		$this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+        $result_args = array(
+            'orderby_field' => 'se.status_order',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'ASC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['data_list'] = $this->paginatefilter->schedule_list_pagination($result_args);
+        $data['javascripts'][] = base_url().'theme/assets/js/custom/list-schedule.js';
+
+		$page_content = $this->load->view('admin/exam/scheduler/scheduler', $data, TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
 
