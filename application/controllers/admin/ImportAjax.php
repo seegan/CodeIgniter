@@ -122,23 +122,130 @@ class ImportAjax extends MY_Controller {
             foreach ($list as $list_key) {
 
                 $user_name = isset($import_data[$list_key][0]) ? $import_data[$list_key][0] : false;
+                $password = isset($import_data[$list_key][1]) ? $import_data[$list_key][1] : 12345678;
                 $enrol_no = isset($import_data[$list_key][2]) ? $import_data[$list_key][2] : false;
                 $email = isset($import_data[$list_key][7]) ? $import_data[$list_key][7] : false;
+                $active = isset($import_data[$list_key][20]) ? $import_data[$list_key][20] : 0;
+                $active = ($active == 'yes') ? 0 : 1;
+
+                $name = isset($import_data[$list_key][3]) ? $import_data[$list_key][3] : '';
+                $registration_date = date('Y-m-d');
+//var_dump(date('Y-m-d', strtotime('10/11/2017'))); die();
 
                 if( $user_name && $enrol_no && $email && $user_name != '' && $enrol_no != '' && $email != '') {
 
 
-/*$data = array(
-    'test' => 'This is a test',
-);
+                    $this->load->helper('auth');
+                    $this->load->model('examples/examples_model');
+                    $this->load->model('examples/validation_callables');
+                    $this->load->library('form_validation');
 
-$this->form_validation->set_data($data); 
-$this->form_validation->set_rules('test', 'Test Field', 'required|max_length[20]');
-if ($this->form_validation->run()) 
-{
-    $message = "passed validation";
-}
-*/
+
+                    $user_data = array(
+                        'username' => $user_name,
+                        'passwd' => $password,
+                        'enrol_no' => $enrol_no,
+                        'email' => $email,
+                        'auth_level' => 1,
+                        'banned' => $active
+                    );
+
+
+                    $validation_rules = [
+                        [
+                            'field' => 'username',
+                            'label' => 'username',
+                            'rules' => 'required|min_length[3]|max_length[12]|is_unique[' . db_table('user_table') . '.username]',
+                            'errors' => [
+                                'required' => 'Username Required.',
+                                'is_unique' => 'Username already in use.'
+                            ]
+                        ],
+                        [
+                            'field' => 'passwd',
+                            'label' => 'passwd',
+                            'rules' => [
+                                'trim',
+                                'required',
+                                [ 
+                                    '_check_password_strength', 
+                                    [ $this->validation_callables, '_check_password_strength' ] 
+                                ]
+                            ],
+                            'errors' => [
+                                'required' => 'The password field is required.'
+                            ]
+                        ],
+                        [
+                            'field' => 'enrol_no',
+                            'label' => 'Enroll No',
+                            'rules'  => 'trim|required',
+                            'errors' => [
+                                'is_unique' => 'Enroll No Required.'
+                            ]
+                        ],
+                        [
+                            'field'  => 'email',
+                            'label'  => 'email',
+                            'rules'  => 'trim|required|valid_email|is_unique[' . db_table('user_table') . '.email]',
+                            'errors' => [
+                                'is_unique' => 'Email address already in use.'
+                            ]
+                        ]
+                    ];
+
+
+                    $message = '';
+                    $this->form_validation->set_data($user_data); 
+                    $this->form_validation->set_rules($validation_rules);
+                    if ($this->form_validation->run()) {
+
+                        unset($user_data['enrol_no']);
+                        $user_data['passwd']     = $this->authentication->hash_passwd($user_data['passwd']);
+                        $user_data['user_id']    = $this->examples_model->get_unused_id();
+                        $user_data['created_at'] = date('Y-m-d H:i:s');
+
+                        // If username is not used, it must be entered into the record as NULL
+                        if( empty( $user_data['username'] ) ) {
+                            $user_data['username'] = NULL;
+                        }
+
+                        $this->db->set($user_data)
+                            ->insert(db_table('user_table'));
+
+                        if( $this->db->affected_rows() == 1 ){
+/*                            $extra_data = [
+                                'user_id'       => $user_data['user_id'],
+                                'name'      => $this->input->post('name'),
+                                'enrollment_no'         => $this->input->post('enroll_no'),
+                                'ref_pass'  => $this->input->post('passwd'),
+                                'mobile'    => $this->input->post('mobile'),
+                                'phone'     => $this->input->post('phone'),
+                                'address'   => $this->input->post('address'),
+                                'enquiry_from'  => $this->input->post('enquiry_from'),
+                                'hear_from'     => $this->input->post('hear_from'),
+                                'guardian_name'     => $this->input->post('guardian_name'),
+                                'guardian_mobile'   => $this->input->post('guardian_mobile'),
+                                'gender'    => $this->input->post('gender'),
+                                'send_mail'     => ( $this->input->post('send_mail') ) ? $this->input->post('send_mail') : 0,
+                                'registration_date'     => ( $this->input->post('registration_date') ) ? man_to_machine_date($this->input->post('registration_date')) : date('Y-m-d H:i:s'),
+                                'birth_date'    => ( $this->input->post('birth_date') ) ? man_to_machine_date($this->input->post('birth_date')) : '0000-00-00',
+                            ];*/
+                            $extra_data = [
+                                'user_id'       => $user_data['user_id'],
+                                'name'          => $name,
+                                'enrollment_no' => $enrol_no,
+                                'ref_pass'  => $password,
+                                'registration_date' => $registration_date
+                            ];
+                            $this->db->set($extra_data)->insert(db_table('candidate_table'));
+                        }
+
+                    }
+
+
+                    var_dump(validation_errors());
+                    die();
 
 
                     
