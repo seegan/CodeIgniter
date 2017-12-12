@@ -84,3 +84,8 @@ i.login-exceeded-ico {
   top: 12px;
   display: none;
 }
+
+
+.upload-status {
+  line-height: 34px;
+}

@@ -8,7 +8,7 @@ $(window).on('load', function() {
 
     // Row Toggler
     // -----------------------------------------------------------------
-    $('#demo-foo-row-toggler').footable();
+    $('#demo-foo-row-toggler').footable({pageSize: 500});
 
     // Accordion
     // -----------------------------------------------------------------

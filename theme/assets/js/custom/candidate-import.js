@@ -1,11 +1,10 @@
 jQuery(document).ready(function() { 
 	var options = { 
-			target:   '#output',   // target element(s) to be updated with server response 
 			beforeSubmit:  beforeSubmit,  // pre-submit callback 
 			success:       afterSuccess,  // post-submit callback 
 			uploadProgress: OnProgress, //upload progress callback 
 			resetForm: true,        // reset the form after successful submit
-			data: { key1: 'value1', key2: 'value2' }
+			dataType: 'json',
 		}; 
 		
 	 jQuery('#MyUploadForm').submit(function() { 
@@ -20,8 +19,13 @@ jQuery(document).ready(function() {
 	{
 		jQuery('#submit-btn').show(); //hide submit button
 		jQuery('#loading-img').hide(); //hide submit button
-		jQuery('#progressbox').delay( 1000 ).fadeOut(); //hide progress bar
-
+		jQuery('#progressbox').delay( 1000 ).fadeOut(); //hide progress ba
+		if($data.success == true) {
+			jQuery('#output').html('Uploaded Success!');
+			analyzeUploadedFile($data.upload_id);
+		} else {
+			jQuery('#output').html($data.error)
+		}
 	}
 
 	//function to check file size before uploading.
@@ -43,7 +47,7 @@ jQuery(document).ready(function() {
 		    var validExts = new Array(".xlsx", ".xls");
 		    var fileExt = jQuery('#FileInput').val();
 		    fileExt = fileExt.substring(fileExt.lastIndexOf('.'));
-		    if(fileExt != '.xlsx') {
+		    if(validExts.indexOf(fileExt) < 0) {
 		    	jQuery("#output").html("<b>"+ftype+"</b> Unsupported file type!");
 		    	return false
 		    }
@@ -73,10 +77,9 @@ jQuery(document).ready(function() {
 		jQuery('#progressbox').show();
 	    jQuery('#progressbar').width(percentComplete + '%'); //update progressbar percent complete
 	    jQuery('#statustxt').html(percentComplete + '%'); //update status text
-	    if(percentComplete>50)
-	        {
-	            jQuery('#statustxt').css('color','#000'); //change status text to white after 50%
-	        }
+	    if(percentComplete>50){
+	       	jQuery('#statustxt').css('color','#000'); //change status text to white after 50%
+	    }
 	}
 
 	//function to format bites bit.ly/19yoIPO
@@ -86,5 +89,69 @@ jQuery(document).ready(function() {
 	   var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
 	   return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
 	}
+
+	function analyzeUploadedFile(upload_id = 0) {
+        jQuery.ajax({
+            type: "POST", 
+            url: import_ajaxurl, 
+            data: { action: 'analyzeUploadedFile', import_type: 'candidate', upload_id: upload_id, }, 
+            dataType: "json",
+            success: function (data) {
+            	var ul_txt = '<ul>';
+            	if(data.success == true) {
+            		ul_txt += '<li>Valid Data (Estimated) : '+data.candidate_count+'</li>';
+            		jQuery('#start_process_btn').css('display','block');
+            		jQuery('#update_id').val(data.update_id).change();
+            	}
+            	if(data.analyze_msg != '') {
+            		jQuery.each(data.analyze_msg, function(key, val){
+            			ul_txt += '<li>'+val+'</li>';
+            		});
+            	}
+            	ul_txt += '</ul>';
+            	jQuery('#analyze_data').html(ul_txt);
+            }
+        });
+	}
+
+
+	jQuery('#update_start').on('click', function(){
+		var update_id = jQuery('#update_id').val();
+		importAccept(update_id, 'candidate');
+	});
+
+	function importAccept(update_id = 0, import_type) {
+        jQuery.ajax({ 
+            type: "POST", 
+            url: import_ajaxurl, 
+            data: { action: 'importAccept', update_id: update_id, }, 
+            dataType: "json",
+            success: function (data) {
+            	if(data.success == true) {
+            		window.location.href = site_url+'admin/candidate/import/'+data.upload_id;
+            	}
+            }
+        });
+	}
+
+
+
+
+
+
+	var select_list = jQuery('tr.list-import.deactive:lt(4)').map(function() {
+	    return jQuery(this).attr('data-baseid');
+	}).get().join();
+
+    jQuery.ajax({
+        type: "POST", 
+        url: import_ajaxurl, 
+        data: { action: 'createCandidateFromImport', select_list: select_list, import_id: jQuery('#import_id').val() }, 
+        dataType: "json",
+        success: function (data) {
+
+        }
+    });
+
 
 }); 

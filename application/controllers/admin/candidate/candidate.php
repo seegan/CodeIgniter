@@ -347,17 +347,29 @@ class Candidate extends MY_Controller {
 
 
 
-	public function import() {
+	public function import($upload_id = 0) {
 		
 		if( $this->uri->uri_string() == 'admin/candidate/candidate/import')
 	    {
 	        show_404();
 	    }
+	    $this->load->helper('import_helper');
+
 		$data['javascripts'][] = base_url().'theme/assets/js/jquery.form.min.js';
 		$data['javascripts'][] = base_url().'theme/assets/js/custom/candidate-import.js';
 
 
 		$page_content = $this->load->view('admin/candidate/candidate/candidate_import', $data, TRUE);
+
+		if( $upload_data = getUploadFile($upload_id, $this->auth_user_id, $this->auth_level, 1) ) {
+			$data['import_list'] = unserialize( $upload_data->import_data );
+			$data['upload_id'] = $upload_id;
+
+			$data['final_foot'] = "<script>jQuery('#import-candidate-list').footable({pageSize: ".$upload_data->estimated_count."});</script>";
+			$page_content = $this->load->view('admin/candidate/candidate/candidate_import_process', $data, TRUE);
+		}
+
+		
 
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);

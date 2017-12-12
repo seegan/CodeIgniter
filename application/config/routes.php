@@ -71,8 +71,9 @@ $route['admin/question/getQuestionData'] = 'admin/question/question/getQuestionD
 
 $route['admin/candidate'] = 'admin/candidate/candidate/index';
 $route['admin/candidate/add'] = 'admin/candidate/candidate/add';
-$route['admin/candidate/import'] = 'admin/candidate/candidate/import';
 $route['admin/candidate/update/(:num)'] = 'admin/candidate/candidate/update/$1';
+$route['admin/candidate/import'] = 'admin/candidate/candidate/import';
+$route['admin/candidate/import/(:num)'] = 'admin/candidate/candidate/import/$1';
 
 $route['admin/exam'] = 'admin/exam/exam/index';
 $route['admin/exam/add'] = 'admin/exam/exam/add';
