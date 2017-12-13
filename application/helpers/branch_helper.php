@@ -12,12 +12,34 @@ if( ! function_exists('unusedBranchUsers') )
 
 if( ! function_exists('getAdminBranch') )
 {
-	function getAdminBranch( )
+	function getAdminBranch()
 	{
 		$CI =& get_instance();
 		return $CI->branch->getAdminBranch();
 	}
 }
+
+if( ! function_exists('getAdminBranchArray') )
+{
+	function getAdminBranchArray()
+	{
+		$CI =& get_instance();
+		return $CI->branch->getAdminBranchArray();
+	}
+}
+
+
+
+if( ! function_exists('getAllBatchs') )
+{
+	function getAllBatchs()
+	{
+		$CI =& get_instance();
+		return $CI->branch->getAllBatchs();
+	}
+}
+
+
 
 if( ! function_exists('getSubjectByBranch') )
 {

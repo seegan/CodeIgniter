@@ -1,12 +1,3 @@
-<?php
-/*echo "<pre>";
-var_dump($import_list);
-echo "</pre>";*/
-
-?>
-
-
-
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box">
@@ -22,22 +13,34 @@ echo "</pre>";*/
                                             <th> Enrollment No </th>
                                             <th> Name </th>
                                             <th> Email </th>
-                                            <th data-hide="all"> DOB </th>
-                                            <th data-hide="all"> Status </th>
+                                            <th> Status </th>
+                                            <th data-hide="all"> Status Message </th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <?php 
                                             if($import_list && is_array($import_list)) {
                                                 foreach ($import_list as $key => $i_value) {
+                                                    $active_status =  (isset($i_value['status'])) ? $i_value['status'] : 'deactive';
+                                                    $status_message = (isset($i_value['status_message'])) ? $i_value['status_message'] : 'Waiting To Create..';
                                         ?>
-                                            <tr class="list-import deactive" data-baseid="<?php echo $key; ?>">
+                                            <tr data-baseid="<?php echo $key; ?>" class="list-import <?php echo $active_status; ?>" >
                                                 <td><?php echo $i_value[0]; ?></td>
                                                 <td><?php echo $i_value[2]; ?></td>
                                                 <td><?php echo $i_value[3]; ?></td>
                                                 <td><?php echo $i_value[7]; ?></td>
-                                                <td>22 Jun 1972</td>
-                                                <td><span class="badge label-table badge-success">Active</span></td>
+                                                <td class="import_status">
+                                                    <?php 
+                                                        echo $active_status;
+                                                        if(!isset($i_value['status_message'])) {
+                                                            echo '<span><img src="'.base_url('theme/assets/images').'/loader.gif"/></span>';
+                                                        }
+                                                    ?>
+                                                    
+                                                </td>
+                                                <td class="status_msg">
+                                                    <?php echo $status_message; ?>
+                                                </td>
                                             </tr>
                                         <?php
                                                 }

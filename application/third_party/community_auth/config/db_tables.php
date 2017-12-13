@@ -66,6 +66,8 @@ $config['exam_schedule_candidate_table']         = 'xtra_exam_schedule_candidate
 $config['exam_schedule_batch_table']         = 'xtra_exam_schedule_batchs';
 
 
+$config['import_files']         = 'xtra_import_files';
+
 
 /* End of file db_tables.php */
 /* Location: /community_auth/config/db_tables.php */

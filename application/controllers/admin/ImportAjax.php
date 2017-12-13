@@ -109,8 +109,8 @@ class ImportAjax extends MY_Controller {
 
 
     private function createCandidateFromImport() {
-        $import_id = ( $this->input->post('import_id') ) ? $this->input->post('import_id') : 0;
 
+        $import_id = ( $this->input->post('import_id') ) ? $this->input->post('import_id') : 0;
         $upload_data = getUploadFile($import_id, $this->auth_user_id, $this->auth_level, 1);
         $import_data = unserialize($upload_data->import_data);
 
@@ -119,26 +119,67 @@ class ImportAjax extends MY_Controller {
             $create_list = $this->input->post('select_list');
             $list = explode(",",$create_list);
 
+
+            $this->load->helper('branch_helper');
+            $this->load->model('branch_model', 'branch');
+            $branchs = getAdminBranchArray();
+            $batchs = getAllBatchs();
+
+
             foreach ($list as $list_key) {
 
-                $user_name = isset($import_data[$list_key][0]) ? $import_data[$list_key][0] : false;
-                $password = isset($import_data[$list_key][1]) ? $import_data[$list_key][1] : 12345678;
-                $enrol_no = isset($import_data[$list_key][2]) ? $import_data[$list_key][2] : false;
-                $email = isset($import_data[$list_key][7]) ? $import_data[$list_key][7] : false;
-                $active = isset($import_data[$list_key][20]) ? $import_data[$list_key][20] : 0;
-                $active = ($active == 'yes') ? 0 : 1;
+                $branch = ( isset($import_data[$list_key][14]) && $import_data[$list_key][14] ) != '' ? (string)$import_data[$list_key][14] : 0;
+                $batch = ( isset($import_data[$list_key][16]) && $import_data[$list_key][16] ) != '' ? (string)$import_data[$list_key][16] : 0;
+
+
+                $branch_search_key = is_numeric($branch) ? 'id' : 'name';
+
+                $batch_search_key = is_numeric($batch) ? 'id' : 'batch_name';
+                $branch_avail = array_search($branch, array_column($branchs, $branch_search_key ));
+                if($branch_avail !== false) {
+
+                    $branch_search_key = is_numeric($branch) ? 'branch_id' : 'branch_name';
+                    $batch_check = searchInsideArray($batchs, $branch_search_key, $batch_search_key, $branch, $batch);
+
+                    var_dump($batch_check);
+                }
+                    //var_dump(is_numeric($batch));
+                
+                die();
+
+
+                $user_name = ( isset($import_data[$list_key][0]) && $import_data[$list_key][0]  != '')  ? $import_data[$list_key][0] : false;
+                $password = ( isset($import_data[$list_key][1]) && $import_data[$list_key][1]  != '')  ? $import_data[$list_key][1] : 12345678;
+                $enrol_no = ( isset($import_data[$list_key][2]) && $import_data[$list_key][2]  != '')  ? $import_data[$list_key][2] : false;
+                $email = ( isset($import_data[$list_key][7]) && $import_data[$list_key][7]  != '' ) ? $import_data[$list_key][7] : false;
+                $active = ( isset($import_data[$list_key][20]) && $import_data[$list_key][20]  != '' &&  $import_data[$list_key][20] != 'yes' ) ? 1 : 0;
+
+                $gender = ( isset($import_data[$list_key][4]) && $import_data[$list_key][4]  != '' ) ? $import_data[$list_key][4] : 'Male';
+                $date_birth = ( isset($import_data[$list_key][5]) && $import_data[$list_key][5]  != '' ) ? date('Y-m-d', strtotime($import_data[$list_key][5])) : 0;
 
                 $name = isset($import_data[$list_key][3]) ? $import_data[$list_key][3] : '';
-                $registration_date = date('Y-m-d');
-//var_dump(date('Y-m-d', strtotime('10/11/2017'))); die();
+                $registration_date = ( isset($import_data[$list_key][6]) && $import_data[$list_key][6] != '' ) ? date('Y-m-d', strtotime($import_data[$list_key][6])) : date('Y-m-d');
 
-                if( $user_name && $enrol_no && $email && $user_name != '' && $enrol_no != '' && $email != '') {
+                $phone = ( isset($import_data[$list_key][8]) && $import_data[$list_key][8] != '' ) ? $import_data[$list_key][8] : '';
+                $mobile = ( isset($import_data[$list_key][9]) && $import_data[$list_key][9] != '' ) ? $import_data[$list_key][9] : '';
+                
+                $address = ( isset($import_data[$list_key][10]) && $import_data[$list_key][10] != '' ) ? $import_data[$list_key][10] : '';
+                $enquiry = ( isset($import_data[$list_key][11]) && $import_data[$list_key][11] != '' ) ? $import_data[$list_key][11] : '';
+                $hear_about = ( isset($import_data[$list_key][12]) && $import_data[$list_key][12] != '' ) ? $import_data[$list_key][12] : '';
+                $institute = ( isset($import_data[$list_key][13]) && $import_data[$list_key][13] != '' ) ? $import_data[$list_key][13] : '';
+
+                $guardian_name = ( isset($import_data[$list_key][17]) && $import_data[$list_key][17] != '' ) ? $import_data[$list_key][17] : '';
+                $guardian_mobile = ( isset($import_data[$list_key][18]) && $import_data[$list_key][18] != '' ) ? $import_data[$list_key][18] : '';
+                $send_mail = ( isset($import_data[$list_key][19]) && $import_data[$list_key][19] != '' && $import_data[$list_key][19] != 'No') ? 1 : 0;
+
+                $this->load->helper('auth');
+                $this->load->model('examples/examples_model');
+                $this->load->model('examples/validation_callables');
+                $this->load->library('form_validation');
 
 
-                    $this->load->helper('auth');
-                    $this->load->model('examples/examples_model');
-                    $this->load->model('examples/validation_callables');
-                    $this->load->library('form_validation');
+                if( $user_name && $enrol_no && $email && $user_name != '' && $enrol_no != '' && $email != '' && !isset($import_data[$list_key]['status']) ) {
+
 
 
                     $user_data = array(
@@ -146,10 +187,8 @@ class ImportAjax extends MY_Controller {
                         'passwd' => $password,
                         'enrol_no' => $enrol_no,
                         'email' => $email,
-                        'auth_level' => 1,
-                        'banned' => $active
+                        'auth_level' => 1
                     );
-
 
                     $validation_rules = [
                         [
@@ -210,53 +249,81 @@ class ImportAjax extends MY_Controller {
                             $user_data['username'] = NULL;
                         }
 
-                        $this->db->set($user_data)
-                            ->insert(db_table('user_table'));
+                        $this->db->set($user_data)->insert(db_table('user_table'));
 
                         if( $this->db->affected_rows() == 1 ){
-/*                            $extra_data = [
-                                'user_id'       => $user_data['user_id'],
-                                'name'      => $this->input->post('name'),
-                                'enrollment_no'         => $this->input->post('enroll_no'),
-                                'ref_pass'  => $this->input->post('passwd'),
-                                'mobile'    => $this->input->post('mobile'),
-                                'phone'     => $this->input->post('phone'),
-                                'address'   => $this->input->post('address'),
-                                'enquiry_from'  => $this->input->post('enquiry_from'),
-                                'hear_from'     => $this->input->post('hear_from'),
-                                'guardian_name'     => $this->input->post('guardian_name'),
-                                'guardian_mobile'   => $this->input->post('guardian_mobile'),
-                                'gender'    => $this->input->post('gender'),
-                                'send_mail'     => ( $this->input->post('send_mail') ) ? $this->input->post('send_mail') : 0,
-                                'registration_date'     => ( $this->input->post('registration_date') ) ? man_to_machine_date($this->input->post('registration_date')) : date('Y-m-d H:i:s'),
-                                'birth_date'    => ( $this->input->post('birth_date') ) ? man_to_machine_date($this->input->post('birth_date')) : '0000-00-00',
-                            ];*/
+
+                            $this->db->where('user_id', $user_data['user_id']);
+                            $this->db->update(db_table('user_table'), array('banned' => (string)$active));
+
                             $extra_data = [
                                 'user_id'       => $user_data['user_id'],
                                 'name'          => $name,
                                 'enrollment_no' => $enrol_no,
                                 'ref_pass'  => $password,
-                                'registration_date' => $registration_date
+                                'mobile'    => $mobile,
+                                'phone'     => $phone,
+                                'address'   => $address,
+                                'enquiry_from'  => $enquiry,
+                                'hear_from'     => $hear_about,
+                                'guardian_name'  => $guardian_name,
+                                'guardian_mobile'   => $guardian_mobile,                     
+                                'gender'    => $gender ,
+                                'send_mail'     => $send_mail,
+                                'registration_date' => $registration_date ,
+                                'birth_date'   => $date_birth,
+                                'instiute'  => $institute,
+                                'referred_by' => $this->auth_user_id,
                             ];
                             $this->db->set($extra_data)->insert(db_table('candidate_table'));
+
+                            $import_data[$list_key]['candidate_id'] = $user_data['user_id'];
+                            $import_data[$list_key]['status'] = 'success';
+                            $import_data[$list_key]['status_message'] = 'Candidate Import Success!';
+
+                            $data[$list_key]['status'] = 'success';
+                            $data[$list_key]['status_message'] = 'Candidate Import Success!';
+
+                        } else {
+                            $import_data[$list_key]['status'] = 'failed';
+                            $import_data[$list_key]['status_message'] = 'Invalid User Id Or Enroll No Or Email';
+
+                            $data[$list_key]['status'] = 'failed';
+                            $data[$list_key]['status_message'] = 'Invalid User Id Or Enroll No Or Email';
                         }
 
+                    } else {
+
+                        $import_data[$list_key]['status'] = 'failed';
+                        $import_data[$list_key]['status_message'] = validation_errors();
+
+                        $data[$list_key]['status'] = 'failed';
+                        $data[$list_key]['status_message'] = validation_errors();
                     }
 
-
-                    var_dump(validation_errors());
-                    die();
-
-
-                    
-                    var_dump("check ok");
+                    $this->form_validation->reset_validation();
                 } else {
-                    var_dump("check not ok");
+
+
+                    $data[$list_key]['status'] = 'failed';
+                    $data[$list_key]['status_message'] = 'Already Tried this data!';
+
+                    if(!isset($import_data[$list_key]['status'])) {
+
+                        $data[$list_key]['status'] = 'failed';
+                        $data[$list_key]['status_message'] = 'Invalid User Id Or Enroll No Or Email';
+
+                        $import_data[$list_key]['status'] = 'failed';
+                        $import_data[$list_key]['status_message'] = 'Invalid User Id Or Enroll No Or Email';
+                    }
+
                 }
 
-
+                $this->db->where('id', $import_id);
+                $this->db->update(db_table('import_files'), array('import_data' => serialize($import_data)));
             }
-            
+
+            return $data;
         }
 
         die();

@@ -139,19 +139,49 @@ jQuery(document).ready(function() {
 
 
 
-	var select_list = jQuery('tr.list-import.deactive:lt(4)').map(function() {
-	    return jQuery(this).attr('data-baseid');
-	}).get().join();
 
-    jQuery.ajax({
-        type: "POST", 
-        url: import_ajaxurl, 
-        data: { action: 'createCandidateFromImport', select_list: select_list, import_id: jQuery('#import_id').val() }, 
-        dataType: "json",
-        success: function (data) {
 
-        }
-    });
+
+	function importIntervel(){
+	  	delta = 1000,
+
+
+	  	window.tid = setInterval(function() {
+
+			var select_list = jQuery('tr.list-import.deactive:lt(2)').map(function() {
+			    return jQuery(this).attr('data-baseid');
+			}).get().join();
+		    jQuery('tr.list-import.deactive:lt(2)').removeClass('deactive').addClass('de-activate');
+
+			if(select_list) {
+				createImportData(select_list);
+			} else {
+				clearInterval(window.tid);
+			}  
+	  	}, delta);
+	}
+
+	function createImportData(select_list) {
+		if(select_list) {
+		    jQuery.ajax({
+		        type: "POST", 
+		        url: import_ajaxurl, 
+		        data: { action: 'createCandidateFromImport', select_list: select_list, import_id: jQuery('#import_id').val() }, 
+		        dataType: "json",
+		        success: function (data) {
+		        	jQuery.each(data, function (key, value) {
+		        		jQuery('[data-baseid='+key+']').removeClass('deactive de-activate').addClass(value.status);
+		        		jQuery('[data-baseid='+key+']').find('.import_status').html(value.status);
+		        		jQuery('[data-baseid='+key+']').find('.status_msg').html(value.status_message);
+		        	})
+		        }
+		    });		
+		}
+
+	}
+	importIntervel();
+
+
 
 
 }); 

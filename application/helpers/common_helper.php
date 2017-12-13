@@ -20,7 +20,6 @@ if( ! function_exists('getYearList') )
 				break;
 			}
 		}
-
 		return $years;
 	}
 }
@@ -100,4 +99,17 @@ if( ! function_exists('machine_to_man_date') )
 	function machine_to_man_date($date_time) {
 		return date("d M Y", strtotime($date_time));
 	}
+}
+
+
+if( ! function_exists('searchInsideArray') ) {
+	function searchInsideArray ($arr, $key1, $key2, $val1, $val2) {
+	    $r = array();
+	    foreach ($arr as $key => $test) {
+	        if ( strtolower($test[$key1]) == strtolower($val1) && strtolower($test[$key2]) == strtolower($val2) ) {
+	            return true;
+	        }
+	    }
+	    return false;
+	} 
 }
