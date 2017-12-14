@@ -26,7 +26,7 @@
                                         <div class="page-container">
                                             <div class="row">
                                                 <div class="col-lg-12">
-                                                    <?php $this->load->view('admin/question/question/import/process'); ?>
+                                                    <?php $this->load->view('admin/candidate/candidate/import/process'); ?>
                                                 </div>
                                             </div>
                                         </div>

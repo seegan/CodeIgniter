@@ -533,4 +533,4 @@ $config['difficulty'] = array(1 =>'Easy', 2 => 'Medium', 3 => 'Hard');
 
 $config['single_option'] = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J');
 
-$config['question_type'] = array(1 => 'Single Choice', 2 => 'Multiple Choice', 3 => 'Fill In The Blanks', 4 => 'True Or False', 5 => 'Match The Following', 6 => 'Matrix Match', 7 => 'Descriptive Question');
+$config['question_type'] = array(1 => 'Single Choice', 2 => 'Multiple Choice', 3 => 'Fill In The Blanks', 4 => 'True False', 5 => 'Match Following', 6 => 'Matrix Match', 7 => 'Descriptive Question');

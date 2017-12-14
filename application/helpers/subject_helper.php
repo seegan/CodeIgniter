@@ -6,10 +6,28 @@ if( !function_exists('getSubjects') )
 	function getSubjects($active = 1)
 	{
 		$CI =& get_instance();
-
 		return $CI->subject->getSubjects($active);
 	}
 }
+if( !function_exists('getSubjectsArray') )
+{
+	function getSubjectsArray($active = 1)
+	{
+		$CI =& get_instance();
+		return $CI->subject->getSubjectsArray($active);
+	}
+}
+
+if( !function_exists('getAllTopicsArray') )
+{
+	function getAllTopicsArray($active = 1)
+	{
+		$CI =& get_instance();
+		return $CI->subject->getAllTopicsArray($active);
+	}
+}
+
+
 
 if( !function_exists('getTopicsByCategory') )
 {

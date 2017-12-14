@@ -365,7 +365,7 @@ class Candidate extends MY_Controller {
 			$data['import_list'] = unserialize( $upload_data->import_data );
 			$data['upload_id'] = $upload_id;
 
-			$data['final_foot'] = "<script>jQuery('#import-candidate-list').footable({pageSize: ".$upload_data->estimated_count."});</script>";
+			$data['final_foot'] = "<script>jQuery('#import-list').footable({pageSize: ".$upload_data->estimated_count."});</script>";
 			$page_content = $this->load->view('admin/candidate/candidate/candidate_import_process', $data, TRUE);
 		}
 

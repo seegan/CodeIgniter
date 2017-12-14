@@ -9,11 +9,10 @@
                                     <table id="import-list" class="table table-bordered toggle-circle">
                                         <thead>
                                         <tr>
-                                            <th data-toggle="true"> Question </th>
-                                            <th> Subject </th>
-                                            <th> Topic </th>
-                                            <th> Type </th>
-                                            <th> Time </th>
+                                            <th data-toggle="true"> User Id </th>
+                                            <th> Enrollment No </th>
+                                            <th> Name </th>
+                                            <th> Email </th>
                                             <th> Status </th>
                                             <th data-hide="all"> Status Message </th>
                                         </tr>
@@ -26,11 +25,10 @@
                                                     $status_message = (isset($i_value['status_message'])) ? $i_value['status_message'] : 'Waiting To Create..';
                                         ?>
                                             <tr data-baseid="<?php echo $key; ?>" class="list-import <?php echo $active_status; ?>" >
-                                                <td><?php echo $i_value[13]; ?></td>
                                                 <td><?php echo $i_value[0]; ?></td>
-                                                <td><?php echo $i_value[1]; ?></td>
+                                                <td><?php echo $i_value[2]; ?></td>
                                                 <td><?php echo $i_value[3]; ?></td>
-                                                <td><?php echo $i_value[11]; ?></td>
+                                                <td><?php echo $i_value[7]; ?></td>
                                                 <td class="import_status">
                                                     <?php 
                                                         echo $active_status;

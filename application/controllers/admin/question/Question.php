@@ -15,6 +15,9 @@ class Question extends MY_Controller {
 
 	public function index()
 	{
+        if( $this->uri->uri_string() == 'admin/question/question') {
+            show_404();
+        }
 
         $this->load->library('paginator', '', 'paginatefilter');
         $this->paginatefilter->ppage = 20;
@@ -49,6 +52,9 @@ class Question extends MY_Controller {
 
 	public function add()
 	{
+        if( $this->uri->uri_string() == 'admin/question/question/add') {
+            show_404();
+        }
 
         $data['javascripts'][] = base_url().'jsplugins/tinymce/tinymce.min.js';
         $data['javascripts'][] = base_url().'theme/assets/js/jquery.repeater.js';
@@ -172,6 +178,56 @@ class Question extends MY_Controller {
 		echo $right_sidebar;
 		echo $this->load->view('admin/common/footer', $data, TRUE);
 	}
+
+
+
+
+
+    public function import($upload_id = 0) {
+        
+        if( $this->uri->uri_string() == 'admin/question/question/import') {
+            show_404();
+        }
+
+        $this->load->helper('import_helper');
+
+        $data['javascripts'][] = base_url().'theme/assets/js/jquery.form.min.js';
+        $data['javascripts'][] = base_url().'theme/assets/js/custom/question-import.js';
+        $page_content = $this->load->view('admin/question/question/question_import', $data, TRUE);
+
+        if( $upload_data = getUploadFile($upload_id, $this->auth_user_id, $this->auth_level, 1) ) {
+            $data['import_list'] = unserialize( $upload_data->import_data );
+            $data['upload_id'] = $upload_id;
+
+            $data['final_foot'] = "<script>jQuery('#import-list').footable({pageSize: ".$upload_data->estimated_count."});</script>";
+            $page_content = $this->load->view('admin/question/question/question_import_process', $data, TRUE);
+        }
+
+        $left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
+        $right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
+
+        echo $this->load->view('admin/common/header', '', TRUE);
+        echo $left_sidebar;
+        echo $page_content;
+        echo $right_sidebar;
+        echo $this->load->view('admin/common/footer', '', TRUE);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	public function getQuestionOptions() {

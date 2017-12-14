@@ -19,6 +19,7 @@
                                     <li><a href="<?php echo base_url('admin/subject/topic') ?>">Topic</a></li>
                                     <li><a href="<?php echo base_url('admin/question/category') ?>">Category</a></li>
                                     <li><a href="<?php echo base_url('admin/question') ?>">Question </a></li>
+                                    <li><a href="<?php echo base_url('admin/question/import') ?>">Import</a></li>
                                 </ul>
                             </li>
 

@@ -63,8 +63,15 @@ $route['admin/subject'] = 'admin/subject/subject/index';
 $route['admin/subject/add'] = 'admin/subject/subject/add';
 $route['admin/subject/update/(:num)'] = 'admin/subject/subject/update/$1';
 
+
 $route['admin/question'] = 'admin/question/question/index';
 $route['admin/question/add'] = 'admin/question/question/add';
+$route['admin/question/update/(:num)'] = 'admin/question/question/update/$1';
+$route['admin/question/import'] = 'admin/question/question/import';
+$route['admin/question/import/(:num)'] = 'admin/question/question/import/$1';
+
+
+
 
 $route['admin/question/getQuestionOptions'] = 'admin/question/question/getQuestionOptions';
 $route['admin/question/getQuestionData'] = 'admin/question/question/getQuestionData';

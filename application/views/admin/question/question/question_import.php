@@ -25,8 +25,11 @@
                                     <div class="card">
                                         <div class="page-container">
                                             <div class="row">
-                                                <div class="col-lg-12">
-                                                    <?php $this->load->view('admin/question/question/import/process'); ?>
+                                                <div class="col-lg-8">
+                                                    <?php $this->load->view('admin/question/question/import/question'); ?>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <h4 class="header-title m-t-0 text-center">Import Log</h4>
                                                 </div>
                                             </div>
                                         </div>

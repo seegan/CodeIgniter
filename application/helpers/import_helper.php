@@ -1,13 +1,13 @@
 <?php  
 defined('BASEPATH') or exit('No direct script access allowed');
 
-if( ! function_exists('createCandidateImport') )
+if( ! function_exists('createImportDatabase') )
 {
-	function createCandidateImport($user_id = 0, $file_name = '')
+	function createImportDatabase($user_id = 0, $file_name = '', $import_type)
 	{
 		$CI =& get_instance();
 		$table = 'xtra_import_files';
-		$data = array('user_id' => $user_id, 'import_type' => 'candidate', 'file_name' => $file_name);
+		$data = array('user_id' => $user_id, 'import_type' => $import_type, 'file_name' => $file_name);
 		return $CI->common->insert($table, $data);
 	}
 
