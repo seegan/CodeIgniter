@@ -84,3 +84,4 @@ $route['admin/candidate/import/(:num)'] = 'admin/candidate/candidate/import/$1';
 
 $route['admin/exam'] = 'admin/exam/exam/index';
 $route['admin/exam/add'] = 'admin/exam/exam/add';
+$route['admin/exam/update/(:num)'] = 'admin/exam/exam/update/$1';

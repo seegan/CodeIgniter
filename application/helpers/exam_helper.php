@@ -39,4 +39,31 @@ if( ! function_exists('getEligibleBatchsFromExam') )
 	}
 }
 
+if( ! function_exists('getExamById') )
+{
+	function getExamById($exam_id = 0)
+	{
+		$CI =& get_instance();
+		return $CI->exam->getExamById($exam_id);
+	}
+}
+
+if( ! function_exists('getExamQuestionsById') )
+{
+	function getExamQuestionsById($exam_id = 0)
+	{
+		$CI =& get_instance();
+		$data = $CI->exam->getQuestionsFromExam($exam_id);
+		if($data && isset($data->questions) ) {
+			$exam_questions = unserialize($data->questions);
+			if(is_array($exam_questions)) {
+				$question_ids = implode(',', array_keys($exam_questions));
+				return $question_ids;	
+			}
+		}
+		return false;
+	}
+}
+
+
 

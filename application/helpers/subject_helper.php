@@ -72,3 +72,24 @@ if( !function_exists('getSubjectDetailById') )
 		return $data;
 	}
 }
+
+
+if( !function_exists('getSubjectNameById') )
+{
+	function getSubjectNameById($subject_id = 0)
+	{
+		$CI =& get_instance();
+		$data = $CI->subject->getSubjectNameById($subject_id);
+		return $data;
+	}
+}
+
+if( !function_exists('getTopicNameById') )
+{
+	function getTopicNameById($topic_id = 0)
+	{
+		$CI =& get_instance();
+		$data = $CI->subject->getTopicNameById($topic_id);
+		return $data;
+	}
+}

@@ -2,6 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Exam_model extends MY_Model {
 
+	public function getExamById($exam_id = '')
+	{
+		$query = $this->db->query("SELECT e.* FROM ".$this->db_table('exam_table')." as e WHERE e.id = ${exam_id}");
+		return $query->row_array();
+	}
+
 	public function getExamByName($name = '')
 	{
 		$query = $this->db->query("SELECT e.id, e.exam_name, e.exam_duration, e.total_questions, e.total_marks FROM ".$this->db_table('exam_table')." as e WHERE e.active = 1 AND e.exam_name LIKE '${name}%'");

@@ -89,6 +89,16 @@ class Subject_model extends MY_Model {
 	}
 
 
+	public function getSubjectNameById( $subject_id = 0) {
+		$query = $this->db->query("SELECT s.subject FROM  xtra_subject as s WHERE s.id = ${subject_id}");
+		return $query->row();
+	}
+	public function getTopicNameById( $topic_id = 0) {
+		$query = $this->db->query("SELECT st.topic FROM  xtra_subject_topic as st WHERE st.id = ${topic_id}");
+		return $query->row();
+	}
+
+
 
 
 }

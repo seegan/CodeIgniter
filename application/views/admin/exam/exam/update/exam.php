@@ -1,3 +1,10 @@
+<?php
+$exam_name = ($exam && isset($exam['exam_name'])) ? $exam['exam_name'] : '';
+$exam_duration = ($exam && isset($exam['exam_duration'])) ? $exam['exam_duration'] : '';
+$total_questions = ($exam && isset($exam['total_questions'])) ? $exam['total_questions'] : '';
+$total_marks = ($exam && isset($exam['total_marks'])) ? $exam['total_marks'] : '';
+$description = ($exam && isset($exam['description'])) ? $exam['description'] : '';
+?>
 <h4 class="header-title m-t-0 text-center">New Exam</h4>
 
 <form method="POST" action="<?php echo base_url('admin/exam/add') ?>">
@@ -20,31 +27,31 @@
     <div class="form-group row">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Exam Name<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="exam_name" placeholder="Exam Name" value="<?php echo set_value('test_name'); ?>">
+            <input type="text" required class="form-control" name="exam_name" placeholder="Exam Name" value="<?php echo set_value('test_name') ? set_value('test_name') : $exam_name; ?>" >
         </div>
     </div>                                
     <div class="form-group row">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Duration<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="exam_duration" placeholder="Duration" value="<?php echo set_value('exam_duration'); ?>">
+            <input type="text" required class="form-control" name="exam_duration" placeholder="Duration" value="<?php echo set_value('exam_duration') ? set_value('exam_duration') : $exam_duration; ?>">
         </div>
     </div>   
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Total Questions<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="total_questions" placeholder="Total Questions" value="<?php echo set_value('total_questions'); ?>">
+            <input type="text" required class="form-control" name="total_questions" placeholder="Total Questions" value="<?php echo set_value('total_questions') ? set_value('total_questions') : $total_questions; ?>">
         </div>
     </div> 
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Total Marks<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="total_marks" placeholder="Total Marks" value="<?php echo set_value('total_marks'); ?>">
+            <input type="text" required class="form-control" name="total_marks" placeholder="Total Marks" value="<?php echo set_value('total_marks') ? set_value('total_marks') : $total_marks; ?>">
         </div>
     </div> 
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Description<span class="text-danger">*</span></label>
         <div class="col-7">
-            <textarea id="test_description" name="test_description"></textarea>
+            <textarea id="test_description" name="test_description"><?php echo set_value('test_description') ? set_value('test_description') : $description; ?></textarea>
         </div>
     </div>
     <div class="row form-group">
@@ -56,12 +63,11 @@
 
 
 
-
     <div class="form-group row">
         <label for="webSite" class="col-4 col-form-label text-right"></label>
         <div class="col-7">
             <button type="submit" class="btn btn-primary waves-effect waves-light">
-                Create
+                Update
             </button>
             <button type="reset"
                     class="btn btn-secondary waves-effect m-l-5">
@@ -276,7 +282,6 @@
             </div>
             <div class="modal-body">
 
-
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -367,6 +372,18 @@
                                             </tr>
                                         </thead>
                                         <tbody class="selected_question_block">
+
+
+                                            <tr data-selquestionid="96">
+                                                <td class="selected_sno">
+                                                    <button data-selremoveid="96" class="btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle"><i class="fa fa-remove"></i></button>
+                                                    <input type="hidden" name="selected_question[96][question_id]" value="96">
+                                                </td>
+                                                <td>A train running at the speed of 60 km/hr crosses a pole in 9 seconds. What is the length of the train?</td>
+                                                <td> <input type="text" name="selected_question[96][right_mark]" class="form-control" value="1"></td>
+                                                <td><input type="text" name="selected_question[96][wrong_mark]" class="form-control" value="2"></td>
+                                                <td><input type="text" name="selected_question[96][question_time]" class="form-control" value="3"></td>
+                                            </tr>
 
                                         </tbody>
                                     </table>
