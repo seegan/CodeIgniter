@@ -358,6 +358,8 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
                             </div>
                         </div>
                         <hr>
+
+
                         <div class="selected_question_list">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -372,18 +374,25 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
                                             </tr>
                                         </thead>
                                         <tbody class="selected_question_block">
+                                            <?php
+                                                if($exam_questions) {
+                                                    foreach ($exam_questions as $questions) {
+                                            ?>
+                                                <tr data-selquestionid="<?php echo $questions['question_id'] ?>">
+                                                    <td class="selected_sno">
+                                                        <button data-selremoveid="<?php echo $questions['question_id'] ?>" class="btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle"><i class="fa fa-remove"></i></button>
+                                                        <input type="hidden" name="selected_question[<?php echo $questions['question_id'] ?>][question_id]" value="<?php echo $questions['question_id'] ?>">
+                                                    </td>
+                                                    <td><?php echo $questions['question']; ?></td>
+                                                    <td> <input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][right_mark]" class="form-control" value="<?php echo $questions['right_mark']; ?>"></td>
+                                                    <td><input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][wrong_mark]" class="form-control" value="<?php echo $questions['negative_mark']; ?>"></td>
+                                                    <td><input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][question_time]" class="form-control" value="<?php echo $questions['question_time']; ?>"></td>
+                                                </tr>
+                                            <?php
+                                                    }
+                                                }
+                                            ?>
 
-
-                                            <tr data-selquestionid="96">
-                                                <td class="selected_sno">
-                                                    <button data-selremoveid="96" class="btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle"><i class="fa fa-remove"></i></button>
-                                                    <input type="hidden" name="selected_question[96][question_id]" value="96">
-                                                </td>
-                                                <td>A train running at the speed of 60 km/hr crosses a pole in 9 seconds. What is the length of the train?</td>
-                                                <td> <input type="text" name="selected_question[96][right_mark]" class="form-control" value="1"></td>
-                                                <td><input type="text" name="selected_question[96][wrong_mark]" class="form-control" value="2"></td>
-                                                <td><input type="text" name="selected_question[96][question_time]" class="form-control" value="3"></td>
-                                            </tr>
 
                                         </tbody>
                                     </table>

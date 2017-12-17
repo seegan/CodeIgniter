@@ -218,8 +218,8 @@ class Exam extends MY_Controller {
         }
 
         $data['exam'] = getExamById($exam_id);
-        $data['exam_questions'] = getExamQuestionsById($exam_id);
-var_dump($data['exam_questions']); die();
+        $data['exam_questions'] = getExamQuestions($exam_id);
+
         $page_content = $this->load->view('admin/exam/exam/exam_update', $data, TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
