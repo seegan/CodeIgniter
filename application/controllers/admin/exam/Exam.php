@@ -108,9 +108,9 @@ class Exam extends MY_Controller {
 
 			if( $this->db->affected_rows() == 1 ){
 
-				$questions = serialize(array());
+				$questions = json_encode(array());
 				if( $this->input->post('selected_question') ) {
-					$questions = serialize($this->input->post('selected_question'));
+					$questions = json_encode($this->input->post('selected_question'));
 				}
 				$exam_id = $this->db->insert_id();
 
@@ -201,9 +201,9 @@ class Exam extends MY_Controller {
         	$this->db->where('id', $exam_id);
 			$this->db->update(db_table('exam_table'), $exam_data);
 
-			$questions = serialize(array());
+			$questions = json_encode(array());
 			if( $this->input->post('selected_question') ) {
-				$questions = serialize($this->input->post('selected_question'));
+				$questions = json_encode($this->input->post('selected_question'));
 			}
 
 			$questions = array('questions' => $questions);

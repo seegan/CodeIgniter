@@ -29,7 +29,7 @@ if( ! function_exists('createImportDatabase') )
 	function updateCandidateImport($upload_id = 0, $update_data = '' ) {
 		$CI =& get_instance();
 		$table = 'xtra_import_files';
-		$file_data = is_array($update_data) ? serialize($update_data) : serialize(array());
+		$file_data = is_array($update_data) ? json_encode($update_data) : json_encode(array());
 		$count = is_array($update_data) ? count($update_data) : 0;
 
 		$cond = array('id' => $upload_id);

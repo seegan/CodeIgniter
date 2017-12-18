@@ -342,7 +342,7 @@ class Question extends MY_Controller {
         $page_content = $this->load->view('admin/question/question/question_import', $data, TRUE);
 
         if( $upload_data = getUploadFile($upload_id, $this->auth_user_id, $this->auth_level, 1) ) {
-            $data['import_list'] = unserialize( $upload_data->import_data );
+            $data['import_list'] = json_decode( $upload_data->import_data, true );
             $data['upload_id'] = $upload_id;
 
             $data['final_foot'] = "<script>jQuery('#import-list').footable({pageSize: ".$upload_data->estimated_count."});</script>";

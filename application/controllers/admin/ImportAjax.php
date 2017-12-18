@@ -139,7 +139,7 @@ class ImportAjax extends MY_Controller {
 
         $import_id = ( $this->input->post('import_id') ) ? $this->input->post('import_id') : 0;
         $upload_data = getUploadFile($import_id, $this->auth_user_id, $this->auth_level, 1);
-        $import_data = unserialize($upload_data->import_data);
+        $import_data = json_decode($upload_data->import_data, true);
 
         if($upload_data && is_array($import_data)) {
 
@@ -339,7 +339,7 @@ class ImportAjax extends MY_Controller {
                 }
 
                 $this->db->where('id', $import_id);
-                $this->db->update(db_table('import_files'), array('import_data' => serialize($import_data)));
+                $this->db->update(db_table('import_files'), array('import_data' => json_encode($import_data)));
             }
 
             return $data;
@@ -355,7 +355,7 @@ class ImportAjax extends MY_Controller {
 
         $import_id = ( $this->input->post('import_id') ) ? $this->input->post('import_id') : 0;
         $upload_data = getUploadFile($import_id, $this->auth_user_id, $this->auth_level, 1);
-        $import_data = unserialize($upload_data->import_data);
+        $import_data = json_decode($upload_data->import_data, true);
 
         if($upload_data && is_array($import_data)) {
 
@@ -582,7 +582,7 @@ class ImportAjax extends MY_Controller {
                 }
 
                 $this->db->where('id', $import_id);
-                $this->db->update(db_table('import_files'), array('import_data' => serialize($import_data)));
+                $this->db->update(db_table('import_files'), array('import_data' => json_encode($import_data)));
             }
 
             return $data;
