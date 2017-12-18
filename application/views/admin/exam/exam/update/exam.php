@@ -7,7 +7,7 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
 ?>
 <h4 class="header-title m-t-0 text-center">New Exam</h4>
 
-<form method="POST" action="<?php echo base_url('admin/exam/add') ?>">
+<form method="POST" action="">
 
     <div class="form-group row">
         <label class="col-4 col-form-label text-right"></label>
@@ -291,63 +291,20 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
                                         <div class="row">
                                             <div class="col-md-12 col-lg-12">
                                                 <div class="row">
-                                                    <div class="col-lg-3 col-md-4">
+                                                    <div class="col-lg-12 col-md-12">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                <input type="text" name="question"  class="form-control search_question" placeholder="Search Question">
+                                                                Input Controls
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-3 col-md-4">
+                                                    <div class="col-lg-12 col-md-12">
                                                         <div class="form-group row">
                                                             <div class="col-12">
-                                                                
+                                                                Input Controls
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                <input type="text" name="question"  class="form-control search_question" placeholder="Search Question">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                <a class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 question_search" style="color:#fff;width: 100%;">Search&nbsp;<i class="ti-search"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
                                                 </div>
 
                                             </div>

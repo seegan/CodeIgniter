@@ -197,24 +197,19 @@ class Exam extends MY_Controller {
 		$this->form_validation->set_rules( $validation_rules );
         if ($this->form_validation->run() !== FALSE)
         {
-			$this->db->set($exam_data)
-				->insert(db_table('exam_table'));
 
-			if( $this->db->affected_rows() == 1 ){
+        	$this->db->where('id', $exam_id);
+			$this->db->update(db_table('exam_table'), $exam_data);
 
-				$questions = serialize(array());
-				if( $this->input->post('selected_question') ) {
-					$questions = serialize($this->input->post('selected_question'));
-				}
-				$exam_id = $this->db->insert_id();
+			$questions = serialize(array());
+			if( $this->input->post('selected_question') ) {
+				$questions = serialize($this->input->post('selected_question'));
+			}
 
-				$exam_question_data = ['exam_id' => $exam_id, 'questions' => $questions ];
-				$this->db->set($exam_question_data)->insert(db_table('exam_questions_table'));
-				if( $this->db->affected_rows() == 1 ){
-					redirect('admin/exam'); die();
-				}
-				
-			}  
+			$questions = array('questions' => $questions);
+        	$this->db->where('exam_id', $exam_id);
+			$this->db->update(db_table('exam_questions_table'), $questions);
+
         }
 
         $data['exam'] = getExamById($exam_id);
@@ -229,6 +224,5 @@ class Exam extends MY_Controller {
 		echo $page_content;
 		echo $right_sidebar;
 		echo $this->load->view('admin/common/footer', $data, TRUE);
-
 	}
 }

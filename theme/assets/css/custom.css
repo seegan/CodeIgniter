@@ -1,4 +1,7 @@
 /*Login Pages*/
+body {
+  padding-right: 0 !important;
+}
 .login-exceeded {
     width: 400px;
     margin: 0 auto;
@@ -95,4 +98,41 @@ tr.failed {
 }
 tr.deactive {
   background: #fffff8;
+}
+
+
+table .btn-info {
+  padding: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-bottom: 0;  
+}
+
+
+#progressbox {
+    border: 1px solid #CAF2FF;
+    padding: 1px; 
+    position:relative;
+    width:400px;
+    border-radius: 3px;
+    margin: 10px;
+    display:none;
+    text-align:left;
+}
+#progressbar {
+    height:20px;
+    border-radius: 3px;
+    background-color: #CAF2FF;
+    width:1%;
+}
+#statustxt {
+    top:3px;
+    left:50%;
+    position:absolute;
+    display:inline-block;
+    color: #FFFFFF;
+    line-height: 20px;
+}
+#start_process_btn {
+    display: none;
 }

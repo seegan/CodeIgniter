@@ -30,7 +30,7 @@
 </style>
 
 
-<h4 class="header-title m-t-0 text-center">Import Candidates</h4>
+<h4 class="header-title m-t-0 text-center">Import Questions</h4>
     <div class="form-group row">
         <label for="inputEmail3" class="col-4 col-form-label text-right">File<span class="text-danger">*</span></label>
         <div class="col-7">

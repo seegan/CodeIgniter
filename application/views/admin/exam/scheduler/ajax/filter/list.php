@@ -12,6 +12,7 @@
                     <th>Result As</th>
                     <th>Schedule To</th>
                     <th>Schedule Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,9 @@
                     <td><?php echo ucfirst($list->result_as); ?></td>
                     <td><?php echo ($list->schedule_to == 1) ? 'All' : 'Selected'; ?></td>
                     <td><?php echo $list->schedule_status; ?></td>
+                    <td>
+                        <a class="btn btn-icon waves-effect waves-light btn-info m-b-5" href="<?php echo base_url('admin/exam/scheduler/update').'/'.$list->id; ?>"> <i class="fa fa-keyboard-o"></i> </a>
+                    </td>
                 </tr>
             <?php
                 }

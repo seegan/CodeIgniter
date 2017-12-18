@@ -20,4 +20,11 @@ class Candidate_model extends MY_Model {
 		return $query->row();
 	}
 	
+
+
+	public function getCandidates($candidate_ids) {
+
+		$query = $this->db->query("SELECT c.user_id, c.name, c.enrollment_no, c.mobile, c.gender, c.registration_date, cbb.branch_id, cbb.batch_id FROM xtra_candidate as c JOIN xtra_candidate_branch_batch as cbb ON c.user_id = cbb.candidate_id WHERE c.user_id IN ($candidate_ids) AND c.active = 1 AND cbb.active = 1");
+		return $query->result_array();
+	}	
 }

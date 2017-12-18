@@ -31,8 +31,7 @@
                     <td><?php echo $question_type[$list->question_type]; ?></td>
                     <td><?php echo $difficulty[$list->difficulty_level]; ?></td>
                     <td>
-                        <button class="btn btn-icon waves-effect waves-light btn-info m-b-5"> <i class="fa fa-keyboard-o"></i> </button>
-                        <button class="btn btn-icon waves-effect waves-light btn-danger m-b-5"> <i class="fa fa-remove"></i> </button>
+                        <a class="btn btn-icon waves-effect waves-light btn-info m-b-5" href="<?php echo base_url('admin/question/update').'/'.$list->id; ?>"> <i class="fa fa-keyboard-o"></i> </a>
                     </td>
                 </tr>
             <?php

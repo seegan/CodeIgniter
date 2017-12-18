@@ -101,6 +101,13 @@ if( ! function_exists('machine_to_man_date') )
 	}
 }
 
+if( ! function_exists('machine_to_man_time') )
+{
+	function machine_to_man_time($date_time) {
+		return date("H:i:s", strtotime($date_time));
+	}
+}
+
 
 if( ! function_exists('searchInsideArray') ) {
 	function searchInsideArray ($arr, $key1, $key2, $val1, $val2) {

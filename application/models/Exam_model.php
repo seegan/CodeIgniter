@@ -19,6 +19,12 @@ class Exam_model extends MY_Model {
 		return $query->row();
 	}
 
+	public function getCandidatesFromSchedule($schedule_id = 0) {
+		$query = $this->db->query("SELECT sc.candidates FROM ".$this->db_table('exam_schedule_candidate_table')." as sc WHERE sc.active = 1 AND sc.schedule_id = ${schedule_id} LIMIT 1");
+		return $query->row();
+	}
+
+
 	public function getExamQuestionsFromQuestionIds($question_ids = 0) {
 		$query = $this->db->query("SELECT q.question, q.question_type, q.subject, q.topic, q.language, 	q.year, q.difficulty_level, q.right_mark, q.negative_mark, q.question_time, q.choice FROM ".$this->db_table('question_table')." as q WHERE q.active = 1 AND q.id IN (${question_ids})");
 		return $query->result();
@@ -35,6 +41,20 @@ class Exam_model extends MY_Model {
 
 		return $query->result();
 	}
+
+
+	public function getScheduleById($schedule_id = 0)
+	{
+		$query = $this->db->query("SELECT es.* FROM ".$this->db_table('exam_schedule_table')." as es WHERE es.id = ${schedule_id}");
+		return $query->row_array();
+	}
+
+	public function getScheduleBatchs($schedule_id = 0)
+	{
+		$query = $this->db->query("SELECT sb.* FROM ".$this->db_table('exam_schedule_batch_table')." as sb WHERE sb.schedule_id = ${schedule_id}");
+		return $query->result_array();
+	}
+
 
 /**/
 

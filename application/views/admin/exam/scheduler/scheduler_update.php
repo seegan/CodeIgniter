@@ -10,7 +10,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Add Question</h4>
+                                    <h4 class="page-title">Add User</h4>
                                     <ol class="breadcrumb float-right">
                                         <li class="breadcrumb-item"><a href="#">Minton</a></li>
                                         <li class="breadcrumb-item active">Dashboard</li>
@@ -23,10 +23,13 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card">
-                                        <div class="page-container card-body">
+                                        <div class="page-container">
                                             <div class="row">
-                                                <div class="col-lg-12">
-                                                    <?php $this->load->view('admin/question/question/add/question'); ?>
+                                                <div class="col-lg-8">
+                                                    <?php $this->load->view('admin/exam/scheduler/update/scheduler'); ?>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <h4 class="header-title m-t-0 text-center">Recently Added</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -46,3 +49,7 @@
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
+
+
+
+

@@ -25,8 +25,8 @@
                     <td><?php echo $list->subject; ?></td>
                     <td><?php echo $list->description; ?></td>
                     <td>
-                        <button class="btn btn-icon waves-effect waves-light btn-info m-b-5"> <i class="fa fa-keyboard-o"></i> </button>
-                        <button class="btn btn-icon waves-effect waves-light btn-danger m-b-5"> <i class="fa fa-remove"></i> </button>
+                        <a class="btn btn-icon waves-effect waves-light btn-info m-b-5" href="<?php echo base_url('admin/subject/update').'/'.$list->id; ?>"> <i class="fa fa-keyboard-o"></i> </a>
+                        <!-- <button class="btn btn-icon waves-effect waves-light btn-danger m-b-5"> <i class="fa fa-remove"></i> </button> -->
                     </td>
                 </tr>
             <?php

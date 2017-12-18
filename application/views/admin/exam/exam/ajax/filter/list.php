@@ -9,6 +9,7 @@
                     <th>Total Mark</th>
                     <th>Exam Duration</th>
                     <th>Created On</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,9 @@
                     <td><?php echo $list->total_marks; ?></td>
                     <td><?php echo $list->exam_duration; ?></td>
                     <td><?php echo $list->created_at; ?></td>
+                    <td>
+                        <a class="btn btn-icon waves-effect waves-light btn-info m-b-5" href="<?php echo base_url('admin/exam/update').'/'.$list->id; ?>"> <i class="fa fa-keyboard-o"></i> </a>
+                    </td>
                 </tr>
             <?php
                 }

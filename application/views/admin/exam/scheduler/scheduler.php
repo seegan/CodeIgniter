@@ -32,16 +32,10 @@
                                             <div class="card-header">
                                                 <ul class="nav nav-tabs card-header-tabs">
                                                     <li class="nav-item">
-                                                        <a class="nav-link active" href="<?php echo base_url('admin/candidate') ?>">Candidate</a>
+                                                        <a class="nav-link" href="<?php echo base_url('admin/exam') ?>">Exam</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="<?php echo base_url('admin/subject/topic') ?>">Topic</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="<?php echo base_url('admin/question/category') ?>">Category</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="<?php echo base_url('admin/question') ?>">Question</a>
+                                                        <a class="nav-link active" href="<?php echo base_url('admin/exam/scheduler') ?>">Schedule</a>
                                                     </li>
                                                 </ul>
                                             </div>

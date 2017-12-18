@@ -16,7 +16,8 @@ if( ! function_exists('getEligibleBatchsFromExam') )
 	{
 		$CI =& get_instance();
 		$serialized_questions = $CI->exam->getQuestionsFromExam($exam_id);
-		$question_data = unserialize($serialized_questions->questions);
+
+		$question_data = ($serialized_questions) ? unserialize($serialized_questions->questions) : false;
 		if( is_array($question_data) && count($question_data) > 0 ) {
 			$question_ids = implode(",", array_keys($question_data));
 			$subjects = $CI->exam->getSubjectsFromQuestions($question_ids);
@@ -58,6 +59,7 @@ if( ! function_exists('getExamQuestions') )
 			$exam_questions = unserialize($data->questions);
 			if(is_array($exam_questions)) {
 				$question_ids = implode(',', array_keys($exam_questions));
+				$question_ids = ($question_ids) ? $question_ids : 0;
 				$questions = $CI->question->getQuestions($question_ids);
 				return $questions;	
 			}
@@ -66,5 +68,43 @@ if( ! function_exists('getExamQuestions') )
 	}
 }
 
+
+if( ! function_exists('getScheduleCandidates') )
+{
+	function getScheduleCandidates($schedule_id = 0)
+	{
+		$CI =& get_instance();
+		$data = $CI->exam->getCandidatesFromSchedule($schedule_id);
+		if($data && isset($data->candidates) ) {
+			$schedule_candidates = unserialize($data->candidates);
+			if(is_array($schedule_candidates)) {
+				$candidate_ids = implode(',', array_keys($schedule_candidates));
+				$candidate_ids = ($candidate_ids) ? $candidate_ids : 0;
+				$candidates = $CI->candidate->getCandidates($candidate_ids);
+				return $candidates;	
+			}
+		}
+		return false;
+	}
+}
+
+
+if( ! function_exists('getScheduleById') )
+{
+	function getScheduleById($schedule_id = 0)
+	{
+		$CI =& get_instance();
+		return $CI->exam->getScheduleById($schedule_id);
+	}
+}
+
+if( ! function_exists('getScheduleBatchs') )
+{
+	function getScheduleBatchs($schedule_id = 0)
+	{
+		$CI =& get_instance();
+		return $CI->exam->getScheduleBatchs($schedule_id);
+	}
+}
 
 
