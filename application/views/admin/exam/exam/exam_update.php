@@ -29,7 +29,7 @@
                                                     <?php $this->load->view('admin/exam/exam/update/exam'); ?>
                                                 </div>
                                                 <div class="col-lg-4">
-                                                    <h4 class="header-title m-t-0 text-center">Recently Added</h4>
+                                                    <?php $this->load->view('admin/exam/exam/update/exam_settings'); ?>
                                                 </div>
                                             </div>
                                         </div>

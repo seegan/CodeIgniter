@@ -2,6 +2,9 @@
 body {
   padding-right: 0 !important;
 }
+.settings-group a {
+  color: #000;
+}
 .login-exceeded {
     width: 400px;
     margin: 0 auto;
@@ -25,6 +28,7 @@ i.login-exceeded-ico {
 }
 .page-container {
 	margin-top: 20px;
+  padding: 20px;
 }
 
 .add-question .form-control, .action-header .form-control  {
@@ -60,7 +64,9 @@ i.login-exceeded-ico {
 .modal-full-width {
   max-width: 90%;
 }
-
+.modal-settings {
+  max-width: 30%;
+}
 .question_exam_filter .filter_question p, .selected_question_list .selected_question_block p {
   margin: 0;
 }
@@ -135,4 +141,22 @@ table .btn-info {
 }
 #start_process_btn {
     display: none;
+}
+
+.graphbox {
+    border: 2px solid #a1a1a1;
+    padding: 15px 6px 0px 24px;
+    background: #fff;
+    border-radius: 15px;
+}
+
+.graphbox .radio label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 2px;
+    margin-right: 15px;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #777a80;
 }
