@@ -220,7 +220,6 @@
 									</div>
 								</div>
 
-
 	                        </div>
 	                    </div>
 	                </div>
@@ -424,32 +423,32 @@
 											<div class="col-sm-4" id="">
 												Show Student Analytics <br><br>
 												<div class="radio"> 
-													<input type="radio" name="settings[analytics][show_report]" id="ShowReport" value="1" checked=""> <label for="ShowReport">Yes</label>
-													<input type="radio" name="settings[analytics][show_report]" id="ShowReport0" value="0" ><label for="ShowReport0">No</label>
+													<input type="radio" name="settings[analytics][show_report]" id="ShowReport" value="1" > <label for="ShowReport">Yes</label>
+													<input type="radio" name="settings[analytics][show_report]" id="ShowReport0" value="0" checked=""><label for="ShowReport0">No</label>
 												</div>
 											</div>
 											<div class="col-sm-8" style="text-align:left; border-left: 2px solid #A1A1A1;">
 												Select Student Analytics to show <br><br>
 												<div class="checkbox"> 
-													<input type="checkbox" value="1" id="ScoreCardReport" name="ScoreCardReport" checked=""><label for="ScoreCardReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test Analysis</label> 
+													<input type="checkbox" value="1" id="ScoreCardReport" name="settings[analytics][test_analysis]"><label for="ScoreCardReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test Analysis</label> 
 												</div>
 												<div class="checkbox"> 
-													<input type="checkbox" value="2" id="QuestionWiseReport" name="QuestionWiseReport" checked=""> <label for="QuestionWiseReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Questions &amp; Answers</label> 
+													<input type="checkbox" value="2" id="QuestionWiseReport" name="settings[analytics][question_answer]"> <label for="QuestionWiseReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Questions &amp; Answers</label> 
 												</div>
 												<div class="checkbox"> 
-													<input type="checkbox" value="4" id="TopicReport" name="TopicReport" checked=""> <label for="TopicReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time Taken in Section</label> 
+													<input type="checkbox" value="4" id="TopicReport" name="settings[analytics][section_time_taken]"> <label for="TopicReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time Taken in Section</label> 
 												</div>
 												<div class="checkbox"> 
-													<input type="checkbox" value="5" id="TimeManagementReport" name="TimeManagementReport" checked=""> <label for="TimeManagementReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time Taken in Topic</label> 
+													<input type="checkbox" value="5" id="TimeManagementReport" name="settings[analytics][topic_time_taken]"> <label for="TimeManagementReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Time Taken in Topic</label> 
 												</div>
 												<div class="checkbox"> 
-													<input type="checkbox" value="7" id="DifficultyLevelReport" name="DifficultyLevelReport" checked=""> <label for="DifficultyLevelReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Difficulty Level</label> 
+													<input type="checkbox" value="7" id="DifficultyLevelReport" name="settings[analytics][difficulty_lvl]"> <label for="DifficultyLevelReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Difficulty Level</label> 
 												</div>
 												<div class="checkbox"> 
-													<input type="checkbox" value="3" id="ComparisonReport" name="ComparisonReport" checked=""> <label for="ComparisonReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Comparison</label> 
+													<input type="checkbox" value="3" id="ComparisonReport" name="settings[analytics][comparison]"> <label for="ComparisonReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Comparison</label> 
 												</div>
 												<div class="checkbox"> 
-													<input type="checkbox" value="6" id="SolutionReport" name="SolutionReport" checked=""> <label for="SolutionReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Solution</label> 
+													<input type="checkbox" value="6" id="SolutionReport" name="settings[analytics][solution]"> <label for="SolutionReport">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Solution</label> 
 												</div>
 											</div>
 										</div>
@@ -465,8 +464,8 @@
 											</div>
 											<div class="col-sm-6" style="text-align:center">
 												<div class="radio"> 
-													<input type="radio" name="settings[end_test][mark_basis]" id="mark_basis0" checked=""> <label for="mark_basis0">Yes</label> 
-													<input type="radio" name="settings[end_test][mark_basis]" id="mark_basis1"> <label for="mark_basis1">No</label>
+													<input type="radio" name="settings[analytics][before_result]" id="before_result0" checked=""><label for="before_result0">Yes</label> 
+													<input type="radio" name="settings[analytics][before_result]" id="before_result1"> <label for="before_result1">No</label>
 												</div>
 											</div>
 										</div>
@@ -482,19 +481,19 @@
 											</div>
 											<div class="col-sm-6" style="text-align:center">
 												<div class="radio"> 
-													<input type="radio" name="settings[end_test][mark_basis]" id="mark_basis0" checked=""> <label for="mark_basis0">Yes</label> 
-													<input type="radio" name="settings[end_test][mark_basis]" id="mark_basis1"> <label for="mark_basis1">No</label>
+													<input type="radio" name="settings[analytics][question_download]" id="question_download0" checked=""> <label for="question_download0">Yes</label>
+													<input type="radio" name="settings[analytics][question_download]" id="question_download1"> <label for="question_download1">No</label>
 												</div>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-sm-6">
-												Allow print solution 
+												Allow print solution
 											</div>
 											<div class="col-sm-6" style="text-align:center">
 												<div class="radio"> 
-													<input type="radio" name="settings[end_test][mark_basis]" id="mark_basis0" checked=""> <label for="mark_basis0">Yes</label> 
-													<input type="radio" name="settings[end_test][mark_basis]" id="mark_basis1"> <label for="mark_basis1">No</label>
+													<input type="radio" name="settings[analytics][allow_print]" id="allow_print0" checked=""> <label for="allow_print0">Yes</label> 
+													<input type="radio" name="settings[analytics][allow_print]" id="allow_print1"> <label for="allow_print1">No</label>
 												</div>
 											</div>
 										</div>
@@ -510,8 +509,8 @@
 											</div>
 											<div class="col-sm-6" style="text-align:center">
 												<div class="radio"> 
-													<input type="radio" name="settings[end_test][mark_basis]" id="mark_basis0" checked=""> <label for="mark_basis0">Yes</label> 
-													<input type="radio" name="settings[end_test][mark_basis]" id="mark_basis1"> <label for="mark_basis1">No</label>
+													<input type="radio" name="settings[analytics][mail_after_submit]" id="mail_after_submit0" checked=""> <label for="mail_after_submit0">Yes</label> 
+													<input type="radio" name="settings[analytics][mail_after_submit]" id="mail_after_submit1"> <label for="mail_after_submit1">No</label>
 												</div>
 											</div>
 										</div>
@@ -559,8 +558,8 @@
 											</div>
 											<div class="col-sm-6" style="text-align:center">
 												<div class="radio"> 
-													<input type="radio" name="settings[time][time_bound]" id="time_bound0" checked=""> <label for="time_bound0">Enable</label> 
-													<input type="radio" name="settings[time][time_bound]" id="time_bound1" > <label for="time_bound1">Disable</label>
+													<input type="radio" name="settings[certificate][certificate_avail]" id="certificate_avail0" checked=""> <label for="certificate_avail0">Enable</label> 
+													<input type="radio" name="settings[certificate][certificate_avail]" id="certificate_avail1" > <label for="certificate_avail1">Disable</label>
 												</div>
 											</div>
 										</div>

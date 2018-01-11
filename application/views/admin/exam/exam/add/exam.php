@@ -1,7 +1,5 @@
 <h4 class="header-title m-t-0 text-center">New Exam</h4>
 
-<form method="POST" action="<?php echo base_url('admin/exam/add') ?>">
-
     <div class="form-group row">
         <label class="col-4 col-form-label text-right"></label>
         <div class="col-7">
@@ -348,7 +346,3 @@
 </div><!-- /.modal -->
 
 
-
-
-
-</form>

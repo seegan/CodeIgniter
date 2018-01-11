@@ -24,14 +24,16 @@
                                 <div class="col-lg-12">
                                     <div class="card">
                                         <div class="page-container">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <?php $this->load->view('admin/exam/exam/add/exam'); ?>
+                                            <form method="POST" action="<?php echo base_url('admin/exam/add') ?>">
+                                                <div class="row">
+                                                    <div class="col-lg-8">
+                                                        <?php $this->load->view('admin/exam/exam/add/exam'); ?>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <?php $this->load->view('admin/exam/exam/add/exam_settings'); ?>
+                                                    </div>
                                                 </div>
-                                                <div class="col-lg-4">
-                                                    <?php $this->load->view('admin/exam/exam/add/exam_settings'); ?>
-                                                </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
