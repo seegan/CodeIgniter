@@ -8,7 +8,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th># <input type="checkbox" class="chkSelectAll"></th>
                     <th>Question</th>
                     <th style="width: 200px;">Subject</th>
                     <th>Topic</th>
@@ -25,7 +25,7 @@
                 <tr class="question_avail" data-questionid="<?php echo $list->id; ?>">
                     <td scope="row">
                         <?php echo $start++; ?>
-                        <input type="checkbox" class="checked_question" value="<?php echo $list->id; ?>">
+                        <input type="checkbox" class="checked_question chkSelect" value="<?php echo $list->id; ?>">
                         <input type="hidden" class="right_mark" value="<?php echo $list->right_mark; ?>">
                         <input type="hidden" class="wrong_mark" value="<?php echo $list->negative_mark; ?>">
                         <input type="hidden" class="question_time" value="<?php echo $list->question_time; ?>">

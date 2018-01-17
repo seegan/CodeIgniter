@@ -29,8 +29,6 @@ jQuery(document).ready(function () {
         });
     }
 
-
-
     jQuery(".question_subject").on("change", function(){
         var cat_id = jQuery(this).val();
 
@@ -134,18 +132,13 @@ jQuery(document).ready(function () {
             removeQuestion(question_id);
         }
     });
-
     jQuery('body').on('click', '.selected_sno .remove-circle', function(){
         var remove_id = jQuery(this).attr('data-selremoveid');
         removeQuestion(remove_id);
     });
-
-
-
     jQuery('.select-question').on('click', function() {
         selectQuestionReset();
     });
-
     //Model Close
     jQuery('.close-selected-question').on('click', function() {
         jQuery('.selected-questions-model').find('.close').click();
@@ -153,26 +146,22 @@ jQuery(document).ready(function () {
     jQuery('.close-select-question').on('click', function() {
         jQuery('.questions-model').find('.close').click();
     });
-
     jQuery('#model_submit').on('click', function() {
         jQuery('.selected-questions-model').find('.close').click();
         jQuery('.questions-model').find('.close').click();
     });
-
 
 });
 
 
 
 function addQuestion(question_id, question, right_mark, wrong_mark, question_time) {
-
     var total_selected = (jQuery('.selected_question_block tr').length + 1 );
-    var tr_block = "<tr data-selquestionid="+question_id+"><td class='selected_sno'><button data-selremoveid="+question_id+" class='btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle'><i class='fa fa-remove'></i></button><input type='hidden' name='selected_question["+question_id+"][question_id]' value='"+question_id+"'></td><td>"+question+"</td><td> <input type='text' name='selected_question["+question_id+"][right_mark]' class='form-control' value='"+right_mark+"'></td><td><input type='text' name='selected_question["+question_id+"][wrong_mark]' class='form-control' value='"+wrong_mark+"'></td><td><input type='text' name='selected_question["+question_id+"][question_time]' class='form-control' value='"+question_time+"'></td></tr>";
+    var tr_block = "<tr data-selquestionid="+question_id+"><td class='selected_sno'><button data-selremoveid="+question_id+" class='btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle'><i class='fa fa-remove'></i></button><input type='hidden' name='selected_question["+question_id+"][question_id]' value='"+question_id+"'></td><td><div class='selected-sequence'>"+total_selected+"</div></td><td>"+question+"</td><td> <input type='text' name='selected_question["+question_id+"][right_mark]' class='form-control' value='"+right_mark+"'></td><td><input type='text' name='selected_question["+question_id+"][wrong_mark]' class='form-control' value='"+wrong_mark+"'></td><td><input type='text' name='selected_question["+question_id+"][question_time]' class='form-control' value='"+question_time+"'></td></tr>";
 
     if(jQuery('.selected_question_block').find('[data-selquestionid="'+question_id+'"]').length  <= 0) {
         jQuery('.selected_question_block').append(tr_block);
     }
-
 }
 
 function removeQuestion(question_id) {
@@ -182,6 +171,10 @@ function removeQuestion(question_id) {
     if(jQuery('[data-questionid="'+question_id+'"]').find('.checked_question').is(':checked')) {
         jQuery('[data-questionid="'+question_id+'"]').find('.checked_question').prop('checked', false); 
     }
+
+    jQuery('.selected_question_block tr').each(function(index, selector){
+        jQuery(this).find('.selected-sequence').text(index+1)
+    });
 }
 
 function populateCheckAfterAjax() {
@@ -209,3 +202,92 @@ function selectQuestionReset() {
     jQuery('.question_exam_filter').html('');
     jQuery('.search_question').val('');
 }
+
+
+
+
+
+
+
+
+
+
+
+    jQuery(document).ready(function(){
+
+        jQuery('.combo-box .total_sel_chk').on("change", function () {
+            if(jQuery(this).prop("checked") == false) {
+                jQuery(this).parent().parent().find('.total_sel_input').attr('disabled', true);
+                jQuery(this).parent().parent().parent().find('.custom-select-block').css('display','none');
+            } else {
+                jQuery(this).parent().parent().find('.total_sel_input').attr('disabled', false);
+                jQuery(this).parent().parent().parent().find('.custom-select-block').css('display','inline-flex');
+
+                jQuery(this).parent().parent().parent().find('.custom_sel_chk').prop("checked", false).change();
+            }
+        });
+
+        jQuery('.combo-box .custom_sel_chk').on("change", function () {
+            if(jQuery(this).prop("checked") == false) {
+                jQuery(this).parent().parent().find('.custom_sel_from').attr('disabled', true);
+                jQuery(this).parent().parent().find('.custom_sel_to').attr('disabled', true);
+
+                jQuery(this).parent().parent().parent().find('.total-select .addon-cyan-btn').css('display', 'block');
+                jQuery(this).parent().parent().parent().find('.custom-select-block .addon-cyan-btn').css('display', 'none');
+            } else {
+                jQuery(this).parent().parent().find('.custom_sel_from').attr('disabled', false);
+                jQuery(this).parent().parent().find('.custom_sel_to').attr('disabled', false);
+
+                jQuery(this).parent().parent().parent().find('.total-select .addon-cyan-btn').css('display', 'none');
+                jQuery(this).parent().parent().parent().find('.custom-select-block .addon-cyan-btn').css('display', 'block');
+            }
+        });
+
+
+
+
+
+        //Select Questions based on Select Combo box
+        jQuery('.question-filter-select-combo .total_sel_btn').on('click', function(){
+            jQuery('.combo-box-error').html('');
+
+            var total_sel = jQuery('.question-filter-select-combo .total_sel_input').val();
+            jQuery(".question_exam_filter .chkSelect").prop("checked", false).change();
+            for (var i = 0; i < total_sel; i++) {
+                jQuery('.question_exam_filter .chkSelect').eq(i).prop("checked", true).change();
+            }
+        });
+
+        //Select Questions based on Custom Combo box
+        jQuery('.question-filter-select-combo .custom_sel_btn').on('click', function(){
+            var sel_from = jQuery('.question-filter-select-combo .custom_sel_from').val();
+            var sel_to = jQuery('.question-filter-select-combo .custom_sel_to').val();
+
+            if(sel_from < sel_to) {
+                jQuery(".combo-box-error").html("");
+                jQuery(".question_exam_filter .chkSelect").prop("checked", false).change();
+                for ( var i = sel_from - 1; i < sel_to; i++) {
+                    jQuery('.question_exam_filter .chkSelect').eq(i).prop("checked", true).change();
+                }
+            } else {
+                jQuery('.combo-box-error').html('Starting question no. should not greater than ending question no.!')
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+    });
+
+    jQuery(document).on("change", ".question_exam_filter .chkSelectAll", function () {
+        jQuery(".question_exam_filter .chkSelect").prop("checked", jQuery(this).is(":checked")).change();
+    });
+
+

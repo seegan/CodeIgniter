@@ -323,7 +323,8 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>#</th>
+                                                <th class="selected-delete"></th>
+                                                <th class="selected-no">#</th>
                                                 <th>Question</th>
                                                 <th style="width: 200px;">Right Marks</th>
                                                 <th style="width: 200px;">Wrong Marks</th>
@@ -333,6 +334,7 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
                                         <tbody class="selected_question_block">
                                             <?php
                                                 if($exam_questions) {
+                                                    $i = 1;
                                                     foreach ($exam_questions as $questions) {
                                             ?>
                                                 <tr data-selquestionid="<?php echo $questions['question_id'] ?>">
@@ -340,12 +342,14 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
                                                         <button data-selremoveid="<?php echo $questions['question_id'] ?>" class="btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle"><i class="fa fa-remove"></i></button>
                                                         <input type="hidden" name="selected_question[<?php echo $questions['question_id'] ?>][question_id]" value="<?php echo $questions['question_id'] ?>">
                                                     </td>
+                                                    <td><?php echo $i; ?></td>
                                                     <td><?php echo $questions['question']; ?></td>
                                                     <td> <input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][right_mark]" class="form-control" value="<?php echo $questions['right_mark']; ?>"></td>
                                                     <td><input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][wrong_mark]" class="form-control" value="<?php echo $questions['negative_mark']; ?>"></td>
                                                     <td><input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][question_time]" class="form-control" value="<?php echo $questions['question_time']; ?>"></td>
                                                 </tr>
                                             <?php
+                                                        $i++;
                                                     }
                                                 }
                                             ?>
