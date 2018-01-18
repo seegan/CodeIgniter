@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2018 at 08:58 AM
+-- Generation Time: Jan 18, 2018 at 11:18 AM
 -- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.20
+-- PHP Version: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -105,7 +105,22 @@ INSERT INTO `auth_sessions` (`id`, `user_id`, `login_time`, `modified_at`, `ip_a
 ('1vbvmrh1kned0dj29vt48rg620pf46sh', 3725195695, '2017-12-29 22:55:10', '2017-12-29 17:25:10', '::1', 'Chrome 63.0.3239.84 on Windows 7'),
 ('jais0ogkh6dn4lukc4o5nagktp7nqo0m', 120809394, '2017-12-29 18:25:42', '2017-12-29 17:25:43', '::1', 'Chrome 63.0.3239.84 on Windows 7'),
 ('m5gabr7th3sih26e8rnafon3bijanl4m', 3725195695, '2017-12-30 07:59:21', '2017-12-30 03:25:56', '::1', 'Chrome 63.0.3239.84 on Windows 7'),
-('ak3kc1m7u843pmo5oaeh6oj9mtlrjk6t', 120809394, '2018-01-04 11:59:07', '2018-01-04 11:05:01', '::1', 'Chrome 63.0.3239.84 on Windows 7');
+('ak3kc1m7u843pmo5oaeh6oj9mtlrjk6t', 120809394, '2018-01-04 11:59:07', '2018-01-04 11:05:01', '::1', 'Chrome 63.0.3239.84 on Windows 7'),
+('150r5a1mck8t0eaealuk9enk1k5s2c6f', 120809394, '2018-01-08 10:12:45', '2018-01-08 13:06:56', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('13msguvmn6c5bkk8nrv4t1tus15kkose', 120809394, '2018-01-09 07:21:24', '2018-01-09 07:19:23', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('25u8recvfuh490gh6v3ivd0c09vv5sl3', 120809394, '2018-01-10 06:54:57', '2018-01-10 07:34:28', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('np36m9893rhdah8mpsnge70kbsvouada', 120809394, '2018-01-10 13:09:40', '2018-01-10 12:19:04', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('u5qt77snpp6ia0q42h927gi9oqhkhd0a', 120809394, '2018-01-11 06:25:50', '2018-01-11 05:25:50', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('6a0qkrd4r5242sujsvnr3srmqck6qkh9', 120809394, '2018-01-11 09:49:18', '2018-01-11 12:59:14', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('g1gprsuqfq53k56ra8vo7djnhmlprnkv', 120809394, '2018-01-12 07:21:26', '2018-01-12 06:21:26', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('ckkjrdq52pbalr10vhdf79eljp3qrqn6', 120809394, '2018-01-12 09:59:16', '2018-01-12 09:05:02', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('hlb9c90q4if5recrrq7l7ahnb2me4q58', 120809394, '2018-01-15 06:15:28', '2018-01-15 05:21:05', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('l67vtigbsuproe51s3bah1ocov4feh76', 120809394, '2018-01-15 13:03:03', '2018-01-15 12:08:08', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('fg5esuqnrl22nvp6lcsg27l1u33djpnc', 120809394, '2018-01-16 06:40:07', '2018-01-16 08:43:28', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('1o83ck0nl3oqrqqequ3fosird983392q', 120809394, '2018-01-16 12:44:15', '2018-01-16 12:37:13', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('8jssi5qecfeirc8a212l3urvsk5its9a', 120809394, '2018-01-17 07:18:34', '2018-01-17 13:03:41', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('gb0gekagutrkjs81s7619hnfjg4jmbfh', 120809394, '2018-01-18 08:14:46', '2018-01-18 07:40:32', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('eciv9g1ctudpn5ae023m98hl5orp8hi1', 120809394, '2018-01-18 10:42:36', '2018-01-18 10:16:53', '::1', 'Chrome 63.0.3239.132 on Windows 7');
 
 -- --------------------------------------------------------
 
@@ -163,8 +178,8 @@ CREATE TABLE `login_errors` (
 --
 
 INSERT INTO `login_errors` (`ai`, `username_or_email`, `ip_address`, `time`) VALUES
-(0, 'superadmin', '::1', '2018-01-04 11:58:29'),
-(0, 'superadmin', '::1', '2018-01-04 11:58:29');
+(0, 'superadmin', '::1', '2018-01-16 12:44:09'),
+(0, 'superadmin', '::1', '2018-01-16 12:44:09');
 
 -- --------------------------------------------------------
 
@@ -206,7 +221,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `email`, `auth_level`, `banned`, `passwd`, `passwd_recovery_code`, `passwd_recovery_date`, `passwd_modified_at`, `last_login`, `created_at`, `modified_at`) VALUES
 (57410469, 'BUDB17003', 'jaya062@gmail.com', 1, '0', '$2y$10$13ffa2af59a46075fd5a5uJQa6StMebJ/QXel6Mqzdv3KaFmT6vYG', NULL, NULL, NULL, NULL, '2017-12-18 10:55:27', '2017-12-18 10:55:27'),
 (89711126, 'BUDB17002', 'jaya061@gmail.com', 1, '0', '$2y$10$df4bb4459ffe1abb18e7autpyM1ijnkztWz4BjtrxeFeZujUFcgkO', NULL, NULL, NULL, NULL, '2017-12-18 10:55:26', '2017-12-18 10:55:26'),
-(120809394, 'superadmin', 'superadmin@example.com', 9, '0', '$2y$11$VG3Rpod76a8eh7zsz3VuQuWYiNKnp13rvoIx49g8ofxYg.ob.Ls/m', NULL, NULL, NULL, '2018-01-04 11:59:07', '2017-10-31 12:47:43', '2018-01-04 10:59:07'),
+(120809394, 'superadmin', 'superadmin@example.com', 9, '0', '$2y$11$VG3Rpod76a8eh7zsz3VuQuWYiNKnp13rvoIx49g8ofxYg.ob.Ls/m', NULL, NULL, NULL, '2018-01-18 10:42:36', '2017-10-31 12:47:43', '2018-01-18 09:42:36'),
+(741018742, '234324', 'dfgdfg@gmail.com', 1, '0', '$2y$11$SRgwC7Ah311Cc2UQbLo/rOjHjQ05AsoxFGv/7tqs6RG0SGuxcaxl.', NULL, NULL, NULL, NULL, '2018-01-08 10:29:57', '2018-01-08 09:29:57'),
 (779332544, 'BUDA17002', 'jaya057@gmail.com', 1, '0', '$2y$10$344f46c54df5735fe10b7OuiJ7zXN6Hsp6mEyDqa1IQRpvN6zeWQW', NULL, NULL, NULL, NULL, '2017-12-18 10:55:24', '2017-12-18 10:55:24'),
 (1005173121, 'BUDA17003', 'jaya058@gmail.com', 1, '0', '$2y$10$f1ac15b782836dba1f4eaekvUl2SxYCcTvZ2XJweqmwN2tfmfT4jO', NULL, NULL, NULL, NULL, '2017-12-18 10:55:25', '2017-12-18 10:55:25'),
 (1153198671, 'BUDB17004', 'jaya063@gmail.com', 1, '0', '$2y$10$c0791b6b4d402567ddb7buSj4UFRK6A8e9SEsmITTWiinmSGWrAQy', NULL, NULL, NULL, NULL, '2017-12-18 10:55:27', '2017-12-18 10:55:27'),
@@ -367,6 +383,7 @@ CREATE TABLE `xtra_candidate` (
 INSERT INTO `xtra_candidate` (`user_id`, `name`, `enrollment_no`, `ref_pass`, `mobile`, `phone`, `address`, `enquiry_from`, `hear_from`, `guardian_name`, `guardian_mobile`, `gender`, `send_mail`, `registration_date`, `birth_date`, `instiute`, `modified_at`, `referred_by`, `active`) VALUES
 (57410469, 'AYESHA MUSHTAQDAFEDAE', 'BUDB17003', '25102007', '4351200077', '', '', 'Call', 'Email', '', '', 'Male', 0, '2017-10-11', '0000-00-00', 'JAYAVIDYA LEARNING & EDUCATION', '0000-00-00 00:00:00', 120809394, 1),
 (89711126, 'ANUSHKA A,IT PANDIT', 'BUDB17002', '14032008', '4351200076', '', '', 'Call', 'Email', '', '', 'Male', 0, '2017-10-11', '0000-00-00', 'JAYAVIDYA LEARNING & EDUCATION', '0000-00-00 00:00:00', 120809394, 1),
+(741018742, 'seegan p', '45345345', '22221111', '667456546', '9952380502', 'kattuvilai\r\nkarungal', '', '', '', '', 'Male', 0, '2018-12-12', '1990-12-12', '', '0000-00-00 00:00:00', 0, 1),
 (779332544, 'S. AKILAN', 'BUDA17002', '25102010', '4351200072', '', '', 'Call', 'Email', '', '', 'Male', 0, '2017-10-11', '0000-00-00', 'JAYAVIDYA LEARNING & EDUCATION', '0000-00-00 00:00:00', 120809394, 1),
 (1005173121, 'S. CHARU CHARITH', 'BUDA17003', '647062010', '4351200073', '', '', 'Call', 'Email', '', '', 'Male', 0, '2017-10-11', '0000-00-00', 'JAYAVIDYA LEARNING & EDUCATION', '0000-00-00 00:00:00', 120809394, 1),
 (1153198671, 'M. DHARCINI', 'BUDB17004', '20032007', '4351200078', '', '', 'Call', 'Email', '', '', 'Male', 0, '2017-10-11', '0000-00-00', 'JAYAVIDYA LEARNING & EDUCATION', '0000-00-00 00:00:00', 120809394, 1),
@@ -598,7 +615,8 @@ INSERT INTO `xtra_candidate_branch_batch` (`candidate_id`, `branch_id`, `batch_i
 (89711126, 1, 1, 1),
 (57410469, 1, 1, 1),
 (1153198671, 1, 1, 1),
-(3725195695, 1, 1, 1);
+(3725195695, 1, 1, 1),
+(741018742, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -807,7 +825,8 @@ INSERT INTO `xtra_question` (`id`, `question`, `question_type`, `subject`, `topi
 (1, '<p>Sample Question 1 Tamil</p>', 1, 1, 1, 'en', 2017, 1, 1, 1, 10, 4, '2017-12-18 10:18:00', 1),
 (2, '<p>question ?</p>', 1, 2, 2, 'en', 2017, 2, 1, 1, 10, 4, '2017-12-18 10:35:57', 1),
 (3, 'A train running at the speed of 60 km/hr crosses a pole in 9 seconds. What is the length of the train?', 1, 0, 0, 'en', 2015, 1, 1, 2, 3, 4, '2017-12-18 10:37:59', 1),
-(4, 'A train running at the speed of 60 km/hr crosses a pole in 9 seconds. What is the length of the train?', 1, 2, 2, 'en', 2015, 1, 1, 2, 3, 4, '2017-12-18 10:42:08', 1);
+(4, 'A train running at the speed of 60 km/hr crosses a pole in 9 seconds. What is the length of the train?', 1, 2, 2, 'en', 2015, 1, 1, 2, 3, 4, '2017-12-18 10:42:08', 1),
+(5, '<p>Test question..</p>', 1, 1, 1, 'en', 2018, 2, 1, 2, 2, 4, '2018-01-17 12:47:42', 1);
 
 -- --------------------------------------------------------
 
@@ -848,7 +867,8 @@ INSERT INTO `xtra_single_answer` (`question_id`, `option_id`) VALUES
 (1, 3),
 (2, 7),
 (3, 12),
-(4, 16);
+(4, 16),
+(5, 18);
 
 -- --------------------------------------------------------
 
@@ -884,7 +904,11 @@ INSERT INTO `xtra_single_options` (`option_id`, `question_id`, `option_key`, `op
 (13, 4, 'A', '120 metres', 1),
 (14, 4, 'B', '180 metres', 1),
 (15, 4, 'C', '324 metres', 1),
-(16, 4, 'D', '150 metres', 1);
+(16, 4, 'D', '150 metres', 1),
+(17, 5, 'A', '<p>Option 1</p>', 1),
+(18, 5, 'B', '<p>Option 2</p>', 1),
+(19, 5, 'C', '<p>Option 3</p>', 1),
+(20, 5, 'D', '<p>Option 4</p>', 1);
 
 -- --------------------------------------------------------
 
@@ -1144,7 +1168,7 @@ ALTER TABLE `xtra_import_files`
 -- AUTO_INCREMENT for table `xtra_question`
 --
 ALTER TABLE `xtra_question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `xtra_question_type`
 --
@@ -1154,7 +1178,7 @@ ALTER TABLE `xtra_question_type`
 -- AUTO_INCREMENT for table `xtra_single_options`
 --
 ALTER TABLE `xtra_single_options`
-  MODIFY `option_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `option_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `xtra_subject`
 --

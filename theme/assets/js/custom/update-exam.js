@@ -167,7 +167,7 @@ jQuery(document).ready(function () {
 function addQuestion(question_id, question, right_mark, wrong_mark, question_time) {
 
     var total_selected = (jQuery('.selected_question_block tr').length + 1 );
-    var tr_block = "<tr data-selquestionid="+question_id+"><td class='selected_sno'><button data-selremoveid="+question_id+" class='btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle'><i class='fa fa-remove'></i></button><input type='hidden' name='selected_question["+question_id+"][question_id]' value='"+question_id+"'></td><td><div class='selected-sequence'>"+total_selected+"</div></td><td>"+question+"</td><td> <input type='text' name='selected_question["+question_id+"][right_mark]' class='form-control' value='"+right_mark+"'></td><td><input type='text' name='selected_question["+question_id+"][wrong_mark]' class='form-control' value='"+wrong_mark+"'></td><td><input type='text' name='selected_question["+question_id+"][question_time]' class='form-control' value='"+question_time+"'></td></tr>";
+    var tr_block = "<tr data-selquestionid="+question_id+"><td class='selected_sno'><button data-selremoveid="+question_id+" class='btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle'><i class='fa fa-remove'></i></button><input type='hidden' name='selected_question["+question_id+"][question_id]' value='"+question_id+"'></td><td><div class='selected-sequence'>"+total_selected+"</div></td><td>"+question+"</td><td> <input type='text' name='selected_question["+question_id+"][right_mark]' class='form-control right_mark' value='"+right_mark+"'></td><td><input type='text' name='selected_question["+question_id+"][wrong_mark]' class='form-control wrong_mark' value='"+wrong_mark+"'></td><td><input type='text' name='selected_question["+question_id+"][question_time]' class='form-control question_time' value='"+question_time+"'></td></tr>";
 
     if(jQuery('.selected_question_block').find('[data-selquestionid="'+question_id+'"]').length  <= 0) {
         jQuery('.selected_question_block').append(tr_block);
@@ -281,10 +281,33 @@ function selectQuestionReset() {
 
 
 
+        //Selected Questions on Select Combo box right_mark
+        jQuery('.question-right-mark-combo .total_sel_btn').on('click', function(){
+            jQuery('.combo-box-error').html('');
+
+            var total_sel = jQuery('.question-right-mark-combo .total_sel_input').val();
+            jQuery('.right_mark').val(total_sel);
+        });
+
+        
+
+        //Selectd Questions on Select Combo box wrong_mark
+        jQuery('.question-wrong-mark-combo .total_sel_btn').on('click', function(){
+            jQuery('.combo-box-error').html('');
+
+            var total_sel = jQuery('.question-wrong-mark-combo .total_sel_input').val();
+            jQuery('.wrong_mark').val(total_sel);
+        });
 
 
 
+        //Selectd Questions on Select Combo box time
+        jQuery('.question-time-combo .total_sel_btn').on('click', function(){
+            jQuery('.combo-box-error').html('');
 
+            var total_sel = jQuery('.question-time-combo .total_sel_input').val();
+            jQuery('.question_time').val(total_sel);
+        });
 
 
 
@@ -294,4 +317,5 @@ function selectQuestionReset() {
     jQuery(document).on("change", ".question_exam_filter .chkSelectAll", function () {
         jQuery(".question_exam_filter .chkSelect").prop("checked", jQuery(this).is(":checked")).change();
     });
+
 

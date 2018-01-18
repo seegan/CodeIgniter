@@ -293,8 +293,84 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
                                                 <div class="row">
                                                     <div class="col-lg-12 col-md-12">
                                                         <div class="form-group row">
-                                                            <div class="col-12">
-                                                                Input Controls
+                                                            <div class="col-md-12 col-lg-12">
+                                                                <div class="row">
+
+                                                                    <div class="col-lg-3 col-md-4">
+                                                                        <div class="question-right-mark-combo combo-box">
+                                                                            <div class="input-group input-combain total-select" style="margin-bottom:10px;">
+                                                                                <span class="input-group-addon addon-cyan">
+                                                                                    <input type="checkbox" class="total_sel_chk">
+                                                                                </span>
+                                                                                <input type="text" class="form-control total_sel_input" placeholder="Enter Right Marks">
+                                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                                    <button type="button" class="btn btn-primary total_sel_btn">Auto Select</button>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="input-group input-combain custom-select-block" style="display:none;">
+                                                                                <span class="input-group-addon addon-cyan">
+                                                                                    <input type="checkbox" class="custom_sel_chk">
+                                                                                </span>
+                                                                                <input type="text" class="form-control custom_sel_from" placeholder="Starting" disabled>
+                                                                                <input type="text" class="form-control custom_sel_to" placeholder="Ending" disabled>
+                                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                                    <button type="button" class="btn btn-primary custom_sel_btn">Auto Select</button>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-3 col-md-4">
+                                                                        <div class="question-wrong-mark-combo combo-box">
+                                                                            <div class="input-group input-combain total-select" style="margin-bottom:10px;">
+                                                                                <span class="input-group-addon addon-cyan">
+                                                                                    <input type="checkbox" class="total_sel_chk">
+                                                                                </span>
+                                                                                <input type="text" class="form-control total_sel_input" placeholder="Enter Wrong Marks">
+                                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                                    <button type="button" class="btn btn-primary total_sel_btn">Auto Select</button>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="input-group input-combain custom-select-block" style="display:none;">
+                                                                                <span class="input-group-addon addon-cyan">
+                                                                                    <input type="checkbox" class="custom_sel_chk">
+                                                                                </span>
+                                                                                <input type="text" class="form-control custom_sel_from" placeholder="Starting" disabled>
+                                                                                <input type="text" class="form-control custom_sel_to" placeholder="Ending" disabled>
+                                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                                    <button type="button" class="btn btn-primary custom_sel_btn">Auto Select</button>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="col-lg-3 col-md-4">
+                                                                        <div class="question-time-combo combo-box">
+                                                                            <div class="input-group input-combain total-select" style="margin-bottom:10px;">
+                                                                                <span class="input-group-addon addon-cyan">
+                                                                                    <input type="checkbox" class="total_sel_chk">
+                                                                                </span>
+                                                                                <input type="text" class="form-control total_sel_input" placeholder="Enter Time (In Mins)">
+                                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                                    <button type="button" class="btn btn-primary total_sel_btn">Auto Select</button>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="input-group input-combain custom-select-block" style="display:none;">
+                                                                                <span class="input-group-addon addon-cyan">
+                                                                                    <input type="checkbox" class="custom_sel_chk">
+                                                                                </span>
+                                                                                <input type="text" class="form-control custom_sel_from" placeholder="Starting" disabled>
+                                                                                <input type="text" class="form-control custom_sel_to" placeholder="Ending" disabled>
+                                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                                    <button type="button" class="btn btn-primary custom_sel_btn">Auto Select</button>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="combo-box-error"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -344,9 +420,9 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
                                                     </td>
                                                     <td><?php echo $i; ?></td>
                                                     <td><?php echo $questions['question']; ?></td>
-                                                    <td> <input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][right_mark]" class="form-control" value="<?php echo $questions['right_mark']; ?>"></td>
-                                                    <td><input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][wrong_mark]" class="form-control" value="<?php echo $questions['negative_mark']; ?>"></td>
-                                                    <td><input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][question_time]" class="form-control" value="<?php echo $questions['question_time']; ?>"></td>
+                                                    <td> <input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][right_mark]" class="form-control right_mark" value="<?php echo $questions['right_mark']; ?>"></td>
+                                                    <td><input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][wrong_mark]" class="form-control wrong_mark" value="<?php echo $questions['negative_mark']; ?>"></td>
+                                                    <td><input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][question_time]" class="form-control question_time" value="<?php echo $questions['question_time']; ?>"></td>
                                                 </tr>
                                             <?php
                                                         $i++;
