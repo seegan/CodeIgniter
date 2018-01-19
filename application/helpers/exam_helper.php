@@ -108,3 +108,12 @@ if( ! function_exists('getScheduleBatchs') )
 }
 
 
+if( ! function_exists('getInstructionById') )
+{
+	function getInstructionById($instruction_id = 0)
+	{
+		$CI =& get_instance();
+		return $CI->exam->getInstructionById($instruction_id);
+	}
+}
+

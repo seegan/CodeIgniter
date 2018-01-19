@@ -52,7 +52,7 @@
                                                                                 <div class="col-lg-4">
                                                                                     <div class="form-group row">
                                                                                         <div class="col-12">
-                                                                                            <input type="text" name="exam_name"  class="form-control" placeholder="Search Exam">
+                                                                                            <input type="text" name="instruction_name"  class="form-control" placeholder="Search Instruction">
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -72,7 +72,7 @@
                                                                                 <div class="col-lg-2">
                                                                                     <div class="form-group row">
                                                                                         <div class="col-12">
-                                                                                            <a class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 exam_search" style="color:#fff;width: 100%;">Search&nbsp;<i class="ti-search"></i></a>
+                                                                                            <a class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 instruction_search" style="color:#fff;width: 100%;">Search&nbsp;<i class="ti-search"></i></a>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -83,7 +83,7 @@
                                                                         </div>
                                                                         <div class="col-md-12 col-lg-2">
                                                                             <div class="action-group">
-                                                                                <a class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" href="<?php echo base_url('admin/exam/add'); ?>">Add Exam</a>
+                                                                                <a class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 doubleClick" href="<?php echo base_url('admin/exam/instruction/add'); ?>">Add Instruction</a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -91,14 +91,14 @@
 
                                                                 <div class="clearfix"></div>
                                                             </div>
-                                                            <input type="hidden" class="filter_action" value="exam_filter">
+                                                            <input type="hidden" class="filter_action" value="instruction_filter">
                                                             
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <hr>
-                                                <div class="exam_filter">
-                                                    <?php $this->load->view('admin/exam/exam/ajax/filter/list') ?>
+                                                <div class="instruction_filter">
+                                                    <?php $this->load->view('admin/exam/instruction/ajax/filter/list') ?>
                                                 </div>
                                             </div>
 

@@ -46,11 +46,6 @@ class Exam extends MY_Controller {
 	public function add()
 	{
 
-		if($this->input->method(TRUE) == "POST") {
-			echo "<pre>";
-			var_dump($this->input->post()); die();
-		}
-
         $data['subjects'] = getSubjects(1);
         $data['javascripts'][] = base_url().'jsplugins/tinymce/tinymce.min.js';
         $data['javascripts'][] = base_url().'theme/assets/js/custom/add-exam.js';

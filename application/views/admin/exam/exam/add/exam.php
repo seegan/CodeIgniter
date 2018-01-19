@@ -371,7 +371,7 @@
                                                                                 <span class="input-group-addon addon-cyan">
                                                                                     <input type="checkbox" class="total_sel_chk">
                                                                                 </span>
-                                                                                <input type="text" class="form-control total_sel_input" placeholder="Enter Time (In Mins)">
+                                                                                <input type="time" class="form-control total_sel_input" placeholder="Enter Time (In Mins)" step="1" value="00:00:00">
                                                                                 <span class="input-group-addo b-0 text-white addon-cyan-btn">
                                                                                     <button type="button" class="btn btn-primary total_sel_btn">Auto Select</button>
                                                                                 </span>

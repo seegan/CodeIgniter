@@ -154,6 +154,22 @@ class AdminAjax extends MY_Controller {
         return $this->load->view('admin/candidate/candidate/ajax/filter/list', $data, TRUE);
     }
 
+
+    private function instruction_filter() {
+        $this->load->library('paginator', '', 'paginatefilter');
+        $this->paginatefilter->ppage = 20;
+
+        $result_args = array(
+            'orderby_field' => 'i.created_at',
+            'page' => $this->paginatefilter->cpage,
+            'order_by' => 'DESC',
+            'items_per_page' => $this->paginatefilter->ppage ,
+            'condition' => '',
+        );
+        $data['data_list'] = $this->paginatefilter->instruction_list_pagination($result_args);
+        return $this->load->view('admin/exam/instruction/ajax/filter/list', $data, TRUE);
+    }
+
     private function exam_filter() {
         $this->load->library('paginator', '', 'paginatefilter');
         $this->paginatefilter->ppage = 20;

@@ -13,7 +13,9 @@ i.login-exceeded-ico {
 	font-size: 90px;
     color: red;
 }
-
+#schedule_description_ifr, #instruction_ifr {
+  width: 99% !important;
+}
 .action-header {
 	position: relative;
 	text-align: center;

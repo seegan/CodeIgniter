@@ -63,6 +63,7 @@ class Paginator
 	        $this->gender 			= isset($params['gender']) ? $params['gender'] : '0';
 	        $this->candidate_year   = isset($params['candidate_year']) ? $params['candidate_year'] : '0';
 
+	        $this->instruction_name = isset($params['instruction_name']) ? $params['instruction_name'] : '';
 	        $this->exam_name   		= isset($params['exam_name']) ? $params['exam_name'] : '';
 	        
 	    }
@@ -91,6 +92,7 @@ class Paginator
 	        $this->gender 				= ($this->CI->input->get('gender')) ? $this->CI->input->get('gender') : '0';
 	        $this->candidate_year		= ($this->CI->input->get('candidate_year')) ? $this->CI->input->get('candidate_year') : '0';
 
+	        $this->instruction_name 	= ($this->CI->input->get('instruction_name')) ? $this->CI->input->get('instruction_name') : '';
 	        $this->exam_name   			= ($this->CI->input->get('exam_name')) ? $this->CI->input->get('exam_name') : '';
 	    }
 	}
@@ -423,7 +425,44 @@ class Paginator
 	    return $data;
 	}
 
+	public function instruction_list_pagination($args) {
 
+		$this->_args();
+		$condition = $this->listCondition();
+
+		$query = "SELECT i.id, i.instruction_name, i.created_at FROM xtra_exam_instruction as i WHERE 1 = 1 ${condition}";
+
+		$total_query        = "SELECT COUNT(1) as tot FROM (${query}) AS combined_table";
+
+		$count_query = $this->CI->db->query($total_query);
+		$row_count = $count_query->row();
+  
+		$this->total_rows = isset($row_count) ? $row_count->tot : 0;
+		$data['total']  = $this->total_rows;
+
+	    $offset             = ( $this->cpage * $this->ppage ) - $this->ppage;
+
+	    $result_query = $query . " ORDER BY ${args['orderby_field']} ${args['order_by']} LIMIT ${offset}, ".$this->ppage;
+		$result_data = $this->CI->db->query($result_query);	 
+		$data['result'] = $result_data->result();   
+
+	    $totalPage         	= ceil($data['total'] / $this->ppage);
+		$this->paginate_link = $this->add_query_arg( $this->args['arg'], base_url('admin/branch/user') );
+		$data['pagination'] = $this->createPaginationHtml();
+
+		$data['start_count'] = ($this->ppage * ($this->cpage - 1));
+	    $end_count = $data['start_count'] + count($data['result']);
+
+	    if( $end_count == 0) {
+	    	$start_count = 0;
+	    } else {
+	    	$start_count = $data['start_count'] + 1;
+	    }
+	    $data['status_txt'] = "<div class='' role='status' aria-live='polite'>Showing ".$start_count." to ".$end_count." of ".$this->total_rows." entries</div>";
+
+
+	    return $data;
+	}
 
 	public function exam_list_pagination($args) {
 
@@ -609,6 +648,10 @@ class Paginator
 	    }
 
 
+	    if($this->instruction_name != '') {
+	    	$condition .= " AND i.instruction_name LIKE  '%".$this->instruction_name."%'";
+	    	$this->args['arg']['instruction_name'] = $this->instruction_name;
+	    }
 	    if($this->exam_name != '') {
 	    	$condition .= " AND e.exam_name LIKE  '%".$this->exam_name."%'";
 	    	$this->args['arg']['exam_name'] = $this->exam_name;

@@ -56,6 +56,11 @@ class Exam_model extends MY_Model {
 	}
 
 
+	public function getInstructionById($instruction_id = '')
+	{
+		$query = $this->db->query("SELECT i.* FROM ".$this->db_table('instruction_table')." as i WHERE i.id = ${instruction_id}");
+		return $query->row_array();
+	}
 /**/
 
 }
