@@ -33,19 +33,19 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
     <div class="form-group row">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Duration<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="exam_duration" placeholder="Duration" value="<?php echo set_value('exam_duration') ? set_value('exam_duration') : $exam_duration; ?>">
+            <input type="time" step="1" required class="form-control exam_duration" name="exam_duration" placeholder="Duration" value="<?php echo set_value('exam_duration') ? set_value('exam_duration') : $exam_duration; ?>">
         </div>
     </div>   
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Total Questions<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="total_questions" placeholder="Total Questions" value="<?php echo set_value('total_questions') ? set_value('total_questions') : $total_questions; ?>">
+            <input type="text" required class="form-control total_questions" name="total_questions" placeholder="Total Questions" value="<?php echo set_value('total_questions') ? set_value('total_questions') : $total_questions; ?>">
         </div>
     </div> 
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Total Marks<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="total_marks" placeholder="Total Marks" value="<?php echo set_value('total_marks') ? set_value('total_marks') : $total_marks; ?>">
+            <input type="text" required class="form-control total_marks" name="total_marks" placeholder="Total Marks" value="<?php echo set_value('total_marks') ? set_value('total_marks') : $total_marks; ?>">
         </div>
     </div> 
     <div class="row form-group">
@@ -212,10 +212,7 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
-
-
                                             </div>
                                             <div class="col-md-12 col-lg-2">
                                                 <div class="form-group row">
@@ -235,6 +232,35 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
                                                     <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5 selected-question" data-toggle="modal" data-target=".selected-questions-model">Selected Questions &nbsp; <i class="mdi mdi-library-plus"></i></button>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12 col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-4">
+                                                        <div class="question-filter-select-combo combo-box">
+                                                            <div class="input-group input-combain total-select" style="margin-bottom:10px;">
+                                                                <span class="input-group-addon addon-cyan">
+                                                                    <input type="checkbox" class="total_sel_chk">
+                                                                </span>
+                                                                <input type="text" class="form-control total_sel_input" placeholder="Total Questions">
+                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                    <button type="button" class="btn btn-primary total_sel_btn">Auto Select</button>
+                                                                </span>
+                                                            </div>
+                                                            <div class="input-group input-combain custom-select-block" style="display:none;">
+                                                                <span class="input-group-addon addon-cyan">
+                                                                    <input type="checkbox" class="custom_sel_chk">
+                                                                </span>
+                                                                <input type="text" class="form-control custom_sel_from" placeholder="Starting" disabled>
+                                                                <input type="text" class="form-control custom_sel_to" placeholder="Ending" disabled>
+                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                    <button type="button" class="btn btn-primary custom_sel_btn">Auto Select</button>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="combo-box-error"></div>
+                                            </div>
+
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -409,11 +435,12 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
                                         </thead>
                                         <tbody class="selected_question_block">
                                             <?php
-                                                if($exam_questions) {
+
+                                                if($exam_questions && isset($exam_questions['questions']) && isset($exam_questions['exam_questions'])) {
                                                     $i = 1;
-                                                    foreach ($exam_questions as $questions) {
+                                                    foreach ($exam_questions['questions'] as $questions) {
                                             ?>
-                                                <tr data-selquestionid="<?php echo $questions['question_id'] ?>">
+                                                <tr class="selected_tr" data-selquestionid="<?php echo $questions['question_id'] ?>">
                                                     <td class="selected_sno">
                                                         <button data-selremoveid="<?php echo $questions['question_id'] ?>" class="btn btn-icon waves-effect waves-light btn-danger m-b-5 remove-circle"><i class="fa fa-remove"></i></button>
                                                         <input type="hidden" name="selected_question[<?php echo $questions['question_id'] ?>][question_id]" value="<?php echo $questions['question_id'] ?>">
@@ -421,8 +448,8 @@ $description = ($exam && isset($exam['description'])) ? $exam['description'] : '
                                                     <td><?php echo $i; ?></td>
                                                     <td><?php echo $questions['question']; ?></td>
                                                     <td> <input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][right_mark]" class="form-control right_mark" value="<?php echo $questions['right_mark']; ?>"></td>
-                                                    <td><input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][wrong_mark]" class="form-control wrong_mark" value="<?php echo $questions['negative_mark']; ?>"></td>
-                                                    <td><input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][question_time]" class="form-control question_time" value="<?php echo $questions['question_time']; ?>"></td>
+                                                    <td><input type="text" name="selected_question[<?php echo $questions['question_id'] ?>][wrong_mark]" class="form-control wrong_mark" value="<?php echo $questions['wrong_mark']; ?>"></td>
+                                                    <td><input type="time" name="selected_question[<?php echo $questions['question_id'] ?>][question_time]" class="form-control question_time" value="<?php echo $questions['question_time']; ?>" step="1"></td>
                                                 </tr>
                                             <?php
                                                         $i++;

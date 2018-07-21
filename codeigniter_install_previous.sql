@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2018 at 01:05 PM
+-- Generation Time: Jan 22, 2018 at 07:03 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -121,7 +121,12 @@ INSERT INTO `auth_sessions` (`id`, `user_id`, `login_time`, `modified_at`, `ip_a
 ('8jssi5qecfeirc8a212l3urvsk5its9a', 120809394, '2018-01-17 07:18:34', '2018-01-17 13:03:41', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
 ('gb0gekagutrkjs81s7619hnfjg4jmbfh', 120809394, '2018-01-18 08:14:46', '2018-01-18 07:40:32', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
 ('eciv9g1ctudpn5ae023m98hl5orp8hi1', 120809394, '2018-01-18 10:42:36', '2018-01-18 10:16:53', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
-('c1nj81rk1nepjhmugtuhmpie586nqped', 120809394, '2018-01-19 05:54:21', '2018-01-19 11:50:25', '::1', 'Chrome 63.0.3239.132 on Windows 7');
+('c1nj81rk1nepjhmugtuhmpie586nqped', 120809394, '2018-01-19 05:54:21', '2018-01-19 11:50:25', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('qljaco3tc2lt29frnmrj3sod7t763bsd', 120809394, '2018-01-20 01:02:19', '2018-01-20 04:57:57', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('hg9i87jpi9q4le6bsphjikrdcpetng9g', 120809394, '2018-01-20 04:41:59', '2018-01-20 04:46:22', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('ut00bbaj5b5eahrf09v2s8fc7thminje', 120809394, '2018-01-20 11:35:05', '2018-01-20 10:35:05', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('dagp20tm43c47fp1hmvrc643moilnm71', 120809394, '2018-01-22 00:37:08', '2018-01-21 23:37:08', '::1', 'Chrome 63.0.3239.132 on Windows 7'),
+('nm6u8r5vsap55p0r00dutcois4pt4aeo', 120809394, '2018-01-22 06:12:56', '2018-01-22 06:00:56', '::1', 'Chrome 63.0.3239.132 on Windows 7');
 
 -- --------------------------------------------------------
 
@@ -179,8 +184,8 @@ CREATE TABLE `login_errors` (
 --
 
 INSERT INTO `login_errors` (`ai`, `username_or_email`, `ip_address`, `time`) VALUES
-(0, 'superadmin', '::1', '2018-01-16 12:44:09'),
-(0, 'superadmin', '::1', '2018-01-16 12:44:09');
+(0, 'superadmin', '::1', '2018-01-22 06:12:50'),
+(0, 'superadmin', '::1', '2018-01-22 06:12:50');
 
 -- --------------------------------------------------------
 
@@ -222,7 +227,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `email`, `auth_level`, `banned`, `passwd`, `passwd_recovery_code`, `passwd_recovery_date`, `passwd_modified_at`, `last_login`, `created_at`, `modified_at`) VALUES
 (57410469, 'BUDB17003', 'jaya062@gmail.com', 1, '0', '$2y$10$13ffa2af59a46075fd5a5uJQa6StMebJ/QXel6Mqzdv3KaFmT6vYG', NULL, NULL, NULL, NULL, '2017-12-18 10:55:27', '2017-12-18 10:55:27'),
 (89711126, 'BUDB17002', 'jaya061@gmail.com', 1, '0', '$2y$10$df4bb4459ffe1abb18e7autpyM1ijnkztWz4BjtrxeFeZujUFcgkO', NULL, NULL, NULL, NULL, '2017-12-18 10:55:26', '2017-12-18 10:55:26'),
-(120809394, 'superadmin', 'superadmin@example.com', 9, '0', '$2y$11$VG3Rpod76a8eh7zsz3VuQuWYiNKnp13rvoIx49g8ofxYg.ob.Ls/m', NULL, NULL, NULL, '2018-01-19 05:54:21', '2017-10-31 12:47:43', '2018-01-19 04:54:21'),
+(120809394, 'superadmin', 'superadmin@example.com', 9, '0', '$2y$11$VG3Rpod76a8eh7zsz3VuQuWYiNKnp13rvoIx49g8ofxYg.ob.Ls/m', NULL, NULL, NULL, '2018-01-22 06:12:56', '2017-10-31 12:47:43', '2018-01-22 05:12:56'),
 (741018742, '234324', 'dfgdfg@gmail.com', 1, '0', '$2y$11$SRgwC7Ah311Cc2UQbLo/rOjHjQ05AsoxFGv/7tqs6RG0SGuxcaxl.', NULL, NULL, NULL, NULL, '2018-01-08 10:29:57', '2018-01-08 09:29:57'),
 (779332544, 'BUDA17002', 'jaya057@gmail.com', 1, '0', '$2y$10$344f46c54df5735fe10b7OuiJ7zXN6Hsp6mEyDqa1IQRpvN6zeWQW', NULL, NULL, NULL, NULL, '2017-12-18 10:55:24', '2017-12-18 10:55:24'),
 (1005173121, 'BUDA17003', 'jaya058@gmail.com', 1, '0', '$2y$10$f1ac15b782836dba1f4eaekvUl2SxYCcTvZ2XJweqmwN2tfmfT4jO', NULL, NULL, NULL, NULL, '2017-12-18 10:55:25', '2017-12-18 10:55:25'),
@@ -672,7 +677,7 @@ CREATE TABLE `xtra_exam` (
 --
 
 INSERT INTO `xtra_exam` (`id`, `exam_name`, `exam_duration`, `total_questions`, `total_marks`, `description`, `created_at`, `modified_at`, `active`) VALUES
-(1, 'Exam abacus lvl1', 30000, 2, '2.00', '<p>check</p>', '2017-12-18 11:15:50', '2017-12-30 08:50:30', 1);
+(1, 'Exam abacus lvl1', 29304, 4, '4.00', '<p>check</p>', '2017-12-18 11:15:50', '2018-01-22 11:24:10', 1);
 
 -- --------------------------------------------------------
 
@@ -714,7 +719,7 @@ CREATE TABLE `xtra_exam_questions` (
 --
 
 INSERT INTO `xtra_exam_questions` (`id`, `exam_id`, `questions`, `active`) VALUES
-(1, 1, '{"2":{"question_id":"2","right_mark":"1","wrong_mark":"1","question_time":"10"},"4":{"question_id":"4","right_mark":"1","wrong_mark":"2","question_time":"3"},"1":{"question_id":"1","right_mark":"1","wrong_mark":"1","question_time":"10"}}', 1);
+(1, 1, '{"1":{"question_id":"1","right_mark":"1","wrong_mark":"1","question_time":"02:02:06"},"2":{"question_id":"2","right_mark":"1","wrong_mark":"1","question_time":"02:02:06"},"4":{"question_id":"4","right_mark":"1","wrong_mark":"2","question_time":"02:02:06"},"5":{"question_id":"5","right_mark":"1","wrong_mark":"2","question_time":"02:02:06"}}', 1);
 
 -- --------------------------------------------------------
 

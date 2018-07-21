@@ -4,7 +4,6 @@ $options = $question[$question_id]['options'];
 $answer_option = searchInsideArray ($options, 'question_id', 'option_id', $question_id, $answer_choice);
 $option_key = $options[$answer_option]['option_key'];
 ?>
-
 <div class="col-sm-12">
     <div class="row match_folowing_example">
         <div class="row">

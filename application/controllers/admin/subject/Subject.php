@@ -158,10 +158,18 @@ class Subject extends MY_Controller {
 				]
 			]			
 		];
+
+
 		$this->form_validation->set_rules( $validation_rules );
         if ($this->form_validation->run() !== FALSE) {
 			$this->db->where('id', $subject_id);
 			$this->db->update('xtra_subject', $subject_data); 
+
+			$this->db->delete(db_table('subject_question_type_table'), array('subject_id' => $subject_id));
+			
+			foreach ($this->input->post('question_type') as $type) {
+				$this->db->set(array('subject_id' => $subject_id, 'type_id' => $type ))->insert(db_table('subject_question_type_table'));
+			}
         }
 
 

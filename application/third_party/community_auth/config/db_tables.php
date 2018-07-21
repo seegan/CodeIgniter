@@ -61,10 +61,19 @@ $config['instruction_table']            = 'xtra_exam_instruction';
 
 $config['exam_table']            		= 'xtra_exam';
 $config['exam_questions_table']         = 'xtra_exam_questions';
+$config['exam_questions_detailed']         = 'xtra_exam_questions_detailed';
+
+
+
 
 $config['exam_schedule_table']         = 'xtra_exam_schedule';
 $config['exam_schedule_candidate_table']         = 'xtra_exam_schedule_candidates';
 $config['exam_schedule_batch_table']         = 'xtra_exam_schedule_batchs';
+
+$config['schedule_candidate_detailed']         = 'xtra_exam_schedule_candidates_detailed';
+
+
+
 
 
 $config['import_files']         = 'xtra_import_files';

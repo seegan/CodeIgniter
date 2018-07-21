@@ -45,6 +45,8 @@ class Exam extends MY_Controller {
 
 	public function add()
 	{
+		sscanf($this->input->post('exam_duration'), "%d:%d:%d", $hours, $minutes, $seconds);
+		$time_seconds = isset($seconds) ? $hours * 3600 + $minutes * 60 + $seconds : $hours * 60 + $minutes;
 
         $data['subjects'] = getSubjects(1);
         $data['javascripts'][] = base_url().'jsplugins/tinymce/tinymce.min.js';
@@ -52,7 +54,7 @@ class Exam extends MY_Controller {
 
 		$exam_data = [
 			'exam_name'   => $this->input->post('exam_name'),
-			'exam_duration' => $this->input->post('exam_duration'),
+			'exam_duration' => $time_seconds,
 			'total_questions' => $this->input->post('total_questions'),
 			'total_marks' => $this->input->post('total_marks'),
 			'description' => trim($this->input->post('test_description')),
@@ -116,9 +118,16 @@ class Exam extends MY_Controller {
 				$exam_question_data = ['exam_id' => $exam_id, 'questions' => $questions ];
 				$this->db->set($exam_question_data)->insert(db_table('exam_questions_table'));
 				if( $this->db->affected_rows() == 1 ){
+
+					if($this->input->post('selected_question')) {
+						foreach ($this->input->post('selected_question') as $question) {
+							$question['exam_id'] = $exam_id;
+							$this->db->set($question)->insert(db_table('exam_questions_detailed'));
+						}
+					}
+
 					redirect('admin/exam'); die();
 				}
-				
 			}  
         }
 
@@ -140,6 +149,9 @@ class Exam extends MY_Controller {
 	public function update($exam_id = 0)
 	{
 
+		sscanf($this->input->post('exam_duration'), "%d:%d:%d", $hours, $minutes, $seconds);
+		$time_seconds = isset($seconds) ? $hours * 3600 + $minutes * 60 + $seconds : $hours * 60 + $minutes;
+
         $data['subjects'] = getSubjects(1);
 
         $data['javascripts'][] = base_url().'jsplugins/tinymce/tinymce.min.js';
@@ -147,7 +159,7 @@ class Exam extends MY_Controller {
 
 		$exam_data = [
 			'exam_name'   => $this->input->post('exam_name'),
-			'exam_duration' => $this->input->post('exam_duration'),
+			'exam_duration' => $time_seconds,
 			'total_questions' => $this->input->post('total_questions'),
 			'total_marks' => $this->input->post('total_marks'),
 			'description' => trim($this->input->post('test_description')),
@@ -199,15 +211,26 @@ class Exam extends MY_Controller {
 
         	$this->db->where('id', $exam_id);
 			$this->db->update(db_table('exam_table'), $exam_data);
+			
+        	$this->db->delete(db_table('exam_questions_detailed'), array('exam_id' => $exam_id));
+		
 
+			//Should be delete later
 			$questions = json_encode(array());
 			if( $this->input->post('selected_question') ) {
 				$questions = json_encode($this->input->post('selected_question'));
 			}
-
-			$questions = array('questions' => $questions);
+			$questions_data = array('questions' => $questions);
         	$this->db->where('exam_id', $exam_id);
-			$this->db->update(db_table('exam_questions_table'), $questions);
+			$this->db->update(db_table('exam_questions_table'), $questions_data);
+
+
+			if($this->input->post('selected_question')) {
+				foreach ($this->input->post('selected_question') as $question) {
+					$question['exam_id'] = $exam_id;
+					$this->db->set($question)->insert(db_table('exam_questions_detailed'));
+				}
+			}
 
         }
 

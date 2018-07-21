@@ -24,19 +24,19 @@
     <div class="form-group row">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Duration<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="exam_duration" placeholder="Duration" value="<?php echo set_value('exam_duration'); ?>">
+            <input type="time" step="1" required class="form-control exam_duration" name="exam_duration" placeholder="Duration" value="<?php echo set_value('exam_duration'); ?>">
         </div>
     </div>   
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Total Questions<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="total_questions" placeholder="Total Questions" value="<?php echo set_value('total_questions'); ?>">
+            <input type="text" required class="form-control total_questions" name="total_questions" placeholder="Total Questions" value="<?php echo set_value('total_questions'); ?>">
         </div>
     </div> 
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Total Marks<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="total_marks" placeholder="Total Marks" value="<?php echo set_value('total_marks'); ?>">
+            <input type="text" required class="form-control total_marks" name="total_marks" placeholder="Total Marks" value="<?php echo set_value('total_marks'); ?>">
         </div>
     </div> 
     <div class="row form-group">

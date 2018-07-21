@@ -137,6 +137,8 @@ class Question extends MY_Controller {
 
 		$this->form_validation->set_rules( $validation_rules );
         if ($this->form_validation->run() !== FALSE) {
+
+
             $this->db->set($question_data)->insert(db_table('question_table'));
 
             if( $this->db->affected_rows() == 1 ){
@@ -144,8 +146,10 @@ class Question extends MY_Controller {
 
                 $question = trim($this->input->post('main_question'));
 
-                if($this->input->post('single_choice')) {
+                //Single Choice Options
+                if($this->input->post('single_choice') && $this->input->post('type') == 1 ) {
                     $single_options = $this->config->item('single_option');
+
                     foreach ($this->input->post('single_choice') as $key => $value) {
                         $option_key = $single_options[$key];
                         $option_val = trim($value['choice_data']);
@@ -165,7 +169,35 @@ class Question extends MY_Controller {
 
                     }
                 }
+
+
+                //Multiple Choice Options
+                if($this->input->post('single_choice') && $this->input->post('type') == 2 ) {
+                    $single_options = $this->config->item('single_option');
+
+                    foreach ($this->input->post('single_choice') as $key => $value) {
+                        $option_key = $single_options[$key];
+                        $option_val = trim($value['choice_data']);
+
+                        $option_data = ['question_id' => $question_id, 'option_key' => $option_key, 'option_val' => $option_val];
+                        $this->db->set($option_data)->insert(db_table('single_options_table'));
+
+
+                        if(  $this->db->affected_rows() == 1) {
+                            if( in_array( $option_key, $this->input->post('validoption') )  ){
+                                $option_id = $this->db->insert_id();
+                                $answer_data = ['question_id' => $question_id, 'option_id' => $option_id];
+                                $this->db->set($answer_data)->insert(db_table('single_answer_table'));
+                            } 
+                        }
+
+                    }
+                }
+
+
             }
+
+
         }
 
         $page_content = $this->load->view('admin/question/question/question_add', $data, TRUE);
@@ -269,43 +301,17 @@ class Question extends MY_Controller {
 
                 }
             }
-
-/*            $this->db->set($question_data)->insert(db_table('question_table'));
-
-            if( $this->db->affected_rows() == 1 ){
-                $question_id = $this->db->insert_id();
-
-                $question = trim($this->input->post('main_question'));
-
-                if($this->input->post('single_choice')) {
-                    $single_options = $this->config->item('single_option');
-                    foreach ($this->input->post('single_choice') as $key => $value) {
-                        $option_key = $single_options[$key];
-                        $option_val = trim($value['choice_data']);
-
-                        $option_data = ['question_id' => $question_id, 'option_key' => $option_key, 'option_val' => $option_val];
-                        $this->db->set($option_data)->insert(db_table('single_options_table'));
-
-
-                        if($option_key == $this->input->post('validoption')) {
-                            if( $this->db->affected_rows() == 1 ){
-                                $option_id = $this->db->insert_id();
-                                $answer_data = ['question_id' => $question_id, 'option_id' => $option_id];
-                                $this->db->set($answer_data)->insert(db_table('single_answer_table'));
-
-                            } 
-                        }
-
-                    }
-                }
-            }*/
         }
 
 
-
         $data['question_id'] = $question_id;
-        $data['question'] = combainQuestionOptionAnswers($question_id);
 
+        if($question['question_type'] == 1) {
+            $data['question'] = combainQuestionOptionAnswers($question_id);            
+        }
+        if($question['question_type'] == 2) {
+            $data['question'] = combainQuestionOptionAnswersMultiple($question_id);            
+        }
 
         $data['javascripts'][] = base_url().'jsplugins/tinymce/tinymce.min.js';
         $data['javascripts'][] = base_url().'theme/assets/js/jquery.repeater.js';

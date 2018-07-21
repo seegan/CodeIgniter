@@ -122,20 +122,38 @@ class Scheduler extends MY_Controller {
 
 				$schedule_id = $this->db->insert_id();
 
+
+
+				if($this->input->post('exam_batchs') && is_array($this->input->post('exam_batchs'))) {
+					foreach ($this->input->post('exam_batchs') as $batch_id) {
+						$schedule_batch_data = ['schedule_id' => $schedule_id, 'batch_id' => $batch_id, 'schedule_to' => $this->input->post('schedule_to') ];
+						$this->db->set($schedule_batch_data)->insert(db_table('exam_schedule_batch_table'));
+					}
+				}
+
+
+
+
+			if($this->input->post('schedule_to') == 2) {
+
 				$candidates = json_encode(array());
 				if( $this->input->post('selected_candidate') ) {
 					$candidates = json_encode($this->input->post('selected_candidate'));
 				}
-
 				$schedule_candidate_data = ['schedule_id' => $schedule_id, 'candidates' => $candidates ];
 				$this->db->set($schedule_candidate_data)->insert(db_table('exam_schedule_candidate_table'));
 
-				if($this->input->post('exam_batchs') && is_array($this->input->post('exam_batchs'))) {
-					foreach ($this->input->post('exam_batchs') as $batch_id) {
-						$schedule_batch_data = ['schedule_id' => $schedule_id, 'batch_id' => $batch_id ];
-						$this->db->set($schedule_batch_data)->insert(db_table('exam_schedule_batch_table'));
+
+				if( $this->input->post('selected_candidate') ) {
+					foreach ($this->input->post('selected_candidate') as $candidate) {
+						$candidate_data = ['schedule_id' => $schedule_id, 'candidate_id' => $candidate['candidate_id'] ];
+						$this->db->set($candidate_data)->insert(db_table('schedule_candidate_detailed'));
 					}
-				}
+				}				
+			}
+
+
+
 
 				redirect('admin/exam/scheduler'); die();
 			}
@@ -225,27 +243,42 @@ class Scheduler extends MY_Controller {
 		$this->form_validation->set_rules( $validation_rules );
         if ($this->form_validation->run() !== FALSE)
         {
-
         	$this->db->where('id', $schedule_id);
 			$this->db->update(db_table('exam_schedule_table'), $schedule_data);
-
-			$candidates = json_encode(array());
-			if( $this->input->post('selected_candidate') ) {
-				$candidates = json_encode($this->input->post('selected_candidate'));
-			}
-
-			$this->db->delete(db_table('exam_schedule_candidate_table'), array('schedule_id' => $schedule_id));
-			$schedule_candidate_data = ['schedule_id' => $schedule_id, 'candidates' => $candidates ];
-			$this->db->set($schedule_candidate_data)->insert(db_table('exam_schedule_candidate_table'));
 
 
 			$this->db->delete(db_table('exam_schedule_batch_table'), array('schedule_id' => $schedule_id));
 			if($this->input->post('exam_batchs') && is_array($this->input->post('exam_batchs'))) {
 				foreach ($this->input->post('exam_batchs') as $batch_id) {
-					$schedule_batch_data = ['schedule_id' => $schedule_id, 'batch_id' => $batch_id ];
+					$schedule_batch_data = ['schedule_id' => $schedule_id, 'batch_id' => $batch_id, 'schedule_to' => $this->input->post('schedule_to') ];
 					$this->db->set($schedule_batch_data)->insert(db_table('exam_schedule_batch_table'));
 				}
 			}
+
+			$this->db->delete(db_table('exam_schedule_candidate_table'), array('schedule_id' => $schedule_id));
+			$this->db->delete(db_table('schedule_candidate_detailed'), array('schedule_id' => $schedule_id));
+
+			if($this->input->post('schedule_to') == 2) {
+
+				$candidates = json_encode(array());
+				if( $this->input->post('selected_candidate') ) {
+					$candidates = json_encode($this->input->post('selected_candidate'));
+				}
+
+				$schedule_candidate_data = ['schedule_id' => $schedule_id, 'candidates' => $candidates ];
+				$this->db->set($schedule_candidate_data)->insert(db_table('exam_schedule_candidate_table'));
+
+				if( $this->input->post('selected_candidate') ) {
+					foreach ($this->input->post('selected_candidate') as $candidate) {
+						$candidate_data = ['schedule_id' => $schedule_id, 'candidate_id' => $candidate['candidate_id'] ];
+						$this->db->set($candidate_data)->insert(db_table('schedule_candidate_detailed'));
+					}
+				}				
+			}
+
+
+
+
         }
 
         $data['schedule'] = getScheduleById($schedule_id);
@@ -254,8 +287,6 @@ class Scheduler extends MY_Controller {
         $data['eligible_batchs'] = getEligibleBatchsFromExam($exam_id);
         $data['schedule_batchs'] = getScheduleBatchs($schedule_id);
         $data['schedule_candidates'] = getScheduleCandidates($schedule_id);
-
-        //$data['exam_questions'] = getExamQuestions($exam_id);
 
         $page_content = $this->load->view('admin/exam/scheduler/scheduler_update', $data, TRUE);
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);

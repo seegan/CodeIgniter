@@ -191,7 +191,7 @@ table .btn-info {
   border-radius: 0px 4px 4px 0; 
 }
 
-input[type="text"]:disabled {
+input[type="text"]:disabled, input[type="time"]:disabled {
     background: #eee;
 }
 .combo-box-error {

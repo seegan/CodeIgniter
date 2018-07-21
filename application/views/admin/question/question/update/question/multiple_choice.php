@@ -1,9 +1,27 @@
+<?php
+$answer_choice = $question[$question_id]['answer_option'];
+
+echo "<pre>";
+var_dump($answer_choice);
+
+$options = $question[$question_id]['options'];
+
+var_dump($options);
+die();
+
+
+$answer_option = searchInsideArray ($options, 'question_id', 'option_id', $question_id, $answer_choice);
+$option_key = $options[$answer_option]['option_key'];
+
+
+
+
+?>
 <div class="col-sm-12">
     <div class="row match_folowing_example">
         <div class="row">
             <div class="col-lg-12 correct_option">
                 Correct Answer :
-
                 <div class="checkbox checkbox-success form-check-inline" data-option="A">
                     <input type="checkbox" id="inlineCheck-a" value="A" name="validoption[]" checked="">
                     <label for="inlineCheck-a"> A </label>
@@ -25,8 +43,6 @@
 
     </div>
     <div class="row match_folowing_options">
-        
-
 
         <div class="repeater">
             <div data-repeater-list="single_choice" class="row">

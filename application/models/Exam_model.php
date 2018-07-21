@@ -14,20 +14,26 @@ class Exam_model extends MY_Model {
 		return $query->result();
 	}
 
+
+	//From Individual
+	public function getExamQuestions($exam_id = 0) {
+		$query = $this->db->query("SELECT q.id as question_id, eqd.*, q.question, q.question_type,q.subject,q.topic,q.language,q.year,q.difficulty_level,q.choice, q.created_at FROM ".$this->db_table('exam_questions_detailed')." as eqd JOIN ".$this->db_table('question_table')." as q ON eqd.question_id = q.id WHERE q.active = 1 AND eqd.active = 1 AND eqd.exam_id = ${exam_id}");
+		return $query->result_array();
+	}
+
+	//From JSON 
 	public function getQuestionsFromExam($exam_id = 0) {
 		$query = $this->db->query("SELECT eq.questions FROM ".$this->db_table('exam_questions_table')." as eq WHERE eq.active = 1 AND eq.exam_id = ${exam_id} LIMIT 1");
 		return $query->row();
 	}
 
+
+
+
+
 	public function getCandidatesFromSchedule($schedule_id = 0) {
 		$query = $this->db->query("SELECT sc.candidates FROM ".$this->db_table('exam_schedule_candidate_table')." as sc WHERE sc.active = 1 AND sc.schedule_id = ${schedule_id} LIMIT 1");
 		return $query->row();
-	}
-
-
-	public function getExamQuestionsFromQuestionIds($question_ids = 0) {
-		$query = $this->db->query("SELECT q.question, q.question_type, q.subject, q.topic, q.language, 	q.year, q.difficulty_level, q.right_mark, q.negative_mark, q.question_time, q.choice FROM ".$this->db_table('question_table')." as q WHERE q.active = 1 AND q.id IN (${question_ids})");
-		return $query->result();
 	}
 
 

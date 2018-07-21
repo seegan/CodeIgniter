@@ -49,24 +49,53 @@ if( ! function_exists('getExamById') )
 	}
 }
 
+
+
 if( ! function_exists('getExamQuestions') )
 {
 	function getExamQuestions($exam_id = 0)
 	{
 		$CI =& get_instance();
-		$data = $CI->exam->getQuestionsFromExam($exam_id);
-		if($data && isset($data->questions) ) {
-			$exam_questions = json_decode($data->questions, true);
-			if(is_array($exam_questions)) {
-				$question_ids = implode(',', array_keys($exam_questions));
+		$datas = $CI->exam->getQuestionsFromExam($exam_id);
+
+		if($datas && isset($datas->questions) ) {
+			$data['exam_questions'] = json_decode($datas->questions, true);
+			if(is_array($data['exam_questions'])) {
+				$question_ids = implode(',', array_keys($data['exam_questions']));
 				$question_ids = ($question_ids) ? $question_ids : 0;
-				$questions = $CI->question->getQuestions($question_ids);
-				return $questions;	
+				$data['questions'] = $CI->exam->getExamQuestions($exam_id);
+
+				return $data;	
 			}
 		}
 		return false;
 	}
 }
+
+
+
+
+/*if( ! function_exists('getExamQuestions') )
+{
+	function getExamQuestions($exam_id = 0)
+	{
+		$CI =& get_instance();
+		$datas = $CI->exam->getQuestionsFromExam($exam_id);
+
+		if($datas && isset($datas->questions) ) {
+			$data['exam_questions'] = json_decode($datas->questions, true);
+			if(is_array($data['exam_questions'])) {
+				$question_ids = implode(',', array_keys($data['exam_questions']));
+				$question_ids = ($question_ids) ? $question_ids : 0;
+				$data['questions'] = $CI->question->getQuestions($question_ids);
+				echo "<pre>";
+				var_dump($data['questions']); die();
+				return $data;	
+			}
+		}
+		return false;
+	}
+}*/
 
 
 if( ! function_exists('getScheduleCandidates') )
