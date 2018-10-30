@@ -41,7 +41,7 @@ $config['branch_subject_table']        	= 'xtra_branch_subject';
 $config['batch_table']            		= 'xtra_batch';
 $config['batch_subject_table']        	= 'xtra_batch_subject';
 
-$config['candidate_branch_batch_table']        	= 'xtra_candidate_branch_batch';
+$config['candidate_branch_batch_table']      = 'xtra_candidate_branch_batch';
 
 $config['question_table']          		= 'xtra_question';
 
@@ -57,11 +57,26 @@ $config['subject_topic_table']          = 'xtra_subject_topic';
 
 $config['category_table']            	= 'xtra_category';
 
+$config['instruction_table']            = 'xtra_exam_instruction';
 
-$config['exam_table']            	= 'xtra_exam';
-$config['exam_questions_table']            	= 'xtra_exam_questions';
+$config['exam_table']            		= 'xtra_exam';
+$config['exam_questions_table']         = 'xtra_exam_questions';
+$config['exam_questions_detailed']         = 'xtra_exam_questions_detailed';
 
 
+
+
+$config['exam_schedule_table']         = 'xtra_exam_schedule';
+$config['exam_schedule_candidate_table']         = 'xtra_exam_schedule_candidates';
+$config['exam_schedule_batch_table']         = 'xtra_exam_schedule_batchs';
+
+$config['schedule_candidate_detailed']         = 'xtra_exam_schedule_candidates_detailed';
+
+
+
+
+
+$config['import_files']         = 'xtra_import_files';
 
 
 /* End of file db_tables.php */

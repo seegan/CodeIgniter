@@ -19,8 +19,18 @@
                 $start = $data_list['start_count'] + 1;;
                 foreach ($data_list['result'] as $list) {
             ?>
-                <tr>
-                    <th scope="row"><?php echo $start++; ?></th>
+                <tr class="candidate_avail" data-candidateid="<?php echo $list->user_id; ?>">
+                    <th scope="row">
+                        <?php echo $start++; ?>
+                        <input type="checkbox" class="checked_candidate" value="<?php echo $list->user_id; ?>">
+                        <input type="hidden" class="username" value="<?php echo $list->username; ?>">
+                        <input type="hidden" class="enrollment_no" value="<?php echo $list->enrollment_no; ?>">
+                        <input type="hidden" class="branch_id" value="<?php echo $list->branch_id; ?>">
+                        <input type="hidden" class="batch_id" value="<?php echo $list->batch_id; ?>">
+                        <input type="hidden" class="mobile" value="<?php echo $list->mobile; ?>">
+                        <input type="hidden" class="gender" value="<?php echo $list->gender; ?>">
+                        <input type="hidden" class="registration_date" value="<?php echo $list->registration_date; ?>">
+                    </th>
                     <td><?php echo $list->username; ?></td>
                     <td><?php echo $list->enrollment_no; ?></td>
                     <td><?php echo $list->branch_id; ?></td>

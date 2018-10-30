@@ -6,10 +6,28 @@ if( !function_exists('getSubjects') )
 	function getSubjects($active = 1)
 	{
 		$CI =& get_instance();
-
 		return $CI->subject->getSubjects($active);
 	}
 }
+if( !function_exists('getSubjectsArray') )
+{
+	function getSubjectsArray($active = 1)
+	{
+		$CI =& get_instance();
+		return $CI->subject->getSubjectsArray($active);
+	}
+}
+
+if( !function_exists('getAllTopicsArray') )
+{
+	function getAllTopicsArray($active = 1)
+	{
+		$CI =& get_instance();
+		return $CI->subject->getAllTopicsArray($active);
+	}
+}
+
+
 
 if( !function_exists('getTopicsByCategory') )
 {
@@ -39,5 +57,39 @@ if( !function_exists('getQuestionTypesByCategory') )
 		$CI =& get_instance();
 
 		return $CI->subject->getQuestionTypesByCategory($cat_id, $active);
+	}
+}
+
+
+if( !function_exists('getSubjectDetailById') )
+{
+	function getSubjectDetailById($subject_id = 0)
+	{
+		$CI =& get_instance();
+		$data['subject'] = $CI->subject->getSubjectById($subject_id);
+		$data['subject_types'] = $CI->subject->getSubjectTypesById($subject_id);
+
+		return $data;
+	}
+}
+
+
+if( !function_exists('getSubjectNameById') )
+{
+	function getSubjectNameById($subject_id = 0)
+	{
+		$CI =& get_instance();
+		$data = $CI->subject->getSubjectNameById($subject_id);
+		return $data;
+	}
+}
+
+if( !function_exists('getTopicNameById') )
+{
+	function getTopicNameById($topic_id = 0)
+	{
+		$CI =& get_instance();
+		$data = $CI->subject->getTopicNameById($topic_id);
+		return $data;
 	}
 }

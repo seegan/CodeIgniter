@@ -28,7 +28,6 @@
     <div class="form-group row">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Select Question Type<span class="text-danger">*</span></label>
         <div class="col-7">
-
             <?php
             if($question_types) {
                 foreach ($question_types as $type) {
@@ -45,8 +44,6 @@
             ?>
         </div>
     </div>
-
-
 
     <div class="form-group row">
         <label for="webSite" class="col-4 col-form-label text-right"></label>

@@ -76,7 +76,7 @@ class Subject extends MY_Controller {
 				'label' => 'Subject Name',
 				'rules' => 'required',
 				'errors' => [
-					'required' => 'Username Required.',
+					'required' => 'Subject Required.',
 				]
 			],
 			[
@@ -92,17 +92,10 @@ class Subject extends MY_Controller {
 	    $data['question_types'] = getQuestionTypes(1);
 		$this->form_validation->set_rules( $validation_rules );
 
-        if ($this->form_validation->run() == FALSE)
-        {
-            $page_content = $this->load->view('admin/subject/subject/subject_add', $data, TRUE);
-        }
-        else
-        {
+        if ($this->form_validation->run() !== FALSE) {
 
 			$this->db->set($subject_data)
 				->insert(db_table('subject_table'));
-
-
 
 			if( $this->db->affected_rows() == 1 ){
 
@@ -113,12 +106,9 @@ class Subject extends MY_Controller {
 				//echo '<h1>Congratulations</h1>' . '<p>User ' . $user_data['username'] . ' was created.</p>';
 				redirect('admin/subject'); die();
 			}
-			else {
-				$page_content = $this->load->view('admin/subject/subject/subject_add', $data, TRUE);
-			}
         }
 
-
+		$page_content = $this->load->view('admin/subject/subject/subject_add', $data, TRUE);
 
 		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
 		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
@@ -130,5 +120,76 @@ class Subject extends MY_Controller {
 		echo $this->load->view('admin/common/footer', '', TRUE);
 
 	}
+
+
+	public function update($subject_id = 0)
+	{
+	    if( $this->uri->uri_string() == 'admin/subject/subject/update')
+	    {
+	        show_404();
+	    }
+
+		$subject_data = [
+			'subject'   => $this->input->post('subject'),
+		];
+
+		$this->load->helper('auth');
+		$this->load->model('examples/examples_model');
+		$this->load->model('examples/validation_callables');
+		$this->load->library('form_validation');
+
+
+
+		$validation_rules = [
+			[
+				'field' => 'subject',
+				'label' => 'Subject Name',
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Subject Required.',
+				]
+			],
+			[
+				'field' => 'question_type[]',
+				'label' => 'Question Type',
+				'rules' => 'required',
+				'errors' => [
+					'required' => 'Question Type Required.',
+				]
+			]			
+		];
+
+
+		$this->form_validation->set_rules( $validation_rules );
+        if ($this->form_validation->run() !== FALSE) {
+			$this->db->where('id', $subject_id);
+			$this->db->update('xtra_subject', $subject_data); 
+
+			$this->db->delete(db_table('subject_question_type_table'), array('subject_id' => $subject_id));
+			
+			foreach ($this->input->post('question_type') as $type) {
+				$this->db->set(array('subject_id' => $subject_id, 'type_id' => $type ))->insert(db_table('subject_question_type_table'));
+			}
+        }
+
+
+
+	    $data['question_types'] = getQuestionTypes(1);
+	    $data['subject_data'] = getSubjectDetailById($subject_id);
+
+		$page_content = $this->load->view('admin/subject/subject/subject_update', $data, TRUE);
+
+		$left_sidebar = $this->load->view('admin/common/left_sidebar', '', TRUE);
+		$right_sidebar = $this->load->view('admin/common/right_sidebar', '', TRUE);
+
+		echo $this->load->view('admin/common/header', '', TRUE);
+		echo $left_sidebar;
+		echo $page_content;
+		echo $right_sidebar;
+		echo $this->load->view('admin/common/footer', '', TRUE);
+
+	}
+
+
 
 }

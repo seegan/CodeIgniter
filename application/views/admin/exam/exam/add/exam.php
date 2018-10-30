@@ -1,7 +1,5 @@
 <h4 class="header-title m-t-0 text-center">New Exam</h4>
 
-<form method="POST" action="<?php echo base_url('admin/exam/add') ?>">
-
     <div class="form-group row">
         <label class="col-4 col-form-label text-right"></label>
         <div class="col-7">
@@ -26,19 +24,19 @@
     <div class="form-group row">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Duration<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="exam_duration" placeholder="Duration" value="<?php echo set_value('exam_duration'); ?>">
+            <input type="time" step="1" required class="form-control exam_duration" name="exam_duration" placeholder="Duration" value="<?php echo set_value('exam_duration'); ?>">
         </div>
     </div>   
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Total Questions<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="total_questions" placeholder="Total Questions" value="<?php echo set_value('total_questions'); ?>">
+            <input type="text" required class="form-control total_questions" name="total_questions" placeholder="Total Questions" value="<?php echo set_value('total_questions'); ?>">
         </div>
     </div> 
     <div class="row form-group">
         <label for="inputEmail3" class="col-4 col-form-label text-right">Total Marks<span class="text-danger">*</span></label>
         <div class="col-7">
-            <input type="text" required class="form-control" name="total_marks" placeholder="Total Marks" value="<?php echo set_value('total_marks'); ?>">
+            <input type="text" required class="form-control total_marks" name="total_marks" placeholder="Total Marks" value="<?php echo set_value('total_marks'); ?>">
         </div>
     </div> 
     <div class="row form-group">
@@ -208,17 +206,19 @@
                                                     </div>
 
                                                 </div>
-
-
                                             </div>
+
                                             <div class="col-md-12 col-lg-2">
                                                 <div class="form-group row">
                                                     <div class="col-12">
                                                         <select class="form-control select2 ppage" name="ppage">
                                                             <option disabled>Data Per Page</option>
-                                                            <option selected value="2">2 Per Page</option>
-                                                            <option  value="3">3 Per Page</option>
-                                                            <option value="20">20 Per Page</option>
+                                                            <option value="10">10 Per Page</option>
+                                                            <option value="50">50 Per Page</option>
+                                                            <option value="100">100 Per Page</option>
+                                                            <option selected value="200">200 Per Page</option>
+                                                            <option value="500">500 Per Page</option>
+                                                            <option value="1000">1000 Per Page</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -226,6 +226,36 @@
                                                     <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5 selected-question" data-toggle="modal" data-target=".selected-questions-model">Selected Questions &nbsp; <i class="mdi mdi-library-plus"></i></button>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-12 col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-4">
+                                                        <div class="question-filter-select-combo combo-box">
+                                                            <div class="input-group input-combain total-select" style="margin-bottom:10px;">
+                                                                <span class="input-group-addon addon-cyan">
+                                                                    <input type="checkbox" class="total_sel_chk">
+                                                                </span>
+                                                                <input type="text" class="form-control total_sel_input" placeholder="Total Questions">
+                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                    <button type="button" class="btn btn-primary total_sel_btn">Auto Select</button>
+                                                                </span>
+                                                            </div>
+                                                            <div class="input-group input-combain custom-select-block" style="display:none;">
+                                                                <span class="input-group-addon addon-cyan">
+                                                                    <input type="checkbox" class="custom_sel_chk">
+                                                                </span>
+                                                                <input type="text" class="form-control custom_sel_from" placeholder="Starting" disabled>
+                                                                <input type="text" class="form-control custom_sel_to" placeholder="Ending" disabled>
+                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                    <button type="button" class="btn btn-primary custom_sel_btn">Auto Select</button>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="combo-box-error"></div>
+                                            </div>
+
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -244,8 +274,6 @@
                                 <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5 selected-question" data-toggle="modal" data-target=".selected-questions-model">Selected Questions &nbsp; <i class="mdi mdi-arrow-right-bold"></i></button>                              
                             </div>
                         </div>
-
-
 
                     </div>
                 </div>
@@ -283,63 +311,96 @@
                                         <div class="row">
                                             <div class="col-md-12 col-lg-12">
                                                 <div class="row">
-                                                    <div class="col-lg-3 col-md-4">
+                                                    <div class="col-lg-12 col-md-12">
                                                         <div class="form-group row">
-                                                            <div class="col-12">
-                                                                <input type="text" name="question"  class="form-control search_question" placeholder="Search Question">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                <input type="text" name="question"  class="form-control search_question" placeholder="Search Question">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <div class="form-group row">
-                                                            <div class="col-12">
-                                                                <a class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5 question_search" style="color:#fff;width: 100%;">Search&nbsp;<i class="ti-search"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                            <div class="col-md-12 col-lg-12">
+                                                                <div class="row">
 
+                                                                    <div class="col-lg-3 col-md-4">
+                                                                        <div class="question-right-mark-combo combo-box">
+                                                                            <div class="input-group input-combain total-select" style="margin-bottom:10px;">
+                                                                                <span class="input-group-addon addon-cyan">
+                                                                                    <input type="checkbox" class="total_sel_chk">
+                                                                                </span>
+                                                                                <input type="text" class="form-control total_sel_input" placeholder="Enter Right Marks">
+                                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                                    <button type="button" class="btn btn-primary total_sel_btn">Auto Select</button>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="input-group input-combain custom-select-block" style="display:none;">
+                                                                                <span class="input-group-addon addon-cyan">
+                                                                                    <input type="checkbox" class="custom_sel_chk">
+                                                                                </span>
+                                                                                <input type="text" class="form-control custom_sel_from" placeholder="Starting" disabled>
+                                                                                <input type="text" class="form-control custom_sel_to" placeholder="Ending" disabled>
+                                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                                    <button type="button" class="btn btn-primary custom_sel_btn">Auto Select</button>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-3 col-md-4">
+                                                                        <div class="question-wrong-mark-combo combo-box">
+                                                                            <div class="input-group input-combain total-select" style="margin-bottom:10px;">
+                                                                                <span class="input-group-addon addon-cyan">
+                                                                                    <input type="checkbox" class="total_sel_chk">
+                                                                                </span>
+                                                                                <input type="text" class="form-control total_sel_input" placeholder="Enter Wrong Marks">
+                                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                                    <button type="button" class="btn btn-primary total_sel_btn">Auto Select</button>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="input-group input-combain custom-select-block" style="display:none;">
+                                                                                <span class="input-group-addon addon-cyan">
+                                                                                    <input type="checkbox" class="custom_sel_chk">
+                                                                                </span>
+                                                                                <input type="text" class="form-control custom_sel_from" placeholder="Starting" disabled>
+                                                                                <input type="text" class="form-control custom_sel_to" placeholder="Ending" disabled>
+                                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                                    <button type="button" class="btn btn-primary custom_sel_btn">Auto Select</button>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div class="col-lg-3 col-md-4">
+                                                                        <div class="question-time-combo combo-box">
+                                                                            <div class="input-group input-combain total-select" style="margin-bottom:10px;">
+                                                                                <span class="input-group-addon addon-cyan">
+                                                                                    <input type="checkbox" class="total_sel_chk">
+                                                                                </span>
+                                                                                <input type="time" class="form-control total_sel_input" placeholder="Enter Time (In Mins)" step="1" value="00:00:00">
+                                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                                    <button type="button" class="btn btn-primary total_sel_btn">Auto Select</button>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="input-group input-combain custom-select-block" style="display:none;">
+                                                                                <span class="input-group-addon addon-cyan">
+                                                                                    <input type="checkbox" class="custom_sel_chk">
+                                                                                </span>
+                                                                                <input type="text" class="form-control custom_sel_from" placeholder="Starting" disabled>
+                                                                                <input type="text" class="form-control custom_sel_to" placeholder="Ending" disabled>
+                                                                                <span class="input-group-addo b-0 text-white addon-cyan-btn">
+                                                                                    <button type="button" class="btn btn-primary custom_sel_btn">Auto Select</button>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="combo-box-error"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="form-group row">
+                                                            <div class="col-12">
+                                                                Input Controls
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
 
                                             </div>
@@ -356,7 +417,8 @@
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>#</th>
+                                                <th class="selected-delete"></th>
+                                                <th class="selected-no">#</th>
                                                 <th>Question</th>
                                                 <th style="width: 200px;">Right Marks</th>
                                                 <th style="width: 200px;">Wrong Marks</th>
@@ -388,7 +450,3 @@
 </div><!-- /.modal -->
 
 
-
-
-
-</form>

@@ -37,8 +37,8 @@
                                                     <li class="nav-item">
                                                         <a class="nav-link" href="<?php echo base_url('admin/subject/topic') ?>">Topic</a>
                                                     </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active" href="<?php echo base_url('admin/question/category') ?>">Category</a>
+                                                    <!-- <li class="nav-item">
+                                                        <a class="nav-link active" href="<?php //echo base_url('admin/question/category') ?>">Category</a> -->
                                                     </li>
                                                     <li class="nav-item">
                                                         <a class="nav-link" href="<?php echo base_url('admin/question') ?>">Question</a>

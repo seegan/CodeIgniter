@@ -55,7 +55,6 @@ class Paginator
 	        $this->phone_mobile 	= isset($params['phone_mobile']) ? $params['phone_mobile'] : '';
 			$this->contact_person 	= isset($params['contact_person']) ? $params['contact_person'] : '';
 
-
 	        $this->branch_id		= isset($params['branch_id']) ? $params['branch_id'] : '0';
 	        $this->batch_id			= isset($params['batch_id']) ? $params['batch_id'] : '0';
 	        $this->user_name 		= isset($params['user_name']) ? $params['user_name'] : '';
@@ -63,6 +62,10 @@ class Paginator
 	        $this->user_email 		= isset($params['user_email']) ? $params['user_email'] : '';
 	        $this->gender 			= isset($params['gender']) ? $params['gender'] : '0';
 	        $this->candidate_year   = isset($params['candidate_year']) ? $params['candidate_year'] : '0';
+
+	        $this->instruction_name = isset($params['instruction_name']) ? $params['instruction_name'] : '';
+	        $this->exam_name   		= isset($params['exam_name']) ? $params['exam_name'] : '';
+	        
 	    }
 	    else {
 	        $this->cpage 				= ($this->CI->input->get('cpage')) ? abs( (int) $this->CI->input->get('cpage') ) : 1;
@@ -81,7 +84,6 @@ class Paginator
 	        $this->phone_mobile 		= ($this->CI->input->get('phone_mobile')) ? $this->CI->input->get('phone_mobile') : '';
 	        $this->contact_person 		= ($this->CI->input->get('contact_person')) ? $this->CI->input->get('contact_person') : '';
 
-
 	        $this->branch_id			= ($this->CI->input->get('branch_id')) ? $this->CI->input->get('branch_id') : '0';
 	        $this->batch_id				= ($this->CI->input->get('batch_id')) ? $this->CI->input->get('batch_id') : '0';
 	        $this->user_name 			= ($this->CI->input->get('user_name')) ? $this->CI->input->get('user_name') : '';
@@ -89,9 +91,11 @@ class Paginator
 	        $this->user_email 			= ($this->CI->input->get('user_email')) ? $this->CI->input->get('user_email') : '';
 	        $this->gender 				= ($this->CI->input->get('gender')) ? $this->CI->input->get('gender') : '0';
 	        $this->candidate_year		= ($this->CI->input->get('candidate_year')) ? $this->CI->input->get('candidate_year') : '0';
+
+	        $this->instruction_name 	= ($this->CI->input->get('instruction_name')) ? $this->CI->input->get('instruction_name') : '';
+	        $this->exam_name   			= ($this->CI->input->get('exam_name')) ? $this->CI->input->get('exam_name') : '';
 	    }
 	}
-
 
 
 	public function _args()
@@ -167,7 +171,7 @@ class Paginator
 		$data['result'] = $result_data->result();   
 
 	    $totalPage         	= ceil($data['total'] / $this->ppage);
-		$this->paginate_link = $this->add_query_arg( $this->args['arg'], base_url('admin/subject/topic') );
+		$this->paginate_link = $this->add_query_arg( $this->args['arg'], base_url('admin/candidate') );
 		$data['pagination'] = $this->createPaginationHtml();
 
 		$data['start_count'] = ($this->ppage * ($this->cpage - 1));
@@ -262,6 +266,8 @@ class Paginator
 
 	    return $data;
 	}
+
+
 	public function category_list_pagination($args) {
 
 		$this->_args();
@@ -416,12 +422,125 @@ class Paginator
 	    }
 	    $data['status_txt'] = "<div class='' role='status' aria-live='polite'>Showing ".$start_count." to ".$end_count." of ".$this->total_rows." entries</div>";
 
+	    return $data;
+	}
+
+	public function instruction_list_pagination($args) {
+
+		$this->_args();
+		$condition = $this->listCondition();
+
+		$query = "SELECT i.id, i.instruction_name, i.created_at FROM xtra_exam_instruction as i WHERE 1 = 1 ${condition}";
+
+		$total_query        = "SELECT COUNT(1) as tot FROM (${query}) AS combined_table";
+
+		$count_query = $this->CI->db->query($total_query);
+		$row_count = $count_query->row();
+  
+		$this->total_rows = isset($row_count) ? $row_count->tot : 0;
+		$data['total']  = $this->total_rows;
+
+	    $offset             = ( $this->cpage * $this->ppage ) - $this->ppage;
+
+	    $result_query = $query . " ORDER BY ${args['orderby_field']} ${args['order_by']} LIMIT ${offset}, ".$this->ppage;
+		$result_data = $this->CI->db->query($result_query);	 
+		$data['result'] = $result_data->result();   
+
+	    $totalPage         	= ceil($data['total'] / $this->ppage);
+		$this->paginate_link = $this->add_query_arg( $this->args['arg'], base_url('admin/branch/user') );
+		$data['pagination'] = $this->createPaginationHtml();
+
+		$data['start_count'] = ($this->ppage * ($this->cpage - 1));
+	    $end_count = $data['start_count'] + count($data['result']);
+
+	    if( $end_count == 0) {
+	    	$start_count = 0;
+	    } else {
+	    	$start_count = $data['start_count'] + 1;
+	    }
+	    $data['status_txt'] = "<div class='' role='status' aria-live='polite'>Showing ".$start_count." to ".$end_count." of ".$this->total_rows." entries</div>";
+
+
+	    return $data;
+	}
+
+	public function exam_list_pagination($args) {
+
+		$this->_args();
+		$condition = $this->listCondition();
+
+		$query = "SELECT e.id, e.exam_name, e.exam_duration, e.total_questions, e.total_marks, e.description, e.created_at FROM xtra_exam as e WHERE 1 = 1 ${condition}";
+
+		$total_query        = "SELECT COUNT(1) as tot FROM (${query}) AS combined_table";
+
+		$count_query = $this->CI->db->query($total_query);
+		$row_count = $count_query->row();
+  
+		$this->total_rows = isset($row_count) ? $row_count->tot : 0;
+		$data['total']  = $this->total_rows;
+
+	    $offset             = ( $this->cpage * $this->ppage ) - $this->ppage;
+
+	    $result_query = $query . " ORDER BY ${args['orderby_field']} ${args['order_by']} LIMIT ${offset}, ".$this->ppage;
+		$result_data = $this->CI->db->query($result_query);	 
+		$data['result'] = $result_data->result();   
+
+	    $totalPage         	= ceil($data['total'] / $this->ppage);
+		$this->paginate_link = $this->add_query_arg( $this->args['arg'], base_url('admin/branch/user') );
+		$data['pagination'] = $this->createPaginationHtml();
+
+		$data['start_count'] = ($this->ppage * ($this->cpage - 1));
+	    $end_count = $data['start_count'] + count($data['result']);
+
+	    if( $end_count == 0) {
+	    	$start_count = 0;
+	    } else {
+	    	$start_count = $data['start_count'] + 1;
+	    }
+	    $data['status_txt'] = "<div class='' role='status' aria-live='polite'>Showing ".$start_count." to ".$end_count." of ".$this->total_rows." entries</div>";
+
 
 	    return $data;
 	}
 
 
+	public function schedule_list_pagination($args) {
 
+		$this->_args();
+		$condition = $this->listCondition();
+
+		$query = "SELECT * FROM ( SELECT es.id, es.exam_id, es.schedule_name, es.description, es.start_date, es.end_date, es.result_date, es.offered_as, es.offer_cost, es.result_as, es.schedule_to, es.created_at, ( CASE WHEN es.active = 0 THEN 'deactivated' WHEN es.start_date >= NOW() THEN 'upcomming' WHEN es.start_date <= NOW() AND es.end_date >= NOW() THEN 'processing' ELSE 'expired' END ) as schedule_status, ( CASE WHEN es.active = 0 THEN 3 WHEN es.start_date >= NOW() THEN 2 WHEN es.start_date <= NOW() AND es.end_date >= NOW() THEN 1 ELSE 4 END ) as status_order FROM xtra_exam_schedule as es ) as se WHERE 1=1 ${condition}";
+
+		$total_query        = "SELECT COUNT(1) as tot FROM (${query}) AS combined_table";
+
+		$count_query = $this->CI->db->query($total_query);
+		$row_count = $count_query->row();
+  
+		$this->total_rows = isset($row_count) ? $row_count->tot : 0;
+		$data['total']  = $this->total_rows;
+
+	    $offset             = ( $this->cpage * $this->ppage ) - $this->ppage;
+
+	    $result_query = $query . " ORDER BY ${args['orderby_field']} ${args['order_by']} LIMIT ${offset}, ".$this->ppage;
+		$result_data = $this->CI->db->query($result_query);	 
+		$data['result'] = $result_data->result();   
+
+	    $totalPage         	= ceil($data['total'] / $this->ppage);
+		$this->paginate_link = $this->add_query_arg( $this->args['arg'], base_url('admin/branch/user') );
+		$data['pagination'] = $this->createPaginationHtml();
+
+		$data['start_count'] = ($this->ppage * ($this->cpage - 1));
+	    $end_count = $data['start_count'] + count($data['result']);
+
+	    if( $end_count == 0) {
+	    	$start_count = 0;
+	    } else {
+	    	$start_count = $data['start_count'] + 1;
+	    }
+	    $data['status_txt'] = "<div class='' role='status' aria-live='polite'>Showing ".$start_count." to ".$end_count." of ".$this->total_rows." entries</div>";
+
+	    return $data;
+	}
 
 
 
@@ -505,7 +624,7 @@ class Paginator
 	    }
 	    if($this->batch_id != '0'){
 	    	$condition .= " AND cbb.batch_id IN (".$this->batch_id.")";
-	    	$this->args['arg']['batch_name'] = $this->batch_id;
+	    	$this->args['arg']['batch_id'] = $this->batch_id;
 	    }	    
 	    if($this->contact_no != ''){
 	    	$condition .= " AND (phone LIKE  '%".$this->contact_no."%' OR mobile LIKE '%".$this->contact_no."%')";
@@ -528,6 +647,15 @@ class Paginator
 	    	$this->args['arg']['candidate_year'] = $this->candidate_year;
 	    }
 
+
+	    if($this->instruction_name != '') {
+	    	$condition .= " AND i.instruction_name LIKE  '%".$this->instruction_name."%'";
+	    	$this->args['arg']['instruction_name'] = $this->instruction_name;
+	    }
+	    if($this->exam_name != '') {
+	    	$condition .= " AND e.exam_name LIKE  '%".$this->exam_name."%'";
+	    	$this->args['arg']['exam_name'] = $this->exam_name;
+	    }
 
 
 	    return $condition;

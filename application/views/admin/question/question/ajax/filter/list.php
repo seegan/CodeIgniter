@@ -13,9 +13,8 @@
                     <th>Subject</th>
                     <th>Topic</th>
                     <th>Type</th>
-                    <th>Language</th>
                     <th>Difficulty</th>
-                    <th>Year</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,9 +29,10 @@
                     <td><?php echo $list->subject; ?></td>
                     <td><?php echo $list->topic; ?></td>
                     <td><?php echo $question_type[$list->question_type]; ?></td>
-                    <td><?php echo $language_list[$list->language]; ?></td>
                     <td><?php echo $difficulty[$list->difficulty_level]; ?></td>
-                    <td><?php echo $list->year; ?></td>
+                    <td>
+                        <a class="btn btn-icon waves-effect waves-light btn-info m-b-5" href="<?php echo base_url('admin/question/update').'/'.$list->id; ?>"> <i class="fa fa-keyboard-o"></i> </a>
+                    </td>
                 </tr>
             <?php
                 }

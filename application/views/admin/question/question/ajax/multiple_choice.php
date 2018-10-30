@@ -5,19 +5,19 @@
                 Correct Answer :
 
                 <div class="checkbox checkbox-success form-check-inline" data-option="A">
-                    <input type="checkbox" id="inlineCheck-a" value="A" name="validoption" checked="">
+                    <input type="checkbox" id="inlineCheck-a" value="A" name="validoption[]" checked="">
                     <label for="inlineCheck-a"> A </label>
                 </div>
                 <div class="checkbox checkbox-success form-check-inline" data-option="B">
-                    <input type="checkbox" id="inlineCheck-b" value="B" name="validoption">
+                    <input type="checkbox" id="inlineCheck-b" value="B" name="validoption[]">
                     <label for="inlineCheck-b"> B </label>
                 </div>
                 <div class="checkbox checkbox-success form-check-inline" data-option="C">
-                    <input type="checkbox" id="inlineCheck-c" value="C" name="validoption">
+                    <input type="checkbox" id="inlineCheck-c" value="C" name="validoption[]">
                     <label for="inlineCheck-c"> C </label>
                 </div>
                 <div class="checkbox checkbox-success form-check-inline" data-option="D">
-                    <input type="checkbox" id="inlineCheck-d" value="D" name="validoption">
+                    <input type="checkbox" id="inlineCheck-d" value="D" name="validoption[]">
                     <label for="inlineCheck-d"> D </label>
                 </div>
             </div>

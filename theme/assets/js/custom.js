@@ -1,3 +1,4 @@
+
 jQuery.fn.single_double_click = function(single_click_callback, double_click_callback, timeout) {
 
   return this.each(function(){
@@ -180,45 +181,48 @@ var countryStateInfo = {
 
 window.onload = function () {
   
+  if(document.getElementById("countySel") !== null) {
   //Get html elements
-  var countySel = document.getElementById("countySel");
-  var stateSel = document.getElementById("stateSel"); 
-  var citySel = document.getElementById("citySel");
-  
-  //Load countries
-  for (var country in countryStateInfo) {
-    countySel.options[countySel.options.length] = new Option(country, country);
-  }
-  
-  //County Changed
-  countySel.onchange = function () {
-     
-     stateSel.length = 1; // remove all options bar first
-     citySel.length = 1; // remove all options bar first
-     jQuery('#stateSel').change();
-     jQuery('#citySel').change();
-     
-     if (this.selectedIndex < 1)
-       return; // done
-     
-     for (var state in countryStateInfo[this.value]) {
-       stateSel.options[stateSel.options.length] = new Option(state, state);
-     }
-  }
-  
-  //State Changed
-  stateSel.onchange = function () {    
-     
-     citySel.length = 1; // remove all options bar first
-     jQuery('#citySel').change();
+    var countySel = document.getElementById("countySel");
+    var stateSel = document.getElementById("stateSel"); 
+    var citySel = document.getElementById("citySel");
+   
+    //Load countries
+    for (var country in countryStateInfo) {
+      countySel.options[countySel.options.length] = new Option(country, country);
+    }
+    
+    //County Changed
+    countySel.onchange = function () {
+       
+       stateSel.length = 1; // remove all options bar first
+       citySel.length = 1; // remove all options bar first
+       jQuery('#stateSel').change();
+       jQuery('#citySel').change();
+       
+       if (this.selectedIndex < 1)
+         return; // done
+       
+       for (var state in countryStateInfo[this.value]) {
+         stateSel.options[stateSel.options.length] = new Option(state, state);
+       }
+    }
+    
+    //State Changed
+    stateSel.onchange = function () {    
+       
+       citySel.length = 1; // remove all options bar first
+       jQuery('#citySel').change();
 
-     if (this.selectedIndex < 1)
-       return; // done
-     
-     for (var city in countryStateInfo[countySel.value][this.value]) {
-       citySel.options[citySel.options.length] = new Option(city, city);
-     }
+       if (this.selectedIndex < 1)
+         return; // done
+       
+       for (var city in countryStateInfo[countySel.value][this.value]) {
+         citySel.options[citySel.options.length] = new Option(city, city);
+       }
+    }    
   }
+  
   
 }
 
@@ -330,7 +334,7 @@ function assignNameData() {
         var options = '<div class="radio radio-success form-check-inline" data-option="'+option_arr[option]+'"><input type="radio" id="inlineRadio-'+option_arr[option]+'" value="'+option_arr[option]+'" name="validoption" checked=""><label for="inlineRadio-'+option_arr[option]+'"> '+option_arr[option]+' </label></div>';
       }
       if(type == 2) {
-        var options = '<div class="checkbox checkbox-success form-check-inline" data-option="'+option_arr[option]+'"><input type="checkbox" id="inlineCheck-'+option_arr[option]+'" value="'+option_arr[option]+'" name="validoption"><label for="inlineCheck-'+option_arr[option]+'"> '+option_arr[option]+' </label></div>';
+        var options = '<div class="checkbox checkbox-success form-check-inline" data-option="'+option_arr[option]+'"><input type="checkbox" id="inlineCheck-'+option_arr[option]+'" value="'+option_arr[option]+'" name="validoption[]"><label for="inlineCheck-'+option_arr[option]+'"> '+option_arr[option]+' </label></div>';
       }
       //console.log(options)
       jQuery('.correct_option').append(options);
@@ -425,4 +429,61 @@ Array.prototype.diff = function diff(a) {
 function populateMultiSelect(sel = '') {
     //advance multiselect start
     jQuery(sel).multiSelect( 'refresh' );    
+}
+
+
+
+jQuery(document).ready(function () {
+  jQuery('.date_pic').datepicker({
+      autoclose: true,
+      todayHighlight: true,
+      format: "dd M yyyy",
+      clearBtn: true,
+  });
+
+
+  jQuery('.time_pic').timepicker({ 'timeFormat': 'h:i A' });
+});
+
+
+
+function calculateQuestionSelectedData() {
+    var right_marks = 0;
+    var wrong_marks = 0;
+    var total_time  = 0;
+    var question_count = 0;
+    jQuery('.selected_question_block .selected_tr').each(function(){
+
+      right_marks   = right_marks + 1*(jQuery(this).find('.right_mark').val());
+      wrong_marks   = wrong_marks + 1*(jQuery(this).find('.wrong_mark').val());
+      total_time    = total_time + 1*(convertHmsToSeconds(jQuery(this).find('.question_time').val()));
+      question_count++;
+
+    });
+
+    right_marks = (1*right_marks.toFixed(2)); 
+    wrong_marks = (1*wrong_marks.toFixed(2));
+
+
+    jQuery('.exam_duration').val(formatSeconds(total_time));
+    jQuery('.total_questions').val(question_count);
+    jQuery('.total_marks').val(right_marks);
+
+}
+
+
+function convertHmsToSeconds(hms) {
+    var a = hms.split(':'); // split it at the colons
+    var hour = (typeof a[0] !== 'undefined') ? a[0] : 00;
+    var min = (typeof a[1] !== 'undefined') ? a[1] : 00;
+    var sec = (typeof a[2] !== 'undefined') ? a[2] : 00;
+    var seconds = (+hour) * 60 * 60 + (+min) * 60 + (+sec); 
+    return seconds;
+}
+
+function formatSeconds(seconds)
+{
+    var date = new Date(1970,0,1);
+    date.setSeconds(seconds);
+    return date.toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
 }

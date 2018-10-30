@@ -18,46 +18,45 @@
         </div>
     </div>
 
-
     <div class="row">
         <div class="col-md-6">
             <div class="p-20">
                 <div class="form-group">
                     <label>User ID<span class="text-danger">*</span></label>
-                    <input type="text" placeholder="" required class="form-control" name="username">
+                    <input type="text" placeholder="" required class="form-control" name="username" value="<?php echo set_value('username'); ?>">
                 </div>
                 <div class="form-group">
                     <label>Enrollment No<span class="text-danger">*</span></label>
-                    <input type="text" placeholder="" required class="form-control" name="enroll_no">
+                    <input type="text" placeholder="" required class="form-control" name="enroll_no" value="<?php echo set_value('enroll_no'); ?>">
                 </div>
                 <div class="form-group">
                     <label>Password<span class="text-danger">*</span></label>
-                    <input type="text" placeholder="" required class="form-control" name="passwd">
+                    <input type="password" placeholder="" required class="form-control" name="passwd" value="">
                 </div>
                 <div class="form-group">
                     <label>Confirm Password<span class="text-danger">*</span></label>
-                    <input type="text" placeholder="" required class="form-control" name="repasswd">
+                    <input type="password" placeholder="" required class="form-control" name="repasswd" value="">
                 </div>
                 <div class="form-group m-b-0">
                     <label>Name<span class="text-danger">*</span></label>
-                    <input type="text" placeholder="" required class="form-control" name="name">
+                    <input type="text" placeholder="" required class="form-control" name="name" value="<?php echo set_value('name'); ?>">
                 </div>
                 <div class="form-group m-b-0">
                     <label>Registration Date<span class="text-danger">*</span></label>
-                    <input type="text" placeholder="" required class="form-control" name="registration_date">
+                    <input type="text" placeholder="" required class="form-control" name="registration_date" value="<?php echo set_value('registration_date'); ?>">
                 </div>
                 <div class="form-group m-b-0">
                     <label>Email<span class="text-danger">*</span></label>
-                    <input type="text" placeholder="" required class="form-control" name="email">
+                    <input type="text" placeholder="" required class="form-control" name="email" value="<?php echo set_value('email'); ?>">
                 </div>
                 <div class="form-group m-b-0">
                     <label>Mobile Number<span class="text-danger">*</span></label>
-                    <input type="text" placeholder="" required class="form-control" name="mobile">
+                    <input type="text" placeholder="" required class="form-control" name="mobile" value="<?php echo set_value('mobile'); ?>">
                 </div>
                 <div class="form-group m-b-0">
                     <label>Branch<span class="text-danger">*</span></label>
 
-                    <select class="form-control select2 branch_name" required name="branch_name" >
+                    <select class="form-control select2 branch_name" required name="branch_name"  value="">
                         <option value="0">Select Branch</option>
                         <?php 
                             if($branchs) {

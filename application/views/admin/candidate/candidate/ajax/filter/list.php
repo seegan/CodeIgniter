@@ -11,6 +11,7 @@
                     <th>Contact No</th>
                     <th>Gender</th>
                     <th>Registration Date</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,9 @@
                     <td><?php echo $list->mobile; ?></td>
                     <td><?php echo $list->gender; ?></td>
                     <td><?php echo $list->registration_date; ?></td>
+                    <td>
+                        <a class="btn btn-icon waves-effect waves-light btn-info m-b-5" href="<?php echo base_url('admin/candidate/update').'/'.$list->user_id; ?>"> <i class="fa fa-keyboard-o"></i> </a>
+                    </td>
                 </tr>
             <?php
                 }

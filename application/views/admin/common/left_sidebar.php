@@ -17,14 +17,16 @@
                                 <ul class="list-unstyled">
                                     <li><a href="<?php echo base_url('admin/subject') ?>">Subject</a></li>
                                     <li><a href="<?php echo base_url('admin/subject/topic') ?>">Topic</a></li>
-                                    <li><a href="<?php echo base_url('admin/question/category') ?>">Category</a></li>
+                                    <!-- <li><a href="<?php //echo base_url('admin/question/category') ?>">Category</a></li> -->
                                     <li><a href="<?php echo base_url('admin/question') ?>">Question </a></li>
+                                    <li><a href="<?php echo base_url('admin/question/import') ?>">Import</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="mdi mdi-alarm-check"></i><span> Exam Scheduler </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
+                                    <li><a href="<?php echo base_url('admin/exam/instruction') ?>">Instruction</a></li>
                                     <li><a href="<?php echo base_url('admin/exam') ?>">Exam</a></li>
                                     <li><a href="<?php echo base_url('admin/exam/scheduler') ?>">Scheduler</a></li>
                                 </ul>
@@ -34,9 +36,10 @@
                                 <a href="javascript:void(0);" class="waves-effect waves-primary"><i class="fa fa-users"></i><span> Candidates </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="<?php echo base_url('admin/candidate') ?>">Candidates</a></li>
-                                    <li><a href="<?php echo base_url('admin/candidate/assign_exam') ?>">Assign to Exam</a></li>
-                                    <li><a href="<?php echo base_url('admin/candidate/end_exam') ?>">End Exam</a></li>
-                                    <li><a href="<?php echo base_url('admin/candidate/resume_exam') ?>">Resume Exam</a></li>
+                                    <!-- <li><a href="<?php //echo base_url('admin/candidate/assign_exam') ?>">Assign to Exam</a></li> -->
+                                    <!-- <li><a href="<?php //echo base_url('admin/candidate/end_exam') ?>">End Exam</a></li>
+                                    <li><a href="<?php //echo base_url('admin/candidate/resume_exam') ?>">Resume Exam</a></li> -->
+                                    <li><a href="<?php echo base_url('admin/candidate/import') ?>">Import</a></li>
                                 </ul>
                             </li>
 

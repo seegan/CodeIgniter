@@ -1,4 +1,10 @@
 /*Login Pages*/
+body {
+  padding-right: 0 !important;
+}
+.settings-group a {
+  color: #000;
+}
 .login-exceeded {
     width: 400px;
     margin: 0 auto;
@@ -7,7 +13,9 @@ i.login-exceeded-ico {
 	font-size: 90px;
     color: red;
 }
-
+#schedule_description_ifr, #instruction_ifr {
+  width: 99% !important;
+}
 .action-header {
 	position: relative;
 	text-align: center;
@@ -22,6 +30,7 @@ i.login-exceeded-ico {
 }
 .page-container {
 	margin-top: 20px;
+  padding: 20px;
 }
 
 .add-question .form-control, .action-header .form-control  {
@@ -57,12 +66,14 @@ i.login-exceeded-ico {
 .modal-full-width {
   max-width: 90%;
 }
-
+.modal-settings {
+  max-width: 560px;
+}
 .question_exam_filter .filter_question p, .selected_question_list .selected_question_block p {
   margin: 0;
 }
 
-.question_exam_filter, .selected_question_list {
+.question_exam_filter, .selected_question_list, .candidate_scheduler_filter, .selected_candidate_list {
   height: 300px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -83,4 +94,113 @@ i.login-exceeded-ico {
   right: 0;
   top: 12px;
   display: none;
+}
+.upload-status {
+  line-height: 34px;
+}
+tr.success {
+  background: #f8fffa;
+}
+tr.failed {
+  background: #fff8f8;
+}
+tr.deactive {
+  background: #fffff8;
+}
+
+
+table .btn-info {
+  padding: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-bottom: 0;  
+}
+
+
+#progressbox {
+    border: 1px solid #CAF2FF;
+    padding: 1px; 
+    position:relative;
+    width:400px;
+    border-radius: 3px;
+    margin: 10px;
+    display:none;
+    text-align:left;
+}
+#progressbar {
+    height:20px;
+    border-radius: 3px;
+    background-color: #CAF2FF;
+    width:1%;
+}
+#statustxt {
+    top:3px;
+    left:50%;
+    position:absolute;
+    display:inline-block;
+    color: #FFFFFF;
+    line-height: 20px;
+}
+#start_process_btn {
+    display: none;
+}
+
+.graphbox {
+    border: 2px solid #a1a1a1;
+    padding: 15px 6px 0px 24px;
+    background: #fff;
+    border-radius: 15px;
+}
+
+.graphbox .radio label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 2px;
+    margin-right: 15px;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #777a80;
+}
+.checkbox {
+    display: inline-block;
+}
+.checkbox label {
+    margin-bottom: 10px;
+}
+.checkbox label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 5px;
+  margin-right: 15px;
+  font-size: 13px;
+  color: #777a80;
+  transition: border 0.2s linear 0s,color 0.2s linear 0s;
+}
+.input-combain .addon-cyan {
+  padding-top: 11px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+}
+.input-combain .addon-cyan-btn {
+  color: white;
+  display: block;
+}
+.input-combain .addon-cyan-btn button {
+  border-radius: 0px 4px 4px 0; 
+}
+
+input[type="text"]:disabled, input[type="time"]:disabled {
+    background: #eee;
+}
+.combo-box-error {
+  color: red;
+}
+
+.selected-delete, .selected-no {
+  width: 50px;
+}
+.selected-sequence {
+  width: 40px;
 }

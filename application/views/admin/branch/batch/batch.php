@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Branch List</h4>
+                                    <h4 class="page-title">Batch List</h4>
                                     <ol class="breadcrumb float-right">
                                         <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard') ?>">Dashboard</a></li>
                                         <li class="breadcrumb-item active">Branch</li>

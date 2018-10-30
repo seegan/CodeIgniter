@@ -61,15 +61,27 @@ $route['admin/branch/getBranchSubjects'] = 'admin/branch/branch/getBranchSubject
 
 $route['admin/subject'] = 'admin/subject/subject/index';
 $route['admin/subject/add'] = 'admin/subject/subject/add';
+$route['admin/subject/update/(:num)'] = 'admin/subject/subject/update/$1';
+
 
 $route['admin/question'] = 'admin/question/question/index';
 $route['admin/question/add'] = 'admin/question/question/add';
+$route['admin/question/update/(:num)'] = 'admin/question/question/update/$1';
+$route['admin/question/import'] = 'admin/question/question/import';
+$route['admin/question/import/(:num)'] = 'admin/question/question/import/$1';
+
+
+
 
 $route['admin/question/getQuestionOptions'] = 'admin/question/question/getQuestionOptions';
 $route['admin/question/getQuestionData'] = 'admin/question/question/getQuestionData';
 
 $route['admin/candidate'] = 'admin/candidate/candidate/index';
 $route['admin/candidate/add'] = 'admin/candidate/candidate/add';
+$route['admin/candidate/update/(:num)'] = 'admin/candidate/candidate/update/$1';
+$route['admin/candidate/import'] = 'admin/candidate/candidate/import';
+$route['admin/candidate/import/(:num)'] = 'admin/candidate/candidate/import/$1';
 
 $route['admin/exam'] = 'admin/exam/exam/index';
 $route['admin/exam/add'] = 'admin/exam/exam/add';
+$route['admin/exam/update/(:num)'] = 'admin/exam/exam/update/$1';
